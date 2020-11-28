@@ -1,0 +1,19 @@
+.menuList_After_Login {
+
+  
+  justify-content: flex-end;
+  // margin-right: 40px;
+  align-items: center;
+
+  // background: gray;
+  ul {
+    list-style: none;
+    flex-direction: column;
+     li {
+      //  display: inline-block; // 리스트 가로 정렬
+      
+      
+      padding-right: 5%;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.nav_div {
+  position: fixed;
+  display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
+  
+  width: 100%;
+  // justify-content: space-between;
+  align-content: center;
+
+  /* 햄버거 토글 */
+  .hamburgerToggle {
+    // padding-right: 2%;
+    div {
+      margin: 3px;
+      transition: all 0.3s ease;
+      width: 23px;
+      height: 3px;
+      background: black;   // div에 색을 입혀 라인을 만든 것.
+    }
+  }
+
+}
+
+
+
