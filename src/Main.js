@@ -20,9 +20,20 @@ class Main extends React.Component {
     super(props);
     this.state = {
       isLogin: false,
+      isModalOpen: false,
       profilePath: "",
     };
   }
+
+  // 11/29 백시우 추가 : 모달 활성화 메소드
+  openModal = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  // 11/29 백시우 추가 : 모달 셧다운 메소드
+  closeModal = () => {
+    this.setState({ isModalOpen: false });
+  };
 
   render() {
     const listStyle = {
@@ -80,9 +91,16 @@ class Main extends React.Component {
               </div>
             )}
           </ul>
+
+          {/* 11/28 백시우 추가 : 사진추가 아이콘 */}
           <div className="AddPhoto">
-            <IoIosAddCircle />
+            <IoIosAddCircle
+              className="AddPhoto-icon"
+              onClick={this.openModal}
+            />
+            <AddPhoto isOpen={this.state.isModalOpen} close={this.closeModal} />
           </div>
+
           <Switch>
             {/* 햄버거 라우팅 세팅 */}
             <Route path="/hamburger" component={Hamburger} />
@@ -95,6 +113,9 @@ class Main extends React.Component {
             <Route path="/favorites" component={Favorites} />
             <Route path="/mypage" component={Mypage} />
             <Route path="/signout" component={SignOut} /> */}
+
+            {/* 11/28 백시우 추가 : AddPhoto 라우팅 세팅 */}
+            <Route path="/addphoto" component={AddPhoto} />
           </Switch>
         </BrowserRouter>
       </>
