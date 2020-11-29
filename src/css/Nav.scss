@@ -1,14 +1,98 @@
-.nav_div {
+nav {
   position: fixed;
+  left: 0;
+  right: 0;
+  height: 4vh;
+  color: white;  //  폰트 컬러
+
   display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
+  background-color: sandybrown;
+  justify-content: space-around;
+  align-items: center;
+
+  // 햄버거 클릭 안했을시. -> 네브바 안의 아이템들 정렬 유지를 위함.
+  .menuList_Temp_Login {
+    ul {
+      // background-color: skyblue;
+      display: flex;
+      margin-right: 5%;
+      padding-left: 0px;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      right: 0px;
+      
+      // top: 6vh;
+      
+      width: 20%;
+
+      .firstList {
+        padding-top: 5%;
+      }
+      li {
+        padding-bottom: 5%;
+        list-style: none;
+      }
+    }
+  }
+
+  // 로그인 후 보여질 햄버거 모달
+  .menuList_After_Login {
+    ul {
+      background-color: skyblue;
+      display: flex;
+      margin-right: 5%;
+      padding-left: 0px;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      right: 0px;
+      
+      top: 6vh;
+      
+      width: 20%;
+
+      .firstList {
+        padding-top: 5%;
+      }
+      li {
+        padding-bottom: 5%;
+        list-style: none;
+      }
+    }
+  }
+
+    // 로그인 전 보여질 햄버거 모달
+    .menuList_Before_Login {
+      ul {
+        background-color: skyblue;
+        display: flex;
+        margin-right: 5%;
+        padding-left: 0px;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        right: 0px;
+        
+        top: 6vh;
+        
+        width: 20%;
   
-  width: 100%;
-  // justify-content: space-between;
-  align-content: center;
+        .firstList {
+          padding-top: 5%;
+        }
+        li {
+          padding-bottom: 5%;
+          list-style: none;
+        }
+      }
+    }
+
+
 
   /* 햄버거 토글 */
   .hamburgerToggle {
-    // padding-right: 2%;
+    
     div {
       margin: 3px;
       transition: all 0.3s ease;

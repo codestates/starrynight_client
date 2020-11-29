@@ -1,27 +1,21 @@
-import { BrowserRouter, NavLink } from "react-router-dom";
-
-// css
-import "../css/AfterLogin.scss"
-
+import { BrowserRouter, NavLink, Switch } from "react-router-dom";
+import SignInRoutes from "../Routes"
 
 function AfterLogin() {
   return (
+
     <div className="menuList_After_Login">
       <BrowserRouter>
+        <SignInRoutes />
         <ul className="nav_link">
           {/* 로그인 경우 */}
-          <li>
-            <NavLink to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
+          <li className="firstList">
             <NavLink to="/gallery">
               갤러리
             </NavLink>
           </li>
           <li>
-            <NavLink to="/favorite">
+            <NavLink to="/favorites">
               즐겨찾기
             </NavLink>
           </li>
@@ -31,13 +25,16 @@ function AfterLogin() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/signOut">
+            <NavLink to="/signout">
               로그아웃
             </NavLink>
           </li>
         </ul>
+
+
       </BrowserRouter>
     </div>
+
   )
 }
 

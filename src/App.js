@@ -1,14 +1,19 @@
 import React from "react";
-import Nav from "./menu/Nav";
-import Hamburger from "./menu/Nav"
+import Landing from "./Landing";
+import Main from "./Main";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <Nav />
-
-      <header className="App-header">별헤는밤 App.js 입니다.</header>
-    </div>
+    <>
+      <div className="Landing">
+        <Landing />
+      </div>
+      <div className="Main">
+        <Main />
+      </div>
+    </>
   );
 }
 

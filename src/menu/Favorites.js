@@ -1,4 +1,4 @@
-function Favorite() {
+function Favorites() {
   return (
     <div>
       즐겨찾기!
@@ -6,4 +6,4 @@ function Favorite() {
   )
 }
 
-export default Favorite;
+export default Favorites;
