@@ -1,54 +1,8 @@
-.Main {
+.Landing {
   overflow: hidden;
 
-  .Hamburger-box {
-    position: absolute;
-    left: 70%;
-    top: 5%;
-  }
-  .Hamburger-profile {
-    position: absolute;
-    left: 12%;
-    top: 18%;
-    z-index: 1;
-    svg {
-      font-size: 2rem;
-      color: #006da0;
-    }
-  }
-
-  .Hamburger-icon {
-    position: absolute;
-    display: inline-block;
-    left: 55%;
-    top: 18%;
-    z-index: 1;
-    svg {
-      font-size: 2rem;
-      color: #006da0;
-    }
-    &:hover {
-      color: #89caff;
-    }
-  }
-
-  .Hamburger-item {
-    display: none;
-    position: absolute;
-    background-color: #e4f2ff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px #00000033;
-    padding: 12px 16px;
-    z-index: 1;
-    list-style: none;
-    text-decoration: none;
-    &:hover {
-      display: block;
-    }
-  }
-
   .AddPhoto {
-    position: fixed;
+    position: absolute;
     left: 70%;
     top: 83%;
     z-index: 1;
