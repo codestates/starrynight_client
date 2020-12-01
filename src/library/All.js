@@ -28,40 +28,40 @@ const All = () => {
           <img src={fake10} alt="fake10" />
         </div>
         <div className="column">
+          <img src={fake4} alt="fake4" />
+          <img src={fake7} alt="fake7" />
+          <img src={fake3} alt="fake3" />
+          <img src={fake10} alt="fake10" />
+          <img src={fake5} alt="fake5" />
+          <img src={fake9} alt="fake9" />
           <img src={fake1} alt="fake1" />
+          <img src={fake8} alt="fake8" />
+          <img src={fake2} alt="fake2" />
+          <img src={fake6} alt="fake6" />
+        </div>
+        <div className="column">
+          <img src={fake5} alt="fake5" />
+          <img src={fake1} alt="fake1" />
+          <img src={fake9} alt="fake9" />
+          <img src={fake6} alt="fake6" />
           <img src={fake2} alt="fake2" />
           <img src={fake3} alt="fake3" />
-          <img src={fake4} alt="fake4" />
-          <img src={fake5} alt="fake5" />
-          <img src={fake6} alt="fake6" />
           <img src={fake7} alt="fake7" />
+          <img src={fake4} alt="fake4" />
           <img src={fake8} alt="fake8" />
-          <img src={fake9} alt="fake9" />
           <img src={fake10} alt="fake10" />
         </div>
         <div className="column">
-          <img src={fake1} alt="fake1" />
-          <img src={fake2} alt="fake2" />
-          <img src={fake3} alt="fake3" />
           <img src={fake4} alt="fake4" />
-          <img src={fake5} alt="fake5" />
           <img src={fake6} alt="fake6" />
-          <img src={fake7} alt="fake7" />
-          <img src={fake8} alt="fake8" />
-          <img src={fake9} alt="fake9" />
-          <img src={fake10} alt="fake10" />
-        </div>
-        <div className="column">
           <img src={fake1} alt="fake1" />
-          <img src={fake2} alt="fake2" />
-          <img src={fake3} alt="fake3" />
-          <img src={fake4} alt="fake4" />
-          <img src={fake5} alt="fake5" />
-          <img src={fake6} alt="fake6" />
-          <img src={fake7} alt="fake7" />
-          <img src={fake8} alt="fake8" />
-          <img src={fake9} alt="fake9" />
           <img src={fake10} alt="fake10" />
+          <img src={fake7} alt="fake7" />
+          <img src={fake9} alt="fake9" />
+          <img src={fake3} alt="fake3" />
+          <img src={fake2} alt="fake2" />
+          <img src={fake8} alt="fake8" />
+          <img src={fake5} alt="fake5" />
         </div>
       </div>
     </div>
