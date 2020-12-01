@@ -1,6 +1,9 @@
 import React from "react";
-import { BrowserRouter, NavLink } from "react-router-dom";
+import { BrowserRouter, withRouter, NavLink } from "react-router-dom";
 
+
+//logo
+import imgFile from "../image/logo_StarryNight.png";
 
 
 //components
@@ -20,6 +23,11 @@ class Nav extends React.Component {
   }
 
 
+  //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 landing페이지로 리다이렉트 하기.
+  handleLogoClickToRedirectToMain = () => {
+    this.props.history.push("/signIn")
+  }
+
   /* 햄버거 토글 ON / OFF */
   /* state값 false -> true or true -> false 반전시키기 */
   handleHamburgerclick = () => {
@@ -28,14 +36,8 @@ class Nav extends React.Component {
     });
   }
 
-  // handleHamburgerClick = () => {
-  //   this.setState({
-  //     isHamburgerOn: true
-  //   })
-  // }
-
   render() {
-    // console.log("nav 프롭", this.props)
+    console.log("nav 프롭", this.props)
     return (
 
       <>
@@ -44,7 +46,13 @@ class Nav extends React.Component {
 
         <nav>
           <div className="starryNigth_logo">
-            로고사진배치: 홈 경로로 돌아가게 하기.
+            {/* 로고사진배치: 홈 경로로 돌아가게 하기. */}
+            <img
+              id="nav_logo"
+              src={imgFile}
+              onClick={this.handleLogoClickToRedirectToMain}
+            />
+
           </div>
 
           {/* 로그인 경우 vs 비로그인 경우로 나누기 */}
@@ -118,4 +126,5 @@ class Nav extends React.Component {
   };
 }
 
-export default Nav;
+export default withRouter(Nav);
+

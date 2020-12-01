@@ -6,7 +6,7 @@ nav {
   color: white;  //  폰트 컬러
 
   display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
-  background-color: sandybrown;
+  background-color: #2a2948;
   justify-content: space-around;
   align-items: center;
 
@@ -36,9 +36,14 @@ nav {
     }
   }
 
+  // 로고를 클릭 시 메인페이지?로 리다이렉트
+  #nav_logo {
+    max-width: 10%;
+  }
+
   // 로그인 후 보여질 햄버거 모달
   .menuList_After_Login {
-    ul {
+    .nav_link {
       background-color: skyblue;
       display: flex;
       margin-right: 5%;
@@ -47,24 +52,23 @@ nav {
       flex-direction: column;
       position: absolute;
       right: 0px;
+      border-radius: 10px;
       
       top: 6vh;
       
       width: 20%;
 
-      .firstList {
+      .list {
+        display: flex;
         padding-top: 5%;
-      }
-      li {
         padding-bottom: 5%;
-        list-style: none;
       }
     }
   }
 
     // 로그인 전 보여질 햄버거 모달
     .menuList_Before_Login {
-      ul {
+      .nav_link {
         background-color: skyblue;
         display: flex;
         margin-right: 5%;
@@ -73,17 +77,16 @@ nav {
         flex-direction: column;
         position: absolute;
         right: 0px;
+        border-radius: 10px;
         
         top: 6vh;
         
         width: 20%;
   
-        .firstList {
+        .list {
+          display: flex;
           padding-top: 5%;
-        }
-        li {
           padding-bottom: 5%;
-          list-style: none;
         }
       }
     }
@@ -98,7 +101,7 @@ nav {
       transition: all 0.3s ease;
       width: 23px;
       height: 3px;
-      background: black;   // div에 색을 입혀 라인을 만든 것.
+      background: white;   // div에 색을 입혀 라인을 만든 것.
     }
   }
 

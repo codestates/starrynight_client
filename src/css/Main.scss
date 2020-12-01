@@ -48,16 +48,24 @@
   }
 
   .AddPhoto {
-    position: absolute;
+    position: fixed;
     left: 70%;
     top: 83%;
     z-index: 1;
+    cursor: pointer;
     svg {
       font-size: 6rem;
       color: skyblue;
     }
+  }
+
+  .AddPhoto-icon {
     &:hover {
-      color: #255aee;
+      color: #dce6ff;
     }
+  }
+
+  .AddPhoto-button {
+    border: none;
   }
 }
