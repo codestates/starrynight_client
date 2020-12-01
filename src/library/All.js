@@ -16,6 +16,7 @@ const All = () => {
     <div>
       <div className="flex">
         <div className="column">
+          <div className="overlay"></div>
           <img src={fake1} alt="fake1" />
           <img src={fake2} alt="fake2" />
           <img src={fake3} alt="fake3" />
