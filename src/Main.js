@@ -1,11 +1,31 @@
-import React from "react";
+import React from "react"
+import { withRouter, Switch, Route } from "react-router-dom"
+
+//components
+import Landing from "./Landing";
+import Nav from "./menu/Nav"
+import Gallery from "./menu/Gallery";
+import Favorites from "./menu/Favorites";
+import Mypage from "./menu/Mypage";
+import SignOut from "./menu/SignOut";
+// import SignIn from "./menu/SignIn";
+import SignUp from "./menu/SignUp";
+import FindEmail from "./menu/find_account/FindEmail";
+import FindPw from "./menu/find_account/FindPw";
+import CompletedFindEmail from "./menu/find_account/CompletedFindEmail"
+import CompletedFindPw from "./menu/find_account/CompletedFindPw"
+import ViewPhoto from "./library/ViewPhoto";
+
+
 import { IoIosAddCircle } from "react-icons/io";
 import AddPhoto from "./AddPhoto";
+
+// css
 import "../src/css/Main.scss";
 
 class Main extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       isLogin: false,
       isModalOpen: false,
@@ -26,6 +46,9 @@ class Main extends React.Component {
   render() {
     return (
       <>
+        <Nav isLogin={this.state.isLogin} />
+
+
         <br />
         <hr />
         <br />
@@ -57,4 +80,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default withRouter(Main);
