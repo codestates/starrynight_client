@@ -43,11 +43,17 @@ class AddPhoto extends React.Component {
               onClick={this.props.handleModal}
             />
             <div className="modal_addphoto_content">
+              <span class="close" onClick={this.props.handleModal}>
+                &times;
+              </span>
               <h2>사진공유</h2>
               <hr />
-              <form>
+              <form className="addphoto-form">
                 <li>
-                  <div className="addphoto-fieldname">사진제목</div>
+                  <div className="addphoto-above-input">
+                    <div className="addphoto-fieldname">사진제목</div>
+                  </div>
+
                   <input
                     className="addphoto-input"
                     type="text"
@@ -58,10 +64,13 @@ class AddPhoto extends React.Component {
                   />
                 </li>
                 <li>
-                  <div className="addphoto-fieldname">파일경로</div>
-                  <span className="addphoto-span">
-                    <button className="addphoto-button-open">열기</button>
-                  </span>
+                  <div className="addphoto-above-input">
+                    <div className="addphoto-fieldname">파일경로</div>
+                    <span className="addphoto-span">
+                      <button className="addphoto-button-inner">...</button>
+                    </span>
+                  </div>
+
                   <input
                     className="addphoto-input"
                     type="text"
@@ -72,10 +81,13 @@ class AddPhoto extends React.Component {
                   />
                 </li>
                 <li>
-                  <div className="addphoto-fieldname">사진위치</div>
-                  <span className="addphoto-span">
-                    <button className="addphoto-button-loca">찾기</button>
-                  </span>
+                  <div className="addphoto-above-input">
+                    <div className="addphoto-fieldname">사진위치</div>
+                    <span className="addphoto-span">
+                      <button className="addphoto-button-inner">+</button>
+                    </span>
+                  </div>
+
                   <input
                     className="addphoto-input"
                     type="text"
@@ -86,7 +98,11 @@ class AddPhoto extends React.Component {
                   />
                 </li>
                 <li>
-                  <div className="addphoto-fieldname">해시태그</div>
+                  <div className="addphoto-above-input">
+                    {" "}
+                    <div className="addphoto-fieldname">해시태그</div>
+                  </div>
+
                   <input
                     className="addphoto-input"
                     type="text"
@@ -97,9 +113,11 @@ class AddPhoto extends React.Component {
                   />
                 </li>
               </form>
-              <button className="addphoto-button" type="submit">
-                공유
-              </button>
+              <div className="button-field">
+                <button className="addphoto-button" type="submit">
+                  공유하기
+                </button>
+              </div>
             </div>
           </div>
         ) : null}
