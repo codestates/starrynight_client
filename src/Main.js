@@ -45,7 +45,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <>
+      <div>
         <Nav isLogin={this.state.isLogin} />
 
 
@@ -75,7 +75,7 @@ class Main extends React.Component {
           <IoIosAddCircle className="AddPhoto-icon" onClick={this.openModal} />
           <AddPhoto isOpen={this.state.isModalOpen} close={this.closeModal} />
         </div>
-      </>
+      </div>
     );
   }
 }

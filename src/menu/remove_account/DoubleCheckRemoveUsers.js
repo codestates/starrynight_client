@@ -19,7 +19,7 @@ function DoubleCheckRemoveUsers(props) {
             <div>
               진짜로 탈퇴하실 건가요?<br/>
               탈퇴하시면 저장해놓은 사진들이<br/>
-              영구적으로 삭제됩니다.<br/>
+              <b>영구적</b>으로 삭제됩니다.<br/>
             </div>
 
           </div>
