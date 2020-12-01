@@ -17,6 +17,12 @@ import CompletedFindPw from "./menu/find_account/CompletedFindPw"
 import ViewPhoto from "./library/ViewPhoto";
 
 
+import { IoIosAddCircle } from "react-icons/io";
+import AddPhoto from "./AddPhoto";
+
+// css
+import "../src/css/Main.scss";
+
 class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -39,99 +45,37 @@ class Main extends React.Component {
 
   render() {
     return (
-      <withRouter>
-
-        {/* <ul>
-          <div className="Hamburger-box">
-            <img src={HamburgerBox} />
-            <div className="Hamburger-profile">
-              {!this.state.isLogin ? <VscAccount /> : this.state.profilePath}
-            </div>
-            <div className="Hamburger-icon">
-              <GiHamburgerMenu />
-            </div>
-          </div>
-          {!this.state.isLogin ? (
-            <div className="Hamburger-item">
-              <li>
-                <Link to="/signin" style={listStyle}>
-                  로그인
-                  </Link>
-              </li>
-              <li>
-                <Link to="/signup" style={listStyle}>
-                  회원가입
-                  </Link>
-              </li>
-            </div>
-          ) : (
-              <div className="Hamburger-item">
-                <li>
-                  <Link to="/gallery" style={listStyle}>
-                    갤러리
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/favorites" style={listStyle}>
-                    즐겨찾기
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/mypage" style={listStyle}>
-                    마이페이지
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/signout" style={listStyle}>
-                    로그아웃
-                  </Link>
-                </li>
-              </div>
-            )}
-        </ul> */}
-
-        {/* 11/28 백시우 추가 : 사진추가 아이콘 */}
-        {/* <div className="AddPhoto">
-          <IoIosAddCircle
-            className="AddPhoto-icon"
-            onClick={this.openModal}
-          />
-          <AddPhoto isOpen={this.state.isModalOpen} close={this.closeModal} />
-        </div> */}
-
-        {/* <Switch> */}
-        {/* 햄버거 라우팅 세팅 */}
-
-        {/* 라우팅과 동시에 렌더가 되는 효과로 main.js에 라우팅
-        <Route exact path="/" component={Landing} />
-        </Switch> */}
-
+      <>
         <Nav isLogin={this.state.isLogin} />
 
-        <Switch>
 
-          {/* <Route path="/signin" component={SignIn} /> */}
-          {/* <Route path="/findemail" component={FindEmail} /> */}
-          {/* <Route path="/findpw" component={FindPw} />
-          <Route path="/completedfindemail" component={CompletedFindEmail} />
-          <Route path="/completedfindpw" component={CompletedFindPw} />
-          <Route path="/signup" component={SignUp} /> */}
-          {/* <Route path="/gallery" component={Gallery} />
-          <Route path="/favorites" component={Favorites} />
-          <Route path="/mypage" component={Mypage} />
-          <Route path="/signout" component={SignOut} /> */}
+        <br />
+        <hr />
+        <br />
+        <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
+          이곳은 Nav.js, 로그와 햄벅 메뉴가 위치할 곳
+        </div>
+        <br />
+        <hr />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
+          이곳은 ViewPhoto.js의 All.js, 사진 라이브러리 그리드가 위치할 곳
+        </div>
 
-          {/* 뷰포토 라우팅 세팅 */}
-          <Route path="/viewphoto" component={ViewPhoto} />
-          {/* <Route path="/gallery" component={Gallery} />
-            <Route path="/favorites" component={Favorites} />
-            <Route path="/mypage" component={Mypage} />
-            <Route path="/signout" component={SignOut} /> */}
-
-          {/* 11/28 백시우 추가 : AddPhoto 라우팅 세팅 */}
-          {/* <Route path="/addphoto" component={AddPhoto} /> */}
-        </Switch>
-      </withRouter>
+        {/* 11/28 백시우 추가 : 사진추가 아이콘 */}
+        <div className="AddPhoto">
+          <IoIosAddCircle className="AddPhoto-icon" onClick={this.openModal} />
+          <AddPhoto isOpen={this.state.isModalOpen} close={this.closeModal} />
+        </div>
+      </>
     );
   }
 }
