@@ -17,7 +17,24 @@ class SignUp extends React.Component {
   }
 
 
-
+  // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 기본 유저정보 State와 에러메세지가 계속 띄어져있는 것을 방지하기 위해
+  // state값을 빈 스트링으로 렌더링 시킨다.
+  // componentWillUpdate에 걸어둔다.
+  errMsgInit = () => {
+    if (this.props.isOpen === false) {
+      console.log("초기화 됨?")
+      this.setState({
+        email: "",
+        nickname: "",
+        password: "",
+        mobile: "",
+        errMsgOfEmailBlanks: "",
+        errMsgOfNickNameBlanks: "",
+        errMsgOfPasswordBlanks: "",
+        errMsgOfMobileBlanks: ""
+      })
+    }
+  }
 
 
   // 정보입력 이벤트
@@ -90,33 +107,31 @@ class SignUp extends React.Component {
       })
     }
 
+
     // 모든 값들과 이메일형식이 충족이 되면 !
-    // axios.post("https://www.mystar-story.com/user/signup", NewUserInfo)
-    //   .then(response => {
-    //     console.log(response)
-    //   })
-    // 모든 값들과 조건이 충족되지 않으면 요청 x 각 위치에서 에러메세지 계속 보여주기
 
-  }
+    if (
+      this.state.email.length &&
+      this.state.nickname.length &&
+      this.state.password.length &&
+      this.state.mobile.length
+    ) {
 
-
-  // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 에러메세지가 계속 띄어져있는 것을 방지하기 위해
-  // state값을 빈 스트링으로 렌더링 시킨다.
-  // componentWillUpdate에 걸어둔다.
-  errMsgInit = () => {
-    if (this.props.isOpen === false) {
-      console.log("초기화 됨?")
-      this.setState({
-        errMsgOfEmailBlanks: "",
-        errMsgOfNickNameBlanks: "",
-        errMsgOfPasswordBlanks: "",
-        errMsgOfMobileBlanks: ""
-      })
+      axios.post("https://www.mystar-story.com/user/signup", NewUserInfo)
+        .then(response => {
+          console.log(response)
+        })
+      // 모든 값들과 조건이 충족되지 않으면 요청 x 각 위치에서 에러메세지 계속 보여주기
     }
+
   }
+
+
+
 
   componentWillUpdate() {
     this.errMsgInit()
+    this.handleClickAddNewUserInfo
   }
 
 
