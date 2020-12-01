@@ -59,7 +59,7 @@ class AddPhoto extends React.Component {
                 </li>
                 <li>
                   <div className="addphoto-fieldname">파일경로</div>
-                  <span>
+                  <span className="addphoto-span">
                     <button className="addphoto-button-open">열기</button>
                   </span>
                   <input
@@ -73,7 +73,7 @@ class AddPhoto extends React.Component {
                 </li>
                 <li>
                   <div className="addphoto-fieldname">사진위치</div>
-                  <span>
+                  <span className="addphoto-span">
                     <button className="addphoto-button-loca">찾기</button>
                   </span>
                   <input

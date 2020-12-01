@@ -38,16 +38,25 @@
     padding-left: 2rem;
     padding-bottom: 0.5rem;
     color: white;
+    float: left;
+    width: 60%;
+  }
+
+  .addphoto-span {
+    float: left;
+    width: 40%;
+    padding-right: 1rem;
   }
 
   .addphoto-input {
     width: 23vw;
-    font-size: small;
+    font-size: x-small;
     padding: 5px;
     background-color: #000836;
     color: white;
     border-radius: 4px;
     border: 0.1rem solid #ffed89;
+    float: none;
   }
 
   .addphoto-button {

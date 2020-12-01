@@ -22,6 +22,10 @@ import AddPhoto from "./AddPhoto";
 // css
 import "../src/css/Main.scss";
 
+// 재성_All.jstest
+import All from "./library/All";
+import "./css/All.css";
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -43,9 +47,11 @@ class Main extends React.Component {
         <br />
         <hr />
         <br />
-        <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
+        {/* <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
           이곳은 ViewPhoto.js의 All.js, 사진 라이브러리 그리드가 위치할 곳
-        </div>
+        </div> */}
+        <ViewPhoto />
+        {/* <All /> */}
 
         {/* 12/1 사진추가버튼 모달창 수정 */}
         {!this.state.isLogin ? (
