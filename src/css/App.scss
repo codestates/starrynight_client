@@ -23,7 +23,7 @@ figure {
   scroll-snap-type: y mandatory;
 }
 
-.Landing {
+.scrolledsection {
   position: relative;
   scroll-snap-align: start;
   height: 100vh;
@@ -40,23 +40,23 @@ figure {
   }
 
   &:nth-child(3n) {
-    .Landing__bg-image img {
+    .scrolledsection__bg-image img {
       object-position: bottom;
     }
   }
 
-  h2 {
-    position: sticky;
-    top: 0;
-    margin: 0;
-    padding: 1rem;
-    background-color: $secondary;
-    color: lighten($secondary, 40%);
-    z-index: 1;
-  }
+  // h2 {
+  //   position: sticky;
+  //   top: 0;
+  //   margin: 0;
+  //   padding: 1rem;
+  //   background-color: $secondary;
+  //   color: lighten($secondary, 40%);
+  //   z-index: 1;
+  // }
 }
 
-.Landing__content {
+.scrolledsection__content {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -71,7 +71,7 @@ figure {
   }
 }
 
-.Landing__inner {
+.scrolledsection__inner {
   border: 2px solid white;
   padding: 1rem;
   transition: opacity 800ms, transform 800ms;
@@ -84,7 +84,7 @@ figure {
   }
 }
 
-.Landing__bg-image {
+.scrolledsection__bg-image {
   width: 100%;
   height: 100%;
   position: absolute;
