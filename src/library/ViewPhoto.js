@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/ViewPhoto.css";
 
 function ViewPhoto() {
   return (

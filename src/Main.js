@@ -49,9 +49,10 @@ class Main extends React.Component {
         <br />
         <hr />
         <br />
-        <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
+        {/* <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
           이곳은 ViewPhoto.js의 All.js, 사진 라이브러리 그리드가 위치할 곳
-        </div>
+        </div> */}
+        <ViewPhoto />
 
         {/* 11/28 백시우 추가 : 사진추가 아이콘 */}
         <div className="AddPhoto">
