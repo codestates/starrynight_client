@@ -20,7 +20,7 @@ class SignIn extends React.Component {
 
   /* --------------------- 모달창 이벤트 --------------------- */
   // 각각의 모달창 중복 작동 방지를 위해 이벤트를 각각 생성
-  // isModalOpen이 false로 변하면 아래 render부분에서 삼항연산자를 통해 false시 null효과를 받게되고 창은 꺼지게 할 것임.
+  // isModalOpen이 true면 모달이 켜지고, 다시 false로 변하면 아래 render부분에서 삼항연산자를 통해 false시 null효과를 받게되고 창은 꺼지게 할 것임.
 
   handleFindEmailModal = () => {
     this.setState({
@@ -38,7 +38,7 @@ class SignIn extends React.Component {
 
 
   render() {
-    // console.log("사인인 프롭스", this.props)
+    // console.log("BeforeLogin컴포넌트로부터 내려오는 사인인 프롭스", this.props)
     return (
 
       <div>

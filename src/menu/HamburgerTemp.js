@@ -1,4 +1,4 @@
-import { BrowserRouter, NavLink, Switch } from "react-router-dom";
+import { withRouter, NavLink, Switch } from "react-router-dom";
 
 
 function HamburgerTemp() {
@@ -7,17 +7,17 @@ function HamburgerTemp() {
     <div className="menuList_Temp_Login">
       {/* nothing special.
        */}
-      <BrowserRouter>
+      <withRouter>
         <Switch>
           <ul className="nav_link">
 
             <li className="firstList"></li>
           </ul>
         </Switch>
-      </BrowserRouter>
+      </withRouter>
     </div>
 
   )
 }
 
-export default HamburgerTemp;
+export default withRouter(HamburgerTemp);

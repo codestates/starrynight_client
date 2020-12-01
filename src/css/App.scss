@@ -33,11 +33,11 @@ figure {
     background-color: $primary;
   }
 
-  &:nth-child(2n) {
-    h2 {
-      background-color: darken($secondary, 10%);
-    }
-  }
+  // &:nth-child(2n) {
+  //   h2 {
+  //     // background-color: darken($secondary, 10%);
+  //   }
+  // }
 
   &:nth-child(3n) {
     .scrolledsection__bg-image img {

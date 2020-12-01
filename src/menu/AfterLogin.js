@@ -45,7 +45,7 @@ class AfterLogin extends React.Component {
     this.setState({
       isMypageModalOpen: !this.state.isMypageModalOpen
     })
-    //! 모달창 띄웠을 때 스크롤 방지
+    //! 모달창 띄웠을 때 body의 스크롤 방지
     //? 원래 모달오픈이 true이면 hidden으로 스크롤 방지가 되어야하는데 여기선 그 반대가 되야 작동 및 해제가 된다. 
     //? 왜 그런걸까............?..........ㅜㅜ........
     if (this.state.isMypageModalOpen === false) {
