@@ -35,7 +35,7 @@ figure {
 
   &:nth-child(2n) {
     h2 {
-      background-color: darken($secondary, 10%);
+      // background-color: darken($secondary, 10%);
     }
   }
 
@@ -45,15 +45,15 @@ figure {
     }
   }
 
-  h2 {
-    position: sticky;
-    top: 0;
-    margin: 0;
-    padding: 1rem;
-    background-color: $secondary;
-    color: lighten($secondary, 40%);
-    z-index: 1;
-  }
+  // h2 {
+  //   position: sticky;
+  //   top: 0;
+  //   margin: 0;
+  //   padding: 1rem;
+  //   background-color: $secondary;
+  //   color: lighten($secondary, 40%);
+  //   z-index: 1;
+  // }
 }
 
 .scrolledsection__content {
