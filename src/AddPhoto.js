@@ -6,6 +6,7 @@ class AddPhoto extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isAddPhotoModalOpen: false,
       userid: "",
       title: "",
       photoPath: "",
@@ -33,61 +34,72 @@ class AddPhoto extends React.Component {
   };
 
   render() {
-    const { isOpen, close } = this.props; // inherited props from Main.js
     return (
       <>
-        {isOpen ? (
-          <div className="modal-AddPhoto">
-            <div onClick={close}>
-              <div className="modal-AddPhoto-item">
-                <span className="close" onClick={close}>
-                  &times;
-                </span>
-                <div className="form-AddPhoto" onClick={isOpen}>
-                  <h2>사진공유</h2>
-                  <li className="input-list">
-                    <div className="input-description">사진제목</div>
-                    <input
-                      type="text"
-                      name="title"
-                      value={this.state.title}
-                      placeholder={"사진의 제목을 입력하세요"}
-                      onChange={this.onChangeHandler}
-                    />
-                  </li>
-                  <li className="input-list">
-                    <div className="input-description">파일경로</div>
-                    <input
-                      type="text"
-                      name="photoPath"
-                      value={this.state.photoPath}
-                      placeholder={"사진을 업로드해주세요"}
-                      onChange={this.onChangeHandler}
-                    />
-                  </li>
-                  <li className="input-list">
-                    <div className="input-description">사진위치</div>
-                    <input
-                      type="text"
-                      name="location"
-                      value={this.state.location}
-                      placeholder={"사진 찍은 위치를 입력하세요"}
-                      onChange={this.onChangeHandler}
-                    />
-                  </li>
-                  <li className="input-list">
-                    <div className="input-description">해시태그</div>
-                    <input
-                      type="text"
-                      name="hashTag"
-                      value={this.state.hashTag}
-                      placeholder={"#태그할내용"}
-                      onChange={this.onChangeHandler}
-                    />
-                  </li>
-                </div>
-                <button className="upload-button">공유</button>
-              </div>
+        {this.props.isOpen ? (
+          <div className="modal_addphoto">
+            <div
+              className="modal_addphoto_overlay"
+              onClick={this.props.handleModal}
+            />
+            <div className="modal_addphoto_content">
+              <h2>사진공유</h2>
+              <hr />
+              <form>
+                <li>
+                  <div className="addphoto-fieldname">사진제목</div>
+                  <input
+                    className="addphoto-input"
+                    type="text"
+                    name="title"
+                    value={this.state.title}
+                    placeholder={"사진의 제목을 입력하세요"}
+                    onChange={this.onChangeHandler}
+                  />
+                </li>
+                <li>
+                  <div className="addphoto-fieldname">파일경로</div>
+                  <span>
+                    <button className="addphoto-button-open">열기</button>
+                  </span>
+                  <input
+                    className="addphoto-input"
+                    type="text"
+                    name="photoPath"
+                    value={this.state.photoPath}
+                    placeholder={"사진을 업로드해주세요"}
+                    onChange={this.onChangeHandler}
+                  />
+                </li>
+                <li>
+                  <div className="addphoto-fieldname">사진위치</div>
+                  <span>
+                    <button className="addphoto-button-loca">찾기</button>
+                  </span>
+                  <input
+                    className="addphoto-input"
+                    type="text"
+                    name="location"
+                    value={this.state.location}
+                    placeholder={"사진 찍은 위치를 입력하세요"}
+                    onChange={this.onChangeHandler}
+                  />
+                </li>
+                <li>
+                  <div className="addphoto-fieldname">해시태그</div>
+                  <input
+                    className="addphoto-input"
+                    type="text"
+                    name="hashTag"
+                    value={this.state.hashTag}
+                    placeholder={"#태그할내용"}
+                    onChange={this.onChangeHandler}
+                  />
+                </li>
+              </form>
+              <button className="addphoto-button" type="submit">
+                공유
+              </button>
             </div>
           </div>
         ) : null}

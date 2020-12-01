@@ -1,158 +1,70 @@
-.modal-AddPhoto {
+.modal_addphoto {
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.6); ///배경에 픽스를 주고 투명도를 준다.
+  width: 100vw; // 화면(스크린) 크기에 맟춘 % 넓이  cf) vw가 아닌 %는 부모 container에 비율을 맞추는 차이가 있음.
+  height: 100vh; // 화면(스크린) 크기에 맞춘 % 높이
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // z-index: 1;
 
-  .modal-AddPhoto-item {
-    width: 480px;
-    height: 621px;
-    background-color: white;
+  .modal_addphoto_overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .modal_addphoto_content {
+    background-color: #122541;
+    width: 30%;
     position: relative;
-    box-sizing: border-box;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff; //로그인 배경이다
+    text-align: center;
+    border-radius: 10px;
+    color: #ffed89;
+    padding: 0.5rem;
+    border: 0.1rem solid #333333;
+  }
 
-    .close {
-      float: right;
-      font-size: 25px;
-    }
-    .modalContform-AddPhoto {
-      margin: 0 auto;
-      width: 100%;
-      position: relative;
-      padding: 0 20px 32px;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
+  li {
+    list-style: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 
-      .signinIcon {
-        width: 150px;
-        margin: 0 auto;
-      }
+  .addphoto-fieldname {
+    text-align: left;
+    padding-left: 2rem;
+    padding-bottom: 0.5rem;
+    color: white;
+  }
 
-      .loginId {
-        margin-top: 30px;
-        border-radius: 2px;
-        width: 100%;
-        height: 40px;
-        border: 1px solid #e5e5e5;
-        padding: 9px 12px;
-        outline: none;
-        box-sizing: border-box;
-      }
-      input::placeholder {
-        color: #999999;
-      }
-      .loginPw {
-        margin-top: 15px;
-        border-radius: 2px;
-        width: 100%;
-        height: 40px;
-        border: 1px solid #e5e5e5;
-        padding: 9px 12px;
-        outline: none;
-        box-sizing: border-box;
-      }
+  .addphoto-input {
+    width: 23vw;
+    font-size: small;
+    padding: 5px;
+    background-color: #000836;
+    color: white;
+    border-radius: 4px;
+    border: 0.1rem solid #ffed89;
+  }
 
-      .loginMid {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .autoLogin {
-          font-size: 12px;
-          color: #8d8d8d;
-          line-height: 3;
-        }
-      }
-      .loginBtn {
-        height: 40px;
-        font-size: 14px;
-        padding: 13px 30px;
-        cursor: pointer;
-        background-color: black;
-        color: white;
-        line-height: 1px;
-        margin-top: 20px;
-        margin-bottom: 12px;
-        border-radius: 3px;
-        border-style: none;
-      }
-
-      .socialBox {
-        margin-bottom: 30px;
-        .kakao {
-          background-color: #feec34;
-          border-color: #feec34;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-sizing: border-box;
-          margin-bottom: 10px;
-          border-radius: 3px;
-
-          .kakaoLogo {
-            width: 24px;
-            height: 25px;
-          }
-          .kakaoText {
-            width: 300px;
-            font-size: 15px;
-            text-align: center;
-            display: inline-block;
-            box-sizing: border-box;
-          }
-        }
-
-        .facebook {
-          background-color: #21538a;
-          border-color: #21538a;
-          height: 40px;
-          display: flex;
-          justify-content: center;
-          box-sizing: border-box;
-          color: #fff;
-          border-radius: 3px;
-
-          .facebookText {
-            padding-top: 12px;
-            width: 310px;
-            color: #fff;
-            font-size: 15px;
-            text-align: center;
-            box-sizing: border-box;
-          }
-
-          .facebookLogo {
-            padding-top: 7px;
-            width: 24px;
-            height: 25px;
-          }
-        }
-      }
-      .loginEnd {
-        text-align: center;
-        font-size: 11px;
-
-        .loginLine {
-          color: #bcbcbc;
-          font-size: 11px;
-          margin-bottom: 35px;
-          a {
-            color: black;
-            text-decoration: underline;
-            cursor: pointer;
-          }
-        }
-        .noUser {
-          text-decoration: underline;
-        }
-      }
+  .addphoto-button {
+    border: 0.1rem solid #19c9ff;
+    border-radius: 4px;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    width: 15vw;
+    padding: 0.25rem 1rem;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    background: #000c7a;
+    &:hover {
+      background: #6a9bcc;
     }
   }
 }
