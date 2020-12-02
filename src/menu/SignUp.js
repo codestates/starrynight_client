@@ -203,7 +203,7 @@ class SignUp extends React.Component {
       this.state.mobile.length
     ) {
 
-      axios.post("https://www.mystar-story.com/user/signup", NewUserInfo)
+      axios.post("https://api.mystar-story.com/user/signup", NewUserInfo)
         .then(response => {
           console.log(response)
         })

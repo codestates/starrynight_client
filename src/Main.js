@@ -23,13 +23,16 @@ import AddPhoto from "./AddPhoto";
 // css
 import "../src/css/Main.scss";
 
+// 재성_All.jstest
+import All from "./library/All";
+import "./css/All.css";
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLogin: false,
-      isModalOpen: false,
-      profilePath: "",
+      isAddPhotoModalOpen: false,
     };
     console.log("main isLogin", this.state.isLogin)
   }
@@ -48,32 +51,39 @@ class Main extends React.Component {
   //   }
   // }
 
-  // 11/29 백시우 추가 : 모달 활성화 메소드
-  openModal = () => {
-    this.setState({ isModalOpen: true });
-  };
 
-  // 11/29 백시우 추가 : 모달 셧다운 메소드
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
+  // 12/1 사진추가버튼 모달창 수정
+  handleAddPhotoModal = () => {
+    this.setState({ isAddPhotoModalOpen: !this.state.isAddPhotoModalOpen });
   };
 
   render() {
     return (
       <>
-        <div className="nav">{<Nav isLogin={this.handleResponseSuccess} />}</div>
+        <div className="nav">{<Nav isLogin={this.state.isLogin} handleResponseSuccess={this.handleResponseSuccess} />}</div>
         <br />
         <hr />
         <br />
-        <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
+        {/* <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
           이곳은 ViewPhoto.js의 All.js, 사진 라이브러리 그리드가 위치할 곳
-        </div>
+        </div> */}
+        <ViewPhoto />
+        {/* <All /> */}
 
-        {/* 11/28 백시우 추가 : 사진추가 아이콘 */}
-        <div className="AddPhoto">
-          <IoIosAddCircle className="AddPhoto-icon" onClick={this.openModal} />
-          <AddPhoto isOpen={this.state.isModalOpen} close={this.closeModal} />
-        </div>
+        {/* 12/1 사진추가버튼 모달창 수정 */}
+        {!this.state.isLogin ? (
+          <div className="AddPhoto">
+            <IoIosAddCircle
+              className="AddPhoto-icon"
+              onClick={this.handleAddPhotoModal}
+            />
+            <AddPhoto
+              isLogin={this.state.isLogin}
+              isOpen={this.state.isAddPhotoModalOpen}
+              handleModal={this.handleAddPhotoModal}
+            />
+          </div>
+        ) : null}
       </>
     );
   }

@@ -75,7 +75,7 @@ class SignIn extends React.Component {
       })
     }
     else {
-      axios.post("https://www.mystar-story.com/user/signin", signInInfo, {
+      axios.post("https://api.mystar-story.com/user/signin", signInInfo, {
         withCredentials: true
       })
         .then((response) => {
@@ -99,6 +99,7 @@ class SignIn extends React.Component {
     window.sessionStorage.setItem("email", email);
     window.sessionStorage.setItem("nickname", nickname);
     this.props.handleResponseSuccess();   // Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌
+    this.props.isOpen = false;
   }
 
   render() {
@@ -178,7 +179,7 @@ class SignIn extends React.Component {
                   소셜로그인 버튼도 넣기
                   </div>
               </div>
-              {/* </form> */}
+
 
             </div>
           </div>

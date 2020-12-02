@@ -1,10 +1,10 @@
 .scrolledsection {
-  overflow: hidden;
+  overflow: visible;
 
   .AddPhoto {
     position: absolute;
     left: 70%;
-    top: 83%;
+    top: 75%;
     z-index: 1;
     cursor: pointer;
     svg {
@@ -23,6 +23,8 @@
     border: none;
   }
 
+
+  /* ------------Nav ------------------- */
   .nav {
     position: absolute;
     left: 0;
@@ -118,13 +120,35 @@
     }
 
     /* 햄버거 토글 */
-    .hamburgerToggle {
+    .hamburgerToggle_ON {
       div {
         margin: 3px;
         transition: all 0.3s ease;
         width: 23px;
         height: 3px;
         background: white; // div에 색을 입혀 라인을 만든 것.
+
+      }
+
+      .line-1 {
+        transform: rotate(-45deg) translate(-3px, 5px)
+      }
+      .line-2 {
+        opacity: 0;
+      }
+      .line-3 {
+        transform: rotate(45deg) translate(-3px, -5.5px);
+      }
+    }
+
+    .hamburgerToggle_OFF {
+      div {
+        
+        width: 23px;
+        height: 3px;
+        background: white;
+        margin: 3px;
+        transition: all 0.3s ease;
       }
     }
   }

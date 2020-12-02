@@ -54,11 +54,19 @@ class Nav extends React.Component {
           : <HamburgerTemp />}
 
         {/* 햄버거 토글 */}
-        <div className="hamburgerToggle" onClick={this.handleHamburgerclick}>
-          <div className="line-1"></div>
-          <div className="line-2"></div>
-          <div className="line-3"></div>
-        </div>
+        {this.state.isHamburgerOn ?
+          <div className="hamburgerToggle_ON" onClick={this.handleHamburgerclick}>
+            <div className="line-1"></div>
+            <div className="line-2"></div>
+            <div className="line-3"></div>
+          </div>
+          :
+          <div className="hamburgerToggle_OFF" onClick={this.handleHamburgerclick}>
+            <div className="line-1"></div>
+            <div className="line-2"></div>
+            <div className="line-3"></div>
+          </div>
+        }
       </>
     );
   }
