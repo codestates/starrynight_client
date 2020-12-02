@@ -29,13 +29,13 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 4vh;
+    height: 7vh;
     color: white; //  폰트 컬러
     z-index: 1;
 
     display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
     background-color: #2a2948;
-    justify-content: space-around;
+    // justify-content: ;
     align-items: center;
 
     // 햄버거 클릭 안했을시. -> 네브바 안의 아이템들 정렬 유지를 위함.
@@ -82,7 +82,7 @@
         right: 0px;
         border-radius: 10px;
 
-        top: 6vh;
+        top: 10vh;
 
         width: 20%;
 
@@ -107,7 +107,7 @@
         right: 0px;
         border-radius: 10px;
 
-        top: 6vh;
+        top: 10vh;
 
         width: 20%;
 
@@ -119,9 +119,13 @@
       }
     }
 
-    /* 햄버거 토글 */
+    /* ----- 햄버거 토글 ----- */
     .hamburgerToggle_ON {
+
+      justify-items: left;
       div {
+        // position: fix
+       left: 0;
         margin: 3px;
         transition: all 0.3s ease;
         width: 23px;
