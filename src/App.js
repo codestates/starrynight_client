@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import Landing from "./Landing";
 import Main from "./Main";
 import "../src/css/App.scss";
+import { Route, withRouter } from "react-router-dom";
+import testUtils from "react-dom/test-utils";
 
 const App = () => {
   const targets = document.querySelectorAll("[data-observer]");
@@ -52,13 +54,16 @@ const App = () => {
 
   return (
     <>
+      {/* <withRouter> */}
       <main className="App">
+
         <section className="scrolledsection is-visible">
           <figure className="scrolledsection__bg-image" data-img>
             {/* <img
               src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
               alt="mountain"
             /> */}
+
             <Landing />
           </figure>
           {/* <h2>Scroll item 1</h2> */}
@@ -70,15 +75,21 @@ const App = () => {
               <FaArrowDown />
             </div>
           </div>
+
         </section>
+
         <section className="scrolledsection">
           {/* <h2>Scroll item 2</h2> */}
-          <Main />
+          <Route path="/" exact={true} component={Main} />
+          {/* <Main /> */}
+
           {/* <div className="scrolledsection__content">
             <div className="scrolledsection__inner" data-observer></div>
           </div> */}
         </section>
+
       </main>
+      {/* </withRouter> */}
     </>
   );
 };

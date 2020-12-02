@@ -16,7 +16,7 @@ function CompletedRemoveUser(props) {
             <div className="message_container_CompletedRemoveUser">
 
               <div>
-                그동안 Starry Night를 이용해주셔서<br />
+                그동안 <b>Starry Night</b>를 이용해주셔서<br />
               진심으로 감사드립니다 😊<br />
                 <br />
               다시 저희와 밤 하늘을 올려다 볼 그날까지<br />

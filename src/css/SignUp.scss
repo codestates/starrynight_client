@@ -18,10 +18,18 @@
 
   .modal_SignUp_content {
     background: white;
+    color: black;
     position: relative;
     width: 30%;
     text-align: center;
     border-radius: 10px;
+
+    .text_style_SignUp {
+      color: red;
+      font-size: 10%;
+      text-align: right;
+      padding-right: 10%;
+    }
   }
 
   .userInfo_input_container {

@@ -5,7 +5,6 @@ import { BrowserRouter, withRouter, NavLink } from "react-router-dom";
 import imgFile from "../image/logo_StarryNight.png";
 
 //components
-import HamburgerTemp from "./HamburgerTemp";
 import AfterLogin from "./AfterLogin";
 import BeforeLogin from "./BeforeLogin";
 
@@ -19,10 +18,10 @@ class Nav extends React.Component {
       isHamburgerOn: false,
     };
   }
-
-  //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 landing페이지로 리다이렉트 하기.
+  // !수정하기!
+  //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 main 페이지로 리다이렉트 하기.
   handleLogoClickToRedirectToMain = () => {
-    this.props.history.push("/signIn");
+    this.props.history.push("/");
   };
 
   /* 햄버거 토글 ON / OFF */
@@ -36,8 +35,8 @@ class Nav extends React.Component {
   render() {
     console.log("nav 프롭", this.props);
     return (
-      <>
-        {/* <div className="nav_div"> */}
+      <div className="nav_div">
+
         {/* nav 바 안에 로고, 햄버거 삽입 */}
         <div className="starryNigth_logo">
           {/* 로고사진배치: 홈 경로로 돌아가게 하기. */}
@@ -49,23 +48,38 @@ class Nav extends React.Component {
         </div>
 
         {/* 로그인 경우 vs 비로그인 경우로 나누기 */}
-        {this.state.isHamburgerOn ? (
-          this.props.isLogin ? (
-            <AfterLogin />
-          ) : (
-            <BeforeLogin />
+
+        {this.state.isHamburgerOn ?
+          (this.props.isLogin === true ?
+            <AfterLogin
+              isHamburgerOn={this.state.isHamburgerOn}
+              handleHamburgerclick={this.handleHamburgerclick}
+            />
+            :
+            <BeforeLogin
+              isHamburgerOn={this.state.isHamburgerOn}
+              handleHamburgerclick={this.handleHamburgerclick}
+            />
           )
-        ) : (
-          <HamburgerTemp />
-        )}
+          : null
+        }
+
 
         {/* 햄버거 토글 */}
-        <div className="hamburgerToggle" onClick={this.handleHamburgerclick}>
-          <div className="line-1"></div>
-          <div className="line-2"></div>
-          <div className="line-3"></div>
-        </div>
-      </>
+        {this.state.isHamburgerOn ?
+          <div className="hamburgerToggle_ON" onClick={this.handleHamburgerclick}>
+            <div className="line-1"></div>
+            <div className="line-2"></div>
+            <div className="line-3"></div>
+          </div>
+          :
+          <div className="hamburgerToggle_OFF" onClick={this.handleHamburgerclick}>
+            <div className="line-1"></div>
+            <div className="line-2"></div>
+            <div className="line-3"></div>
+          </div>
+        }
+      </div>
     );
   }
 }

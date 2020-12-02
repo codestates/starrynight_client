@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter, Switch, Route } from "react-router-dom";
+import axios from "axios";
 
 //components
 import Landing from "./Landing";
@@ -29,7 +30,23 @@ class Main extends React.Component {
       isLogin: false,
       isAddPhotoModalOpen: false,
     };
+    console.log("main isLogin", this.state.isLogin)
   }
+
+  // SignIn을 성공하고 sessionStorage에 저장된 axios로 받아온 정보를 불러와 req하자.
+  handleResponseSuccess = () => {
+    this.setState({
+      isLogin: true
+    })
+  }
+
+  // componentDidMount() {
+  //   const userEmail = window.sessionStorage.getItem("email")
+  //   if (userEmail) {
+  //     this.handleResponseSuccess();
+  //   }
+  // }
+
 
   // 12/1 사진추가버튼 모달창 수정
   handleAddPhotoModal = () => {
@@ -39,10 +56,11 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <div className="nav">{<Nav isLogin={this.state.isLogin} />}</div>
+        <div className="nav">{<Nav isLogin={this.state.isLogin} handleResponseSuccess={this.handleResponseSuccess} />}</div>
         <br />
-        <hr />
+        {/* br 이거 왜 지우면 에러코드 뜨고 무한로딩 돌지?? */}
         <br />
+
         {/* <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
           이곳은 ViewPhoto.js의 All.js, 사진 라이브러리 그리드가 위치할 곳
         </div> */}
