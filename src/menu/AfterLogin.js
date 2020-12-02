@@ -106,27 +106,28 @@ class AfterLogin extends React.Component {
   render() {
     console.log("마이페이지 불린값", this.state.isMypageModalOpen)
     return (
-
-      <div className="menuList_After_Login">
-
-        <div className="nav_link">
-          {/* 로그인 경우 */}
-          <div className="list" onClick={this.handleGalleryModal}>
-            갤러리
+      <div>
+        {this.props.isHamburgerOn ?
+          <div className="menuList_After_Login">
+            <div className="modal_menuList_After_Login_overlay" onClick={this.props.handleHamburgerclick} />
+            <div className="nav_link">
+              {/* 로그인 경우 */}
+              <div className="list" onClick={this.handleGalleryModal}>
+                갤러리
           </div>
-          <Gallery isOpen={this.state.isGalleryModalOpen} handleModal={this.handleGalleryModal} />
+              <Gallery isOpen={this.state.isGalleryModalOpen} handleModal={this.handleGalleryModal} />
 
-          <div className="list" onClick={this.handleFavoritesModal}>
-            즐겨찾기
+              <div className="list" onClick={this.handleFavoritesModal}>
+                즐겨찾기
           </div>
-          <Favorites isOpen={this.state.isFavoritesModalOpen} handleModal={this.handleFavoritesModal} />
+              <Favorites isOpen={this.state.isFavoritesModalOpen} handleModal={this.handleFavoritesModal} />
 
 
-          <div className="list" onClick={this.handleMypageModal}>
-            마이페이지
+              <div className="list" onClick={this.handleMypageModal}>
+                마이페이지
           </div>
-
-          {/*
+            </div>
+            {/*
    회원탈퇴의 경우 마이페이지에서 자식컴포넌트로 생성하는 것보다는 마이페이지와 형제 관계를 형성한 후 
    마이페이지 컴포넌트에 위치한 "회원탈퇴" 버튼에 
    회원탈퇴 모달을 띄우기 위한 회원탈퇴 state=true변환이 아니라!
@@ -136,30 +137,31 @@ class AfterLogin extends React.Component {
   
  */}
 
-          <Mypage
-            isOpen={this.state.isMypageModalOpen}
-            handleModal={this.handleMypageModal}
-            DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}
-          />
+            <Mypage
+              isOpen={this.state.isMypageModalOpen}
+              handleModal={this.handleMypageModal}
+              DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}
+            />
 
 
-          <div className="list" onClick={this.handleSignOutModal}>
-            로그아웃
+            <div className="list" onClick={this.handleSignOutModal}>
+              로그아웃
           </div>
 
 
-          <DoubleCheckRemoveUsers
-            isOpen={this.state.isDoubleCheckRemoveUsersModalOpen}
-            handleModal={this.handleDoubleCheckRemoveUsersModal}
-            CompletedRemoveUserClick={this.CompletedRemoveUserClick}
-          />
-          <CompletedRemoveUser
-            isOpen={this.state.isCompletedRemoveUserModalOpen}
-            handleModal={this.handleCompletedRemoveUser}
-          />
+            <DoubleCheckRemoveUsers
+              isOpen={this.state.isDoubleCheckRemoveUsersModalOpen}
+              handleModal={this.handleDoubleCheckRemoveUsersModal}
+              CompletedRemoveUserClick={this.CompletedRemoveUserClick}
+            />
+            <CompletedRemoveUser
+              isOpen={this.state.isCompletedRemoveUserModalOpen}
+              handleModal={this.handleCompletedRemoveUser}
+            />
 
 
-        </div>
+          </div>
+          : null}
       </div>
 
     )

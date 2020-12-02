@@ -62,44 +62,50 @@ class BeforeLogin extends React.Component {
 
 
   render() {
+    console.log("비포로그인 프롭스", this.props)
     return (
-      <div className="menuList_Before_Login">
+      <div>
+        {this.props.isHamburgerOn ?
+          <div className="menuList_Before_Login">
+            <div className="modal_menuList_Before_Login_overlay" onClick={this.props.handleHamburgerclick}></div>
+            {/* 비로그인 경우 */}
 
-        {/* 비로그인 경우 */}
+            <div className="nav_link">
 
-        <div className="nav_link">
-
-          <div className="list" onClick={this.handleSignInModal}>
-            로그인
+              <div className="list" onClick={this.handleSignInModal}>
+                로그인
           </div>
-          <SignIn
-            isOpen={this.state.isSignInModalOpen}
-            handleResponseSuccess={this.props.handleResponseSuccess}
-            handleModal={this.handleSignInModal}
-            FindEmailClick={this.FindEmailClick}
-            FindPwClick={this.FindPwClick}
-          />
+              <SignIn
+                isOpen={this.state.isSignInModalOpen}
+                handleResponseSuccess={this.props.handleResponseSuccess}
+                handleModal={this.handleSignInModal}
+                FindEmailClick={this.FindEmailClick}
+                FindPwClick={this.FindPwClick}
+              />
 
-          <div className="list" onClick={this.handleSignUpModal}>
-            회원 가입
+              <div className="list" onClick={this.handleSignUpModal}>
+                회원 가입
           </div>
-          <SignUp
-            isOpen={this.state.isSignUpModalOpen}
-            handleModal={this.handleSignUpModal}
-          />
+              <SignUp
+                isOpen={this.state.isSignUpModalOpen}
+                handleModal={this.handleSignUpModal}
+              />
 
-          <FindEmail
-            isOpen={this.state.isFindEmailModalOpen}
-            handleModal={this.handleFindEmailModal}
-          />
+              <FindEmail
+                isOpen={this.state.isFindEmailModalOpen}
+                handleModal={this.handleFindEmailModal}
+              />
 
-          <FindPw
-            isOpen={this.state.isFindPwModalOpen}
-            handleModal={this.handleFindPwModal}
-          />
+              <FindPw
+                isOpen={this.state.isFindPwModalOpen}
+                handleModal={this.handleFindPwModal}
+              />
 
-        </div>
-      </div >
+            </div>
+
+          </div>
+          : null}
+      </div>
     )
   }
 }

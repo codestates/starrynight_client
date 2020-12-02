@@ -5,7 +5,6 @@ import { BrowserRouter, withRouter, NavLink } from "react-router-dom";
 import imgFile from "../image/logo_StarryNight.png";
 
 //components
-import HamburgerTemp from "./HamburgerTemp";
 import AfterLogin from "./AfterLogin";
 import BeforeLogin from "./BeforeLogin";
 
@@ -36,7 +35,7 @@ class Nav extends React.Component {
   render() {
     console.log("nav 프롭", this.props);
     return (
-      <>
+      <div className="nav_div">
         {/* <div className="nav_div"> */}
         {/* nav 바 안에 로고, 햄버거 삽입 */}
         <div className="starryNigth_logo">
@@ -49,9 +48,25 @@ class Nav extends React.Component {
         </div>
 
         {/* 로그인 경우 vs 비로그인 경우로 나누기 */}
-        {this.state.isHamburgerOn ?
+        {/* {this.state.isHamburgerOn ?
           (this.props.isLogin === true ? <AfterLogin /> : <BeforeLogin handleResponseSuccess={this.props.handleResponseSuccess} />)
-          : <HamburgerTemp />}
+          : <HamburgerTemp />} */}
+
+        {this.state.isHamburgerOn ?
+          (this.props.isLogin === true ?
+            <AfterLogin
+              isHamburgerOn={this.state.isHamburgerOn}
+              handleHamburgerclick={this.handleHamburgerclick}
+            />
+            :
+            <BeforeLogin
+              isHamburgerOn={this.state.isHamburgerOn}
+              handleHamburgerclick={this.handleHamburgerclick}
+            />
+          )
+          : null
+        }
+
 
         {/* 햄버거 토글 */}
         {this.state.isHamburgerOn ?
@@ -67,7 +82,7 @@ class Nav extends React.Component {
             <div className="line-3"></div>
           </div>
         }
-      </>
+      </div>
     );
   }
 }
