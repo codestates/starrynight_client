@@ -29,7 +29,7 @@
     .nav_div {
       background: rgba(0, 0, 0, 0.2);
  
-      padding: 0px 20px;
+      padding: 0px 50px;
       position: absolute;
       left: 0;
       right: 0;
@@ -71,7 +71,7 @@
   
       // 로고를 클릭 시 메인페이지?로 리다이렉트
       #nav_logo {
-        max-width: 10%;
+        max-width: 13%;
         z-index: 2;
       }
   
@@ -103,7 +103,7 @@
     
       // 로그인 전 보여질 햄버거 모달
       .menuList_Before_Login {
-        
+
         .modal_menuList_Before_Login_overlay{
           width: 100vw;
           height: 100vh;
@@ -115,27 +115,33 @@
           display: flex;
           justify-content: center;
           align-items: center;
+
         }
 
         .nav_link {
-          background-color: skyblue;
+          background: rgba(135, 206, 235, 0.4);
           display: flex;
-          margin-right: 5%;
+          margin-right: 4%;
           padding-left: 0px;
-          align-items: center;
+          align-items: left;
           flex-direction: column;
           position: absolute;
           right: 0px;
           border-radius: 10px;
+
+          
   
-          top: 10vh;
+          top: 8.5vh;
   
           width: 20%;
   
+
+     
           .list {
             display: flex;
-            padding-top: 5%;
-            padding-bottom: 5%;
+            padding: 5% 9%;
+            
+            font-size: 0.8rem;
           }
         }
       }

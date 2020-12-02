@@ -19,9 +19,9 @@ class Nav extends React.Component {
     };
   }
   // !수정하기!
-  //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 landing페이지로 리다이렉트 하기.
+  //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 main 페이지로 리다이렉트 하기.
   handleLogoClickToRedirectToMain = () => {
-    this.props.history.push("/signIn");
+    this.props.history.push("/");
   };
 
   /* 햄버거 토글 ON / OFF */
@@ -36,7 +36,7 @@ class Nav extends React.Component {
     console.log("nav 프롭", this.props);
     return (
       <div className="nav_div">
-        {/* <div className="nav_div"> */}
+
         {/* nav 바 안에 로고, 햄버거 삽입 */}
         <div className="starryNigth_logo">
           {/* 로고사진배치: 홈 경로로 돌아가게 하기. */}
@@ -48,9 +48,6 @@ class Nav extends React.Component {
         </div>
 
         {/* 로그인 경우 vs 비로그인 경우로 나누기 */}
-        {/* {this.state.isHamburgerOn ?
-          (this.props.isLogin === true ? <AfterLogin /> : <BeforeLogin handleResponseSuccess={this.props.handleResponseSuccess} />)
-          : <HamburgerTemp />} */}
 
         {this.state.isHamburgerOn ?
           (this.props.isLogin === true ?
