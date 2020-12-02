@@ -50,7 +50,7 @@ class Nav extends React.Component {
 
         {/* 로그인 경우 vs 비로그인 경우로 나누기 */}
         {this.state.isHamburgerOn ?
-          (this.props.isLogin ? <AfterLogin /> : <BeforeLogin />)
+          (this.props.isLogin === true ? <AfterLogin /> : <BeforeLogin handleResponseSuccess={this.props.handleResponseSuccess} />)
           : <HamburgerTemp />}
 
         {/* 햄버거 토글 */}

@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter, Switch, Route } from "react-router-dom";
+import axios from "axios";
 
 //components
 import Landing from "./Landing";
@@ -30,7 +31,22 @@ class Main extends React.Component {
       isModalOpen: false,
       profilePath: "",
     };
+    console.log("main isLogin", this.state.isLogin)
   }
+
+  // SignIn을 성공하고 sessionStorage에 저장된 axios로 받아온 정보를 불러와 req하자.
+  handleResponseSuccess = () => {
+    this.setState({
+      isLogin: true
+    })
+  }
+
+  // componentDidMount() {
+  //   const userEmail = window.sessionStorage.getItem("email")
+  //   if (userEmail) {
+  //     this.handleResponseSuccess();
+  //   }
+  // }
 
   // 11/29 백시우 추가 : 모달 활성화 메소드
   openModal = () => {
@@ -45,7 +61,7 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <div className="nav">{<Nav isLogin={this.state.isLogin} />}</div>
+        <div className="nav">{<Nav isLogin={this.handleResponseSuccess} />}</div>
         <br />
         <hr />
         <br />

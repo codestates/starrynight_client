@@ -74,6 +74,7 @@ class BeforeLogin extends React.Component {
           </div>
           <SignIn
             isOpen={this.state.isSignInModalOpen}
+            handleResponseSuccess={this.props.handleResponseSuccess}
             handleModal={this.handleSignInModal}
             FindEmailClick={this.FindEmailClick}
             FindPwClick={this.FindPwClick}
