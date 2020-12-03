@@ -115,18 +115,22 @@ class AfterLogin extends React.Component {
               {/* 로그인 경우 */}
               <div className="list" onClick={this.handleGalleryModal}>
                 갤러리
-          </div>
+              </div>
               <Gallery isOpen={this.state.isGalleryModalOpen} handleModal={this.handleGalleryModal} />
 
               <div className="list" onClick={this.handleFavoritesModal}>
                 즐겨찾기
-          </div>
+              </div>
               <Favorites isOpen={this.state.isFavoritesModalOpen} handleModal={this.handleFavoritesModal} />
 
 
               <div className="list" onClick={this.handleMypageModal}>
                 마이페이지
-          </div>
+              </div>
+
+              <div className="list" onClick={this.handleSignOutModal}>
+                로그아웃
+              </div>
             </div>
             {/*
    회원탈퇴의 경우 마이페이지에서 자식컴포넌트로 생성하는 것보다는 마이페이지와 형제 관계를 형성한 후 
@@ -143,11 +147,6 @@ class AfterLogin extends React.Component {
               handleModal={this.handleMypageModal}
               DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}
             />
-
-
-            <div className="list" onClick={this.handleSignOutModal}>
-              로그아웃
-          </div>
 
 
             <DoubleCheckRemoveUsers
