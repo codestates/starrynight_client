@@ -59,6 +59,7 @@ class Nav extends React.Component {
             <BeforeLogin
               isHamburgerOn={this.state.isHamburgerOn}
               handleHamburgerclick={this.handleHamburgerclick}
+              handleResponseSuccess={this.props.handleResponseSuccess}
             />
           )
           : null
