@@ -86,7 +86,7 @@ class SignIn extends React.Component {
             loginPlatformId: response.data.loginPlatformId
           });
           this.doSignIn();
-          this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!!
+          this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
           // this.props.history.push("/main");
         })
       // .catch((error) => )
@@ -95,7 +95,6 @@ class SignIn extends React.Component {
   //! 세션 스토리지에 저장 후, 중앙제어시스템격인 isLogin 스위치를 가지고 있는 main.js에서 만약 세션 스토리지에 email이 있다면 isLogin을 true로 혹은 false로 제어하여 하위 컴포넌트들이 이 영향을 받아 출력 혹은 비출력하게 할 것.
   doSignIn = () => {
     const { email, loginPlatformId } = this.state;
-
     window.sessionStorage.setItem("email", email);
     window.sessionStorage.setItem("loginPlatformId", loginPlatformId);
     this.props.handleResponseSuccess();   // Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌

@@ -158,17 +158,12 @@ class All extends Component {
   }
 
   infiniteScroll = () => {
-    const clientHeight =
-      document.body.children[1].children[0].children[1].children[4]
-        .clientHeight;
-    const scrollTop =
-      document.body.children[1].children[0].children[1].children[4].scrollTop;
-    const scrollHeight =
-      document.body.children[1].children[0].children[1].children[4]
-        .scrollHeight;
+    const clientHeight = document.querySelector(".ViewPhoto").clientHeight;
+    const scrollTop = document.querySelector(".ViewPhoto").scrollTop;
+    const scrollHeight = document.querySelector(".ViewPhoto").scrollHeight;
 
     // clientHeight + scrollTop === scrollHeight
-    if (clientHeight + scrollTop === scrollHeight) {
+    if (clientHeight + scrollTop + 5 > scrollHeight) {
       // console.log(data);
       let col1 = document.querySelector(".column1");
       let col2 = document.querySelector(".column2");
@@ -179,7 +174,7 @@ class All extends Component {
       // test.innerHTML = "<h1>테스트입니다.</h1>";
 
       let makeImg1 = () => {
-        if (this.state.items + 1 !== this.state.fakeData.length) {
+        if (this.state.items + 1 < this.state.fakeData.length) {
           let img = document.createElement("img");
           img.src = fakeData[this.state.items + 1];
           col1.appendChild(img);
@@ -190,7 +185,7 @@ class All extends Component {
       };
 
       let makeImg2 = () => {
-        if (this.state.items + 1 !== this.state.fakeData.length) {
+        if (this.state.items + 1 < this.state.fakeData.length) {
           let img = document.createElement("img");
           img.src = fakeData[this.state.items + 2];
           col2.appendChild(img);
@@ -201,7 +196,7 @@ class All extends Component {
       };
 
       let makeImg3 = () => {
-        if (this.state.items + 1 !== this.state.fakeData.length) {
+        if (this.state.items + 1 < this.state.fakeData.length) {
           let img = document.createElement("img");
           img.src = fakeData[this.state.items + 3];
           col3.appendChild(img);

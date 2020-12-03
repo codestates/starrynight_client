@@ -30,23 +30,23 @@ class Main extends React.Component {
       isLogin: false,
       isAddPhotoModalOpen: false,
     };
-    console.log("main isLogin", this.state.isLogin)
+    console.log("main isLogin", this.state.isLogin);
   }
 
   // SignIn을 성공하고 sessionStorage에 저장된 axios로 받아온 정보를 불러와 req하자.
   handleResponseSuccess = () => {
     this.setState({
-      isLogin: true
-    })
-  }
+      isLogin: true,
+    });
+  };
 
+  //! 세션 스토리지에 저장 후, 중앙제어시스템격인 isLogin 스위치를 가지고 있는 main.js에서 만약 세션 스토리지에 email이 있다면 isLogin을 true로 혹은 false로 제어하여 하위 컴포넌트들이 이 영향을 받아 출력 혹은 비출력하게 할 것.
   componentDidMount() {
     const userEmail = window.sessionStorage.getItem("email")
     if (userEmail) {
       this.handleResponseSuccess();
     }
   }
-
 
   // 12/1 사진추가버튼 모달창 수정
   handleAddPhotoModal = () => {
@@ -56,7 +56,14 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <div className="nav">{<Nav isLogin={this.state.isLogin} handleResponseSuccess={this.handleResponseSuccess} />}</div>
+        <div className="nav">
+          {
+            <Nav
+              isLogin={this.state.isLogin}
+              handleResponseSuccess={this.handleResponseSuccess}
+            />
+          }
+        </div>
         <br />
         {/* br 이거 왜 지우면 에러코드 뜨고 무한로딩 돌지?? */}
         <br />
@@ -67,7 +74,7 @@ class Main extends React.Component {
         <ViewPhoto />
 
         {/* 12/1 사진추가버튼 모달창 수정 */}
-        {!this.state.isLogin ? (
+        {this.state.isLogin ? (
           <div className="AddPhoto">
             <IoIosAddCircle
               className="AddPhoto-icon"
