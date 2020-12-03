@@ -79,6 +79,19 @@
       // 로그인 후 보여질 햄버거 모달
       .menuList_After_Login {
         
+        .modal_menuList_After_Login_overlay {
+          background: (0, 0, 0, 0.6);
+          width: 100vw;
+          height: 100vh;
+          position: fixed;
+          display: flex;
+          top: 0;
+          left: 0;
+          right: 0;
+          justify-content: center;
+          align-items: center;
+        }
+
         .nav_link {
           background-color: white;
           color: black;

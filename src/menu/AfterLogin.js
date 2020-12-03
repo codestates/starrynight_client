@@ -105,6 +105,7 @@ class AfterLogin extends React.Component {
 
   render() {
     console.log("마이페이지 불린값", this.state.isMypageModalOpen)
+    console.log("afterLogin Hamburger pros", this.props)
     return (
       <div>
         {this.props.isHamburgerOn ?
