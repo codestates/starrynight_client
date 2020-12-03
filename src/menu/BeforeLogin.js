@@ -74,7 +74,7 @@ class BeforeLogin extends React.Component {
 
               <div className="list" onClick={this.handleSignInModal}>
                 로그인
-          </div>
+              </div>
               <SignIn
                 isOpen={this.state.isSignInModalOpen}
                 handleResponseSuccess={this.props.handleResponseSuccess}
@@ -85,7 +85,7 @@ class BeforeLogin extends React.Component {
 
               <div className="list" onClick={this.handleSignUpModal}>
                 회원 가입
-          </div>
+              </div>
               <SignUp
                 isOpen={this.state.isSignUpModalOpen}
                 handleModal={this.handleSignUpModal}
