@@ -4,7 +4,7 @@ import All from "./All";
 
 function ViewPhoto() {
   return (
-    <div className="App">
+    <div className="ViewPhoto">
       {/* <header className="App-header">뷰포토 컴포넌트 입니다.</header> */}
       <All />
     </div>

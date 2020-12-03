@@ -1,5 +1,4 @@
-.App-header {
-  color: white;
-  text-align: center;
-  font-weight: bold;
+.ViewPhoto {
+  height: 100vh;
+  overflow: scroll;
 }
