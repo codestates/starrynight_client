@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, withRouter } from "react-router-dom"
 import axios from "axios"
 
 // 로고
@@ -87,7 +87,8 @@ class SignIn extends React.Component {
             nickname: response.data.nickname
           });
           this.doSignIn();
-          this.props.history.push("/main");
+          this.props.history.push("/");  //! 임시 엔드포인트, 수정할 것!!!!
+          // this.props.history.push("/main");
         })
       // .catch((error) => )
     }
@@ -99,7 +100,7 @@ class SignIn extends React.Component {
     window.sessionStorage.setItem("email", email);
     window.sessionStorage.setItem("nickname", nickname);
     this.props.handleResponseSuccess();   // Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌
-    this.props.isOpen = false;
+    // this.props.isOpen = false;
   }
 
   render() {
@@ -184,9 +185,10 @@ class SignIn extends React.Component {
             </div>
           </div>
           : null}
+
       </div>
     )
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);
