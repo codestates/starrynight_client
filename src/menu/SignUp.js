@@ -205,7 +205,7 @@ class SignUp extends React.Component {
 
       axios.post("https://api.mystar-story.com/user/signup", NewUserInfo)
         .then(response => {
-          console.log(response)
+          console.log("무엇을 받아오십니까 회원가입", response)
         })
       // 모든 값들과 조건이 충족되지 않으면 요청 x 각 위치에서 에러메세지 계속 보여주기
     }

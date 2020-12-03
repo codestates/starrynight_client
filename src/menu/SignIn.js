@@ -51,7 +51,8 @@ class SignIn extends React.Component {
   handleSignIn = () => {
     const signInInfo = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      loginPlatformId: ""
     };
 
     // 이메일 형식 기준
@@ -82,9 +83,7 @@ class SignIn extends React.Component {
           console.log("사인인 뭘 받아와?", response)
           console.log("쿠키", document.cookie)
           this.setState({
-            id: response.data.userId,
-            email: response.data.email,
-            nickname: response.data.nickname
+            loginPlatformId: response.data.loginPlatformId
           });
           this.doSignIn();
           this.props.history.push("/");  //! 임시 엔드포인트, 수정할 것!!!!
@@ -95,10 +94,8 @@ class SignIn extends React.Component {
   }
 
   doSignIn = () => {
-    const { id, email, nickname } = this.state;
-    window.sessionStorage.setItem("id", id);
-    window.sessionStorage.setItem("email", email);
-    window.sessionStorage.setItem("nickname", nickname);
+    const { loginPlatformId } = this.state;
+    window.sessionStorage.setItem("loginPlatformId", loginPlatformId)
     this.props.handleResponseSuccess();   // Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌
     // this.props.isOpen = false;
   }
