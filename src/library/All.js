@@ -163,7 +163,7 @@ class All extends Component {
     const scrollHeight = document.querySelector(".ViewPhoto").scrollHeight;
 
     // clientHeight + scrollTop === scrollHeight
-    if (clientHeight + scrollTop === scrollHeight) {
+    if (clientHeight + scrollTop + 5 > scrollHeight) {
       // console.log(data);
       let col1 = document.querySelector(".column1");
       let col2 = document.querySelector(".column2");
