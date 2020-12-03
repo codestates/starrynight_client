@@ -54,6 +54,7 @@ class Nav extends React.Component {
             <AfterLogin
               isHamburgerOn={this.state.isHamburgerOn}
               handleHamburgerclick={this.handleHamburgerclick}
+              handleSignOut={this.props.handleSignOut}
             />
             :
             <BeforeLogin

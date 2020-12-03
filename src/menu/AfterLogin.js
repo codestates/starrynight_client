@@ -57,11 +57,12 @@ class AfterLogin extends React.Component {
     }
   }
 
-  handleSignOutModal = () => {
-    this.setState({
-      isSignOutModalOpen: !this.state.isSignOutModalOpen
-    })
-  }
+
+  // handleSignOutModal = () => {
+  //   this.setState({
+  //     isSignOutModalOpen: !this.state.isSignOutModalOpen
+  //   })
+  // }
 
   handleDoubleCheckRemoveUsersModal = () => {
     this.setState({
@@ -128,7 +129,11 @@ class AfterLogin extends React.Component {
                 마이페이지
               </div>
 
-              <div className="list" onClick={this.handleSignOutModal}>
+              {/* Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌 */}
+              <div className="list"
+                // onClick={this.handleSignOutModal}
+                onClick={this.props.handleSignOut}
+              >
                 로그아웃
               </div>
             </div>
