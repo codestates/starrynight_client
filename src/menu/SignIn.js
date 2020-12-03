@@ -95,7 +95,7 @@ class SignIn extends React.Component {
 
   doSignIn = () => {
     const { loginPlatformId } = this.state;
-    window.sessionStorage.setItem("loginPlatformId", loginPlatformId)
+    window.sessionStorage.setItem("id", loginPlatformId)
     this.props.handleResponseSuccess();   // Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌
     // this.props.isOpen = false;
   }
