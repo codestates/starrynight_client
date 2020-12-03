@@ -1,0 +1,190 @@
+.scrolledsection {
+  overflow: visible;
+
+  .AddPhoto {
+    position: absolute;
+    left: 70%;
+    top: 75%;
+    z-index: 1;
+    cursor: pointer;
+    svg {
+      font-size: 6rem;
+      color: skyblue;
+    }
+  }
+
+  .AddPhoto-icon {
+    &:hover {
+      color: #dce6ff;
+    }
+  }
+
+  .AddPhoto-button {
+    border: none;
+  }
+}
+
+  /* ------------Nav ------------------- */
+  .nav {
+    .nav_div {
+      // background: rgba(0, 0, 0, 0.2);
+      background: #192f6d;
+ 
+      padding: 0px 50px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 7vh;
+      color: white; //  폰트 컬러
+      z-index: 1;
+      // opacity: 0;
+      display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
+      // background-color: none;
+      
+      justify-content: space-between;
+      align-items: center;
+  
+      // 햄버거 클릭 안했을시. -> 네브바 안의 아이템들 정렬 유지를 위함.
+      .menuList_Temp_Login {
+        ul {
+          // background-color: skyblue;
+          display: flex;
+          margin-right: 5%;
+          padding-left: 0px;
+          align-items: center;
+          flex-direction: column;
+          position: absolute;
+          right: 0px;
+  
+          // top: 6vh;
+  
+          width: 20%;
+  
+          .firstList {
+            padding-top: 5%;
+          }
+          li {
+            padding-bottom: 5%;
+            list-style: none;
+          }
+        }
+      }
+  
+      // 로고를 클릭 시 메인페이지?로 리다이렉트
+      #nav_logo {
+        max-width: 13%;
+        z-index: 2;
+      }
+  
+      // 로그인 후 보여질 햄버거 모달
+      .menuList_After_Login {
+        
+        .nav_link {
+          background-color: white;
+          display: flex;
+          margin-right: 5%;
+          padding-left: 0px;
+          align-items: center;
+          flex-direction: column;
+          position: absolute;
+          right: 0px;
+          border-radius: 10px;
+  
+          top: 10vh;
+  
+          width: 20%;
+  
+          .list {
+            display: flex;
+            padding: 5% 9%;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    
+      // 로그인 전 보여질 햄버거 모달
+      .menuList_Before_Login {
+
+        .modal_menuList_Before_Login_overlay{
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0);
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+        }
+
+        .nav_link {
+          // background: rgba(135, 206, 235, 1);
+          background: white;
+          color: black;
+          display: flex;
+          margin-right: 4%;
+          padding-left: 0px;
+          align-items: center;
+          flex-direction: column;
+          position: absolute;
+          right: 0px;
+          border-radius: 10px;
+
+          
+  
+          top: 8.5vh;
+  
+          width: 15%;
+  
+
+     
+          .list {
+            display: flex;
+            padding: 5% 9%;
+            
+            font-size: 0.8rem;
+          }
+        }
+      }
+  
+      /* ----- 햄버거 토글 ----- */
+      .hamburgerToggle_ON {
+  
+        
+        div {
+          // position: fixed;
+          
+          margin: 3px;
+          transition: all 0.3s ease;
+          width: 23px;
+          height: 3px;
+          background: white; // div에 색을 입혀 라인을 만든 것.
+  
+        }
+  
+        .line-1 {
+          transform: rotate(-45deg) translate(-3px, 5px)
+        }
+        .line-2 {
+          opacity: 0;
+        }
+        .line-3 {
+          transform: rotate(45deg) translate(-3px, -5.5px);
+        }
+      }
+  
+      .hamburgerToggle_OFF {
+        div {
+          z-index: 1;
+          width: 23px;
+          height: 3px;
+          background: white;
+          margin: 3px;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+

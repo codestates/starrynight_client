@@ -1,0 +1,119 @@
+.modal_addphoto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; // 화면(스크린) 크기에 맟춘 % 넓이  cf) vw가 아닌 %는 부모 container에 비율을 맞추는 차이가 있음.
+  height: 100vh; // 화면(스크린) 크기에 맞춘 % 높이
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // z-index: 1;
+
+  .modal_addphoto_overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .modal_addphoto_content {
+    background-color: #1d2b52;
+    width: 30vw;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    color: #d5f0ff;
+    border: 0.1rem solid #565f7e;
+  }
+
+  .close {
+    color: #22536b;
+    float: right;
+    font-size: 2rem;
+    padding-right: 0.5rem;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .addphoto-form {
+    text-align: center;
+  }
+
+  li {
+    list-style: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 90%;
+    display: inline-block;
+
+    .addphoto-above-input {
+      padding-bottom: 1.8rem;
+
+      .addphoto-fieldname {
+        // margin-top: 0.4rem;
+        font-size: 1.1rem;
+        text-align: left;
+        color: a78e00;
+        float: left;
+      }
+
+      .addphoto-span {
+        margin-bottom: 0.1rem;
+        float: right;
+      }
+    }
+
+    .addphoto-input {
+      width: 100%;
+      font-size: small;
+      padding: 5px;
+      background-color: #000000;
+      color: white;
+      border-radius: 4px;
+      border: 0.1rem solid #9fa7aa;
+      float: none;
+    }
+  }
+
+  .button-field {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .addphoto-button {
+    border: 0.1rem solid #d9eeff;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    text-decoration: none;
+    width: 40%;
+    padding: 0.25rem 1rem;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    background: #629cc4;
+    &:hover {
+      background: #d6eaff;
+    }
+  }
+
+  .addphoto-button-inner {
+    border-radius: 4px;
+    font-size: 0.7rem;
+    text-decoration: none;
+    width: 2.5rem;
+    font-weight: bolder;
+    color: black;
+    outline: none;
+    cursor: pointer;
+    background: #87bde9;
+    &:hover {
+      background: #84aed8;
+    }
+  }
+}
