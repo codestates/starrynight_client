@@ -61,6 +61,9 @@ class Main extends React.Component {
     if (userEmail) {
       this.handleResponseSuccess();
     }
+    else {  // 이미 로그아웃 기능이 작동했지만, didmount로 더블체크 하게 함.
+      this.handleSignOut();
+    }
   }
 
   // 12/1 사진추가버튼 모달창 수정

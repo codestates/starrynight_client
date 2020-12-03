@@ -110,6 +110,7 @@ class AfterLogin extends React.Component {
     return (
       <div>
         {this.props.isHamburgerOn ?
+
           <div className="menuList_After_Login">
             <div className="modal_menuList_After_Login_overlay" onClick={this.props.handleHamburgerclick} />
             <div className="nav_link">
@@ -129,10 +130,10 @@ class AfterLogin extends React.Component {
                 마이페이지
               </div>
 
-              {/* Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌 */}
+
               <div className="list"
                 // onClick={this.handleSignOutModal}
-                onClick={this.props.handleSignOut}
+                onClick={this.props.hamburgerModalOFFWithSignOut}
               >
                 로그아웃
               </div>

@@ -26,11 +26,20 @@ class Nav extends React.Component {
 
   /* 햄버거 토글 ON / OFF */
   /* state값 false -> true or true -> false 반전시키기 */
+
   handleHamburgerclick = () => {
     this.setState({
       isHamburgerOn: !this.state.isHamburgerOn,
     });
   };
+
+  // Main으로부터 내려오는 handleSignOut을 여기서 납치 (Main의 isLogin을 false로 바꿔줌 )
+  // 또한 추후 로그아웃 후에도 계속 모달창이 켜져있는 것을 자동으로 꺼지게 할 것. 
+  // 위의 두개 기능을 동시에 하게 하는 메소드
+  hamburgerModalOFFWithSignOut = () => {
+    this.props.handleSignOut();
+    this.handleHamburgerclick();
+  }
 
   render() {
     console.log("nav 프롭", this.props);
@@ -53,8 +62,9 @@ class Nav extends React.Component {
           (this.props.isLogin === true ?
             <AfterLogin
               isHamburgerOn={this.state.isHamburgerOn}
-              handleHamburgerclick={this.handleHamburgerclick}
-              handleSignOut={this.props.handleSignOut}
+              // handleHamburgerclick={this.handleHamburgerclick}
+              // handleSignOut={this.props.handleSignOut}
+              hamburgerModalOFFWithSignOut={this.hamburgerModalOFFWithSignOut}
             />
             :
             <BeforeLogin

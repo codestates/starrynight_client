@@ -66,6 +66,7 @@ class BeforeLogin extends React.Component {
     return (
       <div>
         {this.props.isHamburgerOn ?
+
           <div className="menuList_Before_Login">
             <div className="modal_menuList_Before_Login_overlay" onClick={this.props.handleHamburgerclick}></div>
             {/* 비로그인 경우 */}
