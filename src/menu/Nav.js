@@ -63,7 +63,6 @@ class Nav extends React.Component {
     this.setState({
       isSignInModalOpen: !this.state.isSignInModalOpen,   // state 불린값 반전 시키기
     })
-    // this.props.handleHamburgerclick()
   }
 
   signInClick = () => {         // 로그인 버튼 누르면  
