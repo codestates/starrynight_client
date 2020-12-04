@@ -73,7 +73,7 @@ class Main extends React.Component {
         <ViewPhoto />
 
         {/* 12/1 사진추가버튼 모달창 수정 */}
-        {this.state.isLogin ? (
+        {!this.state.isLogin ? (
           <div className="AddPhoto">
             <IoIosAddCircle
               className="AddPhoto-icon"
