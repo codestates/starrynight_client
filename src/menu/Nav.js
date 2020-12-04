@@ -126,6 +126,7 @@ class Nav extends React.Component {
     this.handleFindPwModal()
   }
 
+
   render() {
     console.log("nav 프롭", this.props);
     return (
@@ -158,9 +159,8 @@ class Nav extends React.Component {
               signUpClick={this.signUpClick}
               handleHamburgerclick={this.handleHamburgerclick}
               isSignInModalOpen={this.state.isSignInModalOpen}
-              handleSignInModal={this.handleSignInModal}
               isSignUpModalOpen={this.state.isSignUpModalOpen}
-              handleSignUpModal={this.handleSignUpModal}
+
 
             />
           )
@@ -188,13 +188,13 @@ class Nav extends React.Component {
         <SignIn
           isOpen={this.state.isSignInModalOpen}
           handleResponseSuccess={this.props.handleResponseSuccess}
-          handleModal={this.handleSignInModal} // overlay를 눌렀을때 모달창 꺼지도록 사용할 것임
+          handleSignInModal={this.handleSignInModal} // overlay를 눌렀을때 모달창 꺼지도록 사용할 것임
           FindEmailClick={this.FindEmailClick}
           FindPwClick={this.FindPwClick}
         />
         <SignUp
           isOpen={this.state.isSignUpModalOpen}
-          handleModal={this.handleSignUpModal}
+          handleSignUpModal={this.handleSignUpModal}
         />
         <FindEmail
           isOpen={this.state.isFindEmailModalOpen}

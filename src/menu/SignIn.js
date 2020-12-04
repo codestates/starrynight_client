@@ -26,18 +26,18 @@ class SignIn extends React.Component {
   // 각각의 모달창 중복 작동 방지를 위해 이벤트를 각각 생성
   // isModalOpen이 true면 모달이 켜지고, 다시 false로 변하면 아래 render부분에서 삼항연산자를 통해 false시 null효과를 받게되고 창은 꺼지게 할 것임.
 
-  handleFindEmailModal = () => {
-    this.setState({
-      isFindEmailModalOpen: !this.state.isFindEmailModalOpen  // state의 불린값 반전
-    })
-  }
+  // handleFindEmailModal = () => {
+  //   this.setState({
+  //     isFindEmailModalOpen: !this.state.isFindEmailModalOpen  // state의 불린값 반전
+  //   })
+  // }
 
 
-  handleFindPwModal = () => {
-    this.setState({
-      isFindPwModalOpen: !this.state.isFindPwModalOpen  // state의 불린값 반전
-    })
-  }
+  // handleFindPwModal = () => {
+  //   this.setState({
+  //     isFindPwModalOpen: !this.state.isFindPwModalOpen  // state의 불린값 반전
+  //   })
+  // }
 
   handleInputValue = (key) => (text) => {
     console.log('key', key)
@@ -97,8 +97,8 @@ class SignIn extends React.Component {
     const { email, loginPlatformId } = this.state;
     window.sessionStorage.setItem("email", email);
     window.sessionStorage.setItem("loginPlatformId", loginPlatformId);
-    this.props.handleResponseSuccess();   // Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌
-    // this.props.isOpen = false;
+    this.props.handleResponseSuccess();   // Main-> Nav로 타고내려온 Main의 isLogin을 true로 바꿔줌
+    this.props.handleSignInModal();
   }
 
   render() {
