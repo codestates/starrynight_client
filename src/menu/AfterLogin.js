@@ -57,11 +57,12 @@ class AfterLogin extends React.Component {
     }
   }
 
-  handleSignOutModal = () => {
-    this.setState({
-      isSignOutModalOpen: !this.state.isSignOutModalOpen
-    })
-  }
+
+  // handleSignOutModal = () => {
+  //   this.setState({
+  //     isSignOutModalOpen: !this.state.isSignOutModalOpen
+  //   })
+  // }
 
   handleDoubleCheckRemoveUsersModal = () => {
     this.setState({
@@ -75,11 +76,11 @@ class AfterLogin extends React.Component {
   //! (주의) 한 개의 화면에 한 개의 모달을 띄우기 위해서는
   //! Mypage컴포넌트와 회원탈퇴 컴포넌트를 부모-자식 관계로 두면 꼬여버리니, 형제관계로 만들어 state끌어올리기 식으로 구현!
   //? 연동해체모달과 탈퇴완료 모달도 마찬가지.
-  DoubleCheckRemoveUsersClick = () => {
+  DoubleCheckRemoveUsersClick = () => {   // 회원탈퇴를 누르면
     this.setState({
-      isMypageModalOpen: false
+      isMypageModalOpen: false    // 마이페이지 모달 끄고
     })
-    this.handleDoubleCheckRemoveUsersModal()
+    this.handleDoubleCheckRemoveUsersModal()  // 정말 탈퇴할건지 재확인 모달 켜.
   }
 
   // 일반 회원 탈퇴 완료(더블체크컴포넌트와 형제관계 Yes! 부모관계 No!!!)
@@ -105,27 +106,37 @@ class AfterLogin extends React.Component {
 
   render() {
     console.log("마이페이지 불린값", this.state.isMypageModalOpen)
+    console.log("afterLogin Hamburger pros", this.props)
     return (
       <div>
         {this.props.isHamburgerOn ?
+
           <div className="menuList_After_Login">
             <div className="modal_menuList_After_Login_overlay" onClick={this.props.handleHamburgerclick} />
             <div className="nav_link">
               {/* 로그인 경우 */}
               <div className="list" onClick={this.handleGalleryModal}>
                 갤러리
-          </div>
+              </div>
               <Gallery isOpen={this.state.isGalleryModalOpen} handleModal={this.handleGalleryModal} />
 
               <div className="list" onClick={this.handleFavoritesModal}>
                 즐겨찾기
-          </div>
+              </div>
               <Favorites isOpen={this.state.isFavoritesModalOpen} handleModal={this.handleFavoritesModal} />
 
 
               <div className="list" onClick={this.handleMypageModal}>
                 마이페이지
-          </div>
+              </div>
+
+
+              <div className="list"
+                // onClick={this.handleSignOutModal}
+                onClick={this.props.hamburgerModalOFFWithSignOut}
+              >
+                로그아웃
+              </div>
             </div>
             {/*
    회원탈퇴의 경우 마이페이지에서 자식컴포넌트로 생성하는 것보다는 마이페이지와 형제 관계를 형성한 후 
@@ -142,11 +153,6 @@ class AfterLogin extends React.Component {
               handleModal={this.handleMypageModal}
               DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}
             />
-
-
-            <div className="list" onClick={this.handleSignOutModal}>
-              로그아웃
-          </div>
 
 
             <DoubleCheckRemoveUsers

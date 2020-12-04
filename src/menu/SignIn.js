@@ -26,18 +26,18 @@ class SignIn extends React.Component {
   // 각각의 모달창 중복 작동 방지를 위해 이벤트를 각각 생성
   // isModalOpen이 true면 모달이 켜지고, 다시 false로 변하면 아래 render부분에서 삼항연산자를 통해 false시 null효과를 받게되고 창은 꺼지게 할 것임.
 
-  handleFindEmailModal = () => {
-    this.setState({
-      isFindEmailModalOpen: !this.state.isFindEmailModalOpen  // state의 불린값 반전
-    })
-  }
+  // handleFindEmailModal = () => {
+  //   this.setState({
+  //     isFindEmailModalOpen: !this.state.isFindEmailModalOpen  // state의 불린값 반전
+  //   })
+  // }
 
 
-  handleFindPwModal = () => {
-    this.setState({
-      isFindPwModalOpen: !this.state.isFindPwModalOpen  // state의 불린값 반전
-    })
-  }
+  // handleFindPwModal = () => {
+  //   this.setState({
+  //     isFindPwModalOpen: !this.state.isFindPwModalOpen  // state의 불린값 반전
+  //   })
+  // }
 
   handleInputValue = (key) => (text) => {
     console.log('key', key)
@@ -82,25 +82,23 @@ class SignIn extends React.Component {
           console.log("사인인 뭘 받아와?", response)
           console.log("쿠키", document.cookie)
           this.setState({
-            id: response.data.userId,
             email: response.data.email,
-            nickname: response.data.nickname
+            loginPlatformId: response.data.loginPlatformId
           });
           this.doSignIn();
-          this.props.history.push("/");  //! 임시 엔드포인트, 수정할 것!!!!
+          this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
           // this.props.history.push("/main");
         })
       // .catch((error) => )
     }
   }
-
+  //! 세션 스토리지에 저장 후, 중앙제어시스템격인 isLogin 스위치를 가지고 있는 main.js에서 만약 세션 스토리지에 email이 있다면 isLogin을 true로 혹은 false로 제어하여 하위 컴포넌트들이 이 영향을 받아 출력 혹은 비출력하게 할 것.
   doSignIn = () => {
-    const { id, email, nickname } = this.state;
-    window.sessionStorage.setItem("id", id);
+    const { email, loginPlatformId } = this.state;
     window.sessionStorage.setItem("email", email);
-    window.sessionStorage.setItem("nickname", nickname);
-    this.props.handleResponseSuccess();   // Main-> Nav -> BeforeLogin 으로 타고내려온 Main의 isLogin을 true로 바꿔줌
-    // this.props.isOpen = false;
+    window.sessionStorage.setItem("loginPlatformId", loginPlatformId);
+    this.props.handleResponseSuccess();   // Main-> Nav로 타고내려온 Main의 isLogin을 true로 바꿔줌
+    this.props.handleSignInModal();
   }
 
   render() {
@@ -110,8 +108,8 @@ class SignIn extends React.Component {
       <div>
 
         {this.props.isOpen ?
-          <div className="modal_signIn" >
-            <div className="modal_signIn_overlay" onClick={this.props.handleModal} ></div>
+          <div className="modal_signIn">
+            <div className="modal_signIn_overlay" onClick={this.props.handleModal}></div>
 
             <div className="modal_signIn_content">
               {/* -------------------------- 로고삽입 칸 -------------------------*/}
