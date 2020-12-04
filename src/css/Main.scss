@@ -30,18 +30,18 @@
       // background: rgba(0, 0, 0, 0.2);
       background: #192f6d;
  
-      padding: 0px 50px;
+      padding: 0px 20px;
       position: absolute;
       left: 0;
       right: 0;
-      height: 7vh;
+      height: 10vh;
       color: white; //  폰트 컬러
       z-index: 1;
       // opacity: 0;
       display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
       // background-color: none;
       
-      justify-content: space-between;
+      // justify-content: space-between;
       align-items: center;
   
       // 햄버거 클릭 안했을시. -> 네브바 안의 아이템들 정렬 유지를 위함.
@@ -171,7 +171,7 @@
       /* ----- 햄버거 토글 ----- */
       .hamburgerToggle_ON {
   
-        
+        padding-left: 30vw;
         div {
           // position: fixed;
           
@@ -195,6 +195,7 @@
       }
   
       .hamburgerToggle_OFF {
+        padding-left: 30vw;
         div {
           // z-index: 1;
           width: 23px;
