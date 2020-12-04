@@ -76,11 +76,11 @@ class AfterLogin extends React.Component {
   //! (주의) 한 개의 화면에 한 개의 모달을 띄우기 위해서는
   //! Mypage컴포넌트와 회원탈퇴 컴포넌트를 부모-자식 관계로 두면 꼬여버리니, 형제관계로 만들어 state끌어올리기 식으로 구현!
   //? 연동해체모달과 탈퇴완료 모달도 마찬가지.
-  DoubleCheckRemoveUsersClick = () => {
+  DoubleCheckRemoveUsersClick = () => {   // 회원탈퇴를 누르면
     this.setState({
-      isMypageModalOpen: false
+      isMypageModalOpen: false    // 마이페이지 모달 끄고
     })
-    this.handleDoubleCheckRemoveUsersModal()
+    this.handleDoubleCheckRemoveUsersModal()  // 정말 탈퇴할건지 재확인 모달 켜.
   }
 
   // 일반 회원 탈퇴 완료(더블체크컴포넌트와 형제관계 Yes! 부모관계 No!!!)

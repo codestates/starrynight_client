@@ -108,8 +108,8 @@ class SignIn extends React.Component {
       <div>
 
         {this.props.isOpen ?
-          <div className="modal_signIn" >
-            <div className="modal_signIn_overlay" onClick={this.props.handleModal} ></div>
+          <div className="modal_signIn">
+            <div className="modal_signIn_overlay" onClick={this.props.handleModal}></div>
 
             <div className="modal_signIn_content">
               {/* -------------------------- 로고삽입 칸 -------------------------*/}

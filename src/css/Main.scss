@@ -73,9 +73,10 @@
       // 로고를 클릭 시 메인페이지?로 리다이렉트
       #nav_logo {
         max-width: 13%;
-        z-index: 2;
+        // z-index: 2;
       }
   
+
       // 로그인 후 보여질 햄버거 모달
       .menuList_After_Login {
         
@@ -115,6 +116,9 @@
           }
         }
       }
+
+      // HamburgerMenuTemp
+
     
       // 로그인 전 보여질 햄버거 모달
       .menuList_Before_Login {
@@ -192,7 +196,7 @@
   
       .hamburgerToggle_OFF {
         div {
-          z-index: 1;
+          // z-index: 1;
           width: 23px;
           height: 3px;
           background: white;
