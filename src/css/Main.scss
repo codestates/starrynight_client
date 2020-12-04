@@ -24,6 +24,7 @@
   }
 }
 
+<<<<<<< HEAD
 /* ------------Nav ------------------- */
 .nav {
   .nav_div {
@@ -89,6 +90,61 @@
         right: 0;
         justify-content: center;
         align-items: center;
+=======
+  /* ------------Nav ------------------- */
+  .nav {
+    .nav_div {
+      // background: rgba(0, 0, 0, 0.2);
+      background: #192f6d;
+ 
+      padding: 0px 20px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 10vh;
+      color: white; //  폰트 컬러
+      z-index: 1;
+      display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
+      // background-color: none;
+      
+      // justify-content: space-be;
+      align-items: center;
+      // opacity: 0;
+  
+      // 햄버거 클릭 안했을시. -> 네브바 안의 아이템들 정렬 유지를 위함.
+      .menuList_Temp_Login {
+        ul {
+          // background-color: skyblue;
+          display: flex;
+          margin-right: 5%;
+          padding-left: 0px;
+          align-items: center;
+          flex-direction: column;
+          position: absolute;
+          right: 0px;
+  
+          // top: 6vh;
+  
+          width: 20%;
+  
+          .firstList {
+            padding-top: 5%;
+          }
+          li {
+            padding-bottom: 5%;
+            list-style: none;
+          }
+        }
+      }
+  
+      // 로고를 클릭 시 메인페이지?로 리다이렉트
+      #nav_logo {
+        
+        // width: inherit;
+        max-width: 15%;
+        height: auto;
+        // z-index: 2;
+>>>>>>> 6a96663b76abe99ce88d7c7227c989092f050111
       }
 
       .nav_link {
@@ -157,6 +213,7 @@
           font-size: 0.8rem;
         }
       }
+<<<<<<< HEAD
     }
 
     /* ----- 햄버거 토글 ----- */
@@ -179,6 +236,51 @@
       }
       .line-3 {
         transform: rotate(45deg) translate(-3px, -5.5px);
+=======
+  
+      /* ----- 햄버거 토글 ----- */
+      .hamburgerToggle_ON {
+  
+        // padding-left: 30vw;
+        div {
+          // position: fixed;
+          
+          margin: 3px;
+          transition: all 0.3s ease;
+          width: 23px;
+          height: 3px;
+          background: white; // div에 색을 입혀 라인을 만든 것.
+  
+        }
+  
+        .line-1 {
+          transform: rotate(-45deg) translate(-3px, 5px)
+        }
+        .line-2 {
+          opacity: 0;
+        }
+        .line-3 {
+          transform: rotate(45deg) translate(-3px, -5.5px);
+        }
+      }
+  
+      .hamburgerToggle_OFF {
+        position: absolute;
+        right: 0px;
+        // width: 300px;
+        border: 3px solid #73AD21;
+        padding: 10px;
+      
+        
+        div {
+          // z-index: 1;
+          width: 23px;
+          height: 3px;
+          background: white;
+          margin: 3px;
+          transition: all 0.3s ease;
+        }
+>>>>>>> 6a96663b76abe99ce88d7c7227c989092f050111
       }
     }
 
