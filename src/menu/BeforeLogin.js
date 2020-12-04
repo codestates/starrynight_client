@@ -109,7 +109,7 @@ class BeforeLogin extends React.Component {
                 FindPwClick={this.FindPwClick}
               /> */}
 
-              <div className="list" onClick={this.props.handleSignUpModal}>
+              <div className="list" onClick={this.props.signUpClick}>
                 회원 가입
               </div>
               {/* <SignUp

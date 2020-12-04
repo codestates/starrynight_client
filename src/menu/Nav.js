@@ -92,6 +92,12 @@ class Nav extends React.Component {
       isSignUpModalOpen: !this.state.isSignUpModalOpen   // state 불린값 반전 시키기
     })
   }
+  signUpClick = () => {   // 회원가입 버튼을 누르면
+    this.setState({
+      isHamburgerOn: false    // 부모 Nav는 햄버거 모달창을 종료하고
+    })
+    this.handleSignUpModal()    // SignUp 모달창을 활성화 시켜라.
+  }
 
 
 
@@ -149,6 +155,7 @@ class Nav extends React.Component {
             <BeforeLogin
               isHamburgerOn={this.state.isHamburgerOn}
               signInClick={this.signInClick}
+              signUpClick={this.signUpClick}
               handleHamburgerclick={this.handleHamburgerclick}
               isSignInModalOpen={this.state.isSignInModalOpen}
               handleSignInModal={this.handleSignInModal}
