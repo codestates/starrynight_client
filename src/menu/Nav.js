@@ -125,7 +125,6 @@ class Nav extends React.Component {
     this.handleFindPwModal()
   }
 
-
   render() {
     console.log("nav 프롭", this.props);
     return (
@@ -197,12 +196,12 @@ class Nav extends React.Component {
         />
         <FindEmail
           isOpen={this.state.isFindEmailModalOpen}
-          handleModal={this.handleFindEmailModal}
+          handleFindEmailModal={this.handleFindEmailModal}
         />
 
         <FindPw
           isOpen={this.state.isFindPwModalOpen}
-          handleModal={this.handleFindPwModal}
+          handleFindPwModal={this.handleFindPwModal}
         />
       </div>
     );

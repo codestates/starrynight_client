@@ -16,9 +16,8 @@ class SignIn extends React.Component {
       email: "",
       password: "",
 
-
-      isFindEmailModalOpen: false,
-      isFindPwModalOpen: false
+      // isFindEmailModalOpen: false,
+      // isFindPwModalOpen: false
     }
   }
 
@@ -101,6 +100,13 @@ class SignIn extends React.Component {
       // .catch((error) => )
     }
   }
+  // 엔터키를 눌러도 로그인 버튼 누르게 하는 기능
+  signInPress = (e) => {
+    if (e.key === "Enter") {
+      this.handleSignIn();
+    }
+  }
+
   //! 세션 스토리지에 저장 후, 중앙제어시스템격인 isLogin 스위치를 가지고 있는 main.js에서 만약 세션 스토리지에 email이 있다면 isLogin을 true로 혹은 false로 제어하여 하위 컴포넌트들이 이 영향을 받아 출력 혹은 비출력하게 할 것.
   doSignIn = () => {
     const { email, userId, loginPlatformId } = this.state;
@@ -113,6 +119,7 @@ class SignIn extends React.Component {
 
   render() {
     console.log("BeforeLogin컴포넌트로부터 내려오는 사인인 프롭스", this.props)
+    console.log("signIn 스테이트", this.state)
     return (
 
       <div>
@@ -172,6 +179,7 @@ class SignIn extends React.Component {
                     className="signIn_Button"
                     // type="submit"
                     onClick={this.handleSignIn}
+                    onKeyPress={this.signInPress}
                   >
                     로그인
                     </button>
