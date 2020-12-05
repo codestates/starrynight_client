@@ -111,7 +111,7 @@ class SignIn extends React.Component {
   doSignIn = () => {
     const { email, userId, loginPlatformId } = this.state;
     // window.sessionStorage.setItem("email", email);
-    window.sessionStorage.setItem("userId", userId)
+    window.localStorage.setItem("userId", userId)
     // window.sessionStorage.setItem("loginPlatformId", loginPlatformId);
     this.props.handleResponseSuccess();   // Main-> Nav로 타고내려온 Main의 isLogin을 true로 바꿔줌
     this.props.handleSignInModal();
