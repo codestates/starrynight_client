@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 // css
 import "../css/Mypage.scss"
@@ -8,6 +9,38 @@ import "../css/Mypage.scss"
 class Mypage extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      email: "",
+      password: "",
+      nickname: "",
+      mobile: "",
+      oauth: "",
+      profile: ""
+    }
+  }
+
+  getUserInfo = () => {
+    axios.get("https://api.mystar-story.com/user/mypage", {
+      withCredentials: true
+    })
+      .then((response) => {
+        console.log("마이페이지 리스폰스 뭘받아와?", response)
+        this.setState({
+          email: response.data.email,
+          password: response.data.password,
+          nickname: response.data.nickname,
+          mobile: response.data.mobile,
+          oauth: response.data.oauth,
+          profile: response.data.profile
+        })
+      })
+      .catch((error) => {
+        // console.log(error.response.data)
+      })
+  }
+
+  componentDidMount() {
+    this.getUserInfo()
   }
 
   render() {

@@ -82,9 +82,11 @@ class SignIn extends React.Component {
           console.log("사인인 뭘 받아와?", response)
           console.log("쿠키", document.cookie)
 
-          const { accessToken } = response.data.accessToken;
+          const accessToken = response.data.accessToken;
+          console.log("accessToken", accessToken)
           //API 요청하는 콜마다 헤더에 accseeToken을 담아 보내도록 설정
           axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+          // axios.defaults.headers.common['Authorization'] = accessToken;
 
           // accessToken을 localStorage, cookie 등에 저장하지 않는다.
 
