@@ -34,7 +34,9 @@ class FindEmail extends React.Component {
       })
     }
     else {
-      axios.post("https://api.mystar-story.com/user/find/email", mobile)
+      axios.post("https://api.mystar-story.com/user/find/email", mobile, {
+        withCredentials: true
+      })
         .then((respoense) => {
           this.setState({
             result: respoense.data,
