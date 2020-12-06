@@ -37,7 +37,7 @@ class Main extends React.Component {
     this.setState({
       isLogin: true,
     });
-    axios.get("https://api.mystar-story.com", {
+    axios.get("https://api.mystar-story.com/main", {
       withCredentials: true
     })
       .then((response) => {
