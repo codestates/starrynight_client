@@ -27,7 +27,7 @@
   /* ------------Nav ------------------- */
   .nav {
     .nav_div {
-      // background: rgba(0, 0, 0, 0.2);
+      // background: rgba(0, 0, 0, 0.3);
       background: #192f6d;
  
       padding: 0px 20px;
@@ -40,7 +40,7 @@
       display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
       // background-color: none;
       
-      // justify-content: space-be;
+      justify-content: space-between;
       align-items: center;
       // opacity: 0;
   
@@ -108,7 +108,7 @@
           right: 0px;
           border-radius: 10px;
   
-          top: 8.5vh;
+          top: 12vh;
   
           width: 17%;
   
@@ -156,7 +156,7 @@
 
           
   
-          top: 8.5vh;
+          top: 12vh;
   
           width: 15%;
   
@@ -173,7 +173,8 @@
   
       /* ----- 햄버거 토글 ----- */
       .hamburgerToggle_ON {
-  
+        right: 50px;
+        position: absolute;
         // padding-left: 30vw;
         div {
           // position: fixed;
@@ -198,11 +199,12 @@
       }
   
       .hamburgerToggle_OFF {
+        // display: block;
         position: absolute;
-        right: 0px;
+        right: 50px;
         // width: 300px;
-        border: 3px solid #73AD21;
-        padding: 10px;
+        // border: 3px solid #73AD21;
+        // padding: 10px;
       
         
         div {

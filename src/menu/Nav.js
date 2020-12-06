@@ -51,6 +51,7 @@ class Nav extends React.Component {
   }
 
 
+
   //! ----------------------- signIn 관련 & signUp 모달 관련 메소드들: before과 signIn, signUp 형제관계 형성. ------------------------------- */
 
   /* --------------------- 모달창 이벤트 --------------------- */
@@ -125,7 +126,6 @@ class Nav extends React.Component {
     this.handleFindPwModal()
   }
 
-
   render() {
     console.log("nav 프롭", this.props);
     return (
@@ -147,7 +147,7 @@ class Nav extends React.Component {
           (this.props.isLogin === true ?
             <AfterLogin
               isHamburgerOn={this.state.isHamburgerOn}
-              // handleHamburgerclick={this.handleHamburgerclick}
+              handleHamburgerclick={this.handleHamburgerclick}
               // handleSignOut={this.props.handleSignOut}
               hamburgerModalOFFWithSignOut={this.hamburgerModalOFFWithSignOut}
             />
@@ -197,12 +197,12 @@ class Nav extends React.Component {
         />
         <FindEmail
           isOpen={this.state.isFindEmailModalOpen}
-          handleModal={this.handleFindEmailModal}
+          handleFindEmailModal={this.handleFindEmailModal}
         />
 
         <FindPw
           isOpen={this.state.isFindPwModalOpen}
-          handleModal={this.handleFindPwModal}
+          handleFindPwModal={this.handleFindPwModal}
         />
       </div>
     );
