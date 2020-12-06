@@ -7,7 +7,7 @@ function DoubleCheckRemoveUsers(props) {
     <div>
     {props.isOpen === true ?
     <div className="modal_DoubleCheckRemoveUsers">
-      <div className="modal_DoubleCheckRemoveUsers_overlay" onClick={props.handleModal}></div>
+      <div className="modal_DoubleCheckRemoveUsers_overlay" onClick={props.redirectFromDoubleCheckToMypage}></div>
       <div className="modal_DoubleCheckRemoveUsers_content">
         {/* -------------------------- 타이틀 -------------------------*/}
         <h2>회원 탈퇴</h2>
@@ -28,7 +28,7 @@ function DoubleCheckRemoveUsers(props) {
         {/* -------------------------- 버튼  --------------------*/}
         <div>
           <div>
-            <button className="redirect_to_main_inDoubleCheckRemoveUsers" onClick={props.redirectFromDoubleCheckToMypage}>
+            <button className="redirect_to_mypage_inDoubleCheckRemoveUsers" onClick={props.redirectFromDoubleCheckToMypage}>
               
                 돌아가기
               

@@ -5,9 +5,9 @@ function Gallery(props) {
     <div>
 
 
-    {props.isOpen === true ?
+    {props.isGalleryModalOpen === true ?
       <div className="modal_findEmail">
-        <div className="modal_findEmail_overlay" onClick={props.handleModal}></div>
+        <div className="modal_findEmail_overlay" onClick={props.handleGalleryModal}></div>
         <div className="modal_findEmail_content">
           {/* -------------------------- 타이틀 -------------------------*/}
           <h2>개애애애애애</h2>

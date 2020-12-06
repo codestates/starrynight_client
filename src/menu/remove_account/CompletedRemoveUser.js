@@ -22,7 +22,7 @@ class CompletedRemoveUser extends React.Component {
         {this.props.isOpen === true ?
 
           <div className="modal_CompletedRemoveUser">
-            <div className="modal_CompletedRemoveUser_overlay" onClick={this.props.handleModal}></div>
+            <div className="modal_CompletedRemoveUser_overlay" onClick={this.signOutAndMoveToHome}></div>
             <div className="modal_CompletedRemoveUser_content">
               {/* -------------------------- 타이틀 -------------------------*/}
               <h2>회원 탈퇴</h2>
