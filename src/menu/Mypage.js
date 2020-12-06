@@ -35,7 +35,7 @@ class Mypage extends React.Component {
         })
       })
       .catch((error) => {
-        // console.log(error.response.data)
+        console.log(error.response.data)
       })
   }
 
@@ -46,6 +46,7 @@ class Mypage extends React.Component {
   render() {
 
     console.log("마이페이지 프롭", this.props)
+    console.log("마이페이지 state", this.state)
 
     return (
       <div>
