@@ -28,7 +28,7 @@ function DoubleCheckRemoveUsers(props) {
         {/* -------------------------- 버튼  --------------------*/}
         <div>
           <div>
-            <button className="redirect_to_main_inDoubleCheckRemoveUsers" type="submit">
+            <button className="redirect_to_main_inDoubleCheckRemoveUsers" onClick={props.redirectFromDoubleCheckToMypage}>
               
                 돌아가기
               

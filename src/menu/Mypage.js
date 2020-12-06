@@ -74,7 +74,7 @@ class Mypage extends React.Component {
   }
   // 수정요청 보내기
   requestModifyPw = () => {
-    axios.patch("https://mystar-story.com/user/modify/password", this.state.password, {
+    axios.patch("https://api.mystar-story.com/user/modify/password", this.state.password, {
       withCredentials: true
     })
       .then((response) => {
@@ -88,7 +88,7 @@ class Mypage extends React.Component {
     })
   }
   requestModifyNickname = () => {
-    axios.patch("https://mystar-story.com/user/modify/nickname", this.state.nickname, {
+    axios.patch("https://api.mystar-story.com/user/modify/nickname", this.state.nickname, {
       withCredentials: true
     })
       .then((response) => {
@@ -105,7 +105,7 @@ class Mypage extends React.Component {
     })
   }
   requestModifyMobile = () => {
-    axios.patch("https://mystar-story.com/user/modify/nickname", this.state.mobile, {
+    axios.patch("https://api.mystar-story.com/user/modify/nickname", this.state.mobile, {
       withCredentials: true
     })
       .then((response) => {

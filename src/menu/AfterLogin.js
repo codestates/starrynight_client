@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 //  components
 import Gallery from "./Gallery";
@@ -76,9 +77,9 @@ class AfterLogin extends React.Component {
   //! (주의) 한 개의 화면에 한 개의 모달을 띄우기 위해서는
   //! Mypage컴포넌트와 회원탈퇴 컴포넌트를 부모-자식 관계로 두면 꼬여버리니, 형제관계로 만들어 state끌어올리기 식으로 구현!
   //? 연동해체모달과 탈퇴완료 모달도 마찬가지.
-  DoubleCheckRemoveUsersClick = () => {   // 회원탈퇴를 누르면
+  DoubleCheckRemoveUsersClick = () => {   // 회원탈퇴를 누르면  
     this.setState({
-      isMypageModalOpen: false    // 마이페이지 모달 끄고
+      isMypageModalOpen: !this.state.isMypageModalOpen    // 마이페이지 모달 끄고
     })
     this.handleDoubleCheckRemoveUsersModal()  // 정말 탈퇴할건지 재확인 모달 켜.
   }
@@ -90,10 +91,18 @@ class AfterLogin extends React.Component {
     })
   }
   CompletedRemoveUserClick = () => {
-    this.setState({
-      isDoubleCheckRemoveUsersModalOpen: false
+    // 더블체크 모달에서 회원탈퇴를 누르는 순간 탈퇴 GET요청을 보내고 회원탈퇴완료모달 띄우기
+    axios.get("https://api.mystar-story.com/user/delete", {    // 회원탈퇴 요청보내고
+      withCredentials: true
     })
-    this.handleCompletedRemoveUser()
+      .then((response) => {
+        console.log("회원탈퇴 요청 성공 메세지 =>", response.data)
+      })
+
+    this.setState({
+      isDoubleCheckRemoveUsersModalOpen: false    // 더블체크 모달 끄고
+    })
+    this.handleCompletedRemoveUser()    // 회원탈퇴완료 모달을 띄워라.
   }
 
   // 소셜로그인 성공시 구현 마무리 하기
@@ -150,15 +159,16 @@ class AfterLogin extends React.Component {
 
             <Mypage
               isOpen={this.state.isMypageModalOpen}
-              handleModal={this.handleMypageModal}
-              DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}
+              handleModal={this.handleMypageModal}  // 오버레이 누르면 모달 꺼지기
+              DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}  // 마이페이지 끄고 더블체크모달로 가기
             />
 
 
             <DoubleCheckRemoveUsers
               isOpen={this.state.isDoubleCheckRemoveUsersModalOpen}
-              handleModal={this.handleDoubleCheckRemoveUsersModal}
-              CompletedRemoveUserClick={this.CompletedRemoveUserClick}
+              handleModal={this.handleDoubleCheckRemoveUsersModal}  // 오버레이 누르면 모달 꺼지기
+              redirectFromDoubleCheckToMypage={this.DoubleCheckRemoveUsersClick}  // 마이페이지로 "돌아가기"
+              CompletedRemoveUserClick={this.CompletedRemoveUserClick}  // 회원탈퇴완료모달로 이동
             />
             <CompletedRemoveUser
               isOpen={this.state.isCompletedRemoveUserModalOpen}
