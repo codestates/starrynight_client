@@ -1,9 +1,9 @@
 function Favorites(props) {
   return (
     <div>
- {props.isOpen === true ?
+ {props.isFavoritesModalOpen === true ?
       <div className="modal_findEmail">
-        <div className="modal_findEmail_overlay" onClick={props.handleModal}></div>
+        <div className="modal_findEmail_overlay" onClick={props.handleFavoritesModal}></div>
         <div className="modal_findEmail_content">
           {/* -------------------------- 타이틀 -------------------------*/}
           <h2>즈으으을겨어어</h2>
