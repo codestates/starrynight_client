@@ -161,6 +161,7 @@ class Mypage extends React.Component {
   }
 
   render() {
+    console.log("mypage CooKieeeeee", document.cookie)
     console.log("변경될 비밀번호", this.state.password)
     console.log("변경될 별명", this.state.nickname)
     console.log("변경될 연락처", this.state.mobile)
