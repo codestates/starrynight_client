@@ -56,6 +56,7 @@ const App = () => {
     <>
       {/* <withRouter> */}
       <main className="App">
+
         <section className="scrolledsection is-visible">
           <figure className="scrolledsection__bg-image" data-img>
             {/* <img
@@ -74,6 +75,7 @@ const App = () => {
               <FaArrowDown />
             </div>
           </div>
+
         </section>
 
         <section className="scrolledsection">
@@ -85,6 +87,7 @@ const App = () => {
             <div className="scrolledsection__inner" data-observer></div>
           </div> */}
         </section>
+
       </main>
       {/* </withRouter> */}
     </>
