@@ -1,0 +1,61 @@
+.myModal_RemoveComment {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* background-color: yellow; */
+}
+
+.modalContent_RemoveComment {
+  border-radius: 40px;
+  position: relative;
+  background-color: rgb(56, 35, 41);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border: 2px solid rgb(160, 160, 160);
+  width: 70%;
+  height: 70%;
+  top: 10%;
+  vertical-align: middle;
+  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.4),
+    4px 8px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.removeComment_text {
+  position: relative;
+  top: 15%;
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.removeComment_DeleteBtn {
+  position: relative;
+  display: block;
+  top: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 10%;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.removeComment_ReturnBtn {
+  position: relative;
+  display: block;
+  top: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 10%;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+}

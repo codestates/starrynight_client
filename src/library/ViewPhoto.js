@@ -1,14 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
 import "../css/ViewPhoto.css";
 import All from "./All";
+import Comments from "./Comments";
 
-function ViewPhoto() {
-  return (
-    <div className="ViewPhoto">
-      {/* <header className="App-header">뷰포토 컴포넌트 입니다.</header> */}
-      <All />
-    </div>
-  );
+class ViewPhoto extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  handleModalControl = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+    console.log(`isOpen: ${this.state.isOpen}`);
+  };
+
+  render() {
+    return (
+      <div className="ViewPhoto">
+        <Comments
+          isOpen={this.state.isOpen}
+          handleModalControl={this.handleModalControl}
+        />
+        <All handleModalControl={this.handleModalControl} />
+      </div>
+    );
+  }
 }
 
 export default ViewPhoto;
