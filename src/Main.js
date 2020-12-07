@@ -59,7 +59,7 @@ class Main extends React.Component {
 
   // 세션스토리지 저장 정보 모두 삭제. (세션 스토리지 정보로 새로고침 로그인 유지 기능을 더이상 사용하지 않기 위함.)
   doSignOut = () => {
-    axios.post("httsp://api.mystar-story.com/signout", {
+    axios.post("htts://api.mystar-story.com/user/signout", {
       withCredentials: true
     })
       .then(response => {
