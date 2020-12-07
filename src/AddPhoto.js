@@ -21,15 +21,7 @@ function AddPhoto(props) {
   const [FilePath, setFilePath] = useState("");
 
   // 위치 찾기
-  // const handleSearch = (value) => {
-  //   return (
-  //     <a
-  //       href={`http://map.kakao.com/?q=${value}`}
-  //       target="_blank"
-  //       // rel="noopener noreferrer"
-  //     />
-  //   );
-  // };
+  // const handleSearch = (value) => {};
 
   // 사진업로드 drop & down을 정의한다
   const onDrop = (files) => {
@@ -43,8 +35,8 @@ function AddPhoto(props) {
       header: { "content-type": "multipart/form-data" },
     };
     Axios.post(
-      // "https://api.mystar-story.com/addphoto",
-      "http://localhost:8000/addphoto",
+      "https://api.mystar-story.com/addphoto",
+      // "http://localhost:8000/addphoto",
       formData,
       config
     ).then((res) => {
@@ -69,9 +61,9 @@ function AddPhoto(props) {
       location: PhotoLocation,
     };
 
-    //  Axios.post("https://api.mystar-story.com/savephoto", photoUploadInfo).then((res) => {
-    Axios.post("http://localhost:8000/savephoto", photoUploadInfo).then(
-      (res) => {
+    Axios.post("https://api.mystar-story.com/savephoto", photoUploadInfo)
+      // Axios.post("http://localhost:8000/savephoto", photoUploadInfo)
+      .then((res) => {
         if (res.data.success) {
           console.log(res.data);
           message.success("사진 업로드가 완료되었습니다");
@@ -81,8 +73,7 @@ function AddPhoto(props) {
         } else {
           alert("사진 업로드에 실패하였습니다");
         }
-      }
-    );
+      });
   };
 
   // 입력필드를 활성화한다(사진제목)

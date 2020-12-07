@@ -1,13 +1,25 @@
 import React from "react";
+import axios from "axios";
+
 import { BrowserRouter, withRouter, NavLink } from "react-router-dom";
 
 //logo
 import imgFile from "../image/logo_StarryNight.png";
 
-//components
+/* components */
 import AfterLogin from "./AfterLogin";
 import BeforeLogin from "./BeforeLogin";
 
+// afterLogin
+import Gallery from "./Gallery";
+import Favorites from "./Favorites";
+import Mypage from "./Mypage";
+import SignOut from "./SignOut";
+import DoubleCheckRemoveUsers from "./remove_account/DoubleCheckRemoveUsers";
+import CompletedRemoveUser from "./remove_account/CompletedRemoveUser";
+import SocialLogInDisconnected from "./remove_account/SocialLogInDisconnected";
+
+// beforeLogin
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import FindEmail from "./find_account/FindEmail";
@@ -21,6 +33,19 @@ class Nav extends React.Component {
     super(props);
     this.state = {
       isHamburgerOn: false,
+
+      currentUserInfo: {},
+
+      // afterLogin
+      isGalleryModalOpen: false,
+      isFavoritesModalOpen: false,
+      isMypageModalOpen: false,
+      isSignOutModalOpen: false,
+      isDoubleCheckRemoveUsersModalOpen: false,
+      isCompletedRemoveUserModalOpen: false,
+      isSocialLogInDisconnectedOpen: false,
+
+      // beforeLogin
       isSignInModalOpen: false,
       isSignUpModalOpen: false,
       isFindEmailModalOpen: false,
@@ -51,7 +76,129 @@ class Nav extends React.Component {
   }
 
 
-  //! ----------------------- signIn 관련 & signUp 모달 관련 메소드들: before과 signIn, signUp 형제관계 형성. ------------------------------- */
+  //! ----------------------- AfterLogin 모달 관련 메소드들: after과 관련 컴포넌트들 형제관계 형성. ------------------------------- */
+
+  /* --------------------- 모달창 이벤트 --------------------- */
+  // 각각의 모달창 중복 작동 방지를 위해 이벤트를 각각 생성
+  // isModalOpen이 false로 변하면 아래 render부분에서 삼항연산자를 통해 false시 null효과를 받게되고 창은 꺼지게 할 것임.
+
+  handleGalleryModal = () => {
+    this.setState({
+      isGalleryModalOpen: !this.state.isGalleryModalOpen
+    })
+  }
+  galleryClick = () => {
+    this.handleHamburgerclick()
+    this.handleGalleryModal()
+  }
+
+  handleFavoritesModal = () => {
+    this.setState({
+      isFavoritesModalOpen: !this.state.isFavoritesModalOpen
+    })
+  }
+  favoritesClick = () => {
+    this.handleHamburgerclick()
+    this.handleFavoritesModal()
+  }
+
+  handleMypageModal = () => {
+    this.setState({
+      isMypageModalOpen: !this.state.isMypageModalOpen
+    })
+    //! 모달창 띄웠을 때 body의 스크롤 방지
+    //? 원래 모달오픈이 true이면 hidden으로 스크롤 방지가 되어야하는데 여기선 그 반대가 되야 작동 및 해제가 된다. 
+    //? 왜 그런걸까............?..........ㅜㅜ........
+    if (this.state.isMypageModalOpen === false) {
+      document.body.style.overflow = "hidden";
+    }
+    if (this.state.isMypageModalOpen === true) {
+      // 모달이 켜져있을 때 스크롤방지기능 작동했던 것을 다시 해제
+      document.body.style.overflow = "unset";
+    }
+  }
+  mypageClick = () => {
+    this.handleHamburgerclick()
+    this.handleMypageModal()
+
+    axios.get("https://api.mystar-story.com/user/mypage", {
+      withCredentials: true
+    })
+      .then((response) => {
+        console.log("마이페이지 리스폰스 뭘받아와?", response)
+        this.setState({
+          ...this.state,
+          currentUserInfo: {
+            email: response.data.email,
+            password: response.data.password,
+            nickname: response.data.nickname,
+            mobile: response.data.mobile,
+            oauth: response.data.oauth,
+            profile: response.data.profile
+          }
+        })
+      })
+      .catch((error) => {
+        console.log(error.response.data)
+      })
+  }
+
+  // handleSignOutModal = () => {
+  //   this.setState({
+  //     isSignOutModalOpen: !this.state.isSignOutModalOpen
+  //   })
+  // }
+
+  handleDoubleCheckRemoveUsersModal = () => {
+    this.setState({
+      isDoubleCheckRemoveUsersModalOpen: !this.state.isDoubleCheckRemoveUsersModalOpen
+    })
+  }
+  // Mypage로 props로 전달이 될 것. 
+  // 회원 탈퇴버튼에 이벤트를 걸 예정이며,
+  // 버튼 클릭과 동시에 여기(AfterLogin) 컴포넌트에서 Mypage를 false로 만들어 끄게 할 것이며
+  // 그와 동시에 회원탈퇴 모달이 true로 바뀌어 작동할 수 있게끔 셋팅해주는 이벤트 핸들러.
+  //! (주의) 한 개의 화면에 한 개의 모달을 띄우기 위해서는
+  //! Mypage컴포넌트와 회원탈퇴 컴포넌트를 부모-자식 관계로 두면 꼬여버리니, 형제관계로 만들어 state끌어올리기 식으로 구현!
+  //? 연동해체모달과 탈퇴완료 모달도 마찬가지.
+  DoubleCheckRemoveUsersClick = () => {   // 회원탈퇴를 누르면  
+    this.setState({
+      isMypageModalOpen: !this.state.isMypageModalOpen    // 마이페이지 모달 끄고
+    })
+    this.handleDoubleCheckRemoveUsersModal()  // 정말 탈퇴할건지 재확인 모달 켜.
+  }
+
+  // 일반 회원 탈퇴 완료(더블체크컴포넌트와 형제관계 Yes! 부모관계 No!!!)
+  handleCompletedRemoveUser = () => {
+    this.setState({
+      isCompletedRemoveUserModalOpen: !this.state.isCompletedRemoveUserModalOpen
+    })
+  }
+  CompletedRemoveUserClick = () => {
+    // 더블체크 모달에서 회원탈퇴를 누르는 순간 탈퇴 GET요청을 보내고 회원탈퇴완료모달 띄우기
+    axios.get("https://api.mystar-story.com/user/delete", {    // 회원탈퇴 요청보내고
+      withCredentials: true
+    })
+      .then((response) => {
+        console.log("회원탈퇴 요청 성공 메세지 =>", response.data)
+      })
+
+    this.setState({
+      isDoubleCheckRemoveUsersModalOpen: false    // 더블체크 모달 끄고
+    })
+    this.handleCompletedRemoveUser()    // 회원탈퇴완료 모달을 띄워라.
+  }
+
+  // 소셜로그인 성공시 구현 마무리 하기
+  handleSocialLogInDisconnected = () => {
+    this.setState({
+      isSocialLogInDisconnectedOpen: !this.state.isSocialLogInDisconnectedOpen
+    })
+  }
+
+
+
+  //! ----------------------- BeforeLogin 모달 관련 메소드들: before과 signIn, signUp 형제관계 형성. ------------------------------- */
 
   /* --------------------- 모달창 이벤트 --------------------- */
   // 각각의 모달창 중복 작동 방지를 위해 이벤트를 각각 생성
@@ -125,9 +272,9 @@ class Nav extends React.Component {
     this.handleFindPwModal()
   }
 
-
   render() {
     console.log("nav 프롭", this.props);
+    console.log("마이페이지 불린값", this.state.isMypageModalOpen)
     return (
       <div className="nav_div">
 
@@ -147,7 +294,10 @@ class Nav extends React.Component {
           (this.props.isLogin === true ?
             <AfterLogin
               isHamburgerOn={this.state.isHamburgerOn}
-              // handleHamburgerclick={this.handleHamburgerclick}
+              handleHamburgerclick={this.handleHamburgerclick}
+              galleryClick={this.galleryClick}
+              favoritesClick={this.favoritesClick}
+              mypageClick={this.mypageClick}
               // handleSignOut={this.props.handleSignOut}
               hamburgerModalOFFWithSignOut={this.hamburgerModalOFFWithSignOut}
             />
@@ -182,7 +332,40 @@ class Nav extends React.Component {
           </div>
         }
 
+        {/* ------afterLogin 관련 모달들 (형제관계로 변경함.) ----------------------- */}
+        <Gallery
+          isGalleryModalOpen={this.state.isGalleryModalOpen}
+          // galleryClick={this.galleryClick}
+          handleGalleryModal={this.handleGalleryModal}
+        />
+        <Favorites
+          isFavoritesModalOpen={this.state.isFavoritesModalOpen}
+          handleFavoritesModal={this.handleFavoritesModal}
+        />
 
+        {/* 회원탈퇴의 경우 마이페이지에서 자식컴포넌트로 생성하는 것보다는 마이페이지와 형제 관계를 형성한 후 
+   마이페이지 컴포넌트에 위치한 "회원탈퇴" 버튼에 
+   회원탈퇴 모달을 띄우기 위한 회원탈퇴 state=true변환이 아니라!
+  "마이페이지 => false로 만드는 클릭이벤트만 props으로 내려 버튼에 건다!!"(발상의 전환) --> 
+  --> 버튼을 클릭 시 발생하는 이벤트는 다시 state 끌어올리기로 인해 afterlogin 컴포넌트에서의 Mypage의 state값이 다시 false로 변환이되어
+  Mypage 컴포넌트는 꺼지고 곧바로 회원탈퇴 모달이 켜지도록(handleDoubleCheckRemoveUsersModal) 이벤트핸들러를 혼합한다.  */}
+        <Mypage
+          sendStateForMypage={this.state.currentUserInfo}
+          isMypageModalOpen={this.state.isMypageModalOpen}
+          handleMypageModal={this.handleMypageModal}  // 오버레이 누르면 모달 꺼지기
+          DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}  // 마이페이지 끄고 더블체크모달로 가기
+        />
+        <DoubleCheckRemoveUsers
+          isOpen={this.state.isDoubleCheckRemoveUsersModalOpen}
+          // handleModal={this.handleDoubleCheckRemoveUsersModal}  // 오버레이 누르면 모달 꺼지기
+          redirectFromDoubleCheckToMypage={this.DoubleCheckRemoveUsersClick}  // 마이페이지로 "돌아가기"
+          CompletedRemoveUserClick={this.CompletedRemoveUserClick}  // 회원탈퇴완료모달로 이동
+        />
+        <CompletedRemoveUser
+          isOpen={this.state.isCompletedRemoveUserModalOpen}
+        />
+
+        {/* ------beforeLogin 관련 모달들 (형제관계로 변경함.) ----------------------- */}
 
         <SignIn
           isOpen={this.state.isSignInModalOpen}
@@ -197,12 +380,12 @@ class Nav extends React.Component {
         />
         <FindEmail
           isOpen={this.state.isFindEmailModalOpen}
-          handleModal={this.handleFindEmailModal}
+          handleFindEmailModal={this.handleFindEmailModal}
         />
 
         <FindPw
           isOpen={this.state.isFindPwModalOpen}
-          handleModal={this.handleFindPwModal}
+          handleFindPwModal={this.handleFindPwModal}
         />
       </div>
     );
