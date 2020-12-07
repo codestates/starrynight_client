@@ -20,13 +20,19 @@
     background: white;
     color: black;
     position: relative;
-    width: 30%;
+    width: 60%;
     text-align: center;
     border-radius: 10px;
   }
 
   .userInfo_input_container_inMypage {
     background: skyblue;
+    .div{
+      display: flex;
+    }
+    
+    
+    align-items: center;
     margin-right: 7%;
     margin-left: 7%;
     margin-bottom: 7%;

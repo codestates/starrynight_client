@@ -121,26 +121,26 @@ class Nav extends React.Component {
     this.handleHamburgerclick()
     this.handleMypageModal()
 
-    axios.get("https://api.mystar-story.com/user/mypage", {
-      withCredentials: true
-    })
-      .then((response) => {
-        console.log("마이페이지 리스폰스 뭘받아와?", response)
-        this.setState({
-          ...this.state,
-          currentUserInfo: {
-            email: response.data.email,
-            password: response.data.password,
-            nickname: response.data.nickname,
-            mobile: response.data.mobile,
-            oauth: response.data.oauth,
-            profile: response.data.profile
-          }
-        })
-      })
-      .catch((error) => {
-        console.log(error.response.data)
-      })
+    // axios.get("https://api.mystar-story.com/user/mypage", {
+    //   withCredentials: true
+    // })
+    //   .then((response) => {
+    //     console.log("마이페이지 리스폰스 뭘받아와?", response)
+    //     this.setState({
+    //       ...this.state,
+    //       currentUserInfo: {
+    //         email: response.data.email,
+    //         password: response.data.password,
+    //         nickname: response.data.nickname,
+    //         mobile: response.data.mobile,
+    //         oauth: response.data.oauth,
+    //         profile: response.data.profile
+    //       }
+    //     })
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.response.data)
+    //   })
   }
 
   // handleSignOutModal = () => {
@@ -350,7 +350,7 @@ class Nav extends React.Component {
   --> 버튼을 클릭 시 발생하는 이벤트는 다시 state 끌어올리기로 인해 afterlogin 컴포넌트에서의 Mypage의 state값이 다시 false로 변환이되어
   Mypage 컴포넌트는 꺼지고 곧바로 회원탈퇴 모달이 켜지도록(handleDoubleCheckRemoveUsersModal) 이벤트핸들러를 혼합한다.  */}
         <Mypage
-          sendStateForMypage={this.state.currentUserInfo}
+          // sendStateForMypage={this.state.currentUserInfo}
           isMypageModalOpen={this.state.isMypageModalOpen}
           handleMypageModal={this.handleMypageModal}  // 오버레이 누르면 모달 꺼지기
           DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}  // 마이페이지 끄고 더블체크모달로 가기
