@@ -55,9 +55,9 @@ class Mypage extends React.Component {
           }
         })
       })
-      .catch((error) => {
-        console.log(error.response.data)
-      })
+    // .catch((error) => {
+    //   console.log(error.response.data)
+    // })
   }
 
 

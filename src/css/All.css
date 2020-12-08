@@ -12,6 +12,10 @@
   padding: 0 40px;
 }
 
+.photo {
+  cursor: pointer;
+}
+
 .column1 {
   flex: 33.3%;
   max-width: 33.3%;
