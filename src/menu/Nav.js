@@ -34,7 +34,15 @@ class Nav extends React.Component {
     this.state = {
       isHamburgerOn: false,
 
-      currentUserInfo: {},
+      // 순전히 화면에 변경 전의 정보를 렌더하는 역할
+      // currentUserInfo: {
+      //   email: "",
+      //   password: "",
+      //   nickname: "",
+      //   mobile: "",
+      //   oauth: "",
+      //   profile: ""
+      // },
 
       // afterLogin
       isGalleryModalOpen: false,
@@ -57,6 +65,7 @@ class Nav extends React.Component {
   //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 main 페이지로 리다이렉트 하기.
   handleLogoClickToRedirectToMain = () => {
     this.props.history.push("/");
+    // window.location.href = "/";
   };
 
   /* 햄버거 토글 ON / OFF */
@@ -121,6 +130,7 @@ class Nav extends React.Component {
     this.handleHamburgerclick()
     this.handleMypageModal()
 
+
     // axios.get("https://api.mystar-story.com/user/mypage", {
     //   withCredentials: true
     // })
@@ -138,9 +148,10 @@ class Nav extends React.Component {
     //       }
     //     })
     //   })
-    //   .catch((error) => {
-    //     console.log(error.response.data)
-    //   })
+    // .catch((error) => {
+    //   console.log(error.response.data)
+    // })
+
   }
 
   // handleSignOutModal = () => {
@@ -333,37 +344,46 @@ class Nav extends React.Component {
         }
 
         {/* ------afterLogin 관련 모달들 (형제관계로 변경함.) ----------------------- */}
-        <Gallery
-          isGalleryModalOpen={this.state.isGalleryModalOpen}
-          // galleryClick={this.galleryClick}
-          handleGalleryModal={this.handleGalleryModal}
-        />
-        <Favorites
-          isFavoritesModalOpen={this.state.isFavoritesModalOpen}
-          handleFavoritesModal={this.handleFavoritesModal}
-        />
+        {this.props.isLogin ?
+          <>
+            <Gallery
+              isGalleryModalOpen={this.state.isGalleryModalOpen}
+              // galleryClick={this.galleryClick}
+              handleGalleryModal={this.handleGalleryModal}
+            />
+            <Favorites
+              isFavoritesModalOpen={this.state.isFavoritesModalOpen}
+              handleFavoritesModal={this.handleFavoritesModal}
+            />
 
-        {/* 회원탈퇴의 경우 마이페이지에서 자식컴포넌트로 생성하는 것보다는 마이페이지와 형제 관계를 형성한 후 
+            {/* 회원탈퇴의 경우 마이페이지에서 자식컴포넌트로 생성하는 것보다는 마이페이지와 형제 관계를 형성한 후 
    마이페이지 컴포넌트에 위치한 "회원탈퇴" 버튼에 
    회원탈퇴 모달을 띄우기 위한 회원탈퇴 state=true변환이 아니라!
-  "마이페이지 => false로 만드는 클릭이벤트만 props으로 내려 버튼에 건다!!"(발상의 전환) --> 
-  --> 버튼을 클릭 시 발생하는 이벤트는 다시 state 끌어올리기로 인해 afterlogin 컴포넌트에서의 Mypage의 state값이 다시 false로 변환이되어
+   "마이페이지 => false로 만드는 클릭이벤트만 props으로 내려 버튼에 건다!!"(발상의 전환) --> 
+   --> 버튼을 클릭 시 발생하는 이벤트는 다시 state 끌어올리기로 인해 afterlogin 컴포넌트에서의 Mypage의 state값이 다시 false로 변환이되어
   Mypage 컴포넌트는 꺼지고 곧바로 회원탈퇴 모달이 켜지도록(handleDoubleCheckRemoveUsersModal) 이벤트핸들러를 혼합한다.  */}
-        <Mypage
-          // sendStateForMypage={this.state.currentUserInfo}
-          isMypageModalOpen={this.state.isMypageModalOpen}
-          handleMypageModal={this.handleMypageModal}  // 오버레이 누르면 모달 꺼지기
-          DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}  // 마이페이지 끄고 더블체크모달로 가기
-        />
-        <DoubleCheckRemoveUsers
-          isOpen={this.state.isDoubleCheckRemoveUsersModalOpen}
-          // handleModal={this.handleDoubleCheckRemoveUsersModal}  // 오버레이 누르면 모달 꺼지기
-          redirectFromDoubleCheckToMypage={this.DoubleCheckRemoveUsersClick}  // 마이페이지로 "돌아가기"
-          CompletedRemoveUserClick={this.CompletedRemoveUserClick}  // 회원탈퇴완료모달로 이동
-        />
-        <CompletedRemoveUser
-          isOpen={this.state.isCompletedRemoveUserModalOpen}
-        />
+
+
+
+
+            <Mypage
+              // currentUserInfo={this.state.currentUserInfo}
+              isMypageModalOpen={this.state.isMypageModalOpen}
+              handleMypageModal={this.handleMypageModal}  // 오버레이 누르면 모달 꺼지기
+              DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}  // 마이페이지 끄고 더블체크모달로 가기
+            />
+            <DoubleCheckRemoveUsers
+              isOpen={this.state.isDoubleCheckRemoveUsersModalOpen}
+              // handleModal={this.handleDoubleCheckRemoveUsersModal}  // 오버레이 누르면 모달 꺼지기
+              redirectFromDoubleCheckToMypage={this.DoubleCheckRemoveUsersClick}  // 마이페이지로 "돌아가기"
+              CompletedRemoveUserClick={this.CompletedRemoveUserClick}  // 회원탈퇴완료모달로 이동
+            />
+            <CompletedRemoveUser
+              isOpen={this.state.isCompletedRemoveUserModalOpen}
+            />
+          </>
+          : null
+        }
 
         {/* ------beforeLogin 관련 모달들 (형제관계로 변경함.) ----------------------- */}
 
@@ -387,6 +407,9 @@ class Nav extends React.Component {
           isOpen={this.state.isFindPwModalOpen}
           handleFindPwModal={this.handleFindPwModal}
         />
+
+
+
       </div>
     );
   }

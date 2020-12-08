@@ -20,6 +20,7 @@ class Mypage extends React.Component {
         profile: ""
       },
 
+
       // 변경될 유저 정보, 깃북수정요청 전까지는 올바른 변수명으로 전달하기 위해 이렇게 놔두자.
       // onChange로 셋팅하고 이걸 axios로 보내
       password: "",
@@ -32,7 +33,8 @@ class Mypage extends React.Component {
       isModifyBtnOfNickname: false,
       isModifyBtnOfMobile: false
     }
-    this.getUserInfo()
+    // this.getUserInfo()
+    console.log("Mypage STATE PROPS", this.state.currentUserInfo)
   }
 
 
@@ -156,7 +158,7 @@ class Mypage extends React.Component {
   componentDidMount() {
     // if (this.props.isMypageModalOpen === true) {
     //   console.log("마이페이지 기본정보 들어옴?")
-    // this.getUserInfo()
+    this.getUserInfo()
     // }
   }
 
