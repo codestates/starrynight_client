@@ -44,8 +44,8 @@ function AddPhoto(props) {
       header: { "content-type": "multipart/form-data" },
     };
     Axios.post(
-      // "https://api.mystar-story.com/addphoto",
-      "http://localhost:8000/addphoto",
+      "https://api.mystar-story.com/addphoto",
+      // "http://localhost:8000/addphoto",
       PhotoFormData,
       config
     )
@@ -61,34 +61,34 @@ function AddPhoto(props) {
             location: PhotoLocation,
           };
 
-          // Axios.post("https://api.mystar-story.com/savephoto", photo)
-          Axios.post("http://localhost:8000/savephoto", photo).then((res) => {
-            if (res.data.success) {
-              // 해시태그가 있으면 해당 정보도 HashTag 모델 및 Photo 모델에 저장 요청
-              if (PhotoHashtag !== "") {
-                const hashtag = {
-                  hashtag: PhotoHashtag,
-                  photoPath: photo.photoPath,
-                };
+          Axios.post("https://api.mystar-story.com/savephoto", photo)
+            // Axios.post("http://localhost:8000/savephoto", photo)
+            .then((res) => {
+              if (res.data.success) {
+                // 해시태그가 있으면 해당 정보도 HashTag 모델 및 Photo 모델에 저장 요청
+                if (PhotoHashtag !== "") {
+                  const hashtag = {
+                    hashtag: PhotoHashtag,
+                    photoPath: photo.photoPath,
+                  };
 
-                // Axios.post("https://api.mystar-story.com/hashtager", hashtag)
-                Axios.post("http://localhost:8000/hashtager", hashtag).then(
-                  (res) => {
-                    if (res.data.success) {
-                      console.log("해시태그 포함 최종정보", res.data);
-                    } else {
-                      alert("해시태그 등록 실패");
-                    }
-                  }
-                );
+                  Axios.post("https://api.mystar-story.com/hashtager", hashtag)
+                    // Axios.post("http://localhost:8000/hashtager", hashtag)
+                    .then((res) => {
+                      if (res.data.success) {
+                        console.log("해시태그 포함 최종정보", res.data);
+                      } else {
+                        alert("해시태그 등록 실패");
+                      }
+                    });
+                }
+
+                alert("사진 업로드에 성공하였습니다");
+                window.location.replace("/"); // props.history.push("/")를 쓰지 않는 이유: 보여주기 위한 경로 refresh가 아니라, 진짜 브라우저 refresh가 필요하기 때문
+              } else {
+                alert("사진 업로드 실패");
               }
-
-              alert("사진 업로드에 성공하였습니다");
-              window.location.replace("/"); // props.history.push("/")를 쓰지 않는 이유: 보여주기 위한 경로 refresh가 아니라, 진짜 브라우저 refresh가 필요하기 때문
-            } else {
-              alert("사진 업로드 실패");
-            }
-          });
+            });
         } else {
           alert("사진 Dropdown 실패");
         }
