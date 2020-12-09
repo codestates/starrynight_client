@@ -67,10 +67,10 @@ class FindEmail extends React.Component {
     ! cf) 부모-자식(FindEmail-CompletedFindEmail) 관계라 가능 -> 엄마꺼 끄고, 내것도 끄고! 혹은 엄마꺼 끄고 내껀 켜고 등등
     만약 형제 관계라면 형제끼리 공유하지않고 충돌만 일으키므로 엄마가 중재를 맡아 엄마가 두 놈의 자식 것을 꺼줘야 함.
     */
-  CompletedFindEmailModalOFFWithFindEmailModal = () => {
-    this.props.handleFindEmailModal()  // 엄마꺼 끄고
-    this.handleCompletedFindModal()   // 내껀 켜고
-  }
+  // CompletedFindEmailModalOFFWithFindEmailModal = () => {
+  //   this.props.handleFindEmailModal()  // 엄마꺼 끄고 or 내꺼 끄고
+  //   this.handleCompletedFindModal()   // 내껀 켜고 or 엄마꺼 켜고
+  // }
 
 
 
@@ -80,15 +80,16 @@ class FindEmail extends React.Component {
     return (
 
       <div>
-        {this.props.isOpen ?
-          this.state.isCompletedFindEmailOpen === true ? 
+        {this.props.isFindEmailModalOpen ?
+          (this.state.isCompletedFindEmailOpen === true ? 
 
           <CompletedFindEmail
             resultOfFind={this.state.result}
-            CompletedFindEmailModalOFFWithFindEmailModal={this.CompletedFindEmailModalOFFWithFindEmailModal}
             isCompletedFindEmailOpen={this.state.isCompletedFindEmailOpen}
             handleCompletedFindModal={this.handleCompletedFindModal}
             handleFindEmailModal={this.props.handleFindEmailModal}
+            handleFindPwModal={this.props.handleFindPwModal}
+            isOpen={this.props.isOpen}
           />
           :
           <div className="modal_findEmail">
@@ -131,7 +132,8 @@ class FindEmail extends React.Component {
 
               
             </div>
-          </div>
+          </div>)
+          
           : null}
       </div>
     )

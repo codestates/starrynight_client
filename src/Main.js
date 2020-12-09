@@ -34,14 +34,18 @@ class Main extends React.Component {
 
   // SignIn을 성공하고 sessionStorage에 저장된 axios로 받아온 정보를 불러와 req하자.
   handleResponseSuccess = () => {
-    this.setState({
-      isLogin: true,
-    });
     axios.get("https://api.mystar-story.com/main", {
       withCredentials: true
     })
       .then((response) => {
         window.localStorage.setItem("responseMsg", response.data)
+        this.setState({
+          isLogin: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response.data)
+        // alert(error.response.data)
       })
 
   };

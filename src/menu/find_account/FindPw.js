@@ -79,7 +79,7 @@ class FindPw extends React.Component {
   render() {
     return (
       <div>
-        {this.props.isOpen ?
+        {this.props.isFindPwModalOpen ?
           this.state.isCompletedFindPwOpen ?
             <CompletedFindPw
               isCompletedFindPwOpen={this.state.isCompletedFindPwOpen}
@@ -118,7 +118,10 @@ class FindPw extends React.Component {
                     </button>
                   </div>
                   <div>
-                    <button className="signUp_button_inFindPw">
+                    <button
+                     className="signUp_button_inFindPw"
+                     onClick={this.props.linkToSignUpfromfindPw}
+                     >
                       
                         회원 가입
               

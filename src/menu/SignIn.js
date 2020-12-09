@@ -19,6 +19,9 @@ class SignIn extends React.Component {
       // isFindEmailModalOpen: false,
       // isFindPwModalOpen: false
     }
+
+    // 들어온 토큰 만료시간 설정 (24시간 밀리 초로 표현)
+    const JWT_EXPIRY_TIME = 24 * 3600 * 1000
   }
 
 
@@ -75,35 +78,70 @@ class SignIn extends React.Component {
       })
     }
     else {
-      axios.post("https://api.mystar-story.com/user/signin", signInInfo, {
-        withCredentials: true
-      })
-        .then((response) => {
-          console.log("사인인 뭘 받아와?", response)
-
-
-          const accessToken = response.data.accessToken;
-          console.log("accessToken", accessToken)
-          //API 요청하는 콜마다 헤더에 accseeToken을 담아 보내도록 설정
-          // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-          axios.defaults.headers.common['Authorization'] = accessToken;
-
-
-          // accessToken을 localStorage, cookie 등에 저장하지 않는다.
-
-          this.setState({
-            // email: response.data.email,
-            userId: response.data.userId,
-            // loginPlatformId: response.data.loginPlatformId
-          });
-          this.doSignIn();
-          this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
-          // this.props.history.href = "/";
-          // window.location.href = "/";
-        })
-      // .catch((error) => )
+      // 로그인 요청
+      this.requestSignIn()
+      // this.doSignIn();
+      // this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
+      // this.props.history.href = "/";
+      // window.location.href = "/";
     }
   }
+
+  // 로그인 요청
+  requestSignIn = () => {
+    const signInInfo = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    axios.post("https://api.mystar-story.com/user/signin", signInInfo, {
+      withCredentials: true
+    })
+      .then((response) => {
+        console.log("사인인 뭘 받아와?", response)
+
+
+        const accessToken = response.data.accessToken;
+        window.localStorage.setItem("token", accessToken)
+        console.log("accessToken", accessToken)
+        //API 요청하는 콜마다 헤더에 accseeToken을 담아 보내도록 설정
+        // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        axios.defaults.headers.common['Authorization'] = accessToken;
+
+
+        // accessToken을 localStorage, cookie 등에 저장하지 않는다.
+
+        this.setState({
+          // email: response.data.email,
+          userId: response.data.userId,
+          // loginPlatformId: response.data.loginPlatformId
+        });
+        this.doSignIn();
+        this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
+      })
+      .catch(error => {
+        alert(error.response.data)
+      })
+  }
+
+
+
+  /* ------------------------- 소셜 로그인 ------------------------------- */
+  googleLogin = () => {
+    window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https%3A//api.mystar-story.com/user/signin/google&client_id=6637807643-0mis27736asip5thchf3v3ksk8mnor2f.apps.googleusercontent.com"
+  }
+
+  kakaoLogin = () => {
+    window.location.href = "https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fapi.mystar-story.com%252Fuser%252Fsignin%252Fkakao%26client_id%3D2b6f01d8fb5368ff66de28e3749cefda"
+  }
+
+
+  // 유저가 다시 직접 로그인하도록 유도하지 않고 조용히 자동으로 로그인 연장하는 기능
+
+  componentDidMount() {
+    // this.requestSignIn()
+  }
+
   // 엔터키를 눌러도 로그인 버튼 누르게 하는 기능
   signInPress = (e) => {
     if (e.key === "Enter") {
@@ -162,14 +200,14 @@ class SignIn extends React.Component {
                 {/* -------------------------- 이메일, pw 찾기 --------------------*/}
                 <div className="findAccount_span">
                   <div className="find_Account">
-                    <span onClick={this.props.FindEmailClick}>
+                    <span onClick={this.props.findEmailClick}>
                       이메일 찾기
                     </span>
 
 
                     <span> | </span>
 
-                    <span onClick={this.props.FindPwClick}>
+                    <span onClick={this.props.findPwClick}>
                       비밀번호 찾기
                     </span>
                   </div>
@@ -189,16 +227,19 @@ class SignIn extends React.Component {
                     </button>
                 </div>
                 <div>
-                  <button className="signUp_Button_inSignIn">
-                    <NavLink to="/signup">
-                      회원 가입
-                  </NavLink>
+                  <button
+                    className="signUp_Button_inSignIn"
+                    onClick={this.props.signUpClickInSignIn}
+                  >
+                    회원 가입
                   </button>
                 </div>
                 <div>
 
-                  소셜로그인 버튼도 넣기
-                  </div>
+                  <span onClick={this.googleLogin}>구글</span>
+                  <span> || </span>
+                  <span onClick={this.kakaoLogin}>카카오</span>
+                </div>
               </div>
 
 
@@ -212,3 +253,13 @@ class SignIn extends React.Component {
 }
 
 export default withRouter(SignIn);
+
+
+
+/*
+구글
+https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https%3A//api.mystar-story.com/googleCallback&client_id=6637807643-0mis27736asip5thchf3v3ksk8mnor2f.apps.googleusercontent.com
+
+카카오
+https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fapi.mystar-story.com%252Fuser%252Fsignin%252Fkakao%26client_id%3D2b6f01d8fb5368ff66de28e3749cefda
+*/

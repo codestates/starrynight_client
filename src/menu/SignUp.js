@@ -17,6 +17,7 @@ class SignUp extends React.Component {
   }
 
 
+
   // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 기본 유저정보 State와 에러메세지가 계속 띄어져있는 것을 방지하기 위해
   // state값을 빈 스트링으로 렌더링 시킨다.
   // componentWillUpdate에 걸어둔다.
@@ -204,10 +205,17 @@ class SignUp extends React.Component {
     ) {
 
       axios.post("https://api.mystar-story.com/user/signup", NewUserInfo)
-        .then(response => {
-          console.log(response)
+        .then((respoense) => {
+          alert(respoense.data)
+          this.props.redirectToSignIn()  // 회원가입 완료 후 로그인 모달창으로 돌아가!
         })
-      // 모든 값들과 조건이 충족되지 않으면 요청 x 각 위치에서 에러메세지 계속 보여주기
+        .catch((error) => {
+          // alert("hello world!")
+          // console.log("회원가입 실패", error.response)
+          this.setState({
+            signUpFailedMsg: error.response.data
+          })
+        })
     }
 
   }
@@ -228,7 +236,7 @@ class SignUp extends React.Component {
       <div>
         {this.props.isOpen === true ?
           <div className="modal_SignUp">
-            <div className="modal_SignUp_overlay" onClick={this.props.handleModal}></div>
+            <div className="modal_SignUp_overlay" onClick={this.props.handleSignUpModal}></div>
             <div className="modal_SignUp_content">
               {/* -------------------------- 타이틀 -------------------------*/}
               <h2>회원 가입</h2>
@@ -268,6 +276,7 @@ class SignUp extends React.Component {
 
                 </div>
 
+                <div>{this.state.signUpFailedMsg}</div>
 
               </form>
               {/* -------------------------- submit 버튼 칸 --------------------*/}
@@ -277,13 +286,16 @@ class SignUp extends React.Component {
                     {/* axios post 요청 보내기 */}
                     <button className="signUp_button_inSignUp" onClick={this.handleClickAddNewUserInfo}>
                       회원 가입
-                </button>
+                    </button>
                   </div>
                   <div>
-                    <button className="redirectToMain">
-                      {/* 메인페이지로 돌아가게 하자밀고 모달창 종료 기능을 적용시켜 현재 보고있는 사진 위치 유지시킬 것 */}
-                  돌아가기
-                </button>
+                    <button
+                      className="redirectToMain"
+                      onClick={this.props.redirectToSignIn}
+                    >
+                      {/* 로그인 모달로 돌아가게 할 것. */}
+                      돌아가기
+                    </button>
                   </div>
                 </div>
               </div>

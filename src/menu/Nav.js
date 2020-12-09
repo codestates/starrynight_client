@@ -35,14 +35,14 @@ class Nav extends React.Component {
       isHamburgerOn: false,
 
       // 순전히 화면에 변경 전의 정보를 렌더하는 역할
-      // currentUserInfo: {
-      //   email: "",
-      //   password: "",
-      //   nickname: "",
-      //   mobile: "",
-      //   oauth: "",
-      //   profile: ""
-      // },
+      currentUserInfo: {
+        email: "",
+        password: "",
+        nickname: "",
+        mobile: "",
+        oauth: "",
+        profile: ""
+      },
 
       // afterLogin
       isGalleryModalOpen: false,
@@ -131,26 +131,26 @@ class Nav extends React.Component {
     this.handleMypageModal()
 
 
-    // axios.get("https://api.mystar-story.com/user/mypage", {
-    //   withCredentials: true
-    // })
-    //   .then((response) => {
-    //     console.log("마이페이지 리스폰스 뭘받아와?", response)
-    //     this.setState({
-    //       ...this.state,
-    //       currentUserInfo: {
-    //         email: response.data.email,
-    //         password: response.data.password,
-    //         nickname: response.data.nickname,
-    //         mobile: response.data.mobile,
-    //         oauth: response.data.oauth,
-    //         profile: response.data.profile
-    //       }
-    //     })
-    //   })
-    // .catch((error) => {
-    //   console.log(error.response.data)
-    // })
+    axios.get("https://api.mystar-story.com/user/mypage", {
+      withCredentials: true
+    })
+      .then((response) => {
+        console.log("마이페이지 리스폰스 뭘받아와?", response)
+        this.setState({
+          ...this.state,
+          currentUserInfo: {
+            email: response.data.email,
+            password: response.data.password,
+            nickname: response.data.nickname,
+            mobile: response.data.mobile,
+            oauth: response.data.oauth,
+            profile: response.data.profile
+          }
+        })
+      })
+      .catch((error) => {
+        console.log(error.response.data)
+      })
 
   }
 
@@ -255,6 +255,12 @@ class Nav extends React.Component {
     })
     this.handleSignUpModal()    // SignUp 모달창을 활성화 시켜라.
   }
+  signUpClickInSignIn = () => {
+    this.setState({
+      isSignInModalOpen: !this.state.isSignInModalOpen
+    })
+    this.handleSignUpModal()
+  }
 
 
 
@@ -263,12 +269,18 @@ class Nav extends React.Component {
       isFindEmailModalOpen: !this.state.isFindEmailModalOpen
     })
   }
-  FindEmailClick = () => {   // signin-findemail은 부모관계가 아닌 형제 관계를 형성하고, 클릭이벤트만 signin에게 props로 전달하여 이메일찾기버튼에 이벤트 걸고 발생한 이벤트를 state끌어올리기로 다시 가져온다음 다시 findemail로 전달한다.
+  findEmailClick = () => {   // signin-findemail은 부모관계가 아닌 형제 관계를 형성하고, 클릭이벤트만 signin에게 props로 전달하여 이메일찾기버튼에 이벤트 걸고 발생한 이벤트를 state끌어올리기로 다시 가져온다음 다시 findemail로 전달한다.
     this.setState({         // 추가설명은 AfterLogin에 있음
-      isSignInModalOpen: false // * 클릭과 동시에 signin이 false로 변경되면서 모달이 꺼지고, findemail모달이 true로 변하면서 활성화되어야 한다. (findemail모달도 활성화 작업 꼭 하기)
+      isSignInModalOpen: !this.state.isSignInModalOpen // * 클릭과 동시에 signin이 false로 변경되면서 모달이 꺼지고, findemail모달이 true로 변하면서 활성화되어야 한다. (findemail모달도 활성화 작업 꼭 하기)
     })
     this.handleFindEmailModal()
   }
+  // linkToFindPwAfterCompletedFindEmail = () => {       // 이메일찾기를 완료했다면
+  //   this.setState({
+  //     isFindPwModalOpen: !this.state.isFindPwModalOpen   // 비밀번호 찾기 모달을 활성화 시키고
+  //   })
+
+  // }
 
 
   handleFindPwModal = () => {
@@ -276,11 +288,18 @@ class Nav extends React.Component {
       isFindPwModalOpen: !this.state.isFindPwModalOpen
     })
   }
-  FindPwClick = () => {
+  findPwClick = () => {
     this.setState({
       isSignInModalOpen: false
     })
     this.handleFindPwModal()
+  }
+  linkToSignUpfromfindPw = () => {    // findPw모달에 이벤트클릭을 프롭스로 내리기 그 후 끌어올리기로 작동할 것임.
+    this.setState({     // signUp 모달 활성화
+      isSignUpModalOpen: !this.state.isSignUpModalOpen
+    })
+    this.handleFindPwModal()   // findPw 모달 비활성화
+
   }
 
   render() {
@@ -367,7 +386,7 @@ class Nav extends React.Component {
 
 
             <Mypage
-              // currentUserInfo={this.state.currentUserInfo}
+              currentUserInfo={this.state.currentUserInfo}
               isMypageModalOpen={this.state.isMypageModalOpen}
               handleMypageModal={this.handleMypageModal}  // 오버레이 누르면 모달 꺼지기
               DoubleCheckRemoveUsersClick={this.DoubleCheckRemoveUsersClick}  // 마이페이지 끄고 더블체크모달로 가기
@@ -391,20 +410,25 @@ class Nav extends React.Component {
           isOpen={this.state.isSignInModalOpen}
           handleResponseSuccess={this.props.handleResponseSuccess}
           handleSignInModal={this.handleSignInModal} // overlay를 눌렀을때 모달창 꺼지도록 사용할 것임
-          FindEmailClick={this.FindEmailClick}
-          FindPwClick={this.FindPwClick}
+          findEmailClick={this.findEmailClick}
+          findPwClick={this.findPwClick}
+          signUpClickInSignIn={this.signUpClickInSignIn}   // signIn 모달에서 회원가입 누르면 signIn모달꺼지고 signUp 모달 활성화
         />
         <SignUp
           isOpen={this.state.isSignUpModalOpen}
           handleSignUpModal={this.handleSignUpModal}
+          redirectToSignIn={this.signUpClickInSignIn}  // 이 이벤트가 만들어진 본래 목적은 402줄이지만 역으로 사인업모달 끄고, 사인인 모달 활성화 시킬 것임.
         />
         <FindEmail
-          isOpen={this.state.isFindEmailModalOpen}
+          isFindEmailModalOpen={this.state.isFindEmailModalOpen}
+          // isFindPwModalOpen={this.state.isFindPwModalOpen}  // completedEmail에서 email을 찾은 후 곧바로 findPw모달로 가기 위해 여기에 props로 내림.
           handleFindEmailModal={this.handleFindEmailModal}
+          handleFindPwModal={this.handleFindPwModal}      // completedEmail에서 email을 찾은 후 곧바로 findPw모달로 가기 위해 여기에 props로 내림.
         />
 
         <FindPw
-          isOpen={this.state.isFindPwModalOpen}
+          isFindPwModalOpen={this.state.isFindPwModalOpen}
+          linkToSignUpfromfindPw={this.linkToSignUpfromfindPw} // 회원가입 버튼을 누르면 findPw모달이 꺼지고 signUp모달이 활성화 될 것임.
           handleFindPwModal={this.handleFindPwModal}
         />
 

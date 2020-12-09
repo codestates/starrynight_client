@@ -11,14 +11,14 @@ class Mypage extends React.Component {
     super(props)
     this.state = {
       // 순전히 화면에 변경 전의 정보를 렌더하는 역할
-      currentUserInfo: {
-        email: "",
-        password: "",
-        nickname: "",
-        mobile: "",
-        oauth: "",
-        profile: ""
-      },
+      // currentUserInfo: {
+      //   email: "",
+      //   password: "",
+      //   nickname: "",
+      //   mobile: "",
+      //   oauth: "",
+      //   profile: ""
+      // },
 
 
       // 변경될 유저 정보, 깃북수정요청 전까지는 올바른 변수명으로 전달하기 위해 이렇게 놔두자.
@@ -39,28 +39,28 @@ class Mypage extends React.Component {
 
 
   // 토큰 보내고 GET요청 -> 해당 유저의 정보를 받아옴.현재 화면에 렌더만 할 것임.
-  getUserInfo = () => {
-    axios.get("https://api.mystar-story.com/user/mypage", {
-      withCredentials: true
-    })
-      .then((response) => {
-        console.log("마이페이지 리스폰스 뭘받아와?", response)
-        this.setState({
-          ...this.state,
-          currentUserInfo: {
-            email: response.data.email,
-            password: response.data.password,
-            nickname: response.data.nickname,
-            mobile: response.data.mobile,
-            oauth: response.data.oauth,
-            profile: response.data.profile
-          }
-        })
-      })
-    // .catch((error) => {
-    //   console.log(error.response.data)
-    // })
-  }
+  // getUserInfo = () => {
+  //   axios.get("https://api.mystar-story.com/user/mypage", {
+  //     withCredentials: true
+  //   })
+  //     .then((response) => {
+  //       console.log("마이페이지 리스폰스 뭘받아와?", response)
+  //       this.setState({
+  //         ...this.state,
+  //         currentUserInfo: {
+  //           email: response.data.email,
+  //           password: response.data.password,
+  //           nickname: response.data.nickname,
+  //           mobile: response.data.mobile,
+  //           oauth: response.data.oauth,
+  //           profile: response.data.profile
+  //         }
+  //       })
+  //     })
+  //   // .catch((error) => {
+  //   //   console.log(error.response.data)
+  //   // })
+  // }
 
 
   // 각 input창에 들어오는 입력값들을 새로운 state 값으로 저장
@@ -158,7 +158,7 @@ class Mypage extends React.Component {
   componentDidMount() {
     // if (this.props.isMypageModalOpen === true) {
     //   console.log("마이페이지 기본정보 들어옴?")
-    this.getUserInfo()
+    // this.getUserInfo()
     // }
   }
 
@@ -188,13 +188,13 @@ class Mypage extends React.Component {
 
                 <div className="email_div_inMypage">
                   <span>이메일</span>
-                  <div>{this.state.currentUserInfo.email}</div>
+                  <div>{this.props.currentUserInfo.email}</div>
                   {/* <div>{this.props.sendStateForMypage.email}</div> */}
                 </div>
 
                 <div className="pw_div_inMypage">
                   <span>비밀번호</span>
-                  <div>{this.state.currentUserInfo.password}</div>
+                  <div>{this.props.currentUserInfo.password}</div>
                   {/* <div>{this.props.sendStateForMypage.password}</div> */}
                   {this.state.isModifyBtnOfPw === false ?
                     <div />
@@ -210,7 +210,7 @@ class Mypage extends React.Component {
 
                 <div className="nickname_div_inMypage">
                   <span>별명</span>
-                  <div>{this.state.currentUserInfo.nickname}</div>
+                  <div>{this.props.currentUserInfo.nickname}</div>
                   {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
                   {this.state.isModifyBtnOfNickname === false ?
                     <div />
@@ -226,7 +226,7 @@ class Mypage extends React.Component {
 
                 <div className="mobile_div_inMypage">
                   <span>연락처</span>
-                  <div>{this.state.currentUserInfo.mobile}</div>
+                  <div>{this.props.currentUserInfo.mobile}</div>
                   {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
                   {this.state.isModifyBtnOfMobile === false ?
                     <div />
