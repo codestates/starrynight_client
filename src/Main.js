@@ -113,8 +113,7 @@ class Main extends React.Component {
               onClick={this.handleAddPhotoModal}
             />
             <AddPhoto
-              // 12/8 히스토리 활용하기 위해 추가
-              history={this.props.history}
+              // 12/8 로그인 유저의 토큰을 활용하기 위해 props로 상속추가
               localStorage={window.localStorage}
               isLogin={this.state.isLogin}
               isOpen={this.state.isAddPhotoModalOpen}
