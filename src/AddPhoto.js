@@ -12,68 +12,88 @@ const { Title } = Typography;
 // AddPhoto 컴포넌트 진또배기
 function AddPhoto(props) {
   // 로그인 유저 식별정보를 가져온다
-  const user = window.sessionStorage;
+  // console.log("AddPhoto에 전달된 로컬스토리지:", props.localStorage);
+  const userToken = props.localStorage.responseMsg;
+  console.log("AddPhoto 내 토큰:", userToken);
 
   // modal에서 관리할 상태들을 설정한다
+  const [PhotoFormData, setPhotoFormData] = useState([]);
   const [PhotoTitle, setPhotoTitle] = useState("");
   const [PhotoLocation, setPhotoLocation] = useState("");
   const [PhotoHashtag, setPhotoHashtag] = useState("");
-  const [FilePath, setFilePath] = useState("");
 
-  // 위치 찾기
+  // 위치 찾기(개발예정)
   // const handleSearch = (value) => {};
 
   // 사진업로드 drop & down을 정의한다
   const onDrop = (files) => {
-    // 업로드 파일을 drop하면 FormData 태그 인스턴스 생성 후, "file" 속성을 삽입
+    // 업로드 파일을 drop하면 FormData 태그 인스턴스 생성 후, "file" 속성을 만들어서 files[0] 엘리먼트를 주입
+    // 참고자료: https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
     let formData = new FormData();
     formData.append("file", files[0]);
-    console.log("업로드 중...", files);
+    console.log("Drop한 사진", files[0]);
+    setPhotoFormData(formData);
+  };
 
-    // header에 실어서 보낼 데이터타입 설정하여 서버에 업로드
+  // 사진업로드 & DB저장을 요청한다
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    // 사진에 대한 S3 url 생성 요청
     const config = {
       header: { "content-type": "multipart/form-data" },
     };
     Axios.post(
-      "https://api.mystar-story.com/addphoto",
-      // "http://localhost:8000/addphoto",
-      formData,
+      // "https://api.mystar-story.com/addphoto",
+      "http://localhost:8000/addphoto",
+      PhotoFormData,
       config
-    ).then((res) => {
-      if (res.data.success) {
-        console.log("업로드완료!", res.data);
-        setFilePath(res.data.url);
-      } else {
-        alert("업로드에 실패했습니다");
-      }
-    });
-  };
-
-  // 사진업로드 & 서버전송을 정의한다
-  const onSubmit = (e) => {
-    e.preventDefault(); // 새로고침 방지
-
-    const photoUploadInfo = {
-      userid: user.userId, // from sessionStorage
-      title: PhotoTitle,
-      hashtag: PhotoHashtag,
-      photoPath: FilePath,
-      location: PhotoLocation,
-    };
-
-    Axios.post("https://api.mystar-story.com/savephoto", photoUploadInfo)
-      // Axios.post("http://localhost:8000/savephoto", photoUploadInfo)
+    )
       .then((res) => {
         if (res.data.success) {
-          console.log(res.data);
-          message.success("사진 업로드가 완료되었습니다");
-          setTimeout(() => {
-            props.history.push("/");
-          }, 2000);
+          console.log("사진 Dropdown 및 URL 생성 성공!! ", res.data.url);
+
+          // 성공적으로 생성된 사진 url을 바탕으로 사진정보를 Photo 모델에 저장 요청
+          const photo = {
+            userToken: userToken, // from localStorage
+            title: PhotoTitle,
+            photoPath: res.data.url,
+            location: PhotoLocation,
+          };
+
+          // Axios.post("https://api.mystar-story.com/savephoto", photo)
+          Axios.post("http://localhost:8000/savephoto", photo).then((res) => {
+            if (res.data.success) {
+              // 해시태그가 있으면 해당 정보도 HashTag 모델 및 Photo 모델에 저장 요청
+              if (PhotoHashtag !== "") {
+                const hashtag = {
+                  hashtag: PhotoHashtag,
+                  photoPath: photo.photoPath,
+                };
+
+                // Axios.post("https://api.mystar-story.com/hashtager", hashtag)
+                Axios.post("http://localhost:8000/hashtager", hashtag).then(
+                  (res) => {
+                    if (res.data.success) {
+                      console.log("해시태그 포함 최종정보", res.data);
+                    } else {
+                      alert("해시태그 등록 실패");
+                    }
+                  }
+                );
+              }
+
+              alert("사진 업로드에 성공하였습니다");
+              window.location.replace("/"); // props.history.push("/")를 쓰지 않는 이유: 보여주기 위한 경로 refresh가 아니라, 진짜 브라우저 refresh가 필요하기 때문
+            } else {
+              alert("사진 업로드 실패");
+            }
+          });
         } else {
-          alert("사진 업로드에 실패하였습니다");
+          alert("사진 Dropdown 실패");
         }
-      });
+      })
+      .then();
   };
 
   // 입력필드를 활성화한다(사진제목)
@@ -150,7 +170,6 @@ function AddPhoto(props) {
 
               <Form onSubmit={onSubmit}>
                 {/* dropdown zone */}
-                {/* <div style={{ display: `flex`, justifyContent: `space-between` }}></div> */}
                 <Dropzone onDrop={onDrop} multiple={false} maxSize={100000000}>
                   {({ getRootProps, getInputProps }) => (
                     <div
@@ -175,16 +194,6 @@ function AddPhoto(props) {
                     </div>
                   )}
                 </Dropzone>
-
-                {/* thumbnail zone : 있을 때만 div-img 엘리먼트 보여주기 */}
-                {/* {ThumbnailPath && (
-                  <div>
-                    <img
-                      src={`http://localhost:5000/${ThumbnailPath}`}
-                      alt="thumbnail"
-                    />
-                  </div>
-                )} */}
                 <br />
 
                 {/* description and input zone */}
