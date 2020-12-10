@@ -294,7 +294,7 @@ class SignUp extends React.Component {
                       onClick={this.props.redirectToSignIn}
                     >
                       {/* 로그인 모달로 돌아가게 할 것. */}
-                      돌아가기
+                      로그인
                     </button>
                   </div>
                 </div>

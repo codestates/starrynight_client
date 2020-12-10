@@ -7,22 +7,22 @@ class ViewPhoto extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
+      isCommentsOpen: false,
     };
   }
 
   handleModalControl = () => {
     this.setState({
-      isOpen: !this.state.isOpen,
+      isCommentsOpen: !this.state.isCommentsOpen,
     });
-    console.log(`isOpen: ${this.state.isOpen}`);
+    console.log(`isOpen: ${this.state.isCommentsOpen}`);
   };
 
   render() {
     return (
       <div className="ViewPhoto">
         <Comments
-          isOpen={this.state.isOpen}
+          isCommentsOpen={this.state.isCommentsOpen}
           handleModalControl={this.handleModalControl}
         />
         <All handleModalControl={this.handleModalControl} />

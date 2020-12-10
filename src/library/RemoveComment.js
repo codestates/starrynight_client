@@ -7,11 +7,17 @@ class RemovePhoto extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.removePhotoOpen) {
-      let myModal = document.querySelector(".myModal_RemoveComment");
-      myModal.style.display = "block";
+    if (this.props.isRemoveCommentOpen) {
+      let modal = document.querySelector(".myModal_RemoveComment");
+      modal.style.display = "block";
     }
   }
+
+  handleRemoveCommentModalClose = () => {
+    this.props.removeCommentControl();
+    let modal = document.querySelector(".myModal_RemoveComment");
+    modal.style.display = "none";
+  };
 
   render() {
     return (
@@ -25,7 +31,12 @@ class RemovePhoto extends Component {
               </div>
               <button className="removeComment_DeleteBtn">삭제</button>
               <br />
-              <button className="removeComment_ReturnBtn">돌아가기</button>
+              <button
+                className="removeComment_ReturnBtn"
+                onClick={this.handleRemoveCommentModalClose}
+              >
+                돌아가기
+              </button>
             </div>
           </div>
         </div>

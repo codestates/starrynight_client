@@ -1,9 +1,16 @@
 import React from "react"
 import { NavLink, withRouter } from "react-router-dom"
+import Button from "./Button";
 import axios from "axios"
+
+// 소셜로그인
+import kakaoLogin from "react-kakao-login";
 
 // 로고
 import imgFile from "../image/logo_StarryNight_Only_Letter.png";
+import kakaoLogo from "../image/kakao_login.png";
+import googleLogo from "../image/google.png";
+// import kakaolink_btn_medium from "../image/kakaolink_btn_medium.png";
 
 //css
 import "../css/SignIn.scss";
@@ -216,29 +223,45 @@ class SignIn extends React.Component {
               </form>
               {/* -------------------------- submit 버튼 칸 --------------------*/}
               <div>
-                <div>
-                  <button
-                    className="signIn_Button"
+                <div className="Button_in_signIn">
+                  <Button
+                    size="large"
+                    // className="Button_in_signIn"
                     // type="submit"
                     onClick={this.handleSignIn}
                     onKeyPress={this.signInPress}
                   >
                     로그인
-                    </button>
+                    </Button>
                 </div>
-                <div>
-                  <button
-                    className="signUp_Button_inSignIn"
+                <div className="Button_in_signIn">
+                  <Button
+                    size="large"
+                    // className="Button_in_signIn"
                     onClick={this.props.signUpClickInSignIn}
                   >
                     회원 가입
-                  </button>
+                  </Button>
                 </div>
-                <div>
+                <div className="socialLogin">
 
-                  <span onClick={this.googleLogin}>구글</span>
-                  <span> || </span>
-                  <span onClick={this.kakaoLogin}>카카오</span>
+                  {/* <span onClick={this.googleLogin}>구글</span> */}
+
+
+
+                  <img
+                    className="socialLogin_btn"
+                    src={googleLogo} alt="구글 로그인"
+                    onClick={this.googleLogin}
+                  />
+                  {/* <span> || </span> */}
+                  <img
+                    className="socialLogin_btn"
+                    src={kakaoLogo} alt="카카오 로그인"
+                    onClick={this.kakaoLogin}
+                  />
+
+
                 </div>
               </div>
 

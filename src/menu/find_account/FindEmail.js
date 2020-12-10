@@ -120,7 +120,10 @@ class FindEmail extends React.Component {
                     </button>
                   </div>
                   <div>
-                    <button className="signUp_button_inFindEmail">
+                    <button
+                     className="signUp_button_inFindEmail"
+                     onClick={this.props.linkToSignUpfromfindEmail}
+                     >
                       회원 가입
                     </button>
                   </div>

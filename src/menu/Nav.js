@@ -275,12 +275,12 @@ class Nav extends React.Component {
     })
     this.handleFindEmailModal()
   }
-  // linkToFindPwAfterCompletedFindEmail = () => {       // 이메일찾기를 완료했다면
-  //   this.setState({
-  //     isFindPwModalOpen: !this.state.isFindPwModalOpen   // 비밀번호 찾기 모달을 활성화 시키고
-  //   })
-
-  // }
+  linkToSignUpfromfindEmail = () => {
+    this.setState({
+      isSignUpModalOpen: !this.state.isSignUpModalOpen
+    })
+    this.handleFindEmailModal()
+  }
 
 
   handleFindPwModal = () => {
@@ -382,9 +382,6 @@ class Nav extends React.Component {
    --> 버튼을 클릭 시 발생하는 이벤트는 다시 state 끌어올리기로 인해 afterlogin 컴포넌트에서의 Mypage의 state값이 다시 false로 변환이되어
   Mypage 컴포넌트는 꺼지고 곧바로 회원탈퇴 모달이 켜지도록(handleDoubleCheckRemoveUsersModal) 이벤트핸들러를 혼합한다.  */}
 
-
-
-
             <Mypage
               currentUserInfo={this.state.currentUserInfo}
               isMypageModalOpen={this.state.isMypageModalOpen}
@@ -424,6 +421,7 @@ class Nav extends React.Component {
           // isFindPwModalOpen={this.state.isFindPwModalOpen}  // completedEmail에서 email을 찾은 후 곧바로 findPw모달로 가기 위해 여기에 props로 내림.
           handleFindEmailModal={this.handleFindEmailModal}
           handleFindPwModal={this.handleFindPwModal}      // completedEmail에서 email을 찾은 후 곧바로 findPw모달로 가기 위해 여기에 props로 내림.
+          linkToSignUpfromfindEmail={this.linkToSignUpfromfindEmail}   // findEmail모달에서 signUp 모달로 이동
         />
 
         <FindPw

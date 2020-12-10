@@ -41,4 +41,31 @@
     margin-left: 7%;;
     margin-bottom: 5%;
   }
+  .Button_in_signIn {
+    margin-top: 1rem;
+  }
+
+  .socialLogin{
+    margin: 10% 10%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // flex-direction: row;
+    .socialLogin_btn{
+      // max-width: 50%;
+      // // min-width: 10px;
+      
+      width: 15%;
+      margin-left: 10%;
+      margin-right: 10%;
+      // // justify-content: center;
+      // // align-items: center;
+
+      
+
+    
+    }
+
+  }
 }

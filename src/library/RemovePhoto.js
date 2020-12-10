@@ -7,11 +7,17 @@ class RemovePhoto extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.removePhotoOpen) {
+    if (this.props.isRemovePhotoOpen) {
       let myModal = document.querySelector(".myModal_RemovePhoto");
       myModal.style.display = "block";
     }
   }
+
+  handleRemovePhotoModalClose = () => {
+    this.props.removePhotoControl();
+    let modal = document.querySelector(".myModal_RemovePhoto");
+    modal.style.display = "none";
+  };
 
   render() {
     return (
@@ -25,7 +31,12 @@ class RemovePhoto extends Component {
               </div>
               <button className="removePhoto_DeleteBtn">삭제</button>
               <br />
-              <button className="removePhoto_ReturnBtn">돌아가기</button>
+              <button
+                className="removePhoto_ReturnBtn"
+                onClick={this.handleRemovePhotoModalClose}
+              >
+                돌아가기
+              </button>
             </div>
           </div>
         </div>
