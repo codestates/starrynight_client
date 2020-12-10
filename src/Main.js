@@ -70,7 +70,7 @@ class Main extends React.Component {
         console.log("로그아웃 성공!", response.data)
       })
     window.localStorage.clear();
-    this.props.history.push("/")
+    window.location.href = "/"
 
   };
 
@@ -84,10 +84,17 @@ class Main extends React.Component {
       this.setState({
         isLogin: true,
       });
-    } else {
-      // 이미 로그아웃 기능이 작동했지만, didmount로 더블체크 하게 함.
-      this.handleSignOut();
     }
+    else {
+      this.setState({
+        isLogin: false
+      });
+      window.localStorage.clear();
+    }
+    // else {
+    //   // 이미 로그아웃 기능이 작동했지만, didmount로 더블체크 하게 함.
+    //   this.handleSignOut();
+    // }
   }
 
   // 12/1 사진추가버튼 모달창 수정

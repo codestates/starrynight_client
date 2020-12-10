@@ -1,6 +1,10 @@
 import React from "react";
 import axios from "axios";
 
+// components
+import Google from "./social_user/Google";
+import Kakao from "./social_user/Kakao";
+
 // css
 import "../css/Mypage.scss"
 
@@ -31,7 +35,10 @@ class Mypage extends React.Component {
 
       isModifyBtnOfPw: false,
       isModifyBtnOfNickname: false,
-      isModifyBtnOfMobile: false
+      isModifyBtnOfMobile: false,
+
+      isGoogleModalOpen: false,
+      isKakaoModalOpen: false
     }
     // this.getUserInfo()
     console.log("Mypage STATE PROPS", this.state.currentUserInfo)
@@ -153,7 +160,15 @@ class Mypage extends React.Component {
         })
       })
   }
-  //
+
+  /* -------------- 소셜 로그인 모달 핸들링 ----------------- */
+
+  // handleGoogleMyPage = () => {
+  //   this.setState({
+  //     isGoogleModalOpen: !this.state.isGoogleModalOpen
+  //   })
+  //   this.props.isMypageModalOpen()
+  // }
 
   componentDidMount() {
     // if (this.props.isMypageModalOpen === true) {
@@ -163,104 +178,125 @@ class Mypage extends React.Component {
   }
 
   render() {
-    console.log("mypage CooKieeeeee", document.cookie)
+
     console.log("변경될 비밀번호", this.state.password)
     console.log("변경될 별명", this.state.nickname)
     console.log("변경될 연락처", this.state.mobile)
     console.log("마이페이지 프롭", this.props)
     console.log("마이페이지 state", this.state)
-
+    console.log("플랫폼 아이디!!!", this.props.currentUserInfo.loginPlatformId)
     return (
       <div>
         {this.props.isMypageModalOpen === true ?
-          <div className="modal_Mypage">
-            <div className="modal_Mypage_overlay" onClick={this.props.handleMypageModal}></div>
-            <div className="modal_Mypage_content">
 
-              {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-              <div> 작업!!!!! </div>
+          // this.props.currentUserInfo.loginPlatformId !== null ?
+          this.props.currentUserInfo.loginPlatformId === 2 ?
+            // alert("dmdkrkdra?")
+            <Google
+              isMypageModalOpen={this.props.isMypageModalOpen}
+              handleMypageModal={this.props.handleMypageModal}
+              currentUserInfo={this.props.currentUserInfo}
+            />
+            :
+            this.props.currentUserInfo.loginPlatformId === 3 ?
+              <Kakao
+                isMypageModalOpen={this.props.isMypageModalOpen}
+                handleMypageModal={this.props.handleMypageModal}
+                currentUserInfo={this.props.currentUserInfo}
+              />
 
-              {/* -------------------------- 연락처 입력 칸 -------------------------*/}
+              :
 
-              <div className="userInfo_input_container_inMypage">
-                <div>사이즈 테스트 중</div>
+              <div className="modal_Mypage">
+                <div className="modal_Mypage_overlay" onClick={this.props.handleMypageModal}></div>
+                <div className="modal_Mypage_content">
 
-                <div className="email_div_inMypage">
-                  <span>이메일</span>
-                  <div>{this.props.currentUserInfo.email}</div>
-                  {/* <div>{this.props.sendStateForMypage.email}</div> */}
-                </div>
+                  {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-                <div className="pw_div_inMypage">
-                  <span>비밀번호</span>
-                  <div>{this.props.currentUserInfo.password}</div>
-                  {/* <div>{this.props.sendStateForMypage.password}</div> */}
-                  {this.state.isModifyBtnOfPw === false ?
-                    <div />
-                    :
-                    <input onChange={this.handleChangeUserInfo("password")} />
-                  }
-                  {this.state.isModifyBtnOfPw ?
-                    <button onClick={this.requestModifyPw}>aa</button>
-                    :
-                    <button onClick={this.handleModifyBtnOfPwClick}>수정</button>
-                  }
-                </div>
+                  <div> 로컬유저 </div>
 
-                <div className="nickname_div_inMypage">
-                  <span>별명</span>
-                  <div>{this.props.currentUserInfo.nickname}</div>
-                  {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
-                  {this.state.isModifyBtnOfNickname === false ?
-                    <div />
-                    :
-                    <input onChange={this.handleChangeUserInfo("nickname")} />
-                  }
-                  {this.state.isModifyBtnOfNickname ?
-                    <button onClick={this.requestModifyNickname}>aa</button>
-                    :
-                    <button onClick={this.handleModifyBtnOfNicknameClick}>수정</button>
-                  }
-                </div>
+                  {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
-                <div className="mobile_div_inMypage">
-                  <span>연락처</span>
-                  <div>{this.props.currentUserInfo.mobile}</div>
-                  {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
-                  {this.state.isModifyBtnOfMobile === false ?
-                    <div />
-                    :
-                    <input onChange={this.handleChangeUserInfo("mobile")} />
-                  }
-                  {this.state.isModifyBtnOfMobile ?
-                    <button onClick={this.requestModifyMobile}>aa</button>
-                    :
-                    <button onClick={this.handleModifyBtnOfMobileClick}>수정</button>
-                  }
-                </div>
+                  <div className="userInfo_input_container_inMypage">
+                    <div>사이즈 테스트 중</div>
 
-              </div>
+                    <div className="email_div_inMypage">
+                      <span>이메일</span>
 
-              {/* -------------- 소셜로그인 연동해제 부분 ------------------------ */}
+                      <div>{this.props.currentUserInfo.email}</div>
+                      {/* <div>{this.props.sendStateForMypage.email}</div> */}
+                    </div>
 
-              <div>  작업!!!!!!!  </div>
+                    <div className="pw_div_inMypage">
+                      <span>비밀번호</span>
+                      <div>{this.props.currentUserInfo.password}</div>
+                      {/* <div>{this.props.sendStateForMypage.password}</div> */}
+                      {this.state.isModifyBtnOfPw === false ?
+                        <div />
+                        :
+                        <input onChange={this.handleChangeUserInfo("password")} />
+                      }
+                      {this.state.isModifyBtnOfPw ?
+                        <button onClick={this.requestModifyPw}>aa</button>
+                        :
+                        <button onClick={this.handleModifyBtnOfPwClick}>수정</button>
+                      }
+                    </div>
 
-              {/* -------------------------- 회원 탈퇴 버튼 칸 --------------------*/}
-              <div>
-                <div className="button_container_InSignUp">
+                    <div className="nickname_div_inMypage">
+                      <span>별명</span>
+                      <div>{this.props.currentUserInfo.nickname}</div>
+                      {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
+                      {this.state.isModifyBtnOfNickname === false ?
+                        <div />
+                        :
+                        <input onChange={this.handleChangeUserInfo("nickname")} />
+                      }
+                      {this.state.isModifyBtnOfNickname ?
+                        <button onClick={this.requestModifyNickname}>aa</button>
+                        :
+                        <button onClick={this.handleModifyBtnOfNicknameClick}>수정</button>
+                      }
+                    </div>
+
+                    <div className="mobile_div_inMypage">
+                      <span>연락처</span>
+                      <div>{this.props.currentUserInfo.mobile}</div>
+                      {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
+                      {this.state.isModifyBtnOfMobile === false ?
+                        <div />
+                        :
+                        <input onChange={this.handleChangeUserInfo("mobile")} />
+                      }
+                      {this.state.isModifyBtnOfMobile ?
+                        <button onClick={this.requestModifyMobile}>aa</button>
+                        :
+                        <button onClick={this.handleModifyBtnOfMobileClick}>수정</button>
+                      }
+                    </div>
+
+                  </div>
+
+                  {/* -------------- 소셜로그인 연동해제 부분 ------------------------ */}
+
+                  <div>  작업!!!!!!!  </div>
+
+                  {/* -------------------------- 회원 탈퇴 버튼 칸 --------------------*/}
                   <div>
-                    {/* axios post 요청 보내기 */}
-                    <button onClick={this.props.DoubleCheckRemoveUsersClick} >
-                      회원 탈퇴
+                    <div className="button_container_InSignUp">
+                      <div>
+                        {/* axios post 요청 보내기 */}
+                        <button onClick={this.props.DoubleCheckRemoveUsersClick} >
+                          회원 탈퇴
                     </button>
+                      </div>
+
+                    </div>
                   </div>
 
                 </div>
               </div>
-
-            </div>
-          </div>
           : null
         }
       </div>

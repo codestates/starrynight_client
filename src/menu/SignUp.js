@@ -252,7 +252,7 @@ class SignUp extends React.Component {
 
                   <div className="email_div">
                     <span>이메일</span>
-                    <input onChange={this.handleInputValue("email")} />
+                    <input type="email" onChange={this.handleInputValue("email")} />
                     <div className="text_style_SignUp">{this.state.errMsgOfEmailBlanks}</div>
                   </div>
 
@@ -264,7 +264,7 @@ class SignUp extends React.Component {
 
                   <div className="password_div">
                     <span>비밀번호</span>
-                    <input onChange={this.handleInputValue("password")} />
+                    <input type="password" onChange={this.handleInputValue("password")} />
                     <div className="text_style_SignUp">{this.state.errMsgOfPasswordBlanks}</div>
                   </div>
 
