@@ -32,6 +32,7 @@ class Main extends React.Component {
     };
   }
 
+
   // SignIn을 성공하고 sessionStorage에 저장된 axios로 받아온 정보를 불러와 req하자.
   handleResponseSuccess = () => {
     axios.get("https://api.mystar-story.com/main", {
@@ -81,16 +82,18 @@ class Main extends React.Component {
     //   this.handleResponseSuccess();
     // }
     if (window.localStorage.getItem("token")) {
+
       this.setState({
         isLogin: true,
       });
+      // this.state.isLogin
     }
-    else {
-      this.setState({
-        isLogin: false
-      });
-      window.localStorage.clear();
-    }
+    // else {
+    //   this.setState({
+    //     isLogin: false
+    //   });
+    //   window.localStorage.clear();
+    // }
     // else {
     //   // 이미 로그아웃 기능이 작동했지만, didmount로 더블체크 하게 함.
     //   this.handleSignOut();

@@ -126,7 +126,9 @@ class SignIn extends React.Component {
           // loginPlatformId: response.data.loginPlatformId
         });
         this.doSignIn();
-        this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
+        // this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
+        // 새로고침하여 true로 변한 값 완벽하게 셋팅하기
+        history.go(0); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
       })
       .catch(error => {
         alert(error.response.data)
