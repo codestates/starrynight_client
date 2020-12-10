@@ -110,10 +110,12 @@ class SignIn extends React.Component {
 
         const accessToken = response.data.accessToken;
         window.localStorage.setItem("token", accessToken)
-        console.log("accessToken", accessToken)
+
+        // const token = window.localStorage.getItem("token")
+        // console.log("token", token)
         //API 요청하는 콜마다 헤더에 accseeToken을 담아 보내도록 설정
         // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-        axios.defaults.headers.common['Authorization'] = accessToken;
+        // axios.defaults.headers.common['Authorization'] = token;
 
 
         // accessToken을 localStorage, cookie 등에 저장하지 않는다.
@@ -134,8 +136,22 @@ class SignIn extends React.Component {
 
 
   /* ------------------------- 소셜 로그인 ------------------------------- */
+
+  // location 객체를 통해 Access Token을 URL 파라미터로부터 받아올 수 있다.
+  // 받아온 쿼리스트링에 담긴 값 중 토큰만 추출
+  getToken = () => {
+    const query = window.location.search.substring(1)
+    const token = query.split('access_token=')[1]
+
+    // if (token !== undefined) {
+    window.localStorage.setItem("token", token)
+    // }
+    axios.defaults.headers.common['Authorization'] = token;
+  }
+
   googleLogin = () => {
     window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https%3A//api.mystar-story.com/user/signin/google&client_id=6637807643-0mis27736asip5thchf3v3ksk8mnor2f.apps.googleusercontent.com"
+
   }
 
   kakaoLogin = () => {
@@ -147,6 +163,19 @@ class SignIn extends React.Component {
 
   componentDidMount() {
     // this.requestSignIn()
+
+    // 여기서 didMount를 걸어야 마이페이지까지 authorization이 잘 전달됨. (새로고침해도!)
+    const query = window.location.search.substring(1)
+    const socialUserToken = query.split('access_token=')[1]
+    const localUserToken = window.localStorage.getItem("token")
+    if (socialUserToken !== undefined) {
+      // 소셜로그인 토큰 저장: 쿼리스트링으로 담겨온 값 중 토큰을 추출하고 그것을 로컬스토리지에 저장하는 함수
+      this.getToken()
+    }
+    // 일반로그인 토큰 받아와 로컬스토리지에 저장하는 것은 handleSignIn에서 함(로그인버튼 눌렀을때 로컬스토리지에 저장될 것. 그것을 꺼내 사용) 
+    else if (localUserToken) {
+      axios.defaults.headers.common['Authorization'] = localUserToken;
+    }
   }
 
   // 엔터키를 눌러도 로그인 버튼 누르게 하는 기능
@@ -223,12 +252,12 @@ class SignIn extends React.Component {
               </form>
               {/* -------------------------- submit 버튼 칸 --------------------*/}
               <div>
-                <div className="Button_in_signIn">
+                <div>
                   <Button
+                    onClick={this.handleSignIn}
                     size="large"
                     // className="Button_in_signIn"
                     // type="submit"
-                    onClick={this.handleSignIn}
                     onKeyPress={this.signInPress}
                   >
                     로그인
@@ -242,12 +271,11 @@ class SignIn extends React.Component {
                   >
                     회원 가입
                   </Button>
+
                 </div>
                 <div className="socialLogin">
 
                   {/* <span onClick={this.googleLogin}>구글</span> */}
-
-
 
                   <img
                     className="socialLogin_btn"

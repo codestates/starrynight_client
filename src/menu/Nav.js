@@ -139,6 +139,7 @@ class Nav extends React.Component {
         this.setState({
           ...this.state,
           currentUserInfo: {
+            loginPlatformId: response.data.loginPlatformId,
             email: response.data.email,
             password: response.data.password,
             nickname: response.data.nickname,
