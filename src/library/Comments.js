@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../css/Comments.css";
+import "../css/Comments.scss";
 import fake25 from "../image/fakeData/fake25.jpg";
 import fake6 from "../image/fakeData/fake6.jpg";
 import userFace from "../image/faceCircle.png";
@@ -15,7 +15,7 @@ import RemoveComment from "./RemoveComment";
 let data = [
   {
     name: "울릉도 동남쪽 백길따라 이백리",
-    photo: fake6,
+    photo: fake25,
     hashTag: "#울릉도#동남쪽#백길따라#이백리",
     userFace: userFace,
     userName: "태진아",
@@ -26,7 +26,8 @@ let data = [
         faceCircle: faceCircle1,
         userName: "금강산산산산",
         date: "2020-12-06",
-        comment: "너무 예뻐요. 자주 소통해요!",
+        comment:
+          "너무 예뻐요. 자주 소통해요!소통해요!소통해요!소통해요!소통해요!소통해요!소통해요!소통해요!소통해요!소통해요!",
       },
       {
         faceCircle: faceCircle2,
@@ -44,7 +45,8 @@ let data = [
         faceCircle: faceCircle4,
         userName: "대방어",
         date: "2020-12-06",
-        comment: "나 슬퍼서 살아야 하네~",
+        comment:
+          "나 슬퍼서 살아야 하네하네하네하네하네하네하네하네하네하네하네하네하네하네하네하네~",
       },
       {
         faceCircle: faceCircle5,
@@ -69,14 +71,18 @@ class Comments extends Component {
   componentDidUpdate() {
     if (this.props.isCommentsOpen) {
       let myModal = document.querySelector(".myModal");
+      let modalContent = document.querySelector(".modalContent");
       myModal.style.display = "block";
+      modalContent.style.display = "block";
     }
   }
 
   handleModalClose = () => {
     this.props.handleModalControl();
     let myModal = document.querySelector(".myModal");
+    let modalContent = document.querySelector(".modalContent");
     myModal.style.display = "none";
+    modalContent.style.display = "none";
   };
 
   removePhotoControl = () => {
@@ -104,44 +110,127 @@ class Comments extends Component {
           isRemovePhotoOpen={this.state.isRemovePhotoOpen}
           removePhotoControl={this.removePhotoControl}
         />
+        {/* // */}
+        {/* // */}
+        {/* // */}
+        {/* // */}
+        {/* // */}
+        {/* // */}
+        {/* // */}
+        {/* // */}
+        {/* // */}
         {/* ------------------포토뷰모달------------------ */}
-        <div className="myModal">
-          <div className="modalContent">
-            {/* close버튼 */}
-            <span className="close" onClick={this.handleModalClose}>
-              &times;
-            </span>
-            {/* name */}
-            <span className="photoName">{this.state.data[0].name}</span>
-            {/* photo */}
+        <div className="myModal" onClick={this.handleModalClose}></div>
+        <div className="modalContent">
+          <div className="modalContent_Left">
+            {/* ------------------name------------------ */}
+            <div className="photoName">{this.state.data[0].name}</div>
+            {/* ------------------photo------------------ */}
             <img
               className="selectPhoto"
               src={this.state.data[0].photo}
               alt="img"
             />
-            {/* hashTag */}
+            {/* ------------------hashTag------------------ */}
             <div className="hashTag">
               <span>{this.state.data[0].hashTag}</span>
             </div>
-            {/* userInfo(userFace, userName) */}
+            {/* ------------------userInfo(userFace, userName)------------------ */}
             <div className="userInfo">
               <img className="userFace" src={this.state.data[0].userFace} />
               <span className="userName">{this.state.data[0].userName}</span>
             </div>
-            {/* 수정버튼, 삭제버튼 */}
+            {/* ------------------수정버튼, 삭제버튼------------------ */}
             <div className="btns">
               <button className="modifyBtn">수정</button>
               <button className="deleteBtn" onClick={this.removePhotoControl}>
                 삭제
               </button>
             </div>
-            {/* 지도  */}
+          </div>
+          <div className="modalContent_Right">
+            {/* ------------------close버튼------------------ */}
+            {/* <span className="close" onClick={this.handleModalClose}>
+              &times;
+            </span> */}
+            {/* ------------------지도------------------ */}
             <img className="mapImg" src={this.state.data[0].map} />
-            {/* How to go 버튼 */}
+            {/* ------------------How to go 버튼------------------ */}
+            <div className="HowToGo_div">
+              <button className="HowToGo">How to go</button>
+            </div>
+            {/* ------------------favorite 버튼------------------ */}
+            <div className="favorite_div">
+              <button className="favorite">별</button>
+            </div>
+            {/* ------------------댓글, 메시지입력btn------------------ */}
+            <div className="commentDiv">
+              <div className="comments">
+                {this.state.data[0].comments.map((data) => {
+                  return (
+                    <div className="comment">
+                      <img
+                        src={data.faceCircle}
+                        className="commentFace"
+                        alt="faceCircle"
+                      />
+                      <span className="commentUserName">{data.userName}</span>
+                      <span className="commentDate">{data.date}</span>
+                      <div className="commentComment">{data.comment}</div>
+                      <span className="commentRemove">
+                        <button onClick={this.removeCommentControl}>
+                          삭제
+                        </button>
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+              <button className="commentBtn">메시지를 입력하세요.</button>
+            </div>
+          </div>
+        </div>
+
+        {/* --------------------------------백업--------------------------------- */}
+
+        {/* ------------------포토뷰모달------------------
+        <div className="myModal" onClick={this.handleModalClose}>
+          <div className="modalContent">
+          ------------------close버튼------------------
+            <span className="close" onClick={this.handleModalClose}>
+              &times;
+            </span>
+            ------------------name------------------
+            <span className="photoName">{this.state.data[0].name}</span>
+          ------------------photo------------------
+            <img
+              className="selectPhoto"
+              src={this.state.data[0].photo}
+              alt="img"
+            />
+            ------------------hashTag------------------
+            <div className="hashTag">
+              <span>{this.state.data[0].hashTag}</span>
+            </div>
+          ------------------userInfo(userFace, userName)------------------
+            <div className="userInfo">
+              <img className="userFace" src={this.state.data[0].userFace} />
+              <span className="userName">{this.state.data[0].userName}</span>
+            </div>
+            ------------------수정버튼, 삭제버튼------------------
+            <div className="btns">
+              <button className="modifyBtn">수정</button>
+              <button className="deleteBtn" onClick={this.removePhotoControl}>
+                삭제
+              </button>
+            </div>
+            ------------------지도------------------
+            <img className="mapImg" src={this.state.data[0].map} />
+            ------------------How to go 버튼------------------
             <button className="HowToGo">How to go</button>
-            {/* favorite 버튼 */}
+            ------------------favorite 버튼------------------
             <button className="favorite">별</button>
-            {/* 댓글, 메시지입력btn */}
+            ------------------댓글, 메시지입력btn------------------
             <div className="commentDiv">
               <div className="comments">
                 {this.state.data[0].comments.map((data) => {
@@ -174,7 +263,7 @@ class Comments extends Component {
               <button className="commentBtn">메시지를 입력하세요.</button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
