@@ -1,9 +1,29 @@
 import React from "react";
+import axios from "axios"
 
 // css
 import "../../css/Mypage.scss"
 
 function Kakao(props) {
+
+  function unLinkUser() {
+    const access_token = window.localStorage.getItem("token")
+
+    axios({
+      method: "POST",
+      url: "https://kapi.kakao.com/v1/user/unlink",
+      headers: {
+        Authorization: `Bearer ${access_token}`
+      }
+    })
+      .then((response) => {
+        alert(response.data)
+      })
+      .catch((error) => {
+        console.log(error.response.data)
+      })
+  }
+
   return (
     <div className="modal_Mypage">
       <div className="modal_Mypage_overlay" onClick={props.handleMypageModal}></div>
@@ -15,7 +35,7 @@ function Kakao(props) {
         <div>
           <img
             className="profile_img"
-            src={props.currentUserInfo.profile}
+          // src={props.currentUserInfo.profile}
           />
         </div>
 
@@ -57,7 +77,7 @@ function Kakao(props) {
               {/* axios post 요청 보내기 */}
               {/* 연동해제 메소드 만들기 */}
               {/* <button onClick={props.DoubleCheckRemoveUsersClick} > */}
-              <button>
+              <button onClick={unLinkUser}>
                 연동 해제
             </button>
             </div>
