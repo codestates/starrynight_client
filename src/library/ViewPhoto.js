@@ -8,14 +8,26 @@ class ViewPhoto extends Component {
     super(props);
     this.state = {
       isCommentsOpen: false,
+      isCommentId: 0,
     };
   }
 
-  handleModalControl = () => {
+  handleModalOpen = (e) => {
+    console.log(e.target.name);
+    this.setState({
+      isCommentId: e.target.name,
+    });
     this.setState({
       isCommentsOpen: !this.state.isCommentsOpen,
     });
-    console.log(`isOpen: ${this.state.isCommentsOpen}`);
+    // console.log(`isOpen: ${this.state.isCommentsOpen}`);
+  };
+
+  handleModalClose = () => {
+    this.setState({
+      isCommentsOpen: !this.state.isCommentsOpen,
+    });
+    // console.log(`isOpen: ${this.state.isCommentsOpen}`);
   };
 
   render() {
@@ -23,9 +35,11 @@ class ViewPhoto extends Component {
       <div className="ViewPhoto">
         <Comments
           isCommentsOpen={this.state.isCommentsOpen}
-          handleModalControl={this.handleModalControl}
+          isCommentId={this.state.isCommentId}
+          handleModalOpen={this.handleModalOpen}
+          handleModalClose={this.handleModalClose}
         />
-        <All handleModalControl={this.handleModalControl} />
+        <All handleModalOpen={this.handleModalOpen} />
       </div>
     );
   }

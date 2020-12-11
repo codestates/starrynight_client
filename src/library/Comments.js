@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/Comments.scss";
+const axios = require("axios").default;
 import fake25 from "../image/fakeData/fake25.jpg";
 import fake6 from "../image/fakeData/fake6.jpg";
 import userFace from "../image/faceCircle.png";
@@ -22,7 +23,7 @@ let data = [
     writer: "태진아",
     map: mapImg,
     favorite: false,
-    reply: [
+    replies: [
       {
         commentId: 1,
         profilePath: faceCircle1,
@@ -78,11 +79,15 @@ class Comments extends Component {
       let modalContent = document.querySelector(".modalContent");
       myModal.style.display = "block";
       modalContent.style.display = "block";
+
+      console.log("modalId: ", this.props.isCommentId);
+      let url = `https://api.mystar-story.com/:${this.props.isCommentId}`;
+      axios.get(url).then((data) => console.log(data));
     }
   }
 
   handleModalClose = () => {
-    this.props.handleModalControl();
+    this.props.handleModalClose();
     let myModal = document.querySelector(".myModal");
     let modalContent = document.querySelector(".modalContent");
     myModal.style.display = "none";
@@ -164,7 +169,7 @@ class Comments extends Component {
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
               <div className="comments">
-                {this.state.data[0].reply.map((data) => {
+                {this.state.data[0].replies.map((data) => {
                   return (
                     <div className="comment">
                       <img
