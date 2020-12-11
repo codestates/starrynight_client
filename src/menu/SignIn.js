@@ -214,90 +214,98 @@ class SignIn extends React.Component {
                 id="signIn_logo"
                 src={imgFile} alt="Starry Night Logo"
               />
-              {/* -------------------------- 이메일, pw 입력칸 --------------------*/}
-              <form>
-                <div className="Email_PW_container">
-                  <div>사이즈 테스트 중</div>
-                  <div className="email_div">
-                    <span>이메일</span>
-                    <input
-                      type="email"
-                      onChange={this.handleInputValue("email")}
-                    />
-                    <div>{this.state.errMsgOfEmailBlanks}</div>
+              <div className="box">
+                {/* -------------------------- 이메일, pw 입력칸 --------------------*/}
+                <div className="container_signIn">
+                  <div className="Email_PW_container">
+                    <div id="user_title">USER</div>
+                    <div className="email_div">
+                      {/* <span>이메일</span> */}
+                      <input
+                        placeholder="이메일을 입력하세요."
+                        type="email"
+                        onChange={this.handleInputValue("email")}
+                      />
+                      <div>{this.state.errMsgOfEmailBlanks}</div>
+                    </div>
+                    <div className="pw_div">
+                      {/* <span>비밀번호</span> */}
+                      <input
+                        placeholder="비밀번호를 입력하세요."
+                        type="password"
+                        onChange={this.handleInputValue("password")}
+                      />
+                      <div>{this.state.errMsgOfPasswordBlanks}</div>
+                    </div>
                   </div>
-                  <div className="pw_div">
-                    <span>비밀번호</span>
-                    <input
-                      type="password"
-                      onChange={this.handleInputValue("password")}
-                    />
-                    <div>{this.state.errMsgOfPasswordBlanks}</div>
-                  </div>
-                </div>
-                {/* -------------------------- 이메일, pw 찾기 --------------------*/}
-                <div className="findAccount_span">
-                  <div className="find_Account">
-                    <span onClick={this.props.findEmailClick}>
-                      이메일 찾기
+                  {/* -------------------------- 이메일, pw 찾기 --------------------*/}
+
+                  <div className="findAccount_span">
+                    <div className="find_Account">
+                      <span onClick={this.props.findEmailClick}>
+                        이메일 찾기
                     </span>
 
 
-                    <span> | </span>
+                      <span> | </span>
 
-                    <span onClick={this.props.findPwClick}>
-                      비밀번호 찾기
+                      <span onClick={this.props.findPwClick}>
+                        비밀번호 찾기
                     </span>
+                    </div>
                   </div>
-                </div>
 
-              </form>
-              {/* -------------------------- submit 버튼 칸 --------------------*/}
-              <div>
-                <div>
-                  <Button
-                    onClick={this.handleSignIn}
-                    size="large"
-                    // className="Button_in_signIn"
-                    // type="submit"
-                    onKeyPress={this.signInPress}
-                  >
-                    로그인
+
+                  {/* -------------------------- submit 버튼 칸 --------------------*/}
+
+                  <div>
+                    <Button
+                      onClick={this.handleSignIn}
+                      size="large"
+                      // className="Button_in_signIn"
+                      // type="submit"
+                      onKeyPress={this.signInPress}
+                    >
+                      로그인
                     </Button>
-                </div>
-                <div className="Button_in_signIn">
-                  <Button
-                    size="large"
-                    // className="Button_in_signIn"
-                    onClick={this.props.signUpClickInSignIn}
-                  >
-                    회원 가입
+                  </div>
+                  <div className="Button_in_signIn">
+                    <Button
+                      size="large"
+                      // className="Button_in_signIn"
+                      onClick={this.props.signUpClickInSignIn}
+                    >
+                      회원 가입
                   </Button>
 
+                  </div>
                 </div>
-                <div className="socialLogin">
+                <div className="container2_siginIn">
+                  <div className="socialLogin">
+                    <div>SOCIAL LOGIN</div>
+                    {/* <span onClick={this.googleLogin}>구글</span> */}
 
-                  {/* <span onClick={this.googleLogin}>구글</span> */}
-
-                  <img
-                    className="socialLogin_btn"
-                    src={googleLogo} alt="구글 로그인"
-                    onClick={this.googleLogin}
-                  />
-                  {/* <span> || </span> */}
-                  <img
-                    className="socialLogin_btn"
-                    src={kakaoLogo} alt="카카오 로그인"
-                    onClick={this.kakaoLogin}
-                  />
+                    <img
+                      className="socialLogin_btn"
+                      src={googleLogo} alt="구글 로그인"
+                      onClick={this.googleLogin}
+                    />
+                    {/* <span> || </span> */}
+                    <img
+                      className="socialLogin_btn"
+                      src={kakaoLogo} alt="카카오 로그인"
+                      onClick={this.kakaoLogin}
+                    />
 
 
+                  </div>
                 </div>
               </div>
 
 
             </div>
           </div>
+
           : null}
 
       </div>

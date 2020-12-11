@@ -19,7 +19,7 @@
   
   .modal_signIn_content {
     background-color: white;
-    width: 30%;
+    width: 48%;
     position: relative;
     text-align: center;
     border-radius: 10px;
@@ -34,38 +34,97 @@
     max-width: 50%;
     // height: auto;
   }
-
-  .Email_PW_container {
-    background: skyblue; // 사이즈 테스트 중
-    margin-right: 7%;
-    margin-left: 7%;;
-    margin-bottom: 5%;
-  }
-  .Button_in_signIn {
-    margin-top: 1rem;
-  }
-
-  .socialLogin{
-    margin: 10% 10%;
-    position: relative;
+  .box {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    // flex-direction: row;
-    .socialLogin_btn{
-      // max-width: 50%;
-      // // min-width: 10px;
-      
-      width: 15%;
-      margin-left: 10%;
-      margin-right: 10%;
-      // // justify-content: center;
-      // // align-items: center;
+    justify-content: space-around;
+    align-content: center;
 
+    .container_signIn {
+      float: left;
+      width: 50%;
+      margin-left: 3%;
       
-
-    
     }
 
+    #user_title {
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      padding-left: 0.3rem;
+      padding-bottom: 7px;
+    }
+    input[type="email"],
+    input[type="password"]{
+      display: flex;
+      width: 80%;
+      font-size: 0.9rem;
+      border-radius: 5px;
+      border-width: 1.6px;
+      border-color: rgb(143, 143, 143);
+      padding: 0.48rem 0.3rem;
+      margin: 0.4rem;
+
+    }
+    input[type="email"]::placeholder,
+    input[type="password"]::placeholder {
+      padding-left: 6px;
+      font-size: 0.9rem;
+      color: rgb(166, 163, 168);
+      display: flex;
+      align-content: center;
+    }
+    
+    
+    .findAccount_span {
+      display: flex;
+      margin-left: 37%;
+      
+      span {
+        font-size: 0.8rem;
+      }
+    }
+    
+    
+    .Email_PW_container {
+      // background: skyblue; // 사이즈 테스트 중
+      
+      margin-right: 7%;
+      margin-left: 7%;;
+      margin-bottom: 3px;
+    }
+    
+    .container2_siginIn {
+      float: left;
+      flex: 33.3%;
+      max-width: 33.3%;
+    }
+    
+    .Button_in_signIn {
+      margin-top: 1rem;
+    }
+    
+    .socialLogin{
+      margin: 10% 10%;
+      // position: relative;
+      // display: flex;
+      justify-content: center;
+      align-items: center;
+      // flex-direction: row;
+      .socialLogin_btn{
+        // max-width: 50%;
+        // // min-width: 10px;
+        
+        width: 15%;
+        margin-left: 10%;
+        margin-right: 10%;
+        // // justify-content: center;
+        // // align-items: center;
+        
+        
+        
+        
+      }
+      
+    }
   }
 }

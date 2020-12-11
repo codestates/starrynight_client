@@ -15,15 +15,16 @@ class Mypage extends React.Component {
     super(props)
     this.state = {
       // 순전히 화면에 변경 전의 정보를 렌더하는 역할
-      // currentUserInfo: {
-      //   email: "",
-      //   password: "",
-      //   nickname: "",
-      //   mobile: "",
-      //   oauth: "",
-      //   profile: ""
-      // },
+      currentUserInfo: {
+        email: this.props.currentUserInfo.email,
+        password: this.props.currentUserInfo.password,
+        nickname: this.props.currentUserInfo.nickname,
+        mobile: this.props.currentUserInfo.mobile,
+        oauth: "",
+        profile: this.props.currentUserInfo.profile
+      },
 
+      // currentUserInfo: this.props.currentUserInfo,
 
       // 변경될 유저 정보, 깃북수정요청 전까지는 올바른 변수명으로 전달하기 위해 이렇게 놔두자.
       // onChange로 셋팅하고 이걸 axios로 보내
@@ -46,28 +47,32 @@ class Mypage extends React.Component {
 
 
   // 토큰 보내고 GET요청 -> 해당 유저의 정보를 받아옴.현재 화면에 렌더만 할 것임.
-  // getUserInfo = () => {
-  //   axios.get("https://api.mystar-story.com/user/mypage", {
-  //     withCredentials: true
-  //   })
-  //     .then((response) => {
-  //       console.log("마이페이지 리스폰스 뭘받아와?", response)
-  //       this.setState({
-  //         ...this.state,
-  //         currentUserInfo: {
-  //           email: response.data.email,
-  //           password: response.data.password,
-  //           nickname: response.data.nickname,
-  //           mobile: response.data.mobile,
-  //           oauth: response.data.oauth,
-  //           profile: response.data.profile
-  //         }
-  //       })
-  //     })
-  //   // .catch((error) => {
-  //   //   console.log(error.response.data)
-  //   // })
-  // }
+  getUserInfo = () => {
+
+    axios.get("https://api.mystar-story.com/user/mypage", {
+      withCredentials: true
+    })
+      .then((response) => {
+        console.log("마이페이지 리스폰스 뭘받아와?", response)
+        this.setState({
+          ...this.state,
+          currentUserInfo: {
+            loginPlatformId: response.data.loginPlatformId,
+            email: response.data.email,
+            password: response.data.password,
+            nickname: response.data.nickname,
+            mobile: response.data.mobile,
+            oauth: response.data.oauth,
+            profile: response.data.profile
+          }
+        })
+      })
+      .catch((error) => {
+        console.log(error.response.data)
+      })
+
+  }
+  /* ---------------------------프로필사진----------------------------------------- */
 
 
   // 각 input창에 들어오는 입력값들을 새로운 state 값으로 저장
@@ -94,14 +99,14 @@ class Mypage extends React.Component {
       .then((response) => {
         alert(response.data)
         this.setState({
-          currentUserInfo: {
-            email: this.state.currentUserInfo.email,
-            password: this.state.currentUserInfo.password,
-            nickname: this.state.currentUserInfo.nickname,
-            mobile: this.state.currentUserInfo.mobile
-          }
-
+          // currentUserInfo: {
+          //   email: this.state.currentUserInfo.email,
+          //   password: this.state.currentUserInfo.password,
+          //   nickname: this.state.currentUserInfo.nickname,
+          //   mobile: this.state.currentUserInfo.mobile
+          // }
         })
+        this.handleModifyBtnOfPwClick()
       })
   }
 
@@ -123,12 +128,13 @@ class Mypage extends React.Component {
         this.setState({
           ...this.state,
           currentUserInfo: {
-            email: this.state.currentUserInfo.email,
-            password: this.state.currentUserInfo.password,
+            email: this.props.currentUserInfo.email,
+            password: this.props.currentUserInfo.password,
             nickname: response.data.nickname,
-            mobile: this.state.currentUserInfo.mobile
+            mobile: this.props.currentUserInfo.mobile
           }
         })
+        this.handleModifyBtnOfNicknameClick()
       })
       .catch((error) => {
         alert(error.response.data)
@@ -158,6 +164,10 @@ class Mypage extends React.Component {
             mobile: response.data.mobile
           }
         })
+        this.handleModifyBtnOfMobileClick()
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
 
@@ -173,8 +183,13 @@ class Mypage extends React.Component {
   componentDidMount() {
     // if (this.props.isMypageModalOpen === true) {
     //   console.log("마이페이지 기본정보 들어옴?")
-    // this.getUserInfo()
+    this.getUserInfo()
     // }
+    // this.props.mypageClick
+
+    // this.setState({
+    //   currentUserInfo: this.props.currentUserInfo
+    // })
   }
 
   render() {
@@ -192,7 +207,6 @@ class Mypage extends React.Component {
 
           // this.props.currentUserInfo.loginPlatformId !== null ?
           this.props.currentUserInfo.loginPlatformId === 2 ?
-            // alert("dmdkrkdra?")
             <Google
               isMypageModalOpen={this.props.isMypageModalOpen}
               handleMypageModal={this.props.handleMypageModal}
@@ -214,7 +228,9 @@ class Mypage extends React.Component {
 
                   {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-                  <div> 로컬유저 </div>
+                  <div>
+                    {/* <img>{this.props.currentUserInfo.profile}</img> */}
+                  </div>
 
                   {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
@@ -224,18 +240,18 @@ class Mypage extends React.Component {
                     <div className="email_div_inMypage">
                       <span>이메일</span>
 
-                      <div>{this.props.currentUserInfo.email}</div>
+                      <div>{this.state.currentUserInfo.email}</div>
                       {/* <div>{this.props.sendStateForMypage.email}</div> */}
                     </div>
 
                     <div className="pw_div_inMypage">
                       <span>비밀번호</span>
-                      <div>{this.props.currentUserInfo.password}</div>
+                      <div>******</div>
                       {/* <div>{this.props.sendStateForMypage.password}</div> */}
                       {this.state.isModifyBtnOfPw === false ?
                         <div />
                         :
-                        <input onChange={this.handleChangeUserInfo("password")} />
+                        <input type="password" onChange={this.handleChangeUserInfo("password")} />
                       }
                       {this.state.isModifyBtnOfPw ?
                         <button onClick={this.requestModifyPw}>aa</button>
@@ -246,7 +262,7 @@ class Mypage extends React.Component {
 
                     <div className="nickname_div_inMypage">
                       <span>별명</span>
-                      <div>{this.props.currentUserInfo.nickname}</div>
+                      <div>{this.state.currentUserInfo.nickname}</div>
                       {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
                       {this.state.isModifyBtnOfNickname === false ?
                         <div />
@@ -262,7 +278,7 @@ class Mypage extends React.Component {
 
                     <div className="mobile_div_inMypage">
                       <span>연락처</span>
-                      <div>{this.props.currentUserInfo.mobile}</div>
+                      <div>{this.state.currentUserInfo.mobile}</div>
                       {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
                       {this.state.isModifyBtnOfMobile === false ?
                         <div />

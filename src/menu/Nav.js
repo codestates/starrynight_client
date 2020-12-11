@@ -303,6 +303,11 @@ class Nav extends React.Component {
 
   }
 
+  // componentDidMount() {
+
+  // }
+
+
   render() {
     console.log("nav 프롭", this.props);
     console.log("마이페이지 불린값", this.state.isMypageModalOpen)
@@ -384,6 +389,7 @@ class Nav extends React.Component {
   Mypage 컴포넌트는 꺼지고 곧바로 회원탈퇴 모달이 켜지도록(handleDoubleCheckRemoveUsersModal) 이벤트핸들러를 혼합한다.  */}
 
             <Mypage
+              mypageClick={this.mypageClick}
               currentUserInfo={this.state.currentUserInfo}
               isMypageModalOpen={this.state.isMypageModalOpen}
               handleMypageModal={this.handleMypageModal}  // 오버레이 누르면 모달 꺼지기
