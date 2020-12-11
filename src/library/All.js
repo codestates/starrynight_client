@@ -102,8 +102,9 @@ class All extends Component {
           if (items < data.length) {
             let img = document.createElement("img");
             img.src = data[items].photoPath;
+            img.name = data[items].id;
             img.className = "photo";
-            img.onclick = this.props.handleModalControl;
+            img.onclick = this.props.handleModalOpen;
             img.alt = "fake";
             col1.appendChild(img);
           }
@@ -124,8 +125,9 @@ class All extends Component {
           if (items < data.length) {
             let img = document.createElement("img");
             img.src = data[items].photoPath;
+            img.name = data[items].id;
             img.className = "photo";
-            img.onclick = this.props.handleModalControl;
+            img.onclick = this.props.handleModalOpen;
             img.alt = "fake";
             col1.appendChild(img);
           }
@@ -135,8 +137,9 @@ class All extends Component {
           if (items + 1 < data.length) {
             let img = document.createElement("img");
             img.src = data[items + 1].photoPath;
+            img.name = data[items + 1].id;
             img.className = "photo";
-            img.onclick = this.props.handleModalControl;
+            img.onclick = this.props.handleModalOpen;
             img.alt = "fake";
             col2.appendChild(img);
           }
@@ -158,8 +161,9 @@ class All extends Component {
           if (items < data.length) {
             let img = document.createElement("img");
             img.src = data[items].photoPath;
+            img.name = data[items].id;
             img.className = "photo";
-            img.onclick = this.props.handleModalControl;
+            img.onclick = this.props.handleModalOpen;
             img.alt = "fake";
             col1.appendChild(img);
           }
@@ -169,8 +173,9 @@ class All extends Component {
           if (items + 1 < data.length) {
             let img = document.createElement("img");
             img.src = data[items + 1].photoPath;
+            img.name = data[items + 1].id;
             img.className = "photo";
-            img.onclick = this.props.handleModalControl;
+            img.onclick = this.props.handleModalOpen;
             img.alt = "fake";
             col2.appendChild(img);
           }
@@ -180,8 +185,9 @@ class All extends Component {
           if (items + 2 < data.length) {
             let img = document.createElement("img");
             img.src = data[items + 2].photoPath;
+            img.name = data[items + 2].id;
             img.className = "photo";
-            img.onclick = this.props.handleModalControl;
+            img.onclick = this.props.handleModalOpen;
             img.alt = "fake";
             col3.appendChild(img);
           }
