@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+// import KakaoMapSearch from "./KakaoMapSearch";
 import { Typography, Button, Form, message, Input, AutoComplete } from "antd";
-// import { EnvironmentFilled } from "@ant-design/icons";
 import { IoSearchCircleSharp } from "react-icons/io5";
 
 import Dropzone from "react-dropzone";
@@ -15,6 +15,7 @@ function AddPhoto(props) {
   // console.log("AddPhoto에 전달된 로컬스토리지:", props.localStorage);
   const userToken = props.localStorage.responseMsg;
   console.log("AddPhoto 내 토큰:", userToken);
+  console.log("카카오맵", window.kakao);
 
   // modal에서 관리할 상태들을 설정한다
   const [PhotoFormData, setPhotoFormData] = useState([]);
@@ -43,15 +44,14 @@ function AddPhoto(props) {
     const config = {
       header: { "content-type": "multipart/form-data" },
     };
-    Axios.post(
-      // "https://api.mystar-story.com/addphoto",
-      "http://localhost:8000/addphoto",
-      PhotoFormData,
-      config
-    )
+    Axios.post("https://api.mystar-story.com/addphoto", PhotoFormData, config)
       .then((res) => {
         if (res.data.success) {
           console.log("사진 Dropdown 및 URL 생성 성공!! ", res.data.url);
+
+          if (PhotoTitle === "" || PhotoLocation === "") {
+            alert("제목과 위치는 반드시 포함되어야 합니다");
+          }
 
           // 성공적으로 생성된 사진 url을 바탕으로 사진정보를 Photo 모델에 저장 요청
           const photo = {
@@ -61,34 +61,35 @@ function AddPhoto(props) {
             location: PhotoLocation,
           };
 
-          // Axios.post("https://api.mystar-story.com/savephoto", photo)
-          Axios.post("http://localhost:8000/savephoto", photo).then((res) => {
-            if (res.data.success) {
-              // 해시태그가 있으면 해당 정보도 HashTag 모델 및 Photo 모델에 저장 요청
-              if (PhotoHashtag !== "") {
-                const hashtag = {
-                  hashtag: PhotoHashtag,
-                  photoPath: photo.photoPath,
-                };
+          Axios.post("https://api.mystar-story.com/savephoto", photo).then(
+            (res) => {
+              if (res.data.success) {
+                // 해시태그가 있으면 해당 정보도 HashTag 모델 및 Photo 모델에 저장 요청
+                if (PhotoHashtag !== "") {
+                  const hashtag = {
+                    hashtag: PhotoHashtag,
+                    photoPath: photo.photoPath,
+                  };
 
-                // Axios.post("https://api.mystar-story.com/hashtager", hashtag)
-                Axios.post("http://localhost:8000/hashtager", hashtag).then(
-                  (res) => {
+                  Axios.post(
+                    "https://api.mystar-story.com/hashtager",
+                    hashtag
+                  ).then((res) => {
                     if (res.data.success) {
                       console.log("해시태그 포함 최종정보", res.data);
                     } else {
                       alert("해시태그 등록 실패");
                     }
-                  }
-                );
-              }
+                  });
+                }
 
-              alert("사진 업로드에 성공하였습니다");
-              window.location.replace("/"); // props.history.push("/")를 쓰지 않는 이유: 보여주기 위한 경로 refresh가 아니라, 진짜 브라우저 refresh가 필요하기 때문
-            } else {
-              alert("사진 업로드 실패");
+                alert("사진 업로드에 성공하였습니다");
+                window.location.replace("/"); // props.history.push("/")를 쓰지 않는 이유: 보여주기 위한 경로 refresh가 아니라, 진짜 브라우저 refresh가 필요하기 때문
+              } else {
+                alert("사진 업로드 실패");
+              }
             }
-          });
+          );
         } else {
           alert("사진 Dropdown 실패");
         }
@@ -197,22 +198,13 @@ function AddPhoto(props) {
                 <br />
 
                 {/* description and input zone */}
-                <div
-                  id="map"
-                  style={{
-                    width: `60%`,
-                    height: `10rem`,
-                    border: `1px solid gray`,
-                    margin: `auto`,
-                  }}
-                ></div>
-                <br />
                 <label style={{ marginRight: `1rem` }}>사진위치</label>
                 <Input
                   onChange={onPhotoLocationChange}
                   value={PhotoLocation}
                   style={{ width: `40%`, display: `inline-block` }}
                 />
+                {/* <KakaoMapSearch /> */}
                 <IoSearchCircleSharp
                   className="search"
                   value={PhotoLocation}
