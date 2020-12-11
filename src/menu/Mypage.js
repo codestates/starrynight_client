@@ -21,7 +21,7 @@ class Mypage extends React.Component {
         nickname: this.props.currentUserInfo.nickname,
         mobile: this.props.currentUserInfo.mobile,
         oauth: "",
-        profile: this.props.currentUserInfo.profile
+        profile: this.props.currentUserInfo.profilePath
       },
 
       // currentUserInfo: this.props.currentUserInfo,
@@ -63,7 +63,7 @@ class Mypage extends React.Component {
             nickname: response.data.nickname,
             mobile: response.data.mobile,
             oauth: response.data.oauth,
-            profile: response.data.profile
+            profile: response.data.profilePath
           }
         })
       })
@@ -229,7 +229,7 @@ class Mypage extends React.Component {
                   {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
                   <div>
-                    {/* <img>{this.props.currentUserInfo.profile}</img> */}
+
                   </div>
 
                   {/* -------------------------- 연락처 입력 칸 -------------------------*/}

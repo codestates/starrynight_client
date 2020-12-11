@@ -12,6 +12,12 @@ function Kakao(props) {
         {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
         <div> 카카오!!!! </div>
+        <div>
+          <img
+            className="profile_img"
+            src={props.currentUserInfo.profile}
+          />
+        </div>
 
         {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 

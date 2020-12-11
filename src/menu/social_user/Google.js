@@ -4,7 +4,14 @@ import React from "react";
 import "../../css/Mypage.scss"
 
 function Google(props) {
+
+  // console.log("구글 커런트유저인포 프롭", props.currentUserInfo)
+  console.log("구글 커런트유저인포 profile 프롭", typeof props.currentUserInfo.profile)
+  // const { profile } = props.currentUserInfo
+
+
   return (
+
     <div className="modal_Mypage">
       <div className="modal_Mypage_overlay" onClick={props.handleMypageModal}></div>
       <div className="modal_Mypage_content">
@@ -12,6 +19,11 @@ function Google(props) {
         {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
         <div> 구글!!!!! </div>
+        <div>
+          <img
+            className="profile_img"
+            src={props.currentUserInfo.profile} alt="프로필 사진" />
+        </div>
 
         {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
@@ -61,7 +73,9 @@ function Google(props) {
 
       </div>
     </div>
+
   )
 }
+
 
 export default Google;

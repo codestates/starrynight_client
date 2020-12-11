@@ -145,7 +145,7 @@ class Nav extends React.Component {
             nickname: response.data.nickname,
             mobile: response.data.mobile,
             oauth: response.data.oauth,
-            profile: response.data.profile
+            profile: response.data.profilePath
           }
         })
       })
