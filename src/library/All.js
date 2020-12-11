@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/All.css";
+const axios = require("axios").default;
 import fake1 from "../image/fakeData/fake1.jpg";
 import fake2 from "../image/fakeData/fake2.jpg";
 import fake3 from "../image/fakeData/fake3.jpeg";
@@ -31,7 +32,7 @@ import fake28 from "../image/fakeData/fake28.png";
 import fake29 from "../image/fakeData/fake29.jpg";
 import fake30 from "../image/fakeData/fake30.jpg";
 
-let data = [
+let fakeData = [
   fake1,
   fake2,
   fake3,
@@ -70,16 +71,23 @@ class All extends Component {
     this.state = {
       items: 0,
       preItems: 0,
-      fakeData: [...data],
+      data: [...fakeData],
     };
   }
 
   componentDidMount() {
     window.addEventListener("scroll", this.infiniteScroll, true);
+    let url = "https://api.mystar-story.com/main";
+    axios.get(url).then((res) => {
+      this.setState({
+        data: res.data,
+      });
+      console.log(res.data);
+    });
   }
 
   infiniteScroll = () => {
-    const { items, fakeData } = this.state;
+    const { items, data } = this.state;
     const clientHeight = document.querySelector(".ViewPhoto").clientHeight;
     const scrollTop = document.querySelector(".ViewPhoto").scrollTop;
     const scrollHeight = document.querySelector(".ViewPhoto").scrollHeight;
@@ -88,13 +96,12 @@ class All extends Component {
     const col2 = document.querySelector(".column2");
     const col3 = document.querySelector(".column3");
 
-    // 640 1280 1920
     if (flex.clientWidth >= 0 && flex.clientWidth <= 640) {
       if (clientHeight + scrollTop + 10 > scrollHeight) {
         let makeImg1 = () => {
-          if (items < fakeData.length) {
+          if (items < data.length) {
             let img = document.createElement("img");
-            img.src = fakeData[items];
+            img.src = data[items].photoPath;
             img.className = "photo";
             img.onclick = this.props.handleModalControl;
             img.alt = "fake";
@@ -103,20 +110,20 @@ class All extends Component {
         };
 
         makeImg1();
-        if (items <= fakeData.length) {
+        if (items <= data.length) {
           this.setState({
             items: items + 1,
           });
         }
         // console.log(`items: `, items);
-        // console.log("length: ", fakeData.length);
+        // console.log("length: ", data.length);
       }
     } else if (flex.clientWidth >= 641 && flex.clientWidth <= 1280) {
       if (clientHeight + scrollTop + 10 > scrollHeight) {
         let makeImg1 = () => {
-          if (items < fakeData.length) {
+          if (items < data.length) {
             let img = document.createElement("img");
-            img.src = fakeData[items];
+            img.src = data[items].photoPath;
             img.className = "photo";
             img.onclick = this.props.handleModalControl;
             img.alt = "fake";
@@ -125,9 +132,9 @@ class All extends Component {
         };
 
         let makeImg2 = () => {
-          if (items < fakeData.length) {
+          if (items + 1 < data.length) {
             let img = document.createElement("img");
-            img.src = fakeData[items + 1];
+            img.src = data[items + 1].photoPath;
             img.className = "photo";
             img.onclick = this.props.handleModalControl;
             img.alt = "fake";
@@ -137,20 +144,20 @@ class All extends Component {
 
         makeImg1();
         makeImg2();
-        if (items <= fakeData.length) {
+        if (items <= data.length) {
           this.setState({
             items: items + 2,
           });
         }
         // console.log(`items: `, items);
-        // console.log("length: ", fakeData.length);
+        // console.log("length: ", data.length);
       }
     } else if (flex.clientWidth >= 1281) {
       if (clientHeight + scrollTop + 10 > scrollHeight) {
         let makeImg1 = () => {
-          if (items < fakeData.length) {
+          if (items < data.length) {
             let img = document.createElement("img");
-            img.src = fakeData[items];
+            img.src = data[items].photoPath;
             img.className = "photo";
             img.onclick = this.props.handleModalControl;
             img.alt = "fake";
@@ -159,9 +166,9 @@ class All extends Component {
         };
 
         let makeImg2 = () => {
-          if (items < fakeData.length) {
+          if (items + 1 < data.length) {
             let img = document.createElement("img");
-            img.src = fakeData[items + 1];
+            img.src = data[items + 1].photoPath;
             img.className = "photo";
             img.onclick = this.props.handleModalControl;
             img.alt = "fake";
@@ -170,9 +177,9 @@ class All extends Component {
         };
 
         let makeImg3 = () => {
-          if (items < fakeData.length) {
+          if (items + 2 < data.length) {
             let img = document.createElement("img");
-            img.src = fakeData[items + 2];
+            img.src = data[items + 2].photoPath;
             img.className = "photo";
             img.onclick = this.props.handleModalControl;
             img.alt = "fake";
@@ -183,13 +190,13 @@ class All extends Component {
         makeImg1();
         makeImg2();
         makeImg3();
-        if (items <= fakeData.length) {
+        if (items <= data.length) {
           this.setState({
             items: items + 3,
           });
         }
         // console.log(`items: `, items);
-        // console.log("length: ", fakeData.length);
+        // console.log("length: ", data.length);
       }
     }
   };

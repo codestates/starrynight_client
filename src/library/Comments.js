@@ -114,15 +114,6 @@ class Comments extends Component {
           isRemovePhotoOpen={this.state.isRemovePhotoOpen}
           removePhotoControl={this.removePhotoControl}
         />
-        {/* // */}
-        {/* // */}
-        {/* // */}
-        {/* // */}
-        {/* // */}
-        {/* // */}
-        {/* // */}
-        {/* // */}
-        {/* // */}
         {/* ------------------포토뷰모달------------------ */}
         <div className="myModal" onClick={this.handleModalClose}></div>
         <div className="modalContent">
@@ -197,80 +188,6 @@ class Comments extends Component {
             </div>
           </div>
         </div>
-
-        {/* --------------------------------백업--------------------------------- */}
-
-        {/* ------------------포토뷰모달------------------
-        <div className="myModal" onClick={this.handleModalClose}>
-          <div className="modalContent">
-          ------------------close버튼------------------
-            <span className="close" onClick={this.handleModalClose}>
-              &times;
-            </span>
-            ------------------name------------------
-            <span className="photoName">{this.state.data[0].name}</span>
-          ------------------photo------------------
-            <img
-              className="selectPhoto"
-              src={this.state.data[0].photo}
-              alt="img"
-            />
-            ------------------hashTag------------------
-            <div className="hashTag">
-              <span>{this.state.data[0].hashTag}</span>
-            </div>
-          ------------------userInfo(userFace, userName)------------------
-            <div className="userInfo">
-              <img className="userFace" src={this.state.data[0].userFace} />
-              <span className="userName">{this.state.data[0].userName}</span>
-            </div>
-            ------------------수정버튼, 삭제버튼------------------
-            <div className="btns">
-              <button className="modifyBtn">수정</button>
-              <button className="deleteBtn" onClick={this.removePhotoControl}>
-                삭제
-              </button>
-            </div>
-            ------------------지도------------------
-            <img className="mapImg" src={this.state.data[0].map} />
-            ------------------How to go 버튼------------------
-            <button className="HowToGo">How to go</button>
-            ------------------favorite 버튼------------------
-            <button className="favorite">별</button>
-            ------------------댓글, 메시지입력btn------------------
-            <div className="commentDiv">
-              <div className="comments">
-                {this.state.data[0].comments.map((data) => {
-                  return (
-                    <div className="comment">
-                      <div className="commentLeft">
-                        <img
-                          src={data.faceCircle}
-                          className="commentFace"
-                          alt="faceCircle"
-                        />
-                      </div>
-                      <div className="commentRight">
-                        <span className="commentUserName">{data.userName}</span>
-                        <span className="commentDate">{data.date}</span>
-                        <div className="commentComment">{data.comment}</div>
-                        <button
-                          className="commentRemove"
-                          onClick={this.removeCommentControl}
-                        >
-                          삭제
-                        </button>
-                      </div>
-                      <hr />
-                      <div className="commentHr"></div>
-                    </div>
-                  );
-                })}
-              </div>
-              <button className="commentBtn">메시지를 입력하세요.</button>
-            </div>
-          </div>
-        </div> */}
       </div>
     );
   }
