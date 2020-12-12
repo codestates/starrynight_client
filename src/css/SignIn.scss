@@ -9,6 +9,8 @@
   align-items: center;
   // z-index: 1;
 
+
+
   
   .modal_signIn_overlay {
     background-color: rgba(0, 0, 0, 0.6);
@@ -19,7 +21,7 @@
   
   .modal_signIn_content {
     background-color: white;
-    width: 48%;
+    width: 50%;
     position: relative;
     text-align: center;
     border-radius: 10px;
@@ -36,34 +38,42 @@
   }
   .box {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: center;
 
     .container_signIn {
       float: left;
       width: 50%;
       margin-left: 3%;
+      margin-right: 4%;
       margin-bottom: 3%;
     
 
       #user_title {
+        font-family: 'Amatic SC', cursive;
+        font-size: 1.5rem;
         display: flex;
         justify-content: flex-start;
         align-content: center;
         padding-left: 0.3rem;
-        padding-bottom: 7px;
+        padding-bottom: 12px;
       }
       input[type="email"],
       input[type="password"]{
         display: flex;
-        width: 97%;
+        width: 90%;
         font-size: 0.9rem;
         border-radius: 5px;
         border-width: 1.6px;
         border-color: rgb(143, 143, 143);
         padding: 0.48rem 0.9rem;
-        margin: 0.4rem;
+        // margin: 0.4rem;
+        
       }
+      .input_pw_singin {
+        margin-top: 1rem;
+      }
+
       input[type="email"]::placeholder,
       input[type="password"]::placeholder {
         font-size: 0.9rem;
@@ -78,6 +88,23 @@
         margin-right: 7%;
         margin-left: 7%;;
         margin-bottom: 3px;
+
+        .email_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.5rem;
+          }
+        }
+        .pw_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.5rem;
+          }
+        }
       }
       
       .find_container {
@@ -87,10 +114,14 @@
         
         .findAccount_span {
           display: flex;
-          justify-content: flex-end;
+          justify-content: flex-start;
+          margin-bottom: 10%;
           
           span {
             font-size: 0.7rem;
+          }
+          .findEmailPw{
+            cursor: pointer;
           }
         }
       }
@@ -100,42 +131,65 @@
         margin-right: 7%;
         margin-left: 7%;
         padding-left: 0.3rem;
-
+      
         .Button_in_signIn {
           margin-top: 0.5rem;
         }
+        .signIn_icon {
+          padding-left: 0.1rem;
+          color: rgb(202, 200, 200);
+          
+        }
       }
-  }
+    }
 
+    .division_line {
+      background: rgba(204, 204, 214, 0.336);
+      width: 1px;
+      height: 10rem;
+      margin-top: 3%;
+      
+      direction: column;
+      
+    }
 
     .container2_siginIn {
       float: left;
-      flex: 33.3%;
-      max-width: 33.3%;
+      width: 40%;
+      // margin-right: 3%;
+      // margin-bottom: 3%;
+      #social_login_title {
+        font-family: 'Amatic SC', cursive;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: flex-start;
+        
+      }
+                
       .socialLogin{
-        margin: 10% 10%;
+        // margin:0 10%;
+        padding-left: 20%;
         // position: relative;
         // display: flex;
-        justify-content: center;
-        align-items: center;
+        // justify-content: center;
+        // align-items: center;
         // flex-direction: row;
         .socialLogin_btn{
+          
+          margin-top: 1rem;
+          display: flex;
+          justify-content: flex-start;
           // max-width: 50%;
           // // min-width: 10px;
           
-          width: 15%;
-          margin-left: 10%;
-          margin-right: 10%;
+          // width: 15%;
+          // margin-left: 10%;
+          // margin-right: 10%;
           // // justify-content: center;
-          // // align-items: center;
-          
-          
-          
-          
+          // // align-items: center
         }
-        
       }
     }
-    
   }
 }
+

@@ -1,6 +1,35 @@
 $blue: #228be6;
+$lightBlue: #228be680;
+$gray: #495057;
+$red: rgb(226, 12, 12);
+$yellow: yellow;
+$black: rgba(24, 10, 10, 0.932);
+
+
+@mixin button-color($color) {
+  background: $color;
+  &:hover {
+    background: lighten($color, 10%);
+  }
+  &:active {
+    background: darken($color, 10%);
+  }
+
+  &.outline {
+    color: $color;
+    background: none;
+    border: 1px solid lighten($color, 40%);
+    &:hover {
+      border-color: lighten($color, 30%);
+      // border-color: $color;
+      // color: white;
+    }
+  }
+}
+
 
 .Button {
+  
   display: inline-flex;
   color: white;
   // font-weight: bold;
@@ -23,19 +52,35 @@ $blue: #228be6;
     font-size: 1rem;
   }
   &.small {
-    height: 1.75rem;
+    height: 1.9rem;
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 0.875rem;
   }
 
-  background: $blue;
-  &:hover {
-    background: ligthen($blue, 10%);  // 색상 10% 밝게
+  // 색상 관리
+  &.blue {
+    @include button-color($blue);
   }
 
-  &:active {
-    background: darken($blue, 10%);
+  &.gray {
+    @include button-color($gray);
+  }
+
+  &.lightBlue {
+    @include button-color($lightBlue)
+  }
+
+  &.red {
+    @include button-color($red)
+  }
+
+  &.yellow {
+    @include button-color($yellow)
+  }
+
+  &.black {
+    @include button-color($black)
   }
 
   // & + & 는 .Button + .Button을 의미.
@@ -43,6 +88,7 @@ $blue: #228be6;
   & + & {
     margin-left: 1rem;
   }
+
 
   // 버튼의 전체 너비를 차지하도록 하는 기능
   &.fullWidth {
@@ -54,6 +100,32 @@ $blue: #228be6;
       margin-left: 0;
       margin-top: 1rem;
     }
+  }
 
+  &.middleWidth {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+  }
+
+  &.smallWidth {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    align-items: center;
+  }
+
+  &.middleWidth_SignIn_btn {
+    width: 65%;
+    display:flex;
+    // display: flex-end;
+    // float: right;
+    padding-right: 1rem;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    
   }
 }

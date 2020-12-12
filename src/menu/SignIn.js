@@ -1,6 +1,9 @@
 import React from "react"
 import { NavLink, withRouter } from "react-router-dom"
 import Button from "./Button";
+import { HiArrowNarrowRight } from "react-icons/hi";
+
+
 import axios from "axios"
 
 // 소셜로그인
@@ -231,6 +234,7 @@ class SignIn extends React.Component {
                     <div className="pw_div">
                       {/* <span>비밀번호</span> */}
                       <input
+                        className="input_pw_singin"
                         placeholder="비밀번호를 입력하세요."
                         type="password"
                         onChange={this.handleInputValue("password")}
@@ -242,14 +246,14 @@ class SignIn extends React.Component {
                   <div className="find_container">
                     <div className="findAccount_span">
                       <div className="find_Account">
-                        <span onClick={this.props.findEmailClick}>
+                        <span onClick={this.props.findEmailClick} className="findEmailPw" >
                           이메일 찾기
-                    </span>
+                        </span>
 
 
                         <span> | </span>
 
-                        <span onClick={this.props.findPwClick}>
+                        <span onClick={this.props.findPwClick} className="findEmailPw" >
                           비밀번호 찾기
                     </span>
                       </div>
@@ -259,22 +263,31 @@ class SignIn extends React.Component {
                   {/* -------------------------- submit 버튼 칸 --------------------*/}
                   <div className="button_container_signin">
                     <div>
+
                       <Button
                         onClick={this.handleSignIn}
-                        size="large"
-                        fullWidth
+                        size="small"
+                        // fullWidth
+                        // color="black"
+                        color="gray"
+                        middleWidth_SignIn_btn
+                        // smallWidth
                         // className="Button_in_signIn"
                         // type="submit"
                         onKeyPress={this.signInPress}
                       >
                         로그인
-                    </Button>
+                        <HiArrowNarrowRight className="signIn_icon" />
+                      </Button>
+
                     </div>
                     <div className="Button_in_signIn">
                       <Button
-                        size="large"
-                        fullWidth
-                        // className="Button_in_signIn"
+
+                        size="small"
+                        // fullWidth
+                        middleWidth_SignIn_btn
+                        // smallWidth
                         onClick={this.props.signUpClickInSignIn}
                       >
                         회원 가입
@@ -283,24 +296,45 @@ class SignIn extends React.Component {
                     </div>
                   </div>
                 </div>
+
+                <div className="division_line"></div>
+
+
                 <div className="container2_siginIn">
                   <div className="socialLogin">
-                    <div>SOCIAL LOGIN</div>
+                    <div id="social_login_title">SOCIAL LOGIN</div>
                     {/* <span onClick={this.googleLogin}>구글</span> */}
 
-                    <img
+                    {/* --------------------------로그인 아이콘--------------------------------- */}
+                    {/* <img
                       className="socialLogin_btn"
                       src={googleLogo} alt="구글 로그인"
                       onClick={this.googleLogin}
-                    />
+                    /> */}
                     {/* <span> || </span> */}
-                    <img
+                    {/* <img
                       className="socialLogin_btn"
                       src={kakaoLogo} alt="카카오 로그인"
                       onClick={this.kakaoLogin}
-                    />
-
-
+                    />W */}
+                    <div className="socialLogin_btn">
+                      <Button
+                        color="red"
+                        outline
+                        smallWidth
+                      >
+                        Google
+                      </Button>
+                    </div>
+                    <div className="socialLogin_btn">
+                      <Button
+                        color="gray"
+                        outline
+                        smallWidth
+                      >
+                        Kakao
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
