@@ -18,25 +18,51 @@
   font-weight: bolder;
   font-size: large;
   text-decoration: none;
-  width: 40%;
+  width: 10vw;
   height: 2rem;
   margin-top: 2rem;
   padding: 0.25rem 1rem;
   color: white;
   outline: none;
   cursor: pointer;
-  background: #629cc4;
+  background: #0086da;
   &:hover {
-    background: #d6eaff;
+    background: #a4bfff;
   }
 }
 
-.search {
-  width: 5%;
-  height: 5%;
-  margin-bottom: -1.5%;
+.search-button {
   display: inline-block;
+  height: 1.8rem;
+  border: 0.5px solid #0086da;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  background: #0086da;
   &:hover {
-    border: 0.1rem solid #d9eeff;
+    background: #c4d6ff;
+    border: 0.5px solid #a4bfff;
+  }
+}
+
+.input-search {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 7vw;
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: width 0.4s ease-in-out;
+  // searchicon 스타일
+  background-color: white;
+  background-image: url("../searchicon.png");
+  background-position: 2px 2px;
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+  // placeholder 위치
+  padding: 5px 7px 5px 25px;
+  // 자동 늘이기
+  &:focus {
+    width: 20vw;
   }
 }
