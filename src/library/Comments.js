@@ -63,11 +63,44 @@ let data = [
   },
 ];
 
+let exam = {
+  id: 1,
+  photoPath:
+    "https://s3.ap-northeast-2.amazonaws.com/mystar-story.com/uploadPhotos/img1.jpg",
+  photoTitle: "Test Photo1",
+  writer: "Dummy2",
+  writerProfilePath: "logologo",
+  replies: [
+    {
+      commentId: 1,
+      comment: "멋져요!! 3",
+      nickname: "Dummy1",
+      commenterProfilePath: "logologo",
+      date: "2020-12-11T13:32:00.000Z",
+    },
+    {
+      commentId: 1,
+      comment: "멋져요!! 6",
+      nickname: "Dummy1",
+      commenterProfilePath: "logologo",
+      date: "2020-12-11T13:32:00.000Z",
+    },
+    {
+      commentId: 1,
+      comment: "멋져요!! 9",
+      nickname: "Dummy1",
+      commenterProfilePath: "logologo",
+      date: "2020-12-11T13:32:00.000Z",
+    },
+  ],
+  favorite: false,
+};
+
 class Comments extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [...data],
+      fakeData: [...data],
       isRemovePhotoOpen: false,
       isRemoveCommentOpen: false,
     };
@@ -79,10 +112,6 @@ class Comments extends Component {
       let modalContent = document.querySelector(".modalContent");
       myModal.style.display = "block";
       modalContent.style.display = "block";
-
-      console.log("modalId: ", this.props.isCommentId);
-      let url = `https://api.mystar-story.com/:${this.props.isCommentId}`;
-      axios.get(url).then((data) => console.log(data));
     }
   }
 
@@ -124,24 +153,25 @@ class Comments extends Component {
         <div className="modalContent">
           <div className="modalContent_Left">
             {/* ------------------name------------------ */}
-            <div className="photoName">{this.state.data[0].photoTitle}</div>
+            <div className="photoName">{this.props.imgData.photoTitle}</div>
             {/* ------------------photo------------------ */}
             <img
               className="selectPhoto"
-              src={this.state.data[0].photoPath}
+              src={this.props.imgData.photoPath}
               alt="img"
             />
             {/* ------------------hashTag------------------ */}
             <div className="hashTag">
-              <span>{this.state.data[0].hashtag}</span>
+              {/* <span>{this.state.data[0].hashtag}</span> */}
+              <span>hashtag</span>
             </div>
             {/* ------------------userInfo(userFace, userName)------------------ */}
             <div className="userInfo">
               <img
                 className="userFace"
-                src={this.state.data[0].writerProfilePath}
+                src={this.props.imgData.writerProfilePath}
               />
-              <span className="userName">{this.state.data[0].writer}</span>
+              <span className="userName">{this.props.imgData.writer}</span>
             </div>
             {/* ------------------수정버튼, 삭제버튼------------------ */}
             <div className="btns">
@@ -157,7 +187,7 @@ class Comments extends Component {
               &times;
             </span> */}
             {/* ------------------지도------------------ */}
-            <img className="mapImg" src={this.state.data[0].map} />
+            <img className="mapImg" src={this.state.fakeData[0].map} />
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
               <button className="HowToGo">How to go</button>
@@ -169,7 +199,7 @@ class Comments extends Component {
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
               <div className="comments">
-                {this.state.data[0].replies.map((data) => {
+                {this.state.fakeData[0].replies.map((data) => {
                   return (
                     <div className="comment">
                       <img
