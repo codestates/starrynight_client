@@ -35,7 +35,7 @@ function Kakao(props) {
         <div>
           <img
             className="profile_img"
-          // src={props.currentUserInfo.profile}
+            src={props.currentUserInfo.profile}
           />
         </div>
 

@@ -3,7 +3,7 @@ $blue: #228be6;
 .Button {
   display: inline-flex;
   color: white;
-  font-weight: bold;
+  // font-weight: bold;
   outline: none;
   border-radius: 4px;
   border: none;
@@ -42,5 +42,18 @@ $blue: #228be6;
   // 만약 함께 있다면 각 버튼 사이 여백설정 가능
   & + & {
     margin-left: 1rem;
+  }
+
+  // 버튼의 전체 너비를 차지하도록 하는 기능
+  &.fullWidth {
+    width: 100%;
+    align-items: center; 
+    justify-content: center;
+    
+    & + & {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+
   }
 }

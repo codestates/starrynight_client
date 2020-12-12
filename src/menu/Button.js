@@ -1,13 +1,19 @@
 import React from "react";
+import classNames from "classnames";
 import "../css/Button.scss";
 
-function Button({ children, size, ...rest }) {
+function Button({ children, size, outline, fullWidth, onClick }) {
   return (
-    <button className={["Button", size].join(" ")} {...rest}>{children}</button>
+    <button
+      className={classNames("Button", size, { fullWidth })}
+      onClick={onClick}
+    >
+      {children}
+    </button>
     // .join(" ") --> className에 CSS 클래스 이름을 동적으로 넣어주고 싶으면 위처럼 설정.
     // 이걸 쓰기 번거로우면 classnames라는 라이브러리를 사용하는 것이 훨씬 편리하다고 함.
     // Button 컴포넌트의 버튼기능에 props를 제외한 모든 것들을 {...rest} 에 모으고, 이 안에 클릭이벤트도 있으니 이걸로 클릭이벤트 활성화
-
+    // 지금은 classNames 라이브러리를 사용하겠음.
   )
 }
 
