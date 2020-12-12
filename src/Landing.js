@@ -2,7 +2,10 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import "../src/css/Landing.scss";
 
+import starsVideo from "./image/stars_landing_test1.mp4";
+
 const Landing = () => {
+
 
   // // const props = useSpring({
   // //   from: {
@@ -38,11 +41,21 @@ const Landing = () => {
   // });
   return (
 
-    <>
-      <div>
+    <div className="video_box">
+      {/* <div>
         Hello World!
+      </div> */}
+      {/* <video playsinline autoplay loop> */}
+      <video muted autoPlay loop className="landing_video">
+        <source src={starsVideo} type="video/mp4" />
+        <strong>귀하의 브라우저는 video tag를 지원하지 않습니다.</strong>
+      </video>
+
+      <div className="landing_text">
+        별이 빛나는 밤에
       </div>
-    </>
+
+    </div>
     //   <>
     //     <animated.div className="script-box" style={props} />
     //   </>

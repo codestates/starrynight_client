@@ -1,32 +1,59 @@
-* {
-  box-sizing: border-box;
-}
+// * {
+//   box-sizing: border-box;
+// }
 
-html,
-body,
-#root {
+// html,
+// body,
+// #root {
+//   width: 100%;
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   background-color: white;
+//   -webkit-touch-callout: none;
+//   -webkit-user-select: none;
+//   -khtml-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+// }
+
+// #root {
+//   background: #f0f0f0;
+//   overflow: hidden;
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .script-box {
+//   will-change: width, height, left, top;
+//   position: relative;
+// }
+
+.video_box {
+  // color: white;
   width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: white;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-#root {
-  background: #f0f0f0;
+  height: 97vh;
   overflow: hidden;
+  margin: 0px auto;
   position: relative;
-  width: 100%;
-  height: 100%;
-}
+  
 
-.script-box {
-  will-change: width, height, left, top;
-  position: relative;
+  // 가로화면 꽉 차게
+  // video {
+    // width: 100%;
+  // }
+  
+  .landing_text {
+    position: absolute;
+    top:50%;
+    width: 100%;
+    text-align: center;
+    // left: 0;
+    // right: 0;
+    color: white;
+    // z-index: ;
+  }
+  
 }
