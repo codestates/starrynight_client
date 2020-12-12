@@ -63,39 +63,6 @@ let data = [
   },
 ];
 
-let exam = {
-  id: 1,
-  photoPath:
-    "https://s3.ap-northeast-2.amazonaws.com/mystar-story.com/uploadPhotos/img1.jpg",
-  photoTitle: "Test Photo1",
-  writer: "Dummy2",
-  writerProfilePath: "logologo",
-  replies: [
-    {
-      commentId: 1,
-      comment: "멋져요!! 3",
-      nickname: "Dummy1",
-      commenterProfilePath: "logologo",
-      date: "2020-12-11T13:32:00.000Z",
-    },
-    {
-      commentId: 1,
-      comment: "멋져요!! 6",
-      nickname: "Dummy1",
-      commenterProfilePath: "logologo",
-      date: "2020-12-11T13:32:00.000Z",
-    },
-    {
-      commentId: 1,
-      comment: "멋져요!! 9",
-      nickname: "Dummy1",
-      commenterProfilePath: "logologo",
-      date: "2020-12-11T13:32:00.000Z",
-    },
-  ],
-  favorite: false,
-};
-
 class Comments extends Component {
   constructor(props) {
     super(props);
@@ -103,9 +70,29 @@ class Comments extends Component {
       fakeData: [...data],
       isRemovePhotoOpen: false,
       isRemoveCommentOpen: false,
+      infoOpen: false,
     };
   }
 
+  // 타이틀 수정 페이지 열기
+  handleModifyInfo = () => {
+    this.setState({
+      infoOpen: !this.state.infoOpen,
+    });
+    // console.log(!this.state.infoOpen);
+  };
+
+  // 타이틀 수정 완료(axios 보내기, 수정 반영한 결과 출력)
+  completeModifyInfo = () => {
+    // onClick시 axios 요청
+    // <input type="text" />을 다시 photoTitle로
+    this.setState({
+      infoOpen: false,
+    });
+    console.log("타이틀 수정 완료");
+  };
+
+  // 모달 창 실행
   componentDidUpdate() {
     if (this.props.isCommentsOpen) {
       let myModal = document.querySelector(".myModal");
@@ -115,6 +102,7 @@ class Comments extends Component {
     }
   }
 
+  // 모달 창 닫기
   handleModalClose = () => {
     this.props.handleModalClose();
     let myModal = document.querySelector(".myModal");
@@ -123,12 +111,14 @@ class Comments extends Component {
     modalContent.style.display = "none";
   };
 
+  // 이미지 삭제 모달 실행
   removePhotoControl = () => {
     this.setState({
       isRemovePhotoOpen: !this.state.isRemovePhotoOpen,
     });
   };
 
+  // 댓글 삭제 모달 실행
   removeCommentControl = () => {
     this.setState({
       isRemoveCommentOpen: !this.state.isRemoveCommentOpen,
@@ -153,7 +143,25 @@ class Comments extends Component {
         <div className="modalContent">
           <div className="modalContent_Left">
             {/* ------------------name------------------ */}
-            <div className="photoName">{this.props.imgData.photoTitle}</div>
+            <div className="photoName">
+              {this.state.infoOpen === true ? (
+                <div>
+                  <input
+                    type="text"
+                    className="modifyPhotoName"
+                    value={this.props.imgData.photoTitle}
+                  />
+                  <button
+                    className="modifyPhotoNameBtn"
+                    onClick={this.completeModifyInfo}
+                  >
+                    수정
+                  </button>
+                </div>
+              ) : (
+                this.props.imgData.photoTitle
+              )}
+            </div>
             {/* ------------------photo------------------ */}
             <img
               className="selectPhoto"
@@ -175,7 +183,9 @@ class Comments extends Component {
             </div>
             {/* ------------------수정버튼, 삭제버튼------------------ */}
             <div className="btns">
-              <button className="modifyBtn">수정</button>
+              <button className="modifyBtn" onClick={this.handleModifyInfo}>
+                수정
+              </button>
               <button className="deleteBtn" onClick={this.removePhotoControl}>
                 삭제
               </button>
