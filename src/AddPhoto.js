@@ -1,44 +1,59 @@
 import React, { useState } from "react";
-// import KakaoMapSearch from "./KakaoMapSearch";
-import { Typography, Button, Form, message, Input, AutoComplete } from "antd";
-import { IoSearchCircleSharp } from "react-icons/io5";
 
-import Dropzone from "react-dropzone";
+// 기능 관련
+import KakaoMap from "./KakaoMap";
 import Axios from "axios";
-import "../src/css/AddPhoto.scss";
 
+// 스타일 관련
+import { Typography, Button, Form } from "antd";
+import Dropzone from "react-dropzone";
+import "../src/css/AddPhoto.scss";
+import Search from "antd/lib/input/Search";
 const { Title } = Typography;
 
-// AddPhoto 컴포넌트 진또배기
 function AddPhoto(props) {
   // 로그인 유저 식별정보를 가져온다
-  // console.log("AddPhoto에 전달된 로컬스토리지:", props.localStorage);
-  const userToken = props.localStorage.responseMsg;
-  console.log("AddPhoto 내 토큰:", userToken);
-  console.log("카카오맵", window.kakao);
+  // const userToken = props.localStorage.responseMsg;
 
   // modal에서 관리할 상태들을 설정한다
+  const [FileName, setFileName] = useState("");
+  const [SearchKeyword, setSearchKeyword] = useState("");
   const [PhotoFormData, setPhotoFormData] = useState([]);
   const [PhotoTitle, setPhotoTitle] = useState("");
   const [PhotoLocation, setPhotoLocation] = useState("");
   const [PhotoHashtag, setPhotoHashtag] = useState("");
 
-  // 위치 찾기(개발예정)
-  // const handleSearch = (value) => {};
-
-  // 사진업로드 drop & down을 정의한다
+  // 사진업로드 Drag & Drop을 정의한다
   const onDrop = (files) => {
     // 업로드 파일을 drop하면 FormData 태그 인스턴스 생성 후, "file" 속성을 만들어서 files[0] 엘리먼트를 주입
     // 참고자료: https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
     let formData = new FormData();
     formData.append("file", files[0]);
     console.log("Drop한 사진", files[0]);
+    setFileName(files[0].name);
     setPhotoFormData(formData);
+  };
+
+  // 파일을 클릭하여 drop을 취소한다
+  const cancelDrop = (e) => {
+    e.preventDefault();
+    setFileName("");
+    setPhotoFormData([]);
+    console.log("업로드하려던 사진의 drop을 취소했습니다");
+  };
+
+  // 검색키워드를 KakaoMap 컴포넌트의 콜백함수 displayMarker의 인자로 내린다
+  const searchPlace = () => {
+    setPhotoLocation(SearchKeyword);
   };
 
   // 사진업로드 & DB저장을 요청한다
   const onSubmit = (e) => {
     e.preventDefault();
+    if (PhotoFormData === []) {
+      alert("업로드할 사진을 골라주세요");
+      return;
+    }
 
     // 사진에 대한 S3 url 생성 요청
     const config = {
@@ -48,14 +63,14 @@ function AddPhoto(props) {
       .then((res) => {
         if (res.data.success) {
           console.log("사진 Dropdown 및 URL 생성 성공!! ", res.data.url);
-
           if (PhotoTitle === "" || PhotoLocation === "") {
-            alert("제목과 위치는 반드시 포함되어야 합니다");
+            alert("사진제목과 사진을 찍은 위치는 반드시 입력해야 합니다");
+            return;
           }
 
           // 성공적으로 생성된 사진 url을 바탕으로 사진정보를 Photo 모델에 저장 요청
           const photo = {
-            userToken: userToken, // from localStorage
+            // userToken: userToken, // from localStorage
             title: PhotoTitle,
             photoPath: res.data.url,
             location: PhotoLocation,
@@ -103,8 +118,8 @@ function AddPhoto(props) {
   };
 
   // 입력필드를 활성화한다(사진위치)
-  const onPhotoLocationChange = (e) => {
-    setPhotoLocation(e.currentTarget.value);
+  const onInputSearchKeyword = (e) => {
+    setSearchKeyword(e.currentTarget.value);
   };
 
   // 입력필드를 활성화한다(해시태그)
@@ -137,18 +152,20 @@ function AddPhoto(props) {
               position: `fixed`,
               width: `100vw`,
               height: `100vh`,
+              cursor: `auto`,
             }}
           />
           <div
             className="modal_content_a"
             style={{
-              backgroundColor: `#1d2b52`,
+              backgroundColor: `white`,
               width: `40vw`,
               position: `relative`,
               textAlign: `center`,
               borderRadius: `10px`,
-              color: `#d5f0ff`,
+              color: `black`,
               border: `0.1rem solid #565f7e`,
+              cursor: `auto`,
             }}
           >
             <div style={{ maxWidth: `700px`, margin: `2rem auto` }}>
@@ -170,64 +187,159 @@ function AddPhoto(props) {
               </div>
 
               <Form onSubmit={onSubmit}>
-                {/* dropdown zone */}
-                <Dropzone onDrop={onDrop} multiple={false} maxSize={100000000}>
-                  {({ getRootProps, getInputProps }) => (
-                    <div
-                      style={{
-                        width: `60%`,
-                        height: `10rem`,
-                        border: `1px solid lightgray`,
-                        display: `flex`,
-                        alignItems: `center`,
-                        justifyContent: `center`,
-                        margin: `auto`,
-                      }}
-                      {...getRootProps()}
+                {/* 사진 Drag & drop zone */}
+                <div>
+                  <div
+                    style={{
+                      float: `left`,
+                      width: `25%`,
+                      justifyContent: `center`,
+                    }}
+                  >
+                    <Dropzone
+                      onDrop={onDrop}
+                      multiple={false}
+                      maxSize={100000000}
                     >
-                      <input {...getInputProps()} />
-                      {/* <PlusOutlined style={{ fontSize: `1rem` }} /> */}
-                      <div
-                        style={{ fontWeight: `lighter`, fontSize: `0.8rem` }}
-                      >
-                        이곳을 클릭하거나, 이곳에 파일을 끌어다놓으세요
+                      {({ getRootProps, getInputProps }) => (
+                        <div
+                          style={{
+                            marginLeft: `2vw`,
+                            height: `2rem`,
+                            width: `5rem`,
+                            border: `0.5px solid lightgray`,
+                            display: `flex`,
+                            alignItems: `center`,
+                            justifyContent: `center`,
+                          }}
+                          {...getRootProps()}
+                        >
+                          <input {...getInputProps()} />
+                          <div
+                            style={{ fontWeight: `light`, fontSize: `1.5rem` }}
+                          >
+                            +
+                          </div>
+                        </div>
+                      )}
+                    </Dropzone>
+                  </div>
+
+                  {/* drop된 업로드파일 확인 및 업로드취소 */}
+                  <div
+                    style={{
+                      float: `left`,
+                      marginTop: `0.2rem`,
+                    }}
+                  >
+                    {PhotoFormData && (
+                      <div style={{ marginLeft: `2vw`, textAlign: `left` }}>
+                        <span
+                          style={{
+                            marginRight: `1rem`,
+                            fontSize: `0.8rem`,
+                            fontWeight: `lighter`,
+                            color: `lightgray`,
+                            cursor: `auto`,
+                          }}
+                          onClick={cancelDrop}
+                        >
+                          {FileName}
+                        </span>
                       </div>
-                    </div>
-                  )}
-                </Dropzone>
+                    )}
+                  </div>
+                </div>
+                <br />
                 <br />
 
                 {/* description and input zone */}
-                <label style={{ marginRight: `1rem` }}>사진위치</label>
-                <Input
-                  onChange={onPhotoLocationChange}
-                  value={PhotoLocation}
-                  style={{ width: `40%`, display: `inline-block` }}
-                />
-                {/* <KakaoMapSearch /> */}
-                <IoSearchCircleSharp
-                  className="search"
-                  value={PhotoLocation}
-                  // onClick={() => `http://map.kakao.com/?q=${PhotoLocation}`}
-                />
-                <br />
+                {/* 카카오맵 출력 zone */}
+                <div
+                  style={{
+                    marginLeft: `2vw`,
+                    marginRight: `2vw`,
+                    marginTop: `1rem`,
+                    display: `flex`,
+                    alignItems: `center`,
+                    justifyContent: `center`,
+                  }}
+                >
+                  {PhotoLocation && <KakaoMap place={PhotoLocation} />}
+                </div>
+
+                {/* 사진위치 찾기 zone */}
+                <div
+                  style={{
+                    textAlign: `left`,
+                    marginLeft: `2vw`,
+                    marginRight: `2vw`,
+                  }}
+                >
+                  <label style={{ marginRight: `1rem` }}>사진위치</label>
+                  <input
+                    className="input-search"
+                    type="text"
+                    name="search"
+                    onChange={onInputSearchKeyword}
+                    value={SearchKeyword}
+                    placeholder="위치"
+                  />
+                  <button className="search-button" onClick={searchPlace}>
+                    검색
+                  </button>
+                </div>
                 <br />
 
-                <label style={{ marginRight: `1rem` }}>사진제목</label>
-                <Input
-                  onChange={onPhotoTitleChange}
-                  value={PhotoTitle}
-                  style={{ width: `45%` }}
-                />
-                <br />
+                {/* 사진제목 입력 zone */}
+                <div
+                  style={{
+                    textAlign: `left`,
+                    marginLeft: `2vw`,
+                    marginRight: `2vw`,
+                  }}
+                >
+                  <label style={{ marginRight: `1rem` }}>사진제목</label>
+                  <input
+                    type="text"
+                    onChange={onPhotoTitleChange}
+                    value={PhotoTitle}
+                    style={{
+                      boxSizing: `border-box`,
+                      border: `2px solid #ccc`,
+                      borderRadius: `4px`,
+                      backgroundColor: `white`,
+                      padding: `5px 7px 5px 7px`,
+                      width: `25vw`,
+                    }}
+                  />
+                </div>
                 <br />
 
-                <label style={{ marginRight: `1rem` }}>해시태크</label>
-                <Input
-                  onChange={onPhotoHashtagChange}
-                  value={PhotoHashtag}
-                  style={{ width: `45%` }}
-                />
+                {/* 해시태그 입력 zone */}
+                <div
+                  style={{
+                    textAlign: `left`,
+                    marginLeft: `2vw`,
+                    marginRight: `2vw`,
+                  }}
+                >
+                  <label style={{ marginRight: `1rem` }}>해시태크</label>
+                  <input
+                    type="text"
+                    onChange={onPhotoHashtagChange}
+                    value={PhotoHashtag}
+                    style={{
+                      boxSizing: `border-box`,
+                      border: `2px solid #ccc`,
+                      borderRadius: `4px`,
+                      backgroundColor: `white`,
+                      padding: `5px 7px 5px 7px`,
+                      width: `25vw`,
+                    }}
+                  />
+                </div>
+
                 <br />
                 <br />
 
