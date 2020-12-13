@@ -2,6 +2,8 @@ import React, { Component } from "react";
 const axios = require("axios").default;
 import "../css/ViewPhoto.css";
 import All from "./All";
+import Favorite from "./Favorite";
+import Gallery from "./Gallery";
 import Comments from "./Comments";
 
 class ViewPhoto extends Component {
@@ -47,7 +49,15 @@ class ViewPhoto extends Component {
           handleModalOpen={this.handleModalOpen}
           handleModalClose={this.handleModalClose}
         />
-        <All handleModalOpen={this.handleModalOpen} />
+        {this.props.isAllOpen === true ? (
+          <All handleModalOpen={this.handleModalOpen} />
+        ) : null}
+        {this.props.isFavoriteOpen === true ? (
+          <Favorite handleModalOpen={this.handleModalOpen} />
+        ) : null}
+        {this.props.isGalleryOpen === true ? (
+          <Gallery handleModalOpen={this.handleModalOpen} />
+        ) : null}
       </div>
     );
   }
