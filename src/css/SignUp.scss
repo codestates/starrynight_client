@@ -18,14 +18,15 @@
 
   .modal_SignUp_content {
     h2 {
-      font-family: 'Gamja Flower', cursisve;
+      font-family: 'Noto Serif KR', serif;
+      // font-family: 'Gamja Flower', cursive;
       // font-family: 'Hi Melody', cursive;
 
     }
     background: white;
     color: black;
     position: relative;
-    width: 50%;
+    width: 48%;
     text-align: center;
     border-radius: 10px;
 
@@ -39,30 +40,34 @@
 
   .signUp_box {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-content: center;
+    margin-bottom: 0.2rem;
+    margin-left: 0.5rem;
 
-    .userInfo_input_container {
+    .local_new_user {
       float: left;
       width: 50%;
+      // margin-right: 2%;
       margin-left: 3%;
-      margin-right: 4%;
       margin-bottom: 3%;
     
       .user_title_signUp {
-        font-family: 'Amatic SC', cursive;
-        font-size: 1.5rem;
+        // font-family: 'Amatic SC', cursive;
+        font-family: 'Advent Pro', sans-serif;
+        // font-size: 1.5rem;
+        font-size: 1.1rem;
         display: flex;
         justify-content: flex-start;
         align-content: center;
+        
         padding-left: 0.3rem;
         padding-bottom: 12px;
       }
-      input[type="email"],
-      input[type="password"],
+      
       input {
         display: flex;
-        width: 100%;
+        width: 95%;
         font-size: 0.9rem;
         border-radius: 5px;
         border-width: 1.6px;
@@ -70,9 +75,6 @@
         padding: 0.48rem 0.9rem;
         // margin: 0.4rem;
         
-      }
-      .input_pw_singin {
-        margin-top: 1rem;
       }
 
       input[type="email"]::placeholder,
@@ -90,10 +92,13 @@
       // .Email_PW_container {
         // background: skyblue; // 사이즈 테스트 중
         
+
+      .userInfo_input_container {
+
         margin-right: 7%;
         margin-left: 7%;;
         margin-bottom: 3px;
-
+        
         .email_div {
           div {      //에러메세지
             float: right;
@@ -126,38 +131,33 @@
             padding-right: 0.5rem;
           }
         }
-
-      // }
-      
-      .find_container {
-        margin-right: 7%;
-        margin-left: 7%;
-        padding-left: 0.3rem;
-        
-        .findAccount_span {
-          display: flex;
-          justify-content: flex-start;
-          margin-bottom: 10%;
-          
-          span {
-            font-size: 0.7rem;
-          }
-          .findEmailPw{
-            cursor: pointer;
-          }
-        }
       }
 
       .button_container_InSignUp {
-        margin-top: 5%;
+        margin-top: 12%;
         margin-right: 7%;
         margin-left: 7%;
-        padding-left: 0.3rem;
+        // padding-left: 0.3rem;
       
         .signIn_icon {
           padding-left: 0.1rem;
           color: rgb(202, 200, 200);
           
+        }
+        .rediect_To_Signin {
+          display: flex;
+          
+          span {
+            font-size: 0.73rem;
+            margin-left: 0.23rem;
+            margin-right: 0.8rem;
+            color: rgb(82, 80, 80);
+
+            &.redirect_btn:hover {
+              cursor: pointer;
+              color: skyblue;
+            }
+          }
         }
       }
     }
@@ -166,7 +166,8 @@
       background: rgba(204, 204, 214, 0.336);
       width: 1px;
       height: 10rem;
-      margin-top: 3%;
+      margin-top: 4%;
+      margin-left: 1.5rem;
       
       direction: column;
       
@@ -175,11 +176,14 @@
     .container2_siginIn {
       float: left;
       width: 40%;
+      // margin-left: 10px;
       // margin-right: 3%;
       // margin-bottom: 3%;
       #social_login_title {
-        font-family: 'Amatic SC', cursive;
-        font-size: 1.5rem;
+        // font-family: 'Amatic SC', cursive;
+        font-family: 'Advent Pro', sans-serif;
+        // font-size: 1.5rem;
+        font-size: 1.1rem;
         display: flex;
         justify-content: flex-start;
         
@@ -187,7 +191,8 @@
                 
       .socialLogin{
         // margin:0 10%;
-        padding-left: 20%;
+        // margin-right: 20px;
+        padding-left: 17%;
         // position: relative;
         // display: flex;
         // justify-content: center;
@@ -211,27 +216,5 @@
     }
   }
 
-
-  .button_container_InSignUp {
-    margin-left: 0% !important;
-    padding-left: 0px !important ;
-    margin-bottom: 7%;
-
-    .rediect_To_Signin {
-      display: flex;
-      
-      span {
-        font-size: 0.73rem;
-        margin-right: 0.8rem;
-        color: rgb(82, 80, 80);
-        &.redirect_btn:hover {
-          cursor: pointer;
-          color: skyblue;
-        }
-        
-      }
-    }
-
-  }
 }
 
