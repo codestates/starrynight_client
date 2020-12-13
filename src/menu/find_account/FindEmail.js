@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+
+import Button from "../Button";
+import { HiArrowNarrowRight } from "react-icons/hi";
 
 
 //css
@@ -95,44 +97,79 @@ class FindEmail extends React.Component {
           <div className="modal_findEmail">
             <div className="modal_findEmail_overlay" onClick={this.props.handleFindEmailModal} ></div>
             <div className="modal_findEmail_content">
+
               {/* -------------------------- 타이틀 -------------------------*/}
-              <h2>이메일 찾기</h2>
+                <h2>이메일 찾기</h2>
+              <div className="find_email_box">
               {/* -------------------------- 연락처 입력 칸 -------------------------*/}
-              <form>
-                <div className="mobile_input_container">
-                  <div>사이즈 테스트 중</div>
+              <div className="userInfo_find_email_container">
+                <div className="mobile_input_container_in_findEmail">
+                  <div className="find_email_title">USER</div>
                   <div className="mobile_div">
-                    <span>연락처</span>
-                    <input onChange={this.handleInputValue("mobile")} />
+                    {/* <span>연락처</span> */}
+                    <input
+                    placeholder="연락처를 입력하세요."
+                    onChange={this.handleInputValue("mobile")} />
                     <div>{this.state.errorMsg}</div>
 
                   </div>
                 </div>
-                </form>
+                
 
                 {/* -------------------------- submit 버튼 칸 --------------------*/}
-                <div>
+                <div className="button_container_findEmail">
                   <div>
-                    <button className="findEmail_button" onClick={this.handleClickSubmit}>
+                    <Button 
+                      size="small"
+                      color="gray"
+                      middleWidth_main_btn
+                      onClick={this.handleClickSubmit}>
                
                         이메일 찾기
                 
-                    </button>
+                    </Button>
                   </div>
                   <div>
-                    <button
-                     className="signUp_button_inFindEmail"
+                    <Button
+                     size="small"
+                     middleWidth_main_btn
                      onClick={this.props.linkToSignUpfromfindEmail}
                      >
                       회원 가입
-                    </button>
+                    </Button>
                   </div>
-
-                  <div>
-                    소셜 로그인 버튼도 삽입하기!
-            </div>
                 </div>
+              </div>
+                
 
+              <div className="division_line_findemail"></div>
+
+              {/* ----------------소셜 로그인------------------------- */}
+              <div className="social_login_container">
+                <div className="socialLogin_findEmail">
+                  <div id="social_login_title_findEmail">SOCIAL LOGIN</div>
+
+                  <div className="socialLogin_btn_findEmail">
+                      <Button
+                        color="red"
+                        outline
+                        smallWidth
+                      >
+                        Google
+                      </Button>
+                    </div>
+                    <div className="socialLogin_btn_findEmail">
+                      <Button
+                        color="gray"
+                        outline
+                        smallWidth
+                      >
+                        Kakao
+                      </Button>
+                    </div>
+                </div>
+              </div>
+              </div>
               
             </div>
           </div>)

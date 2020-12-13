@@ -272,7 +272,7 @@ class SignIn extends React.Component {
                         // fullWidth
                         // color="black"
                         color="gray"
-                        middleWidth_SignIn_btn
+                        middleWidth_main_btn
                       // smallWidth
                       // className="Button_in_signIn"
                       // type="submit"
@@ -288,7 +288,7 @@ class SignIn extends React.Component {
 
                       size="small"
                       // fullWidth
-                      middleWidth_SignIn_btn
+                      middleWidth_main_btn
                       // smallWidth
                       onClick={this.props.signUpClickInSignIn}
                     >

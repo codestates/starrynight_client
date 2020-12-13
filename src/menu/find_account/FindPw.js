@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 
+import Button from "../Button";
+import { HiArrowNarrowRight } from "react-icons/hi";
+
 // components
 import CompletedFindPw from "./CompletedFindPw";
 
@@ -88,51 +91,100 @@ class FindPw extends React.Component {
             :
             <div className="modal_findPw">
               <div className="modal_findPw_overlay" onClick={this.props.handleFindPwModal} />
-              <div className="modal_findPw_content">
-                {/* -------------------------- 타이틀 -------------------------*/}
-                <h2>비밀번호 찾기</h2>
-                {/* -------------------------- 이메일, 연락처 입력 칸 -------------------------*/}
-                <form>
+                <div className="modal_findPw_content">
 
-                  <div className="email_mobile_input_container">
-                    <div>사이즈 테스트 중</div>
-                    <div className="email_input_div">
-                      <span>이메일</span>
-                      <input type="email" onChange={this.handleInputValue("email")} />
-                      <div>{this.state.errorMsgOfEmail}</div>
-                    </div>
-                    <div className="mobile_input_div">
-                      <span>연락처</span>
-                      <input onChange={this.handleInputValue("mobile")} />
-                      <div>{this.state.errorMsgOfMobile}</div>
-                    </div>
-                  </div>
-                </form>
-                {/* -------------------------- submit 버튼 칸 --------------------*/}
-                <div>
-                  <div>
-                    <button className="findPw_button" onClick={this.handleClickSubmit} >
+                  {/* -------------------------- 타이틀 -------------------------*/}
+                  <h2>비밀번호 찾기</h2>
+
+                  {/* -------------------------- 이메일, 연락처 입력 칸 -------------------------*/}
+                  <div className="find_pw_box">
+
+                    <div className="userInfo_find_pw_container">
+                      <div className="userInfo_input_container_in_findPw">
+                        <div className="find_pw_title">USER</div>
+                        <div className="email_input_div">
+                          {/* <span>이메일</span> */}
+                          <input
+                            type="email"
+                            placeholder="이메일을 입력하세요."
+                            onChange={this.handleInputValue("email")}
+                          />
+                          <div>{this.state.errorMsgOfEmail}</div>
+                        </div>
+
+                        <div className="mobile_input_div">
+                          {/* <span>연락처</span> */}
+                          <input
+                            className="control_margin_top"
+                            placeholder="연락처를 입력하세요."
+                            onChange={this.handleInputValue("mobile")}
+                          />
+                          <div>{this.state.errorMsgOfMobile}</div>
+                        </div>
+                      </div>
+                    
+                  
+                  {/* -------------------------- submit 버튼 칸 --------------------*/}
+                      <div className="button_container_find_pw">
+                          <div>
+                            <Button 
+                              size="small"
+                              color="gray"
+                              middleWidth_main_btn
+                              onClick={this.handleClickSubmit}
+                            >
+                              
+                                비밀번호 찾기
                       
-                        비밀번호 찾기
-              
-                    </button>
-                  </div>
-                  <div>
-                    <button
-                     className="signUp_button_inFindPw"
-                     onClick={this.props.linkToSignUpfromfindPw}
-                     >
+                            </Button>
+                          </div>
+                          <div>
+                            <Button
+                              size="small"
+                              middleWidth_main_btn
+                              onClick={this.props.linkToSignUpfromfindPw}
+                            >
+                              
+                                회원 가입
                       
-                        회원 가입
-              
-                    </button>
-                  </div>
-                  <div>
-                    소셜 로그인 찾기 버튼도 삽입!
-                  </div>
+                            </Button>
+                          </div>
+                      </div>
+
+                    </div>
+
+
+                    <div className="division_line_find_pw"></div>
+
+                {/* ----------------소셜 로그인------------------------- */}
+                
+                    <div className="social_login_container_findPW">
+                      <div className="socialLogin_find_pw">
+                        <div id="social_login_title_find_pw">SOCIAL LOGIN</div>
+
+                        <div className="socialLogin_btn_find_pw">
+                      <Button
+                        color="red"
+                        outline
+                        smallWidth
+                      >
+                        Google
+                      </Button>
+                    </div>
+                    <div className="socialLogin_btn_find_pw">
+                      <Button
+                        color="gray"
+                        outline
+                        smallWidth
+                      >
+                        Kakao
+                      </Button>
+                    </div>
+                      </div>
+                    </div>
+
+
                 </div>
-
-
               </div>
             </div>
           : null}

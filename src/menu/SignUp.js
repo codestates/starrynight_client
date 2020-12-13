@@ -319,7 +319,7 @@ class SignUp extends React.Component {
                       <Button
                         size="small"
                         color="gray"
-                        middleWidth_SignIn_btn
+                        middleWidth_main_btn
                         onClick={this.handleClickAddNewUserInfo}
                       >
                         회원 가입

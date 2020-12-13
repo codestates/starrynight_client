@@ -2,10 +2,10 @@ import React from "react";
 import classNames from "classnames";
 import "../css/Button.scss";
 
-function Button({ children, size, color, outline, fullWidth, middleWidth, smallWidth, middleWidth_SignIn_btn, onClick }) {
+function Button({ children, size, color, outline, fullWidth, middleWidth, smallWidth, middleWidth_main_btn, onClick }) {
   return (
     <button
-      className={classNames("Button", size, color, { outline, fullWidth, middleWidth, smallWidth, middleWidth_SignIn_btn })}
+      className={classNames("Button", size, color, { outline, fullWidth, middleWidth, smallWidth, middleWidth_main_btn })}
       onClick={onClick}
     >
       {children}
