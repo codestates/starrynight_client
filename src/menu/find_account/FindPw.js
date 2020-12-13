@@ -175,6 +175,7 @@ class FindPw extends React.Component {
                         color="red"
                         outline
                         smallWidth
+                        onClick={this.props.googleLogin}
                       >
                         Google
                       </Button>
@@ -184,6 +185,7 @@ class FindPw extends React.Component {
                         color="gray"
                         outline
                         smallWidth
+                        onClick={this.props.kakaoLogin}
                       >
                         Kakao
                       </Button>

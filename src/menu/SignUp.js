@@ -352,6 +352,7 @@ class SignUp extends React.Component {
                         color="red"
                         outline
                         smallWidth
+                        onClick={this.props.googleLogin}
                       >
                         Google
                       </Button>
@@ -361,6 +362,7 @@ class SignUp extends React.Component {
                         color="gray"
                         outline
                         smallWidth
+                        onClick={this.props.kakaoLogin}
                       >
                         Kakao
                       </Button>

@@ -75,7 +75,7 @@ class FindEmail extends React.Component {
   // }
 
 
-    // 엔터키를 눌르면 회원가입 버튼 누르게 하는 기능  ---> 연락처 input에 적용시키자.
+    // 엔터키를 눌르면 이메일찾기 버튼 누르게 하는 기능  ---> 연락처 input에 적용시키자.
 
   findEmailPress = (e) => {
     if (e.key === "Enter") {
@@ -164,6 +164,7 @@ class FindEmail extends React.Component {
                         color="red"
                         outline
                         smallWidth
+                        onClick={this.props.googleLogin}
                       >
                         Google
                       </Button>
@@ -173,6 +174,7 @@ class FindEmail extends React.Component {
                         color="gray"
                         outline
                         smallWidth
+                        onClick={this.props.kakaoLogin}
                       >
                         Kakao
                       </Button>

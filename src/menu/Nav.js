@@ -303,10 +303,48 @@ class Nav extends React.Component {
 
   }
 
-  // componentDidMount() {
+  /* ------------------------- 소셜 로그인 ------------------------------- */
 
-  // }
+  // location 객체를 통해 Access Token을 URL 파라미터로부터 받아올 수 있다.
+  // 받아온 쿼리스트링에 담긴 값 중 토큰만 추출
+  getToken = () => {
+    const query = window.location.search.substring(1)
+    const token = query.split('access_token=')[1]
 
+    // if (token !== undefined) {
+    window.localStorage.setItem("token", token)
+    // }
+    axios.defaults.headers.common['Authorization'] = token;
+  }
+
+  googleLogin = () => {
+    window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https%3A//api.mystar-story.com/user/signin/google&client_id=6637807643-0mis27736asip5thchf3v3ksk8mnor2f.apps.googleusercontent.com"
+
+  }
+
+  kakaoLogin = () => {
+    window.location.href = "https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fapi.mystar-story.com%252Fuser%252Fsignin%252Fkakao%26client_id%3D2b6f01d8fb5368ff66de28e3749cefda"
+  }
+
+
+  // 유저가 다시 직접 로그인하도록 유도하지 않고 조용히 자동으로 로그인 연장하는 기능
+
+  componentDidMount() {
+    // this.requestSignIn()
+
+    // 여기서 didMount를 걸어야 마이페이지까지 authorization이 잘 전달됨. (새로고침해도!)
+    const query = window.location.search.substring(1)
+    const socialUserToken = query.split('access_token=')[1]
+    const localUserToken = window.localStorage.getItem("token")
+    if (socialUserToken !== undefined) {
+      // 소셜로그인 토큰 저장: 쿼리스트링으로 담겨온 값 중 토큰을 추출하고 그것을 로컬스토리지에 저장하는 함수
+      this.getToken()
+    }
+    // 일반로그인 토큰 받아와 로컬스토리지에 저장하는 것은 handleSignIn에서 함(로그인버튼 눌렀을때 로컬스토리지에 저장될 것. 그것을 꺼내 사용) 
+    else if (localUserToken) {
+      axios.defaults.headers.common['Authorization'] = localUserToken;
+    }
+  }
 
   render() {
     console.log("nav 프롭", this.props);
@@ -417,11 +455,17 @@ class Nav extends React.Component {
           findEmailClick={this.findEmailClick}
           findPwClick={this.findPwClick}
           signUpClickInSignIn={this.signUpClickInSignIn}   // signIn 모달에서 회원가입 누르면 signIn모달꺼지고 signUp 모달 활성화
+          getToken={this.getToken}  // 소셜로그인
+          googleLogin={this.googleLogin}  // 소셜로그인
+          kakaoLogin={this.kakaoLogin}  // 소셜로그인
         />
         <SignUp
           isOpen={this.state.isSignUpModalOpen}
           handleSignUpModal={this.handleSignUpModal}
           redirectToSignIn={this.signUpClickInSignIn}  // 이 이벤트가 만들어진 본래 목적은 402줄이지만 역으로 사인업모달 끄고, 사인인 모달 활성화 시킬 것임.
+          getToken={this.getToken}  // 소셜로그인
+          googleLogin={this.googleLogin}  // 소셜로그인
+          kakaoLogin={this.kakaoLogin}  // 소셜로그인
         />
         <FindEmail
           isFindEmailModalOpen={this.state.isFindEmailModalOpen}
@@ -429,12 +473,18 @@ class Nav extends React.Component {
           handleFindEmailModal={this.handleFindEmailModal}
           handleFindPwModal={this.handleFindPwModal}      // completedEmail에서 email을 찾은 후 곧바로 findPw모달로 가기 위해 여기에 props로 내림.
           linkToSignUpfromfindEmail={this.linkToSignUpfromfindEmail}   // findEmail모달에서 signUp 모달로 이동
+          getToken={this.getToken}  // 소셜로그인
+          googleLogin={this.googleLogin}  // 소셜로그인
+          kakaoLogin={this.kakaoLogin}  // 소셜로그인
         />
 
         <FindPw
           isFindPwModalOpen={this.state.isFindPwModalOpen}
           linkToSignUpfromfindPw={this.linkToSignUpfromfindPw} // 회원가입 버튼을 누르면 findPw모달이 꺼지고 signUp모달이 활성화 될 것임.
           handleFindPwModal={this.handleFindPwModal}
+          getToken={this.getToken}  // 소셜로그인
+          googleLogin={this.googleLogin}  // 소셜로그인
+          kakaoLogin={this.kakaoLogin}  // 소셜로그인
         />
 
 
