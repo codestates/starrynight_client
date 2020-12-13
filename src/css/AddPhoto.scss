@@ -1,8 +1,9 @@
 .close {
-  color: #22536b;
+  color: #c5c5c5;
   float: right;
-  font-size: 2rem;
-  padding-right: 0.5rem;
+  font-size: 20px;
+  font-weight: lighter;
+  padding-right: 1rem;
 }
 
 .close:hover,
@@ -29,6 +30,22 @@
   &:hover {
     background: #a4bfff;
   }
+}
+
+.addphoto-notyet {
+  border: 0.1rem solid #ffffff;
+  border-radius: 4px;
+  font-weight: bolder;
+  font-size: large;
+  text-decoration: none;
+  width: 10vw;
+  height: 2rem;
+  margin-top: 2rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  outline: none;
+  cursor: auto;
+  background: #cecece;
 }
 
 .search-button {
