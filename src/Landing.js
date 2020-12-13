@@ -54,7 +54,9 @@ const Landing = () => {
       <div className="landing_text">
         별이 빛나는 밤에
       </div>
-
+      <div id="test">
+        테스트 중
+      </div>
     </div>
     //   <>
     //     <animated.div className="script-box" style={props} />

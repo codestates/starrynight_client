@@ -38,7 +38,7 @@
   overflow: hidden;
   margin: 0px auto;
   position: relative;
-  
+  z-index: 1;
 
   // 가로화면 꽉 차게
   // video {
@@ -55,5 +55,13 @@
     color: white;
     // z-index: ;
   }
-  
+
+  #test {
+    position: absolute;
+    top: 98%;
+    width: 100%;
+    text-align: center;
+    color: whitesmoke;
+  }
+
 }

@@ -20,7 +20,7 @@
     background: white;
     color: black;
     position: relative;
-    width: 30%;
+    width: 50%;
     text-align: center;
     border-radius: 10px;
 
@@ -32,22 +32,185 @@
     }
   }
 
-  .userInfo_input_container {
-    background: skyblue;
-    margin-right: 7%;
-    margin-left: 7%;
-    margin-bottom: 7%;
+  .signUp_box {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    .userInfo_input_container {
+      float: left;
+      width: 50%;
+      margin-left: 3%;
+      margin-right: 4%;
+      margin-bottom: 3%;
+    
+      .user_title_signUp {
+        font-family: 'Amatic SC', cursive;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        padding-left: 0.3rem;
+        padding-bottom: 12px;
+      }
+      input[type="email"],
+      input[type="password"],
+      input {
+        display: flex;
+        width: 100%;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        border-width: 1.6px;
+        border-color: rgb(143, 143, 143);
+        padding: 0.48rem 0.9rem;
+        // margin: 0.4rem;
+        
+      }
+      .input_pw_singin {
+        margin-top: 1rem;
+      }
+
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder,
+      input[type="text"]::placeholder {
+        font-size: 0.9rem;
+        color: rgb(166, 163, 168);
+        display: flex;
+        align-content: center;
+      }
+      
+      // .Email_PW_container {
+        // background: skyblue; // 사이즈 테스트 중
+        
+        margin-right: 7%;
+        margin-left: 7%;;
+        margin-bottom: 3px;
+
+        .email_div {
+          div {      //에러메세지
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.5rem;
+          }
+        }
+        .nickname_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.5rem;
+          }
+        }
+        .password_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.5rem;
+          }
+        }
+        .mobile_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.5rem;
+          }
+        }
+
+      // }
+      
+      .find_container {
+        margin-right: 7%;
+        margin-left: 7%;
+        padding-left: 0.3rem;
+        
+        .findAccount_span {
+          display: flex;
+          justify-content: flex-start;
+          margin-bottom: 10%;
+          
+          span {
+            font-size: 0.7rem;
+          }
+          .findEmailPw{
+            cursor: pointer;
+          }
+        }
+      }
+
+      .button_container_InSignUp {
+        margin-top: 5%;
+        margin-right: 7%;
+        margin-left: 7%;
+        padding-left: 0.3rem;
+      
+        .signIn_icon {
+          padding-left: 0.1rem;
+          color: rgb(202, 200, 200);
+          
+        }
+      }
+    }
+
+    .division_line {
+      background: rgba(204, 204, 214, 0.336);
+      width: 1px;
+      height: 10rem;
+      margin-top: 3%;
+      
+      direction: column;
+      
+    }
+
+    .container2_siginIn {
+      float: left;
+      width: 40%;
+      // margin-right: 3%;
+      // margin-bottom: 3%;
+      #social_login_title {
+        font-family: 'Amatic SC', cursive;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: flex-start;
+        
+      }
+                
+      .socialLogin{
+        // margin:0 10%;
+        padding-left: 20%;
+        // position: relative;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // flex-direction: row;
+        .socialLogin_btn{
+          
+          margin-top: 1rem;
+          display: flex;
+          justify-content: flex-start;
+          // max-width: 50%;
+          // // min-width: 10px;
+          
+          // width: 15%;
+          // margin-left: 10%;
+          // margin-right: 10%;
+          // // justify-content: center;
+          // // align-items: center
+        }
+      }
+    }
   }
 
+
+
   .button_container_InSignUp {
+    margin-left: 0% !important;
+    padding-left: 0px !important ;
     margin-bottom: 7%;
+
+    
   }
 }
 
-//   .mobile_input_container {
-//     background: skyblue;
-//     margin-right: 7%;
-//     margin-left: 7%;
-//     margin-bottom: 7%;
-//   }
-// }

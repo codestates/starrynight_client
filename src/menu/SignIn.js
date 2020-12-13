@@ -183,7 +183,7 @@ class SignIn extends React.Component {
     }
   }
 
-  // 엔터키를 눌러도 로그인 버튼 누르게 하는 기능
+  // 엔터키를 눌러도 로그인 버튼 누르게 하는 기능 ---> 비밀번호 input칸에 적용시키자.
   signInPress = (e) => {
     if (e.key === "Enter") {
       this.handleSignIn();
@@ -221,7 +221,7 @@ class SignIn extends React.Component {
                 {/* -------------------------- 이메일, pw 입력칸 --------------------*/}
                 <div className="container_signIn">
                   <div className="Email_PW_container">
-                    <div id="user_title">USER</div>
+                    <div className="user_title">USER</div>
                     <div className="email_div">
                       {/* <span>이메일</span> */}
                       <input
@@ -238,6 +238,7 @@ class SignIn extends React.Component {
                         placeholder="비밀번호를 입력하세요."
                         type="password"
                         onChange={this.handleInputValue("password")}
+                        onKeyPress={this.signInPress}
                       />
                       <div>{this.state.errMsgOfPasswordBlanks}</div>
                     </div>
@@ -271,29 +272,29 @@ class SignIn extends React.Component {
                         // color="black"
                         color="gray"
                         middleWidth_SignIn_btn
-                        // smallWidth
-                        // className="Button_in_signIn"
-                        // type="submit"
-                        onKeyPress={this.signInPress}
+                      // smallWidth
+                      // className="Button_in_signIn"
+                      // type="submit"
+
                       >
                         로그인
                         <HiArrowNarrowRight className="signIn_icon" />
                       </Button>
 
                     </div>
-                    <div className="Button_in_signIn">
-                      <Button
 
-                        size="small"
-                        // fullWidth
-                        middleWidth_SignIn_btn
-                        // smallWidth
-                        onClick={this.props.signUpClickInSignIn}
-                      >
-                        회원 가입
-                  </Button>
+                    <Button
 
-                    </div>
+                      size="small"
+                      // fullWidth
+                      middleWidth_SignIn_btn
+                      // smallWidth
+                      onClick={this.props.signUpClickInSignIn}
+                    >
+                      회원 가입
+                      </Button>
+
+
                   </div>
                 </div>
 

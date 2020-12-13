@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios'
+import Button from "./Button";
 
 //css
 import "../css/SignUp.scss";
@@ -223,6 +224,14 @@ class SignUp extends React.Component {
 
 
 
+  // 엔터키를 눌르면 회원가입 버튼 누르게 하는 기능  ---> 연락처 input에 적용시키자.
+  signUpPress = (e) => {
+    if (e.key === "Enter") {
+      this.handleClickAddNewUserInfo();
+    }
+  }
+
+
   // componentWillUpdate() {
   //   this.errMsgInit()
   //   this.handleClickAddNewUserInfo
@@ -243,62 +252,119 @@ class SignUp extends React.Component {
 
               {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-              <div> 작업!!!!! </div>
+              <div> 테스트중입니다. </div>
 
-              {/* -------------------------- 연락처 입력 칸 -------------------------*/}
-              <form>
+              <div className="signUp_box">
+                {/* -------------------------- 연락처 입력 칸 -------------------------*/}
+
                 <div className="userInfo_input_container">
-                  <div>사이즈 테스트 중</div>
+
+
+                  <div className="user_title_signUp">NEW USER</div>
 
                   <div className="email_div">
                     <span>이메일</span>
-                    <input type="email" onChange={this.handleInputValue("email")} />
+                    <input
+                      type="email"
+                      onChange={this.handleInputValue("email")}
+                      placeholder="이메일을 입력하세요."
+                    />
                     <div className="text_style_SignUp">{this.state.errMsgOfEmailBlanks}</div>
                   </div>
 
                   <div className="nickname_div">
                     <span>별명</span>
-                    <input onChange={this.handleInputValue("nickname")} />
+                    <input
+                      type="text"
+                      placeholder="별명을 입력해주세요."
+                      onChange={this.handleInputValue("nickname")}
+                    />
                     <div className="text_style_SignUp">{this.state.errMsgOfNickNameBlanks}</div>
                   </div>
 
                   <div className="password_div">
                     <span>비밀번호</span>
-                    <input type="password" onChange={this.handleInputValue("password")} />
+                    <input
+                      type="password"
+                      placeholder="비밀번호를 입력하세요."
+                      onChange={this.handleInputValue("password")}
+                    />
                     <div className="text_style_SignUp">{this.state.errMsgOfPasswordBlanks}</div>
                   </div>
 
                   <div className="mobile_div">
                     <span>연락처</span>
-                    <input onChange={this.handleInputValue("mobile")} />
+                    <input
+                      type="text"
+                      placeholder="연락처를 입력하세요."
+                      onChange={this.handleInputValue("mobile")}
+                      onKeyPress={this.signUpPress}
+                    />
                     <div className="text_style_SignUp">{this.state.errMsgOfMobileBlanks}</div>
                   </div>
 
-                </div>
 
-                <div>{this.state.signUpFailedMsg}</div>
 
-              </form>
-              {/* -------------------------- submit 버튼 칸 --------------------*/}
-              <div>
-                <div className="button_container_InSignUp">
+                  <div>{this.state.signUpFailedMsg}</div>
+
+
+                  {/* -------------------------- submit 버튼 칸 --------------------*/}
                   <div>
-                    {/* axios post 요청 보내기 */}
-                    <button className="signUp_button_inSignUp" onClick={this.handleClickAddNewUserInfo}>
-                      회원 가입
-                    </button>
-                  </div>
-                  <div>
-                    <button
-                      className="redirectToMain"
-                      onClick={this.props.redirectToSignIn}
-                    >
-                      {/* 로그인 모달로 돌아가게 할 것. */}
+                    <div className="button_container_InSignUp">
+                      <div>
+                        {/* axios post 요청 보내기 */}
+                        <Button
+                          size="small"
+                          color="gray"
+                          middleWidth_SignIn_btn
+                          onClick={this.handleClickAddNewUserInfo}
+                        >
+                          회원 가입
+                        </Button>
+                      </div>
+                      <div>
+                        <button
+                          className="redirectToMain"
+                          onClick={this.props.redirectToSignIn}
+                        >
+                          {/* 로그인 모달로 돌아가게 할 것. */}
                       로그인
                     </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="division_line"></div>
+
+                <div className="container2_siginIn">
+
+                  <div className="socialLogin">
+                    <div id="social_login_title">SIGN UP with one click</div>
+
+                    <div className="socialLogin_btn">
+                      <Button
+                        color="red"
+                        outline
+                        smallWidth
+                      >
+                        Google
+                      </Button>
+                    </div>
+                    <div className="socialLogin_btn">
+                      <Button
+                        color="gray"
+                        outline
+                        smallWidth
+                      >
+                        Kakao
+                      </Button>
+                    </div>
+
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
           : null}
@@ -309,3 +375,4 @@ class SignUp extends React.Component {
 }
 
 export default SignUp;
+
