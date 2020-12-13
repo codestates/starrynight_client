@@ -75,6 +75,14 @@ class FindEmail extends React.Component {
   // }
 
 
+    // 엔터키를 눌르면 회원가입 버튼 누르게 하는 기능  ---> 연락처 input에 적용시키자.
+
+  findEmailPress = (e) => {
+    if (e.key === "Enter") {
+      this.handleClickSubmit();
+    }
+  }
+
 
   render() {
     console.log("FindEmail state", this.state)
@@ -104,12 +112,14 @@ class FindEmail extends React.Component {
               {/* -------------------------- 연락처 입력 칸 -------------------------*/}
               <div className="userInfo_find_email_container">
                 <div className="mobile_input_container_in_findEmail">
-                  <div className="find_email_title">USER</div>
+                  <div className="find_email_title">MOBILE</div>
                   <div className="mobile_div">
                     {/* <span>연락처</span> */}
                     <input
                     placeholder="연락처를 입력하세요."
-                    onChange={this.handleInputValue("mobile")} />
+                    onChange={this.handleInputValue("mobile")}
+                    onKeyPress={this.findEmailPress}
+                    />
                     <div>{this.state.errorMsg}</div>
 
                   </div>

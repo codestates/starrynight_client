@@ -79,6 +79,13 @@ class FindPw extends React.Component {
     }
 
 
+    // 엔터키를 눌르면 비밀번호찾기 버튼 누르게 하는 기능  ---> 연락처 input에 적용시키자.
+    findPwPress = (e) => {
+      if(e.key === "Enter") {
+        this.handleClickSubmit()
+      }
+    }
+
   render() {
     return (
       <div>
@@ -118,6 +125,7 @@ class FindPw extends React.Component {
                             className="control_margin_top"
                             placeholder="연락처를 입력하세요."
                             onChange={this.handleInputValue("mobile")}
+                            onKeyPress={this.findPwPress}
                           />
                           <div>{this.state.errorMsgOfMobile}</div>
                         </div>
