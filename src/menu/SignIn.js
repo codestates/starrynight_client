@@ -213,10 +213,11 @@ class SignIn extends React.Component {
 
             <div className="modal_signIn_content">
               {/* -------------------------- 로고삽입 칸 -------------------------*/}
-              <img
+              <h1>Starry Night</h1>
+              {/* <img
                 id="signIn_logo"
                 src={imgFile} alt="Starry Night Logo"
-              />
+              /> */}
               <div className="box">
                 {/* -------------------------- 이메일, pw 입력칸 --------------------*/}
                 <div className="container_signIn">

@@ -17,6 +17,11 @@
   }
 
   .modal_SignUp_content {
+    h2 {
+      font-family: 'Gamja Flower', cursisve;
+      // font-family: 'Hi Melody', cursive;
+
+    }
     background: white;
     color: black;
     position: relative;
@@ -77,6 +82,9 @@
         color: rgb(166, 163, 168);
         display: flex;
         align-content: center;
+      }
+      .control_margin_top {
+        margin-top: 1rem;
       }
       
       // .Email_PW_container {
@@ -204,13 +212,26 @@
   }
 
 
-
   .button_container_InSignUp {
     margin-left: 0% !important;
     padding-left: 0px !important ;
     margin-bottom: 7%;
 
-    
+    .rediect_To_Signin {
+      display: flex;
+      
+      span {
+        font-size: 0.73rem;
+        margin-right: 0.8rem;
+        color: rgb(82, 80, 80);
+        &.redirect_btn:hover {
+          cursor: pointer;
+          color: skyblue;
+        }
+        
+      }
+    }
+
   }
 }
 

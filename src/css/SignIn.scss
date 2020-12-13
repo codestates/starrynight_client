@@ -20,6 +20,14 @@
   }
   
   .modal_signIn_content {
+    h1 {
+      // font-family: 'Gamja Flower', cursisve;
+      // font-family: 'Amatic SC', cursive;
+      font-family: 'Josefin Slab', serif;
+      font-size: 2.5rem;
+      color: rgb(170, 117, 46);
+    }
+
     background-color: white;
     width: 50%;
     position: relative;

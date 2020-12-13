@@ -263,7 +263,7 @@ class SignUp extends React.Component {
                   <div className="user_title_signUp">NEW USER</div>
 
                   <div className="email_div">
-                    <span>이메일</span>
+                    {/* <span>이메일</span> */}
                     <input
                       type="email"
                       onChange={this.handleInputValue("email")}
@@ -273,8 +273,9 @@ class SignUp extends React.Component {
                   </div>
 
                   <div className="nickname_div">
-                    <span>별명</span>
+                    {/* <span>별명</span> */}
                     <input
+                      className="control_margin_top"
                       type="text"
                       placeholder="별명을 입력해주세요."
                       onChange={this.handleInputValue("nickname")}
@@ -283,8 +284,9 @@ class SignUp extends React.Component {
                   </div>
 
                   <div className="password_div">
-                    <span>비밀번호</span>
+                    {/* <span>비밀번호</span> */}
                     <input
+                      className="control_margin_top"
                       type="password"
                       placeholder="비밀번호를 입력하세요."
                       onChange={this.handleInputValue("password")}
@@ -293,8 +295,9 @@ class SignUp extends React.Component {
                   </div>
 
                   <div className="mobile_div">
-                    <span>연락처</span>
+                    {/* <span>연락처</span> */}
                     <input
+                      className="control_margin_top"
                       type="text"
                       placeholder="연락처를 입력하세요."
                       onChange={this.handleInputValue("mobile")}
@@ -322,14 +325,16 @@ class SignUp extends React.Component {
                           회원 가입
                         </Button>
                       </div>
-                      <div>
-                        <button
-                          className="redirectToMain"
+                      <div className="rediect_To_Signin">
+                        <span>
+                          계정이 있으신가요?
+                        </span>
+                        {/* 로그인 모달로 돌아가게 할 것. */}
+                        <span
+                          className="redirect_btn"
                           onClick={this.props.redirectToSignIn}
-                        >
-                          {/* 로그인 모달로 돌아가게 할 것. */}
-                      로그인
-                    </button>
+                        > 로그인
+                        </span>
                       </div>
                     </div>
                   </div>
