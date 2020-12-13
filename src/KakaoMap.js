@@ -4,11 +4,8 @@
 // https://saengmotmi.netlify.app/mentoring/2020-07-03-kakao-map-api-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%A7%88%EC%BB%A4-%EC%B0%8D%EA%B8%B0/
 import React, { useState, useEffect } from "react";
 
-export default function Map(props) {
-  console.log("카카오맵API를 받아옵니다 **********", window.kakao);
-
-  const [map, setMap] = useState(null);
-
+function KakaoMap(props) {
+  console.log("카카오맵API를 받아옵니다 ***", window.kakao);
   useEffect(() => {
     const script = document.createElement("script");
     script.async = true;
@@ -22,8 +19,8 @@ export default function Map(props) {
         // <div id="map"> 태그를 찾아 LatLngBounds 객체를 만들어서 초기 지도좌표를 추가합니다
         let mapContainer = document.getElementById("map");
         let mapOptions = {
-          center: new kakao.maps.LatLng(33.450701, 126.570667),
-          level: 8,
+          center: new kakao.maps.LatLng(33.476947, 126.822903),
+          level: 5,
         };
         let map = new kakao.maps.Map(mapContainer, mapOptions);
 
@@ -35,11 +32,15 @@ export default function Map(props) {
         function placesSearchCB(data, status, pagination) {
           if (status === kakao.maps.services.Status.OK) {
             let bounds = new kakao.maps.LatLngBounds();
-            for (let i = 0; i < data.length; i++) {
+
+            // for (let i = 0; i < data.length; i++) {
+            // 검색결과는 최대 2개까지만 보여주도록 합니다
+            for (let i = 0; i < 1; i++) {
               displayMarker(data[i]);
               bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
             }
             map.setBounds(bounds);
+            window.sessionStorage.setItem("current", mapOptions.center);
           }
         }
 
@@ -56,7 +57,7 @@ export default function Map(props) {
             place.place_name +
             '</span><span class="right"></span></div>';
 
-          console.log("검색된 위치에 대한 지도정보입니다 ****", place);
+          console.log("검색된 위치입니다 ***", place);
 
           // 검색된 위치를 바탕으로 커스텀 오버레이를 생성하여 지도에 표시합니다
           let customOverlay = new kakao.maps.CustomOverlay({
@@ -66,8 +67,18 @@ export default function Map(props) {
           customOverlay.setMap(map);
         }
 
-        // 지금까지 수집 및 작성된 키워드, 마커, 커스텀 오버레이의 모든 내용을 토대로 지도에 최종 반영합니다
-        setMap(map);
+        // 검색결과가 없다면 검색결과가 없다는 내용을 지도에 출력한 후, 검색실패 결과를 다시 AddPhoto에 끌어올립니다
+        if (!placesSearchCB()) {
+          let content =
+            '<div class ="label" style="margin-bottom:7rem;font-size:1rem;background:black;opacity:0.7;color:white;border-radius:6px;border:0.5px solid navy"><span class="left"></span><span class="center" style="padding:5px;">검색결과가 없습니다 &#128546;</span><span class="right"></span></div>';
+
+          let customOverlay = new kakao.maps.CustomOverlay({
+            position: mapOptions.center,
+            content: content,
+          });
+          customOverlay.setMap(map);
+          window.sessionStorage.setItem("current", "");
+        }
       });
     };
   }, []);
@@ -83,3 +94,5 @@ export default function Map(props) {
     ></div>
   );
 }
+
+export default KakaoMap;
