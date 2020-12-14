@@ -1,30 +1,27 @@
 import React from "react";
-import axios from 'axios'
+import axios from "axios";
 import Button from "./Button";
 
 //css
 import "../css/SignUp.scss";
 
-
 class SignUp extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: "",
       nickname: "",
       password: "",
       mobile: "",
-    }
+    };
   }
-
-
 
   // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 기본 유저정보 State와 에러메세지가 계속 띄어져있는 것을 방지하기 위해
   // state값을 빈 스트링으로 렌더링 시킨다.
   // componentWillUpdate에 걸어둔다.
   errMsgInit = () => {
     if (this.props.isOpen === false) {
-      console.log("초기화 됨?")
+      console.log("초기화 됨?");
       this.setState({
         email: "",
         nickname: "",
@@ -33,55 +30,53 @@ class SignUp extends React.Component {
         errMsgOfEmailBlanks: "",
         errMsgOfNickNameBlanks: "",
         errMsgOfPasswordBlanks: "",
-        errMsgOfMobileBlanks: ""
-      })
+        errMsgOfMobileBlanks: "",
+      });
     }
-  }
-
+  };
 
   // 정보입력 이벤트
   // State 할당: 입력받은 정보를 위의 빈 스트링으로 셋팅이 된 state값을 채운다.
 
   //! 콜백을 사용하는 이유: 입력값 한글자라도 그 존재여부에 따라 에러메세지를 실시간으로 바로 지우기 위함.
   handleInputValue = (key) => (text) => {
-    console.log("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ입력된 정보 할당")
+    console.log("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ입력된 정보 할당");
     // console.log("잘입력되요?")
     // console.log("key", key)
     // console.log("text", text)
     this.setState({
-      [key]: text.target.value
+      [key]: text.target.value,
     });
 
     // 에러메세지의 state값을 업데이트하고 아래 렌더부분에서 렌더시킨다.
     // 에러메세지 - email
-    //! !this.state.email.length를 사용하면 사용자의 입력행위로 length가 1이상이 되었음에도 불구하고 0으로 인식하여 에러메세지를 출력. 따라서 ""를 사용. 
+    //! !this.state.email.length를 사용하면 사용자의 입력행위로 length가 1이상이 되었음에도 불구하고 0으로 인식하여 에러메세지를 출력. 따라서 ""를 사용.
     //! 또한 다음 input을 채우는 행위를 하면 직전에 작성한 input 쪽에서 작성한 정보가 말그대로 ""가 아니기에 에러메세지를 그제서야 출력 따라서 & !length 를 사용.
     // if (this.state.email !== "") {
     if (this.state.email.length > 0) {
       this.setState({
         errMsgOfEmailBlanks: "",
-      })
-      console.log("ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ에러메세지 초기화")
+      });
+      console.log("ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ에러메세지 초기화");
     }
 
     if (this.state.nickname !== "") {
       this.setState({
         errMsgOfNickNameBlanks: "",
-      })
+      });
     }
 
     if (this.state.password !== "") {
       this.setState({
         errMsgOfPasswordBlanks: "",
-      })
+      });
     }
 
     if (this.state.mobile !== "") {
       this.setState({
-        errMsgOfMobileBlanks: ""
-      })
+        errMsgOfMobileBlanks: "",
+      });
     }
-
 
     // if (this.state.email !== "" && !this.state.email.length) {
     //   return this.setState({
@@ -130,7 +125,6 @@ class SignUp extends React.Component {
     //     errMsgOfMobileBlanks: ""
     //   })
     // }
-
   };
   // 위의 입력 이벤트로 인해 새로운 정보로 할당된 state값을 활용한다.
   // 회원가입한 신규 유저 정보를 데이터베이스에 저장하도록 셋팅한다.
@@ -139,62 +133,57 @@ class SignUp extends React.Component {
   //! 따라서 아무 입력행위 없이 회원가입버튼을 누르면 모든 정보를 입력하라는 에러메세지를 출력하기 위함.
   handleClickAddNewUserInfo = () => {
     const NewUserInfo = {
-      loginPlatformId: 1,   /// 수정하기 소셜하고도 구분해야하는 알고리즘 짜야함.
+      loginPlatformId: 1, /// 수정하기 소셜하고도 구분해야하는 알고리즘 짜야함.
       email: this.state.email,
       nickname: this.state.nickname,
       password: this.state.password,
-      mobile: this.state.mobile
-    }
+      mobile: this.state.mobile,
+    };
 
     // 에러메세지의 state값을 업데이트하고 아래 렌더부분에서 렌더시킨다.
     // 에러메세지 - email
     if (!this.state.email.length) {
       this.setState({
-        errMsgOfEmailBlanks: "이메일은 필수입니다."
-      })
-    }
-    else {
+        errMsgOfEmailBlanks: "이메일은 필수입니다.",
+      });
+    } else {
       this.setState({
-        errMsgOfEmailBlanks: ""
-      })
+        errMsgOfEmailBlanks: "",
+      });
     }
 
     // 에러메세지 - nickname
     if (!this.state.nickname.length) {
       this.setState({
-        errMsgOfNickNameBlanks: "별명을 입력해주세요."
-      })
-    }
-    else {
+        errMsgOfNickNameBlanks: "별명을 입력해주세요.",
+      });
+    } else {
       this.setState({
-        errMsgOfNickNameBlanks: ""
-      })
+        errMsgOfNickNameBlanks: "",
+      });
     }
 
     // 에러메세지 - password
     if (!this.state.password.length) {
       this.setState({
-        errMsgOfPasswordBlanks: "비밀번호는 필수입니다."
-      })
-    }
-    else {
+        errMsgOfPasswordBlanks: "비밀번호는 필수입니다.",
+      });
+    } else {
       this.setState({
-        errMsgOfPasswordBlanks: ""
-      })
+        errMsgOfPasswordBlanks: "",
+      });
     }
 
     // 에러메세지 - mobile
     if (!this.state.mobile.length) {
       this.setState({
-        errMsgOfMobileBlanks: "연락처를 입력해주세요."
-      })
-    }
-    else {
+        errMsgOfMobileBlanks: "연락처를 입력해주세요.",
+      });
+    } else {
       this.setState({
-        errMsgOfMobileBlanks: ""
-      })
+        errMsgOfMobileBlanks: "",
+      });
     }
-
 
     // 모든 값들과 이메일형식이 충족이 되면 !
 
@@ -204,48 +193,45 @@ class SignUp extends React.Component {
       this.state.password.length &&
       this.state.mobile.length
     ) {
-
-      axios.post("https://api.mystar-story.com/user/signup", NewUserInfo)
+      axios
+        .post("https://api.mystar-story.com/user/signup", NewUserInfo)
         .then((respoense) => {
-          alert(respoense.data)
-          this.props.redirectToSignIn()  // 회원가입 완료 후 로그인 모달창으로 돌아가!
+          alert(respoense.data);
+          this.props.redirectToSignIn(); // 회원가입 완료 후 로그인 모달창으로 돌아가!
         })
         .catch((error) => {
           // alert("hello world!")
           // console.log("회원가입 실패", error.response)
           this.setState({
-            signUpFailedMsg: error.response.data
-          })
-        })
+            signUpFailedMsg: error.response.data,
+          });
+        });
     }
-
-  }
-
-
-
+  };
 
   // 엔터키를 눌르면 회원가입 버튼 누르게 하는 기능  ---> 연락처 input에 적용시키자.
   signUpPress = (e) => {
     if (e.key === "Enter") {
       this.handleClickAddNewUserInfo();
     }
-  }
-
+  };
 
   // componentWillUpdate() {
   //   this.errMsgInit()
   //   this.handleClickAddNewUserInfo
   // }
 
-
   render() {
-    console.log("BeforeLogin에서 내려 온 회원가입 프롭스", this.props)
-    console.log("회원가입: 새로 할당된 state", this.state)
+    console.log("BeforeLogin에서 내려 온 회원가입 프롭스", this.props);
+    console.log("회원가입: 새로 할당된 state", this.state);
     return (
       <div>
-        {this.props.isOpen === true ?
+        {this.props.isOpen === true ? (
           <div className="modal_SignUp">
-            <div className="modal_SignUp_overlay" onClick={this.props.handleSignUpModal}></div>
+            <div
+              className="modal_SignUp_overlay"
+              onClick={this.props.handleSignUpModal}
+            ></div>
             <div className="modal_SignUp_content">
               {/* -------------------------- 타이틀 -------------------------*/}
               <h2>회원 가입</h2>
@@ -259,7 +245,6 @@ class SignUp extends React.Component {
 
                 <div className="local_new_user">
                   <div className="userInfo_input_container">
-
                     <div className="user_title_signUp">NEW USER</div>
 
                     <div className="email_div">
@@ -269,7 +254,9 @@ class SignUp extends React.Component {
                         onChange={this.handleInputValue("email")}
                         placeholder="이메일을 입력하세요."
                       />
-                      <div className="text_style_SignUp">{this.state.errMsgOfEmailBlanks}</div>
+                      <div className="text_style_SignUp">
+                        {this.state.errMsgOfEmailBlanks}
+                      </div>
                     </div>
 
                     <div className="nickname_div">
@@ -280,7 +267,9 @@ class SignUp extends React.Component {
                         placeholder="별명을 입력해주세요."
                         onChange={this.handleInputValue("nickname")}
                       />
-                      <div className="text_style_SignUp">{this.state.errMsgOfNickNameBlanks}</div>
+                      <div className="text_style_SignUp">
+                        {this.state.errMsgOfNickNameBlanks}
+                      </div>
                     </div>
 
                     <div className="password_div">
@@ -291,7 +280,9 @@ class SignUp extends React.Component {
                         placeholder="비밀번호를 입력하세요."
                         onChange={this.handleInputValue("password")}
                       />
-                      <div className="text_style_SignUp">{this.state.errMsgOfPasswordBlanks}</div>
+                      <div className="text_style_SignUp">
+                        {this.state.errMsgOfPasswordBlanks}
+                      </div>
                     </div>
 
                     <div className="mobile_div">
@@ -303,10 +294,10 @@ class SignUp extends React.Component {
                         onChange={this.handleInputValue("mobile")}
                         onKeyPress={this.signUpPress}
                       />
-                      <div className="text_style_SignUp">{this.state.errMsgOfMobileBlanks}</div>
+                      <div className="text_style_SignUp">
+                        {this.state.errMsgOfMobileBlanks}
+                      </div>
                     </div>
-
-
 
                     <div>{this.state.signUpFailedMsg}</div>
                   </div>
@@ -323,27 +314,25 @@ class SignUp extends React.Component {
                         onClick={this.handleClickAddNewUserInfo}
                       >
                         회원 가입
-                        </Button>
+                      </Button>
                     </div>
                     <div className="rediect_To_Signin">
-                      <span>
-                        계정이 있으신가요?
-                        </span>
+                      <span>계정이 있으신가요?</span>
                       {/* 로그인 모달로 돌아가게 할 것. */}
                       <span
                         className="redirect_btn"
                         onClick={this.props.redirectToSignIn}
-                      > 로그인
-                        </span>
+                      >
+                        {" "}
+                        로그인
+                      </span>
                     </div>
                   </div>
-
                 </div>
 
                 <div className="division_line"></div>
 
                 <div className="container2_siginIn">
-
                   <div className="socialLogin">
                     <div id="social_login_title">SIGN UP with one click</div>
 
@@ -367,19 +356,15 @@ class SignUp extends React.Component {
                         Kakao
                       </Button>
                     </div>
-
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-          : null}
-
+        ) : null}
       </div>
-    )
+    );
   }
 }
 
 export default SignUp;
-
