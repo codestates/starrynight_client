@@ -385,21 +385,21 @@ function AddPhoto(props) {
 
                 {/* submit button */}
                 {PhotoTitle !== "" &&
-                PhotoLocation !== "" &&
-                PhotoFormData !== [] ? (
-                  <Button
-                    className="addphoto-button"
-                    type="primary"
-                    size="large"
-                    onClick={onSubmit}
-                  >
-                    Post!
-                  </Button>
-                ) : (
-                  <Button className="addphoto-notyet" size="large">
-                    Post!
-                  </Button>
-                )}
+                  PhotoLocation !== "" &&
+                  PhotoFormData !== [] ? (
+                    <Button
+                      className="addphoto-button"
+                      type="primary"
+                      size="large"
+                      onClick={onSubmit}
+                    >
+                      Post!
+                    </Button>
+                  ) : (
+                    <Button className="addphoto-notyet" size="large">
+                      Post!
+                    </Button>
+                  )}
               </Form>
             </div>
           </div>

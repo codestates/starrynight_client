@@ -17,17 +17,125 @@
   }
 
   .modal_findEmail_content {
-    background: white;
-    width: 30%;
+
+    background-color: white;
+    width: 40%;
     position: relative;
     text-align: center;
     border-radius: 10px;
-  }
+    color: black;
 
-  .mobile_input_container {
-    background: skyblue;
-    margin-right: 7%;
-    margin-left: 7%;
-    margin-bottom: 7%;
+    h2 {
+      margin-left: 3rem;
+      font-family: 'Noto Serif KR', serif;
+      display: flex;
+    }
+
+
+
+    .find_email_box {
+
+      display: flex;
+      margin-bottom: 0.2rem;
+      margin-left: 0.5rem;
+  
+      justify-content: space-around;
+      align-content: center;
+  
+
+    }
+
+    .userInfo_find_email_container {
+      float: left;
+      width: 50%;
+      margin-left: 3%;
+      margin-bottom: 3%;
+
+      .find_email_title {
+        font-family: 'Advent Pro', sans-serif;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        padding-left: 0.3rem;
+        padding-bottom: 12px;
+      }
+
+      input {
+        display: flex;
+        width: 95%;
+        font-size: 0.9rem;
+        padding: 0.48rem 0.9rem;
+        border-radius: 5px;
+        border-width: 1.6px;
+        border-color: rgb(143, 143, 143);
+
+      }
+      input::placeholder {
+        font-size: 0.9rem;
+        color: rgb(166, 163, 168);
+        display: flex;
+        align-content: center;
+      }
+
+      .mobile_input_container_in_findEmail {
+        margin-right: 7%;
+        margin-left: 7%;
+        margin-bottom: 7%;
+
+        .mobile_div {  // 에러메세지
+          div {
+            float: right;  
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.5rem;
+          }
+        }
+      }
+
+      .button_container_findEmail{
+        margin-top: 5%;
+        margin-right: 7%;
+        margin-left: 7%;
+        padding-left: 0.3rem;
+      }
+    }
+
+    .division_line_findemail {
+      background: rgba(204, 204, 214, 0.336);
+      width: 1px;
+      height: 6rem;
+      margin-top: 3%;
+      margin-left: 1.5rem;
+      
+      // direction: column; 
+    }
+
+    .social_login_container {
+      // float: left;
+      width: 40%;
+
+      .socialLogin_findEmail {
+        padding-left: 20%;
+        
+        #social_login_title_findEmail {
+          // font-family: 'Amatic SC', cursive;
+          font-family: 'Advent Pro', sans-serif;
+          // font-size: 1.5rem;
+          font-size: 1.1rem;
+          display: flex;
+          justify-content: flex-start;
+          
+        }
+
+        .socialLogin_btn_findEmail {
+          margin-top: 1rem;
+          // display: flex;
+          // justify-content: flex-start;
+        }
+
+
+      }
+    }
   }
 }

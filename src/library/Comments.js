@@ -159,8 +159,8 @@ class Comments extends Component {
                   </button>
                 </div>
               ) : (
-                this.props.imgData.photoTitle
-              )}
+                  this.props.imgData.photoTitle
+                )}
             </div>
             {/* ------------------photo------------------ */}
             <img

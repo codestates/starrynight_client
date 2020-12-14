@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios'
+import Button from "./Button";
 
 //css
 import "../css/SignUp.scss";
@@ -15,6 +16,7 @@ class SignUp extends React.Component {
       mobile: "",
     }
   }
+
 
 
   // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 기본 유저정보 State와 에러메세지가 계속 띄어져있는 것을 방지하기 위해
@@ -204,15 +206,30 @@ class SignUp extends React.Component {
     ) {
 
       axios.post("https://api.mystar-story.com/user/signup", NewUserInfo)
-        .then(response => {
-          console.log(response)
+        .then((respoense) => {
+          alert(respoense.data)
+          this.props.redirectToSignIn()  // 회원가입 완료 후 로그인 모달창으로 돌아가!
         })
-      // 모든 값들과 조건이 충족되지 않으면 요청 x 각 위치에서 에러메세지 계속 보여주기
+        .catch((error) => {
+          // alert("hello world!")
+          // console.log("회원가입 실패", error.response)
+          this.setState({
+            signUpFailedMsg: error.response.data
+          })
+        })
     }
 
   }
 
 
+
+
+  // 엔터키를 눌르면 회원가입 버튼 누르게 하는 기능  ---> 연락처 input에 적용시키자.
+  signUpPress = (e) => {
+    if (e.key === "Enter") {
+      this.handleClickAddNewUserInfo();
+    }
+  }
 
 
   // componentWillUpdate() {
@@ -228,65 +245,133 @@ class SignUp extends React.Component {
       <div>
         {this.props.isOpen === true ?
           <div className="modal_SignUp">
-            <div className="modal_SignUp_overlay" onClick={this.props.handleModal}></div>
+            <div className="modal_SignUp_overlay" onClick={this.props.handleSignUpModal}></div>
             <div className="modal_SignUp_content">
               {/* -------------------------- 타이틀 -------------------------*/}
               <h2>회원 가입</h2>
 
               {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-              <div> 작업!!!!! </div>
+              <div> 테스트중입니다. </div>
 
-              {/* -------------------------- 연락처 입력 칸 -------------------------*/}
-              <form>
-                <div className="userInfo_input_container">
-                  <div>사이즈 테스트 중</div>
+              <div className="signUp_box">
+                {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
-                  <div className="email_div">
-                    <span>이메일</span>
-                    <input onChange={this.handleInputValue("email")} />
-                    <div className="text_style_SignUp">{this.state.errMsgOfEmailBlanks}</div>
+                <div className="local_new_user">
+                  <div className="userInfo_input_container">
+
+                    <div className="user_title_signUp">NEW USER</div>
+
+                    <div className="email_div">
+                      {/* <span>이메일</span> */}
+                      <input
+                        type="email"
+                        onChange={this.handleInputValue("email")}
+                        placeholder="이메일을 입력하세요."
+                      />
+                      <div className="text_style_SignUp">{this.state.errMsgOfEmailBlanks}</div>
+                    </div>
+
+                    <div className="nickname_div">
+                      {/* <span>별명</span> */}
+                      <input
+                        className="control_margin_top"
+                        type="text"
+                        placeholder="별명을 입력해주세요."
+                        onChange={this.handleInputValue("nickname")}
+                      />
+                      <div className="text_style_SignUp">{this.state.errMsgOfNickNameBlanks}</div>
+                    </div>
+
+                    <div className="password_div">
+                      {/* <span>비밀번호</span> */}
+                      <input
+                        className="control_margin_top"
+                        type="password"
+                        placeholder="비밀번호를 입력하세요."
+                        onChange={this.handleInputValue("password")}
+                      />
+                      <div className="text_style_SignUp">{this.state.errMsgOfPasswordBlanks}</div>
+                    </div>
+
+                    <div className="mobile_div">
+                      {/* <span>연락처</span> */}
+                      <input
+                        className="control_margin_top"
+                        type="text"
+                        placeholder="연락처를 입력하세요."
+                        onChange={this.handleInputValue("mobile")}
+                        onKeyPress={this.signUpPress}
+                      />
+                      <div className="text_style_SignUp">{this.state.errMsgOfMobileBlanks}</div>
+                    </div>
+
+
+
+                    <div>{this.state.signUpFailedMsg}</div>
                   </div>
 
-                  <div className="nickname_div">
-                    <span>별명</span>
-                    <input onChange={this.handleInputValue("nickname")} />
-                    <div className="text_style_SignUp">{this.state.errMsgOfNickNameBlanks}</div>
-                  </div>
+                  {/* -------------------------- submit 버튼 칸 --------------------*/}
 
-                  <div className="password_div">
-                    <span>비밀번호</span>
-                    <input onChange={this.handleInputValue("password")} />
-                    <div className="text_style_SignUp">{this.state.errMsgOfPasswordBlanks}</div>
-                  </div>
-
-                  <div className="mobile_div">
-                    <span>연락처</span>
-                    <input onChange={this.handleInputValue("mobile")} />
-                    <div className="text_style_SignUp">{this.state.errMsgOfMobileBlanks}</div>
+                  <div className="button_container_InSignUp">
+                    <div>
+                      {/* axios post 요청 보내기 */}
+                      <Button
+                        size="small"
+                        color="gray"
+                        middleWidth_main_btn
+                        onClick={this.handleClickAddNewUserInfo}
+                      >
+                        회원 가입
+                        </Button>
+                    </div>
+                    <div className="rediect_To_Signin">
+                      <span>
+                        계정이 있으신가요?
+                        </span>
+                      {/* 로그인 모달로 돌아가게 할 것. */}
+                      <span
+                        className="redirect_btn"
+                        onClick={this.props.redirectToSignIn}
+                      > 로그인
+                        </span>
+                    </div>
                   </div>
 
                 </div>
 
+                <div className="division_line"></div>
 
-              </form>
-              {/* -------------------------- submit 버튼 칸 --------------------*/}
-              <div>
-                <div className="button_container_InSignUp">
-                  <div>
-                    {/* axios post 요청 보내기 */}
-                    <button className="signUp_button_inSignUp" onClick={this.handleClickAddNewUserInfo}>
-                      회원 가입
-                </button>
-                  </div>
-                  <div>
-                    <button className="redirectToMain">
-                      {/* 메인페이지로 돌아가게 하자밀고 모달창 종료 기능을 적용시켜 현재 보고있는 사진 위치 유지시킬 것 */}
-                  돌아가기
-                </button>
+                <div className="container2_siginIn">
+
+                  <div className="socialLogin">
+                    <div id="social_login_title">SIGN UP with one click</div>
+
+                    <div className="socialLogin_btn">
+                      <Button
+                        color="red"
+                        outline
+                        smallWidth
+                        onClick={this.props.googleLogin}
+                      >
+                        Google
+                      </Button>
+                    </div>
+                    <div className="socialLogin_btn">
+                      <Button
+                        color="gray"
+                        outline
+                        smallWidth
+                        onClick={this.props.kakaoLogin}
+                      >
+                        Kakao
+                      </Button>
+                    </div>
+
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
           : null}
@@ -297,3 +382,4 @@ class SignUp extends React.Component {
 }
 
 export default SignUp;
+

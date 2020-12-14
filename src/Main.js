@@ -64,16 +64,19 @@ class Main extends React.Component {
 
   // SignIn을 성공하고 sessionStorage에 저장된 axios로 받아온 정보를 불러와 req하자.
   handleResponseSuccess = () => {
-    this.setState({
-      isLogin: true,
-    });
-    axios
-      .get("https://api.mystar-story.com/main", {
-        withCredentials: true,
-      })
+    axios.get("https://api.mystar-story.com/main", {
+      withCredentials: true
+    })
       .then((response) => {
-        window.localStorage.setItem("responseMsg", response.data);
-      });
+        // window.localStorage.setItem("responseMsg", response.data)
+        this.setState({
+          isLogin: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response.data)
+        // alert(error.response.data)
+      })
   };
 
   handleSignOut = () => {
@@ -85,26 +88,36 @@ class Main extends React.Component {
       alert("로그아웃에 성공하였습니다 :)");
     }
     this.doSignOut();
+
   };
 
   // 세션스토리지 저장 정보 모두 삭제. (세션 스토리지 정보로 새로고침 로그인 유지 기능을 더이상 사용하지 않기 위함.)
   doSignOut = () => {
+    axios.get("https://api.mystar-story.com/user/signout", {
+      withCredentials: true
+    })
+      .then(response => {
+        console.log("로그아웃 성공!", response.data)
+      })
     window.localStorage.clear();
+    window.location.href = "/"
+
   };
 
   //! 세션 스토리지에 저장 후, 중앙제어시스템격인 isLogin 스위치를 가지고 있는 main.js에서 만약 세션 스토리지에 email이 있다면 isLogin을 true로 혹은 false로 제어하여 하위 컴포넌트들이 이 영향을 받아 출력 혹은 비출력하게 할 것.
   componentDidMount() {
-    // const userEmail = window.sessionStorage.getItem("email")
-    // if (userEmail) {
-    //   this.handleResponseSuccess();
-    // }
-    if (window.localStorage.getItem("responseMsg")) {
+    if (window.localStorage.getItem("token")) {
+
       this.setState({
         isLogin: true,
       });
-    } else {
-      // 이미 로그아웃 기능이 작동했지만, didmount로 더블체크 하게 함.
-      this.handleSignOut();
+    }
+    // 이미 로그아웃 기능이 작동했지만, didmount로 더블체크 하게 함.
+    else {
+      this.setState({
+        isLogin: false
+      });
+      window.localStorage.clear();
     }
   }
 

@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+
+import Button from "../Button";
+import { HiArrowNarrowRight } from "react-icons/hi";
 
 
 //css
@@ -67,11 +69,19 @@ class FindEmail extends React.Component {
     ! cf) 부모-자식(FindEmail-CompletedFindEmail) 관계라 가능 -> 엄마꺼 끄고, 내것도 끄고! 혹은 엄마꺼 끄고 내껀 켜고 등등
     만약 형제 관계라면 형제끼리 공유하지않고 충돌만 일으키므로 엄마가 중재를 맡아 엄마가 두 놈의 자식 것을 꺼줘야 함.
     */
-  CompletedFindEmailModalOFFWithFindEmailModal = () => {
-    this.props.handleFindEmailModal()  // 엄마꺼 끄고
-    this.handleCompletedFindModal()   // 내껀 켜고
-  }
+  // CompletedFindEmailModalOFFWithFindEmailModal = () => {
+  //   this.props.handleFindEmailModal()  // 엄마꺼 끄고 or 내꺼 끄고
+  //   this.handleCompletedFindModal()   // 내껀 켜고 or 엄마꺼 켜고
+  // }
 
+
+    // 엔터키를 눌르면 이메일찾기 버튼 누르게 하는 기능  ---> 연락처 input에 적용시키자.
+
+  findEmailPress = (e) => {
+    if (e.key === "Enter") {
+      this.handleClickSubmit();
+    }
+  }
 
 
   render() {
@@ -80,58 +90,102 @@ class FindEmail extends React.Component {
     return (
 
       <div>
-        {this.props.isOpen ?
-          this.state.isCompletedFindEmailOpen === true ? 
+        {this.props.isFindEmailModalOpen ?
+          (this.state.isCompletedFindEmailOpen === true ? 
 
           <CompletedFindEmail
             resultOfFind={this.state.result}
-            CompletedFindEmailModalOFFWithFindEmailModal={this.CompletedFindEmailModalOFFWithFindEmailModal}
             isCompletedFindEmailOpen={this.state.isCompletedFindEmailOpen}
             handleCompletedFindModal={this.handleCompletedFindModal}
             handleFindEmailModal={this.props.handleFindEmailModal}
+            handleFindPwModal={this.props.handleFindPwModal}
+            isOpen={this.props.isOpen}
           />
           :
           <div className="modal_findEmail">
             <div className="modal_findEmail_overlay" onClick={this.props.handleFindEmailModal} ></div>
             <div className="modal_findEmail_content">
+
               {/* -------------------------- 타이틀 -------------------------*/}
-              <h2>이메일 찾기</h2>
+                <h2>이메일 찾기</h2>
+              <div className="find_email_box">
               {/* -------------------------- 연락처 입력 칸 -------------------------*/}
-              <form>
-                <div className="mobile_input_container">
-                  <div>사이즈 테스트 중</div>
+              <div className="userInfo_find_email_container">
+                <div className="mobile_input_container_in_findEmail">
+                  <div className="find_email_title">MOBILE</div>
                   <div className="mobile_div">
-                    <span>연락처</span>
-                    <input onChange={this.handleInputValue("mobile")} />
+                    {/* <span>연락처</span> */}
+                    <input
+                    placeholder="연락처를 입력하세요."
+                    onChange={this.handleInputValue("mobile")}
+                    onKeyPress={this.findEmailPress}
+                    />
                     <div>{this.state.errorMsg}</div>
 
                   </div>
                 </div>
-                </form>
+                
 
                 {/* -------------------------- submit 버튼 칸 --------------------*/}
-                <div>
+                <div className="button_container_findEmail">
                   <div>
-                    <button className="findEmail_button" onClick={this.handleClickSubmit}>
+                    <Button 
+                      size="small"
+                      color="gray"
+                      middleWidth_main_btn
+                      onClick={this.handleClickSubmit}>
                
                         이메일 찾기
                 
-                    </button>
+                    </Button>
                   </div>
                   <div>
-                    <button className="signUp_button_inFindEmail">
+                    <Button
+                     size="small"
+                     middleWidth_main_btn
+                     onClick={this.props.linkToSignUpfromfindEmail}
+                     >
                       회원 가입
-                    </button>
+                    </Button>
                   </div>
-
-                  <div>
-                    소셜 로그인 버튼도 삽입하기!
-            </div>
                 </div>
+              </div>
+                
 
+              <div className="division_line_findemail"></div>
+
+              {/* ----------------소셜 로그인------------------------- */}
+              <div className="social_login_container">
+                <div className="socialLogin_findEmail">
+                  <div id="social_login_title_findEmail">SOCIAL LOGIN</div>
+
+                  <div className="socialLogin_btn_findEmail">
+                      <Button
+                        color="red"
+                        outline
+                        smallWidth
+                        onClick={this.props.googleLogin}
+                      >
+                        Google
+                      </Button>
+                    </div>
+                    <div className="socialLogin_btn_findEmail">
+                      <Button
+                        color="gray"
+                        outline
+                        smallWidth
+                        onClick={this.props.kakaoLogin}
+                      >
+                        Kakao
+                      </Button>
+                    </div>
+                </div>
+              </div>
+              </div>
               
             </div>
-          </div>
+          </div>)
+          
           : null}
       </div>
     )

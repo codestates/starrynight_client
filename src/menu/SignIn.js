@@ -1,9 +1,19 @@
 import React from "react"
 import { NavLink, withRouter } from "react-router-dom"
+import Button from "./Button";
+import { HiArrowNarrowRight } from "react-icons/hi";
+
+
 import axios from "axios"
+
+// 소셜로그인
+import kakaoLogin from "react-kakao-login";
 
 // 로고
 import imgFile from "../image/logo_StarryNight_Only_Letter.png";
+import kakaoLogo from "../image/kakao_login.png";
+import googleLogo from "../image/google.png";
+// import kakaolink_btn_medium from "../image/kakaolink_btn_medium.png";
 
 //css
 import "../css/SignIn.scss";
@@ -19,6 +29,9 @@ class SignIn extends React.Component {
       // isFindEmailModalOpen: false,
       // isFindPwModalOpen: false
     }
+
+    // 들어온 토큰 만료시간 설정 (24시간 밀리 초로 표현)
+    const JWT_EXPIRY_TIME = 24 * 3600 * 1000
   }
 
 
@@ -75,35 +88,102 @@ class SignIn extends React.Component {
       })
     }
     else {
-      axios.post("https://api.mystar-story.com/user/signin", signInInfo, {
-        withCredentials: true
-      })
-        .then((response) => {
-          console.log("사인인 뭘 받아와?", response)
-          console.log("쿠키", document.cookie)
-
-          const accessToken = response.data.accessToken;
-          console.log("accessToken", accessToken)
-          //API 요청하는 콜마다 헤더에 accseeToken을 담아 보내도록 설정
-          // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-          axios.defaults.headers.common['Authorization'] = accessToken;
-          console.log("asdfasdfasdf", axios.defaults.headers)
-
-          // accessToken을 localStorage, cookie 등에 저장하지 않는다.
-
-          this.setState({
-            // email: response.data.email,
-            userId: response.data.userId,
-            // loginPlatformId: response.data.loginPlatformId
-          });
-          this.doSignIn();
-          this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
-          // this.props.history.push("/main");
-        })
-      // .catch((error) => )
+      // 로그인 요청
+      this.requestSignIn()
+      // this.doSignIn();
+      // this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
+      // this.props.history.href = "/";
+      // window.location.href = "/";
     }
   }
-  // 엔터키를 눌러도 로그인 버튼 누르게 하는 기능
+
+  // 로그인 요청
+  requestSignIn = () => {
+    const signInInfo = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    axios.post("https://api.mystar-story.com/user/signin", signInInfo, {
+      withCredentials: true
+    })
+      .then((response) => {
+        console.log("사인인 뭘 받아와?", response)
+
+
+        const accessToken = response.data.accessToken;
+        window.localStorage.setItem("token", accessToken)
+
+        // const token = window.localStorage.getItem("token")
+        // console.log("token", token)
+        //API 요청하는 콜마다 헤더에 accseeToken을 담아 보내도록 설정
+        // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        // axios.defaults.headers.common['Authorization'] = token;
+
+
+        // accessToken을 localStorage, cookie 등에 저장하지 않는다.
+
+        this.setState({
+          // email: response.data.email,
+          userId: response.data.userId,
+          // loginPlatformId: response.data.loginPlatformId
+        });
+        this.doSignIn();
+        // this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
+        // 새로고침하여 true로 변한 값 완벽하게 셋팅하기
+        history.go(0); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
+      })
+      .catch(error => {
+        alert(error.response.data)
+      })
+  }
+
+
+
+  // /* ------------------------- 소셜 로그인 ------------------------------- */
+
+  // // location 객체를 통해 Access Token을 URL 파라미터로부터 받아올 수 있다.
+  // // 받아온 쿼리스트링에 담긴 값 중 토큰만 추출
+  // getToken = () => {
+  //   const query = window.location.search.substring(1)
+  //   const token = query.split('access_token=')[1]
+
+  //   // if (token !== undefined) {
+  //   window.localStorage.setItem("token", token)
+  //   // }
+  //   axios.defaults.headers.common['Authorization'] = token;
+  // }
+
+  // googleLogin = () => {
+  //   window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https%3A//api.mystar-story.com/user/signin/google&client_id=6637807643-0mis27736asip5thchf3v3ksk8mnor2f.apps.googleusercontent.com"
+
+  // }
+
+  // kakaoLogin = () => {
+  //   window.location.href = "https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fapi.mystar-story.com%252Fuser%252Fsignin%252Fkakao%26client_id%3D2b6f01d8fb5368ff66de28e3749cefda"
+  // }
+
+
+  // // 유저가 다시 직접 로그인하도록 유도하지 않고 조용히 자동으로 로그인 연장하는 기능
+
+  // componentDidMount() {
+  //   // this.requestSignIn()
+
+  //   // 여기서 didMount를 걸어야 마이페이지까지 authorization이 잘 전달됨. (새로고침해도!)
+  //   const query = window.location.search.substring(1)
+  //   const socialUserToken = query.split('access_token=')[1]
+  //   const localUserToken = window.localStorage.getItem("token")
+  //   if (socialUserToken !== undefined) {
+  //     // 소셜로그인 토큰 저장: 쿼리스트링으로 담겨온 값 중 토큰을 추출하고 그것을 로컬스토리지에 저장하는 함수
+  //     this.getToken()
+  //   }
+  //   // 일반로그인 토큰 받아와 로컬스토리지에 저장하는 것은 handleSignIn에서 함(로그인버튼 눌렀을때 로컬스토리지에 저장될 것. 그것을 꺼내 사용) 
+  //   else if (localUserToken) {
+  //     axios.defaults.headers.common['Authorization'] = localUserToken;
+  //   }
+  // }
+
+  // 엔터키를 눌러도 로그인 버튼 누르게 하는 기능 ---> 비밀번호 input칸에 적용시키자.
   signInPress = (e) => {
     if (e.key === "Enter") {
       this.handleSignIn();
@@ -133,76 +213,140 @@ class SignIn extends React.Component {
 
             <div className="modal_signIn_content">
               {/* -------------------------- 로고삽입 칸 -------------------------*/}
-              <img
+              <h1>Starry Night</h1>
+              {/* <img
                 id="signIn_logo"
                 src={imgFile} alt="Starry Night Logo"
-              />
-              {/* -------------------------- 이메일, pw 입력칸 --------------------*/}
-              <form>
-                <div className="Email_PW_container">
-                  <div>사이즈 테스트 중</div>
-                  <div className="email_div">
-                    <span>이메일</span>
-                    <input
-                      type="email"
-                      onChange={this.handleInputValue("email")}
-                    />
-                    <div>{this.state.errMsgOfEmailBlanks}</div>
+              /> */}
+              <div className="box">
+                {/* -------------------------- 이메일, pw 입력칸 --------------------*/}
+                <div className="container_signIn">
+                  <div className="Email_PW_container">
+                    <div className="user_title">USER</div>
+                    <div className="email_div">
+                      {/* <span>이메일</span> */}
+                      <input
+                        placeholder="이메일을 입력하세요."
+                        type="email"
+                        onChange={this.handleInputValue("email")}
+                      />
+                      <div>{this.state.errMsgOfEmailBlanks}</div>
+                    </div>
+                    <div className="pw_div">
+                      {/* <span>비밀번호</span> */}
+                      <input
+                        className="input_pw_singin"
+                        placeholder="비밀번호를 입력하세요."
+                        type="password"
+                        onChange={this.handleInputValue("password")}
+                        onKeyPress={this.signInPress}
+                      />
+                      <div>{this.state.errMsgOfPasswordBlanks}</div>
+                    </div>
                   </div>
-                  <div className="pw_div">
-                    <span>비밀번호</span>
-                    <input
-                      type="password"
-                      onChange={this.handleInputValue("password")}
-                    />
-                    <div>{this.state.errMsgOfPasswordBlanks}</div>
-                  </div>
-                </div>
-                {/* -------------------------- 이메일, pw 찾기 --------------------*/}
-                <div className="findAccount_span">
-                  <div className="find_Account">
-                    <span onClick={this.props.FindEmailClick}>
-                      이메일 찾기
+                  {/* -------------------------- 이메일, pw 찾기 --------------------*/}
+                  <div className="find_container">
+                    <div className="findAccount_span">
+                      <div className="find_Account">
+                        <span onClick={this.props.findEmailClick} className="findEmailPw" >
+                          이메일 찾기
+                        </span>
+
+
+                        <span> | </span>
+
+                        <span onClick={this.props.findPwClick} className="findEmailPw" >
+                          비밀번호 찾기
                     </span>
-
-
-                    <span> | </span>
-
-                    <span onClick={this.props.FindPwClick}>
-                      비밀번호 찾기
-                    </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-              </form>
-              {/* -------------------------- submit 버튼 칸 --------------------*/}
-              <div>
-                <div>
-                  <button
-                    className="signIn_Button"
-                    // type="submit"
-                    onClick={this.handleSignIn}
-                    onKeyPress={this.signInPress}
-                  >
-                    로그인
-                    </button>
-                </div>
-                <div>
-                  <button className="signUp_Button_inSignIn">
-                    <NavLink to="/signup">
+                  {/* -------------------------- submit 버튼 칸 --------------------*/}
+                  <div className="button_container_signin">
+                    <div>
+
+                      <Button
+                        onClick={this.handleSignIn}
+                        size="small"
+                        // fullWidth
+                        // color="black"
+                        color="gray"
+                        middleWidth_main_btn
+                      // smallWidth
+                      // className="Button_in_signIn"
+                      // type="submit"
+
+                      >
+                        로그인
+                        <HiArrowNarrowRight className="signIn_icon" />
+                      </Button>
+
+                    </div>
+
+                    <Button
+
+                      size="small"
+                      // fullWidth
+                      middleWidth_main_btn
+                      // smallWidth
+                      onClick={this.props.signUpClickInSignIn}
+                    >
                       회원 가입
-                  </NavLink>
-                  </button>
-                </div>
-                <div>
+                      </Button>
 
-                  소셜로그인 버튼도 넣기
+
                   </div>
+                </div>
+
+                <div className="division_line"></div>
+
+
+                <div className="container2_siginIn">
+                  <div className="socialLogin">
+                    <div id="social_login_title">SOCIAL LOGIN</div>
+                    {/* <span onClick={this.googleLogin}>구글</span> */}
+
+                    {/* --------------------------로그인 아이콘--------------------------------- */}
+                    {/* <img
+                      className="socialLogin_btn"
+                      src={googleLogo} alt="구글 로그인"
+                      onClick={this.googleLogin}
+                    /> */}
+                    {/* <span> || </span> */}
+                    {/* <img
+                      className="socialLogin_btn"
+                      src={kakaoLogo} alt="카카오 로그인"
+                      onClick={this.kakaoLogin}
+                    />W */}
+                    <div className="socialLogin_btn">
+                      <Button
+                        color="red"
+                        outline
+                        smallWidth
+                        onClick={this.props.googleLogin}
+                      >
+                        Google
+                      </Button>
+                    </div>
+                    <div className="socialLogin_btn">
+                      <Button
+                        color="gray"
+                        outline
+                        smallWidth
+                        onClick={this.props.kakaoLogin}
+                      >
+                        Kakao
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
 
             </div>
           </div>
+
           : null}
 
       </div>
@@ -211,3 +355,13 @@ class SignIn extends React.Component {
 }
 
 export default withRouter(SignIn);
+
+
+
+/*
+구글
+https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https%3A//api.mystar-story.com/googleCallback&client_id=6637807643-0mis27736asip5thchf3v3ksk8mnor2f.apps.googleusercontent.com
+
+카카오
+https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fapi.mystar-story.com%252Fuser%252Fsignin%252Fkakao%26client_id%3D2b6f01d8fb5368ff66de28e3749cefda
+*/
