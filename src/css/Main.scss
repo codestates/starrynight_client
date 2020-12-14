@@ -22,50 +22,71 @@
   .AddPhoto-button {
     border: none;
   }
+
+
+  .scoll_to_top {
+    background: rgba(128, 128, 128, 0.63);
+    border-radius: 100px;
+    color: white;
+    position: absolute;
+    // max-width: 100%;
+    
+    top: 85%;
+    left: 97.7%;
+    .icons_to_top {
+      font-size: 2rem;
+      &:hover {
+        cursor: pointer;
+        font-size: 2.1rem;
+      }
+    }
+
+  }
 }
 
-/* ------------Nav ------------------- */
-.nav {
-  .nav_div {
-    // background: rgba(0, 0, 0, 0.3);
-    background: #192f6d;
-
-    padding: 0px 20px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 10vh;
-    color: white; //  폰트 컬러
-    z-index: 1;
-    display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
-    // background-color: none;
-
-    justify-content: space-between;
-    align-items: center;
-    // opacity: 0;
-
-    // 햄버거 클릭 안했을시. -> 네브바 안의 아이템들 정렬 유지를 위함.
-    .menuList_Temp_Login {
-      ul {
-        // background-color: skyblue;
-        display: flex;
-        margin-right: 5%;
-        padding-left: 0px;
-        align-items: center;
-        flex-direction: column;
-        position: absolute;
-        right: 0px;
-
-        // top: 6vh;
-
-        width: 20%;
-
-        .firstList {
-          padding-top: 5%;
-        }
-        li {
-          padding-bottom: 5%;
-          list-style: none;
+  /* ------------Nav ------------------- */
+  #nav {
+    .nav_div {
+      // background: rgba(0, 0, 0, 0.3);
+      background: #192f6d;
+ 
+      padding: 0px 20px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 10vh;
+      color: white; //  폰트 컬러
+      z-index: 1;
+      display: flex; // 위치를 변형하고 싶은요소의 부모요소에 display: flex를 적용하기.
+      // background-color: none;
+      
+      justify-content: space-between;
+      align-items: center;
+      // opacity: 0;
+  
+      // 햄버거 클릭 안했을시. -> 네브바 안의 아이템들 정렬 유지를 위함.
+      .menuList_Temp_Login {
+        ul {
+          // background-color: skyblue;
+          display: flex;
+          margin-right: 5%;
+          padding-left: 0px;
+          align-items: center;
+          flex-direction: column;
+          position: absolute;
+          right: 0px;
+  
+          // top: 6vh;
+  
+          width: 20%;
+  
+          .firstList {
+            padding-top: 5%;
+          }
+          li {
+            padding-bottom: 5%;
+            list-style: none;
+          }
         }
       }
     }
