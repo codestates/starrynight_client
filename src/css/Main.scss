@@ -25,19 +25,22 @@
 
 
   .scoll_to_top {
+    background: rgba(128, 128, 128, 0.63);
+    border-radius: 100px;
     color: white;
     position: absolute;
     // max-width: 100%;
-    top: 88%;
-    left: 95%;
-    &:hover {
-      cursor: pointer;
+    
+    top: 70%;
+    left: 90%;
+    .icons_to_top {
+      font-size: 2rem;
+      &:hover {
+        cursor: pointer;
+        font-size: 2.1rem;
+      }
     }
-      
-    // display: flex;
-    
-    // margin-right: px;
-    
+
   }
 }
 

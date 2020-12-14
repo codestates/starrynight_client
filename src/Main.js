@@ -193,6 +193,8 @@ class Main extends React.Component {
         ) : null}
         <div className="scoll_to_top">
           <HiChevronUp
+            className="icons_to_top"
+            // size="2.5rem"
             onClick={this.scrollToTop}
           />
         </div>
