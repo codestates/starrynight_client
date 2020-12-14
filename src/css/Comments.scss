@@ -1,0 +1,305 @@
+* {
+  box-sizing: border-box;
+}
+
+.myModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(127, 127, 127, 0.5);
+}
+
+.modalContent {
+  display: none;
+  position: fixed;
+  background-color: rgb(56, 35, 41);
+  z-index: 1;
+  width: 60%;
+  height: 70%;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 15%;
+  left: 20%;
+  border: 2px solid rgb(160, 160, 160);
+  border-radius: 40px;
+  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.4),
+    4px 8px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modalContent_Left {
+  position: absolute;
+  width: 65%;
+  height: 100%;
+  /* background-color: brown; */
+}
+
+.modalContent_Right {
+  position: absolute;
+  width: 35%;
+  height: 100%;
+  right: 0;
+  /* background-color: rgb(224, 224, 224); */
+}
+
+.photoName {
+  position: absolute;
+  bottom: 87%;
+  left: 5%;
+  width: 90%;
+  color: white;
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.modifyPhotoName {
+  width: 70%;
+}
+
+.modifyPhotoNameBtn {
+  width: 10%;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(97, 69, 163);
+  border-radius: 10px;
+}
+
+.selectPhoto {
+  position: relative;
+  display: block;
+  max-width: 90%;
+  max-height: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: -17%;
+}
+
+.hashTag {
+  position: absolute;
+  left: 5%;
+  bottom: 22%;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.userInfo {
+  position: absolute;
+  left: 5%;
+  bottom: 8%;
+}
+
+.userFace {
+  width: 10%;
+  vertical-align: middle;
+}
+
+.userName {
+  position: relative;
+  left: 2%;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btns {
+  position: absolute;
+  bottom: 11%;
+  right: 12%;
+}
+
+.modifyBtn {
+  width: 70px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(97, 69, 163);
+  border-radius: 10px;
+}
+
+.deleteBtn {
+  width: 70px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(97, 69, 163);
+  border-radius: 10px;
+}
+
+.mapImg {
+  position: absolute;
+  display: block;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 60%;
+  right: 5%;
+}
+
+.HowToGo_div {
+  position: absolute;
+  display: block;
+  top: 43%;
+  right: 5%;
+}
+
+.HowToGo {
+  width: 90px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(97, 69, 163);
+  border-radius: 10px;
+}
+
+.favorite_div {
+  position: absolute;
+  display: block;
+  bottom: 45%;
+  left: 5%;
+}
+
+.favorite {
+  width: 40px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(97, 69, 163);
+  border-radius: 10px;
+}
+
+.commentDiv {
+  position: absolute;
+  top: 58%;
+  right: 5%;
+  width: 90%;
+  height: 30%;
+}
+
+.commentBtn {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: 20%;
+  top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: rgb(97, 69, 163);
+  border-radius: 10px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+  background-color: rgb(202, 202, 202);
+  overflow: scroll;
+}
+
+.comment {
+  border-bottom: 2px solid rgb(160, 160, 160);
+}
+
+.commentFace {
+  position: relative;
+  float: left;
+  max-width: 18%;
+}
+
+.commentUserName {
+  color: rgb(47, 43, 59);
+  font-weight: bold;
+}
+
+.commentDate {
+  position: relative;
+  float: right;
+  top: 4%;
+  right: 4%;
+  color: rgb(47, 43, 59);
+}
+
+.commentComment {
+  position: relative;
+  margin-left: 20%;
+  color: rgb(47, 43, 59);
+}
+
+.commentRemove {
+  position: relative;
+  float: right;
+  // bottom: 5%;
+}
+
+// .comments {
+//   display: flex;
+//   flex-direction: column;
+//   height: 85%;
+//   background-color: rgb(180, 180, 180);
+//   overflow: scroll;
+//   .comment {
+//     position: relative;
+//     display: block;
+//     width: 100%;
+//     min-height: 45%;
+//     .commentLeft {
+//       position: absolute;
+//       left: 0;
+//       width: 18%;
+//     }
+//     .commentRight {
+//       position: absolute;
+//       right: 0;
+//       width: 82%;
+//     }
+//   }
+// }
+
+// .commentFace {
+//   position: relative;
+//   max-width: 100%;
+// }
+
+// .commentUserName {
+//   position: relative;
+//   top: 0%;
+//   left: 3%;
+// }
+
+// .commentDate {
+//   position: absolute;
+//   top: 3%;
+//   right: 3%;
+// }
+
+// .commentComment {
+//   position: relative;
+//   display: block;
+//   left: 3%;
+// }
+
+// .commentRemove {
+//   position: absolute;
+//   right: 0;
+//   bottom: 0;
+// }
+
+// .commentHr {
+//   position: absolute;
+//   width: 100%;
+//   bottom: 0;
+// }

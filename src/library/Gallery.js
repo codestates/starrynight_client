@@ -65,7 +65,7 @@ let fakeData = [
   fake30,
 ];
 
-class All extends Component {
+class Gallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -222,4 +222,4 @@ class All extends Component {
   }
 }
 
-export default All;
+export default Gallery;

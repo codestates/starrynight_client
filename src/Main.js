@@ -29,9 +29,38 @@ class Main extends React.Component {
     this.state = {
       isLogin: false,
       isAddPhotoModalOpen: false,
+      isAllOpen: true,
+      isGalleryOpen: false,
+      isFavoriteOpen: false,
     };
   }
 
+  // isGalleryOpen을 변환함
+  handleIsGalleryOpen = () => {
+    this.setState({
+      isAllOpen: false,
+      isGalleryOpen: true,
+      isFavoriteOpen: false,
+    });
+  };
+
+  // isFavoriteOpen을 변환함
+  handleIsFavoriteOpen = () => {
+    this.setState({
+      isAllOpen: false,
+      isGalleryOpen: false,
+      isFavoriteOpen: true,
+    });
+  };
+
+  // isAllOpen을 변환함
+  handleIsAllOpen = () => {
+    this.setState({
+      isAllOpen: true,
+      isGalleryOpen: false,
+      isFavoriteOpen: false,
+    });
+  };
 
   // SignIn을 성공하고 sessionStorage에 저장된 axios로 받아온 정보를 불러와 req하자.
   handleResponseSuccess = () => {
@@ -107,6 +136,8 @@ class Main extends React.Component {
               isLogin={this.state.isLogin}
               handleResponseSuccess={this.handleResponseSuccess}
               handleSignOut={this.handleSignOut}
+              handleIsGalleryOpen={this.handleIsGalleryOpen}
+              handleIsFavoriteOpen={this.handleIsFavoriteOpen}
             />
           }
         </div>
@@ -117,7 +148,11 @@ class Main extends React.Component {
         {/* <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
           이곳은 ViewPhoto.js의 All.js, 사진 라이브러리 그리드가 위치할 곳
         </div> */}
-        {<ViewPhoto />}
+        <ViewPhoto
+          isAllOpen={this.state.isAllOpen}
+          isGalleryOpen={this.state.isGalleryOpen}
+          isFavoriteOpen={this.state.isFavoriteOpen}
+        />
 
         {/* 12/1 사진추가버튼 모달창 수정 */}
         {this.state.isLogin ? (
