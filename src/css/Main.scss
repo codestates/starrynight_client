@@ -22,10 +22,27 @@
   .AddPhoto-button {
     border: none;
   }
+
+
+  .scoll_to_top {
+    color: white;
+    position: absolute;
+    // max-width: 100%;
+    top: 88%;
+    left: 95%;
+    &:hover {
+      cursor: pointer;
+    }
+      
+    // display: flex;
+    
+    // margin-right: px;
+    
+  }
 }
 
   /* ------------Nav ------------------- */
-  .nav {
+  #nav {
     .nav_div {
       // background: rgba(0, 0, 0, 0.3);
       background: #192f6d;
