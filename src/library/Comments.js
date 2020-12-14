@@ -12,6 +12,8 @@ import faceCircle5 from "../image/faceCircle5.png";
 import mapImg from "../image/mapImg.png";
 import RemovePhoto from "./RemovePhoto";
 import RemoveComment from "./RemoveComment";
+import Map from "./Map";
+import LoadMap from "./LoadMap";
 
 let data = [
   {
@@ -71,6 +73,7 @@ class Comments extends Component {
       isRemovePhotoOpen: false,
       isRemoveCommentOpen: false,
       infoOpen: false,
+      isLocation: "",
     };
   }
 
@@ -100,7 +103,21 @@ class Comments extends Component {
       myModal.style.display = "block";
       modalContent.style.display = "block";
     }
+
+    // let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
+    // axios.get(url).then((data) => {
+    //   this.setState({
+    //     isLocation: data.data.location,
+    //   });
+    //   console.log("location: ", this.state.isLocation);
+    // });
   }
+
+  componentDidMount() {}
+
+  stars = () => {
+    console.log(this.props.imgData.location);
+  };
 
   // 모달 창 닫기
   handleModalClose = () => {
@@ -159,8 +176,8 @@ class Comments extends Component {
                   </button>
                 </div>
               ) : (
-                  this.props.imgData.photoTitle
-                )}
+                this.props.imgData.photoTitle
+              )}
             </div>
             {/* ------------------photo------------------ */}
             <img
@@ -197,14 +214,23 @@ class Comments extends Component {
               &times;
             </span> */}
             {/* ------------------지도------------------ */}
-            <img className="mapImg" src={this.state.fakeData[0].map} />
+            {/* <img className="mapImg" src={this.state.fakeData[0].map} /> */}
+            <Map place={this.props.imgData.location} />
+            {/* <Map place={this.state.isLocation} /> */}
+            {/* <LoadMap isCommentId={this.props.isCommentId} /> */}
+
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
               <button className="HowToGo">How to go</button>
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
-              <button className="favorite">별</button>
+              <button
+                className="favorite"
+                // onClick={() => console.log(this.props.imgData.location)}
+              >
+                별
+              </button>
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">

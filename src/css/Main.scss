@@ -3,7 +3,7 @@
 
   .AddPhoto {
     position: absolute;
-    left: 70%;
+    left: 90%;
     top: 75%;
     z-index: 1;
     cursor: pointer;
@@ -89,155 +89,143 @@
           }
         }
       }
-  
-      // 로고를 클릭 시 메인페이지?로 리다이렉트
-      #nav_logo {
-        
-        // width: inherit;
-        max-width: 15%;
-        height: auto;
-        // z-index: 2;
-      }
-  
+    }
 
-      // 로그인 후 보여질 햄버거 모달
-      .menuList_After_Login {
-        
-        .modal_menuList_After_Login_overlay {
-          background: (0, 0, 0, 0.6);
-          width: 100vw;
-          height: 100vh;
-          position: fixed;
-          display: flex;
-          top: 0;
-          left: 0;
-          right: 0;
-          justify-content: center;
-          align-items: center;
-        }
+    // 로고를 클릭 시 메인페이지?로 리다이렉트
+    #nav_logo {
+      // width: inherit;
+      max-width: 15%;
+      height: auto;
+      // z-index: 2;
+    }
 
-        .nav_link {
-          background-color: white;
-          color: black;
-          display: flex;
-          margin-right: 51px;
-          padding-left: 0px;
-          align-items: center;
-          flex-direction: column;
-          position: absolute;
-          right: 0px;
-          border-radius: 10px;
-  
-          top: 12vh;
-  
-          width: 17%;
-  
-          .list {
-            display: flex;
-            padding: 5% 9%;
-            font-size: 0.8rem;
-            cursor: pointer;
-          }
-        }
+    // 로그인 후 보여질 햄버거 모달
+    .menuList_After_Login {
+      .modal_menuList_After_Login_overlay {
+        background: (0, 0, 0, 0.6);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        display: flex;
+        top: 0;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        align-items: center;
       }
 
-      // HamburgerMenuTemp
-
-    
-      // 로그인 전 보여질 햄버거 모달
-      .menuList_Before_Login {
-
-        .modal_menuList_Before_Login_overlay{
-          width: 100vw;
-          height: 100vh;
-          background: rgba(0, 0, 0, 0);
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-        }
-
-        .nav_link {
-          // background: rgba(135, 206, 235, 1);
-          background: white;
-          color: black;
-          display: flex;
-          margin-right: 50px;
-          
-          padding-left: 0px;
-          align-items: center;
-          flex-direction: column;
-          position: absolute;
-          right: 0px;
-          border-radius: 10px;
-
-          
-  
-          top: 12vh;
-  
-          width: 15%;
-  
-
-     
-          .list {
-            display: flex;
-            padding: 5% 9%;
-            
-            font-size: 0.8rem;
-            cursor: pointer;
-          }
-        }
-      }
-  
-      /* ----- 햄버거 토글 ----- */
-      .hamburgerToggle_ON {
-        right: 50px;
+      .nav_link {
+        background-color: white;
+        color: black;
+        display: flex;
+        margin-right: 51px;
+        padding-left: 0px;
+        align-items: center;
+        flex-direction: column;
         position: absolute;
-        // padding-left: 30vw;
-        div {
-          // position: fixed;
-          
-          margin: 3px;
-          transition: all 0.3s ease;
-          width: 23px;
-          height: 3px;
-          background: white; // div에 색을 입혀 라인을 만든 것.
-  
-        }
-  
-        .line-1 {
-          transform: rotate(-45deg) translate(-3px, 5px)
-        }
-        .line-2 {
-          opacity: 0;
-        }
-        .line-3 {
-          transform: rotate(45deg) translate(-3px, -5.5px);
-        }
-      }
-  
-      .hamburgerToggle_OFF {
-        // display: block;
-        position: absolute;
-        right: 50px;
-        // width: 300px;
-        // border: 3px solid #73AD21;
-        // padding: 10px;
-      
-        
-        div {
-          // z-index: 1;
-          width: 23px;
-          height: 3px;
-          background: white;
-          margin: 3px;
-          transition: all 0.3s ease;
+        right: 0px;
+        border-radius: 10px;
+
+        top: 12vh;
+
+        width: 17%;
+
+        .list {
+          display: flex;
+          padding: 5% 9%;
+          font-size: 0.8rem;
+          cursor: pointer;
         }
       }
     }
-  }
 
+    // HamburgerMenuTemp
+
+    // 로그인 전 보여질 햄버거 모달
+    .menuList_Before_Login {
+      .modal_menuList_Before_Login_overlay {
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav_link {
+        // background: rgba(135, 206, 235, 1);
+        background: white;
+        color: black;
+        display: flex;
+        margin-right: 50px;
+
+        padding-left: 0px;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        right: 0px;
+        border-radius: 10px;
+
+        top: 12vh;
+
+        width: 15%;
+
+        .list {
+          display: flex;
+          padding: 5% 9%;
+
+          font-size: 0.8rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+    /* ----- 햄버거 토글 ----- */
+    .hamburgerToggle_ON {
+      right: 50px;
+      position: absolute;
+      // padding-left: 30vw;
+      div {
+        // position: fixed;
+
+        margin: 3px;
+        transition: all 0.3s ease;
+        width: 23px;
+        height: 3px;
+        background: white; // div에 색을 입혀 라인을 만든 것.
+      }
+
+      .line-1 {
+        transform: rotate(-45deg) translate(-3px, 5px);
+      }
+      .line-2 {
+        opacity: 0;
+      }
+      .line-3 {
+        transform: rotate(45deg) translate(-3px, -5.5px);
+      }
+    }
+
+    .hamburgerToggle_OFF {
+      // display: block;
+      position: absolute;
+      right: 50px;
+      // width: 300px;
+      // border: 3px solid #73AD21;
+      // padding: 10px;
+
+      div {
+        // z-index: 1;
+        width: 23px;
+        height: 3px;
+        background: white;
+        margin: 3px;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
