@@ -12,25 +12,8 @@ class ViewPhoto extends Component {
     this.state = {
       isCommentsOpen: false,
       isCommentId: 0,
-      // imgData: "",
     };
   }
-
-  // handleModalOpen = (e) => {
-  //   console.log(e.target.name);
-  //   this.setState({
-  //     isCommentId: e.target.name,
-  //     isCommentsOpen: !this.state.isCommentsOpen,
-  //   });
-  //   // console.log(`isOpen: ${this.state.isCommentsOpen}`);
-  //   let url = `https://api.mystar-story.com/${this.state.isCommentId}`;
-  //   axios.get(url).then((data) => {
-  //     this.setState({
-  //       imgData: data.data,
-  //     });
-  //     console.log(this.state.imgData);
-  //   });
-  // };
 
   handleModalOpen = (e) => {
     console.log("e.target.name: ", e.target.name);
@@ -58,12 +41,12 @@ class ViewPhoto extends Component {
           />
         )}
         {this.props.isAllOpen && <All handleModalOpen={this.handleModalOpen} />}
-        {/* {this.props.isFavoriteOpen && (
+        {this.props.isFavoriteOpen && (
           <Favorite handleModalOpen={this.handleModalOpen} />
         )}
         {this.props.isGalleryOpen && (
           <Gallery handleModalOpen={this.handleModalOpen} />
-        )} */}
+        )}
       </div>
     );
   }
