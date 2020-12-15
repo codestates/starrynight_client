@@ -3,7 +3,7 @@ import Button from "../Button";
 
 //css
 import "../../css/CompletedFindEmail.scss";
-
+import { AiOutlineUser } from "react-icons/ai";
 
 class CompletedFindEmail extends React.Component {
   constructor(props){
@@ -40,22 +40,33 @@ class CompletedFindEmail extends React.Component {
           ></div>
           <div className="modal_CompletedFindEmail_content">
             {/* -------------------------- 타이틀 -------------------------*/}
+
+            <h2>
+              <AiOutlineUser
+                className="completedFindEmail_title_icon"
+              />
+              이메일 찾기
+              
+              </h2>
+            <h4>고객님의 정보와 일치하는 이메일 목록입니다.</h4>
             
+            <div className="division_line"></div>
+            
+
             {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
             <div className="email_result_container">
 
               <div className="email_result_div">
-                <div className="email_findEmail">
+                <span className="email_findEmail_1">
                   {this.props.resultOfFind.email}
-                  {/* potter1215@gmail.com */}
-                </div>              
-                <div>
-                  {this.props.resultOfFind.createdAt}
-                </div>
+                </span>              
+                <span className="email_findEmail_2">
+                  (생성일 : {this.props.resultOfFind.createdAt})
+                </span>
               </div>
               
-            
+              <div className="division_line"></div>
 
             {/* -------------------------- submit 버튼 칸 --------------------*/}
               <div className="btn_result_findEmail_container">
