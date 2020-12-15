@@ -3,7 +3,7 @@
 }
 
 .myModal {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -15,7 +15,7 @@
 }
 
 .modalContent {
-  display: none;
+  display: block;
   position: fixed;
   background-color: rgb(56, 35, 41);
   z-index: 1;
@@ -84,6 +84,7 @@
   position: absolute;
   left: 5%;
   bottom: 22%;
+  width: 100%;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -136,12 +137,12 @@
 
 .mapImg {
   position: absolute;
-  display: block;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 60%;
   right: 5%;
+  // display: block;
+  // width: 15%;
+  // height: 45%;
+  // bottom: 60%;
+  // left: 5%;
 }
 
 .HowToGo_div {
@@ -208,6 +209,13 @@
   height: 85%;
   background-color: rgb(202, 202, 202);
   overflow: scroll;
+}
+
+.emptyComments {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
 }
 
 .comment {

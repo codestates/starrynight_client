@@ -75,7 +75,7 @@ function AddPhoto(props) {
             .then((res) => {
               if (res.data.success) {
                 // 해시태그가 있으면 해당 정보도 HashTag 모델 및 Photo 모델에 저장 요청
-                if (photo.hashtag !== "") {
+                if (CompleteTag.length !== 0) {
                   const hashtag = {
                     hashtag: CompleteTag,
                     photoPath: photo.photoPath,
@@ -385,21 +385,21 @@ function AddPhoto(props) {
 
                 {/* submit button */}
                 {PhotoTitle !== "" &&
-                  PhotoLocation !== "" &&
-                  PhotoFormData !== [] ? (
-                    <Button
-                      className="addphoto-button"
-                      type="primary"
-                      size="large"
-                      onClick={onSubmit}
-                    >
-                      Post!
-                    </Button>
-                  ) : (
-                    <Button className="addphoto-notyet" size="large">
-                      Post!
-                    </Button>
-                  )}
+                PhotoLocation !== "" &&
+                PhotoFormData !== [] ? (
+                  <Button
+                    className="addphoto-button"
+                    type="primary"
+                    size="large"
+                    onClick={onSubmit}
+                  >
+                    Post!
+                  </Button>
+                ) : (
+                  <Button className="addphoto-notyet" size="large">
+                    Post!
+                  </Button>
+                )}
               </Form>
             </div>
           </div>
