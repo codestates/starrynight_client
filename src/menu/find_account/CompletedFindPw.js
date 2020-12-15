@@ -33,6 +33,7 @@ function CompletedFindPw(props) {
                   <span className="highlighted">반드시</span> 비밀번호를 변경해주시길 바랍니다.</div>
 
               </div>
+              <div class="spinner"></div>
             
             <div className="division_line"></div>
             {/* -------------------------- submit 버튼 칸 --------------------*/}
