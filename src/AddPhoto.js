@@ -186,7 +186,7 @@ function AddPhoto(props) {
             className="modal_content_a"
             style={{
               backgroundColor: `white`,
-              width: `40vw`,
+              width: `30rem`,
               position: `relative`,
               textAlign: `center`,
               borderRadius: `10px`,
@@ -230,7 +230,7 @@ function AddPhoto(props) {
                       {({ getRootProps, getInputProps }) => (
                         <div
                           style={{
-                            marginLeft: `4vw`,
+                            marginLeft: `4rem`,
                             height: `2rem`,
                             width: `5rem`,
                             border: `0.5px solid lightgray`,
@@ -242,7 +242,11 @@ function AddPhoto(props) {
                         >
                           <input {...getInputProps()} />
                           <div
-                            style={{ fontWeight: `light`, fontSize: `1.5rem` }}
+                            style={{
+                              fontWeight: `light`,
+                              fontSize: `1.5rem`,
+                              cursor: `pointer`,
+                            }}
                           >
                             +
                           </div>
@@ -259,17 +263,8 @@ function AddPhoto(props) {
                     }}
                   >
                     {PhotoFormData && (
-                      <div style={{ marginLeft: `2vw`, textAlign: `left` }}>
-                        <span
-                          style={{
-                            marginRight: `1rem`,
-                            fontSize: `0.8rem`,
-                            fontWeight: `lighter`,
-                            color: `lightgray`,
-                            cursor: `auto`,
-                          }}
-                          onClick={cancelDrop}
-                        >
+                      <div style={{ marginLeft: `2rem`, textAlign: `left` }}>
+                        <span className={"uploaded-file"} onClick={cancelDrop}>
                           {FileName}
                         </span>
                       </div>
@@ -283,8 +278,8 @@ function AddPhoto(props) {
                 {/* 카카오맵 출력 zone */}
                 <div
                   style={{
-                    marginLeft: `4vw`,
-                    marginRight: `4vw`,
+                    marginLeft: `4rem`,
+                    marginRight: `4rem`,
                     marginTop: `1rem`,
                     display: `flex`,
                     alignItems: `center`,
@@ -298,8 +293,8 @@ function AddPhoto(props) {
                 <div
                   style={{
                     textAlign: `left`,
-                    marginLeft: `4vw`,
-                    marginRight: `4vw`,
+                    marginLeft: `4rem`,
+                    marginRight: `4rem`,
                   }}
                 >
                   <label style={{ marginRight: `1rem` }}>사진위치</label>
@@ -319,7 +314,7 @@ function AddPhoto(props) {
                   <div
                     style={{
                       textAlign: `left`,
-                      marginLeft: `4vw`,
+                      marginLeft: `4rem`,
                       marginTop: `0.3rem`,
                       fontSize: `0.7rem`,
                       color: `red`,
@@ -334,8 +329,8 @@ function AddPhoto(props) {
                 <div
                   style={{
                     textAlign: `left`,
-                    marginLeft: `4vw`,
-                    marginRight: `4vw`,
+                    marginLeft: `4rem`,
+                    marginRight: `4rem`,
                   }}
                 >
                   <label style={{ marginRight: `1rem` }}>사진제목</label>
@@ -349,7 +344,7 @@ function AddPhoto(props) {
                       borderRadius: `4px`,
                       backgroundColor: `white`,
                       padding: `5px 7px 5px 7px`,
-                      width: `25vw`,
+                      width: `12rem`,
                     }}
                   />
                 </div>
@@ -359,8 +354,8 @@ function AddPhoto(props) {
                 <div
                   style={{
                     textAlign: `left`,
-                    marginLeft: `4vw`,
-                    marginRight: `4vw`,
+                    marginLeft: `4rem`,
+                    marginRight: `4rem`,
                   }}
                 >
                   <label style={{ marginRight: `1rem` }}>해시태그</label>
@@ -375,7 +370,7 @@ function AddPhoto(props) {
                       borderRadius: `4px`,
                       backgroundColor: `white`,
                       padding: `5px 7px 5px 7px`,
-                      width: `25vw`,
+                      width: `15rem`,
                     }}
                   />
                 </div>
