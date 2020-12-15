@@ -1,79 +1,57 @@
 import React, { Component } from "react";
 import "../css/Comments.scss";
 const axios = require("axios").default;
-import fake25 from "../image/fakeData/fake25.jpg";
-import fake6 from "../image/fakeData/fake6.jpg";
-import userFace from "../image/faceCircle.png";
-import faceCircle1 from "../image/faceCircle1.png";
-import faceCircle2 from "../image/faceCircle2.png";
-import faceCircle3 from "../image/faceCircle3.png";
-import faceCircle4 from "../image/faceCircle4.png";
-import faceCircle5 from "../image/faceCircle5.png";
-import mapImg from "../image/mapImg.png";
 import RemovePhoto from "./RemovePhoto";
 import RemoveComment from "./RemoveComment";
-import Map from "./Map";
-import LoadMap from "./LoadMap";
+import KakaoMap from "../KakaoMap";
 
-let data = [
-  {
-    id: 1,
-    photoPath: fake25,
-    photoTitle: "울릉도 동남쪽 백길따라 이백리",
-    hashtag: "#울릉도#동남쪽#백길따라#이백리",
-    writerProfilePath: userFace,
-    writer: "태진아",
-    map: mapImg,
-    favorite: false,
-    replies: [
-      {
-        commentId: 1,
-        profilePath: faceCircle1,
-        nickname: "금강산산산산",
-        date: "2020-12-06",
-        comment: "너무 예뻐요. 자주 소통해요!",
-      },
-      {
-        commentId: 2,
-        profilePath: faceCircle2,
-        nickname: "식후경",
-        date: "2020-12-06",
-        comment: "사진 접어라",
-      },
-      {
-        commentId: 3,
-        profilePath: faceCircle3,
-        nickname: "민방위훈련",
-        date: "2020-12-06",
-        comment: "@mj_Lovely 자기야 이사진좀 봐ㅎㅎ",
-      },
-      {
-        commentId: 4,
-        profilePath: faceCircle4,
-        nickname: "대방어",
-        date: "2020-12-06",
-        comment: "나 슬퍼서 살아야 하네~",
-      },
-      {
-        commentId: 5,
-        profilePath: faceCircle5,
-        nickname: "캡틴징크스",
-        date: "2020-12-06",
-        comment: "px가서 k2 사와!",
-      },
-    ],
-  },
-];
+let fakeData = {
+  id: 1,
+  photoPath:
+    "https://s3.ap-northeast-2.amazonaws.com/mystar-story.com/uploadPhotos/img1.jpg",
+  photoTitle: "Test Photo1",
+  location: "신촌역 3번출구",
+  writer: "Dummy2",
+  writerProfilePath: "logologo",
+  hashtags: [
+    {
+      subject: "어딘가1",
+    },
+  ],
+  replies: [
+    {
+      writerId: 1,
+      comment: "멋져요!! 3",
+      nickname: "Dummy1",
+      commenterProfilePath: "logologo",
+      date: "2020.12.14",
+    },
+    {
+      writerId: 1,
+      comment: "멋져요!! 6",
+      nickname: "Dummy1",
+      commenterProfilePath: "logologo",
+      date: "2020.12.14",
+    },
+    {
+      writerId: 1,
+      comment: "멋져요!! 9",
+      nickname: "Dummy1",
+      commenterProfilePath: "logologo",
+      date: "2020.12.14",
+    },
+  ],
+  favorite: false,
+};
 
 class Comments extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fakeData: [...data],
+      imgData: { ...fakeData },
       isRemovePhotoOpen: false,
       isRemoveCommentOpen: false,
       infoOpen: false,
-      isLocation: "",
     };
   }
 
@@ -95,25 +73,15 @@ class Comments extends Component {
     console.log("타이틀 수정 완료");
   };
 
-  // 모달 창 실행
-  componentDidUpdate() {
-    if (this.props.isCommentsOpen) {
-      let myModal = document.querySelector(".myModal");
-      let modalContent = document.querySelector(".modalContent");
-      myModal.style.display = "block";
-      modalContent.style.display = "block";
-    }
-
-    // let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
-    // axios.get(url).then((data) => {
-    //   this.setState({
-    //     isLocation: data.data.location,
-    //   });
-    //   console.log("location: ", this.state.isLocation);
-    // });
+  componentDidMount() {
+    let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
+    axios.get(url).then((data) => {
+      this.setState({
+        imgData: data.data,
+      });
+      console.log(this.state.imgData);
+    });
   }
-
-  componentDidMount() {}
 
   stars = () => {
     console.log(this.props.imgData.location);
@@ -166,7 +134,7 @@ class Comments extends Component {
                   <input
                     type="text"
                     className="modifyPhotoName"
-                    value={this.props.imgData.photoTitle}
+                    value={this.state.imgData.photoTitle}
                   />
                   <button
                     className="modifyPhotoNameBtn"
@@ -176,27 +144,31 @@ class Comments extends Component {
                   </button>
                 </div>
               ) : (
-                this.props.imgData.photoTitle
+                this.state.imgData.photoTitle
               )}
             </div>
             {/* ------------------photo------------------ */}
             <img
               className="selectPhoto"
-              src={this.props.imgData.photoPath}
+              src={this.state.imgData.photoPath}
               alt="img"
             />
             {/* ------------------hashTag------------------ */}
             <div className="hashTag">
-              {/* <span>{this.state.data[0].hashtag}</span> */}
-              <span>hashtag</span>
+              {this.state.imgData.hashtags.map((res) => {
+                return <span>{res.subject}</span>;
+              })}
             </div>
+            {/* <div className="hashTag">
+              <span>test</span>
+            </div> */}
             {/* ------------------userInfo(userFace, userName)------------------ */}
             <div className="userInfo">
               <img
                 className="userFace"
-                src={this.props.imgData.writerProfilePath}
+                src={this.state.imgData.writerProfilePath}
               />
-              <span className="userName">{this.props.imgData.writer}</span>
+              <span className="userName">{this.state.imgData.writer}</span>
             </div>
             {/* ------------------수정버튼, 삭제버튼------------------ */}
             <div className="btns">
@@ -214,10 +186,9 @@ class Comments extends Component {
               &times;
             </span> */}
             {/* ------------------지도------------------ */}
-            {/* <img className="mapImg" src={this.state.fakeData[0].map} /> */}
-            <Map place={this.props.imgData.location} />
-            {/* <Map place={this.state.isLocation} /> */}
-            {/* <LoadMap isCommentId={this.props.isCommentId} /> */}
+            <div className="mapImg">
+              <KakaoMap place={this.state.imgData.location} />
+            </div>
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
@@ -235,25 +206,31 @@ class Comments extends Component {
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
               <div className="comments">
-                {this.state.fakeData[0].replies.map((data) => {
-                  return (
-                    <div className="comment">
-                      <img
-                        src={data.profilePath}
-                        className="commentFace"
-                        alt="faceCircle"
-                      />
-                      <span className="commentUserName">{data.nickname}</span>
-                      <span className="commentDate">{data.date}</span>
-                      <div className="commentComment">{data.comment}</div>
-                      <span className="commentRemove">
-                        <button onClick={this.removeCommentControl}>
-                          삭제
-                        </button>
-                      </span>
-                    </div>
-                  );
-                })}
+                {this.state.imgData.replies.length === 0 ? (
+                  <span className="emptyComments">
+                    첫번째 댓글을 남겨주세요.
+                  </span>
+                ) : (
+                  this.state.imgData.replies.map((data) => {
+                    return (
+                      <div className="comment">
+                        <img
+                          src={data.commenterProfilePath}
+                          className="commentFace"
+                          alt="img"
+                        />
+                        <span className="commentUserName">{data.nickname}</span>
+                        <span className="commentDate">{data.date}</span>
+                        <div className="commentComment">{data.comment}</div>
+                        <span className="commentRemove">
+                          <button onClick={this.removeCommentControl}>
+                            삭제
+                          </button>
+                        </span>
+                      </div>
+                    );
+                  })
+                )}
               </div>
               <button className="commentBtn">메시지를 입력하세요.</button>
             </div>
