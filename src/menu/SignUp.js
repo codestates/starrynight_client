@@ -12,6 +12,7 @@ class SignUp extends React.Component {
       email: "",
       nickname: "",
       password: "",
+      doubleCheckPw: "",
       mobile: "",
     };
   }
@@ -26,10 +27,13 @@ class SignUp extends React.Component {
         email: "",
         nickname: "",
         password: "",
+        doubleCheckPw: "",
         mobile: "",
         errMsgOfEmailBlanks: "",
         errMsgOfNickNameBlanks: "",
         errMsgOfPasswordBlanks: "",
+        errMsgOfdoubleCheckPwBlanks: "",
+        errMsgOfdoubleCheckPw: "",
         errMsgOfMobileBlanks: "",
       });
     }
@@ -70,6 +74,17 @@ class SignUp extends React.Component {
       this.setState({
         errMsgOfPasswordBlanks: "",
       });
+    }
+
+    if (this.state.doubleCheckPw !== "") {
+      this.setState({
+        errMsgOfdoubleCheckPwBlanks: "",
+      })
+    }
+    else if (this.state.doubleCheckPw === this.state.password) {
+      this.setState({
+        errMsgOfdoubleCheckPw: ""
+      })
     }
 
     if (this.state.mobile !== "") {
@@ -137,6 +152,7 @@ class SignUp extends React.Component {
       email: this.state.email,
       nickname: this.state.nickname,
       password: this.state.password,
+      // doubleCheckPw: this.state.doubleCheckPw,
       mobile: this.state.mobile,
     };
 
@@ -174,6 +190,24 @@ class SignUp extends React.Component {
       });
     }
 
+    // 에러메세지 - doubleCheckPw
+    if (!this.state.doubleCheckPw.length) {
+      this.setState({
+        errMsgOfdoubleCheckPwBlanks: "비밀번호 중복확인은 필수입니다.",
+      })
+    }
+    else if (this.state.doubleCheckPw !== this.state.password) {
+      this.setState({
+        errMsgOfdoubleCheckPw: "비밀번호가 일치하지 않습니다."
+      })
+    }
+    else {
+      this.setState({
+        errMsgOfdoubleCheckPwBlanks: "",
+        errMsgOfdoubleCheckPw: ""
+      })
+    }
+
     // 에러메세지 - mobile
     if (!this.state.mobile.length) {
       this.setState({
@@ -191,6 +225,8 @@ class SignUp extends React.Component {
       this.state.email.length &&
       this.state.nickname.length &&
       this.state.password.length &&
+      this.state.doubleCheckPw.length &&
+      this.state.doubleCheckPw === this.state.password &&
       this.state.mobile.length
     ) {
       axios
@@ -282,6 +318,19 @@ class SignUp extends React.Component {
                       />
                       <div className="text_style_SignUp">
                         {this.state.errMsgOfPasswordBlanks}
+                      </div>
+                    </div>
+
+                    <div className="password_div">
+                      <input
+                        className="control_margin_top"
+                        type="password"
+                        placeholder="비밀번호를 다시 입력해주세요."
+                        onChange={this.handleInputValue("doubleCheckPw")}
+                      />
+                      <div className="text_style_SignUp">
+                        {this.state.errMsgOfdoubleCheckPw}
+                        {this.state.errMsgOfdoubleCheckPwBlanks}
                       </div>
                     </div>
 

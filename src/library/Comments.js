@@ -122,6 +122,7 @@ class Comments extends Component {
         <RemovePhoto
           isRemovePhotoOpen={this.state.isRemovePhotoOpen}
           removePhotoControl={this.removePhotoControl}
+          photoId={this.state.imgData.id}
         />
         {/* ------------------포토뷰모달------------------ */}
         <div className="myModal" onClick={this.handleModalClose}></div>
@@ -223,6 +224,7 @@ class Comments extends Component {
                         <span className="commentDate">{data.date}</span>
                         <div className="commentComment">{data.comment}</div>
                         <span className="commentRemove">
+                          <button>수정</button>
                           <button onClick={this.removeCommentControl}>
                             삭제
                           </button>

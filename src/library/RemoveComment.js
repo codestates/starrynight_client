@@ -19,6 +19,8 @@ class RemovePhoto extends Component {
     modal.style.display = "none";
   };
 
+  removeComment = () => {};
+
   render() {
     return (
       <div>

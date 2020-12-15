@@ -1,3 +1,5 @@
+// import Axios from "axios";
+const axios = require("axios").default;
 import React, { Component } from "react";
 import "../css/RemovePhoto.css";
 
@@ -19,6 +21,41 @@ class RemovePhoto extends Component {
     modal.style.display = "none";
   };
 
+  removePhoto = () => {
+    //this.props.photoId
+    console.log(this.props.photoId);
+    let url = `https://mystar-story.com/${this.props.photoId}/delete`;
+    axios
+      .delete(url, {
+        data: {
+          id: this.props.photoId,
+        },
+      })
+      .then((res) => {
+        alert(res);
+        window.location.replace("/");
+      })
+      .catch((err) => {
+        alert(err);
+      });
+
+    // axios
+    //   .delete(
+    //     url,
+    //     {
+    //       id: this.props.photoId,
+    //     }
+    //     // withCredentials: true,
+    //   )
+    //   .then((res) => {
+    //     alert(res);
+    //     window.location.replace("/");
+    //   })
+    //   .catch((err) => {
+    //     alert(err);
+    //   });
+  };
+
   render() {
     return (
       <div>
@@ -29,7 +66,12 @@ class RemovePhoto extends Component {
                 사진 삭제
                 <hr />
               </div>
-              <button className="removePhoto_DeleteBtn">삭제</button>
+              <button
+                className="removePhoto_DeleteBtn"
+                onClick={this.removePhoto}
+              >
+                삭제
+              </button>
               <br />
               <button
                 className="removePhoto_ReturnBtn"

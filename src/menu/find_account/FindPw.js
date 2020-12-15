@@ -100,9 +100,12 @@ class FindPw extends React.Component {
               <div className="modal_findPw_overlay" onClick={this.props.handleFindPwModal} />
                 <div className="modal_findPw_content">
 
+                  {/* <div className="close_icon">
+                    <div className="close_icon_1"></div>
+                    <div className="close_icon_2"></div>
+                  </div> */}
                   {/* -------------------------- 타이틀 -------------------------*/}
                   <h2>비밀번호 찾기</h2>
-
                   {/* -------------------------- 이메일, 연락처 입력 칸 -------------------------*/}
                   <div className="find_pw_box">
 
@@ -131,7 +134,7 @@ class FindPw extends React.Component {
                         </div>
                       </div>
                     
-                  
+                      {/* <div class="spinner"></div> */}
                   {/* -------------------------- submit 버튼 칸 --------------------*/}
                       <div className="button_container_find_pw">
                           <div>
@@ -157,8 +160,8 @@ class FindPw extends React.Component {
                       
                             </Button>
                           </div>
+                          {/* <div className="rediect_To_Signin">로그인페이지로 돌아가기</div> */}
                       </div>
-
                     </div>
 
 
