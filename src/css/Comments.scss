@@ -17,15 +17,12 @@
 .modalContent {
   display: block;
   position: fixed;
-  background-color: rgb(56, 35, 41);
+  background-color: rgb(220, 220, 220);
   z-index: 1;
   width: 60%;
-  height: 70%;
-  top: 0;
-  margin-left: auto;
-  margin-right: auto;
-  top: 15%;
-  left: 20%;
+  height: 90%;
+  margin-left: 20%;
+  top: 5%;
   border: 2px solid rgb(160, 160, 160);
   border-radius: 40px;
   box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.4),
@@ -136,20 +133,17 @@
 }
 
 .mapImg {
+  display: block;
   position: absolute;
+  top: 5%;
   right: 5%;
-  // display: block;
-  // width: 15%;
-  // height: 45%;
-  // bottom: 60%;
-  // left: 5%;
 }
 
 .HowToGo_div {
   position: absolute;
   display: block;
-  top: 43%;
-  right: 5%;
+  top: 48%;
+  right: 10%;
 }
 
 .HowToGo {
@@ -166,7 +160,7 @@
   position: absolute;
   display: block;
   bottom: 45%;
-  left: 5%;
+  left: 0%;
 }
 
 .favorite {
@@ -182,7 +176,7 @@
 .commentDiv {
   position: absolute;
   top: 58%;
-  right: 5%;
+  right: 10%;
   width: 90%;
   height: 30%;
 }
@@ -252,62 +246,3 @@
   float: right;
   // bottom: 5%;
 }
-
-// .comments {
-//   display: flex;
-//   flex-direction: column;
-//   height: 85%;
-//   background-color: rgb(180, 180, 180);
-//   overflow: scroll;
-//   .comment {
-//     position: relative;
-//     display: block;
-//     width: 100%;
-//     min-height: 45%;
-//     .commentLeft {
-//       position: absolute;
-//       left: 0;
-//       width: 18%;
-//     }
-//     .commentRight {
-//       position: absolute;
-//       right: 0;
-//       width: 82%;
-//     }
-//   }
-// }
-
-// .commentFace {
-//   position: relative;
-//   max-width: 100%;
-// }
-
-// .commentUserName {
-//   position: relative;
-//   top: 0%;
-//   left: 3%;
-// }
-
-// .commentDate {
-//   position: absolute;
-//   top: 3%;
-//   right: 3%;
-// }
-
-// .commentComment {
-//   position: relative;
-//   display: block;
-//   left: 3%;
-// }
-
-// .commentRemove {
-//   position: absolute;
-//   right: 0;
-//   bottom: 0;
-// }
-
-// .commentHr {
-//   position: absolute;
-//   width: 100%;
-//   bottom: 0;
-// }
