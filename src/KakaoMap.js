@@ -87,8 +87,8 @@ function KakaoMap(props) {
     <div
       id="map"
       style={{
-        width: `40vw`,
-        height: `20vh`,
+        width: `40rem`,
+        height: `20rem`,
         marginBottom: `1rem`,
       }}
     ></div>

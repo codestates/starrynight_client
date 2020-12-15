@@ -1,10 +1,9 @@
-import React from "react"
-import { NavLink, withRouter } from "react-router-dom"
+import React from "react";
+import { NavLink, withRouter } from "react-router-dom";
 import Button from "./Button";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-
-import axios from "axios"
+import axios from "axios";
 
 // 소셜로그인
 import kakaoLogin from "react-kakao-login";
@@ -18,22 +17,20 @@ import googleLogo from "../image/google.png";
 //css
 import "../css/SignIn.scss";
 
-
 class SignIn extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: "",
       password: "",
 
       // isFindEmailModalOpen: false,
       // isFindPwModalOpen: false
-    }
+    };
 
     // 들어온 토큰 만료시간 설정 (24시간 밀리 초로 표현)
-    const JWT_EXPIRY_TIME = 24 * 3600 * 1000
+    const JWT_EXPIRY_TIME = 24 * 3600 * 1000;
   }
-
 
   /* --------------------- 모달창 이벤트 --------------------- */
   // 각각의 모달창 중복 작동 방지를 위해 이벤트를 각각 생성
@@ -45,7 +42,6 @@ class SignIn extends React.Component {
   //   })
   // }
 
-
   // handleFindPwModal = () => {
   //   this.setState({
   //     isFindPwModalOpen: !this.state.isFindPwModalOpen  // state의 불린값 반전
@@ -53,10 +49,10 @@ class SignIn extends React.Component {
   // }
 
   handleInputValue = (key) => (text) => {
-    console.log('key', key)
-    console.log('text', text)
+    console.log("key", key);
+    console.log("text", text);
     this.setState({
-      [key]: text.target.value
+      [key]: text.target.value,
     });
   };
 
@@ -64,62 +60,60 @@ class SignIn extends React.Component {
   handleSignIn = () => {
     const signInInfo = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
 
     // 이메일 형식 기준
     for (let i = 0; i < signInInfo.email.length; i++) {
       if (!signInInfo.email.includes("@") || !signInInfo.email.includes(".")) {
         this.setState({
-          errMsgOfEmailForm: "올바른 이메일 형식이 아닙니다."
-        })
+          errMsgOfEmailForm: "올바른 이메일 형식이 아닙니다.",
+        });
       }
     }
 
     // 이메일, 비밀번호 미입력시 에러 메세지 출력
     if (!signInInfo.email.length) {
       this.setState({
-        errMsgOfEmailBlanks: "이메일을 입력하세요."
-      })
+        errMsgOfEmailBlanks: "이메일을 입력하세요.",
+      });
     }
     if (!signInInfo.password.length) {
       this.setState({
-        errMsgOfPasswordBlanks: "비밀번호를 입력하세요."
-      })
-    }
-    else {
+        errMsgOfPasswordBlanks: "비밀번호를 입력하세요.",
+      });
+    } else {
       // 로그인 요청
-      this.requestSignIn()
+      this.requestSignIn();
       // this.doSignIn();
       // this.props.history.push("/"); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
       // this.props.history.href = "/";
       // window.location.href = "/";
     }
-  }
+  };
 
   // 로그인 요청
   requestSignIn = () => {
     const signInInfo = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
 
-    axios.post("https://api.mystar-story.com/user/signin", signInInfo, {
-      withCredentials: true
-    })
+    axios
+      .post("https://api.mystar-story.com/user/signin", signInInfo, {
+        withCredentials: true,
+      })
       .then((response) => {
-        console.log("사인인 뭘 받아와?", response)
-
+        console.log("사인인 뭘 받아와?", response);
 
         const accessToken = response.data.accessToken;
-        window.localStorage.setItem("token", accessToken)
+        window.localStorage.setItem("token", accessToken);
 
         // const token = window.localStorage.getItem("token")
         // console.log("token", token)
         //API 요청하는 콜마다 헤더에 accseeToken을 담아 보내도록 설정
         // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
         // axios.defaults.headers.common['Authorization'] = token;
-
 
         // accessToken을 localStorage, cookie 등에 저장하지 않는다.
 
@@ -133,12 +127,10 @@ class SignIn extends React.Component {
         // 새로고침하여 true로 변한 값 완벽하게 셋팅하기
         history.go(0); //로그인 response를 성공적으로 받아오면 모달창 꺼질 것. //! 임시 엔드포인트, 수정할 것!!!! //! 임시 엔드포인트, 수정할 것!!!!
       })
-      .catch(error => {
-        alert(error.response.data)
-      })
-  }
-
-
+      .catch((error) => {
+        alert(error.response.data);
+      });
+  };
 
   // /* ------------------------- 소셜 로그인 ------------------------------- */
 
@@ -163,7 +155,6 @@ class SignIn extends React.Component {
   //   window.location.href = "https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fapi.mystar-story.com%252Fuser%252Fsignin%252Fkakao%26client_id%3D2b6f01d8fb5368ff66de28e3749cefda"
   // }
 
-
   // // 유저가 다시 직접 로그인하도록 유도하지 않고 조용히 자동으로 로그인 연장하는 기능
 
   // componentDidMount() {
@@ -177,7 +168,7 @@ class SignIn extends React.Component {
   //     // 소셜로그인 토큰 저장: 쿼리스트링으로 담겨온 값 중 토큰을 추출하고 그것을 로컬스토리지에 저장하는 함수
   //     this.getToken()
   //   }
-  //   // 일반로그인 토큰 받아와 로컬스토리지에 저장하는 것은 handleSignIn에서 함(로그인버튼 눌렀을때 로컬스토리지에 저장될 것. 그것을 꺼내 사용) 
+  //   // 일반로그인 토큰 받아와 로컬스토리지에 저장하는 것은 handleSignIn에서 함(로그인버튼 눌렀을때 로컬스토리지에 저장될 것. 그것을 꺼내 사용)
   //   else if (localUserToken) {
   //     axios.defaults.headers.common['Authorization'] = localUserToken;
   //   }
@@ -188,28 +179,29 @@ class SignIn extends React.Component {
     if (e.key === "Enter") {
       this.handleSignIn();
     }
-  }
+  };
 
   //! 세션 스토리지에 저장 후, 중앙제어시스템격인 isLogin 스위치를 가지고 있는 main.js에서 만약 세션 스토리지에 email이 있다면 isLogin을 true로 혹은 false로 제어하여 하위 컴포넌트들이 이 영향을 받아 출력 혹은 비출력하게 할 것.
   doSignIn = () => {
     const { email, userId, loginPlatformId } = this.state;
     // window.sessionStorage.setItem("email", email);
-    window.localStorage.setItem("userId", userId)
+    window.localStorage.setItem("userId", userId);
     // window.sessionStorage.setItem("loginPlatformId", loginPlatformId);
-    this.props.handleResponseSuccess();   // Main-> Nav로 타고내려온 Main의 isLogin을 true로 바꿔줌
+    this.props.handleResponseSuccess(); // Main-> Nav로 타고내려온 Main의 isLogin을 true로 바꿔줌
     this.props.handleSignInModal();
-  }
+  };
 
   render() {
-    console.log("BeforeLogin컴포넌트로부터 내려오는 사인인 프롭스", this.props)
-    console.log("signIn 스테이트", this.state)
+    console.log("BeforeLogin컴포넌트로부터 내려오는 사인인 프롭스", this.props);
+    console.log("signIn 스테이트", this.state);
     return (
-
       <div>
-
-        {this.props.isOpen ?
+        {this.props.isOpen ? (
           <div className="modal_signIn">
-            <div className="modal_signIn_overlay" onClick={this.props.handleSignInModal}></div>
+            <div
+              className="modal_signIn_overlay"
+              onClick={this.props.handleSignInModal}
+            ></div>
 
             <div className="modal_signIn_content">
               {/* -------------------------- 로고삽입 칸 -------------------------*/}
@@ -248,16 +240,21 @@ class SignIn extends React.Component {
                   <div className="find_container">
                     <div className="findAccount_span">
                       <div className="find_Account">
-                        <span onClick={this.props.findEmailClick} className="findEmailPw" >
+                        <span
+                          onClick={this.props.findEmailClick}
+                          className="findEmailPw"
+                        >
                           이메일 찾기
                         </span>
 
-
                         <span> | </span>
 
-                        <span onClick={this.props.findPwClick} className="findEmailPw" >
+                        <span
+                          onClick={this.props.findPwClick}
+                          className="findEmailPw"
+                        >
                           비밀번호 찾기
-                    </span>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -265,7 +262,6 @@ class SignIn extends React.Component {
                   {/* -------------------------- submit 버튼 칸 --------------------*/}
                   <div className="button_container_signin">
                     <div>
-
                       <Button
                         onClick={this.handleSignIn}
                         size="small"
@@ -273,19 +269,16 @@ class SignIn extends React.Component {
                         // color="black"
                         color="gray"
                         middleWidth_main_btn
-                      // smallWidth
-                      // className="Button_in_signIn"
-                      // type="submit"
-
+                        // smallWidth
+                        // className="Button_in_signIn"
+                        // type="submit"
                       >
                         로그인
                         <HiArrowNarrowRight className="signIn_icon" />
                       </Button>
-
                     </div>
 
                     <Button
-
                       size="small"
                       // fullWidth
                       middleWidth_main_btn
@@ -293,14 +286,11 @@ class SignIn extends React.Component {
                       onClick={this.props.signUpClickInSignIn}
                     >
                       회원 가입
-                      </Button>
-
-
+                    </Button>
                   </div>
                 </div>
 
                 <div className="division_line"></div>
-
 
                 <div className="container2_siginIn">
                   <div className="socialLogin">
@@ -342,21 +332,15 @@ class SignIn extends React.Component {
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
-
-          : null}
-
+        ) : null}
       </div>
-    )
+    );
   }
 }
 
 export default withRouter(SignIn);
-
-
 
 /*
 구글
