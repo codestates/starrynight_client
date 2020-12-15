@@ -23,10 +23,8 @@ import AddPhoto from "./AddPhoto";
 // css
 import "../src/css/Main.scss";
 
-
 // scoll to top
-import { HiChevronUp } from "react-icons/hi"
-
+import { HiChevronUp } from "react-icons/hi";
 
 class Main extends React.Component {
   constructor(props) {
@@ -69,9 +67,10 @@ class Main extends React.Component {
 
   // SignIn을 성공하고 sessionStorage에 저장된 axios로 받아온 정보를 불러와 req하자.
   handleResponseSuccess = () => {
-    axios.get("https://api.mystar-story.com/main", {
-      withCredentials: true
-    })
+    axios
+      .get("https://api.mystar-story.com/main", {
+        withCredentials: true,
+      })
       .then((response) => {
         // window.localStorage.setItem("responseMsg", response.data)
         this.setState({
@@ -79,9 +78,9 @@ class Main extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error.response.data)
+        console.log(error.response.data);
         // alert(error.response.data)
-      })
+      });
   };
 
   handleSignOut = () => {
@@ -93,24 +92,23 @@ class Main extends React.Component {
       alert("로그아웃에 성공하였습니다 :)");
     }
     this.doSignOut();
-
   };
 
   // 세션스토리지 저장 정보 모두 삭제. (세션 스토리지 정보로 새로고침 로그인 유지 기능을 더이상 사용하지 않기 위함.)
   doSignOut = () => {
-    axios.get("https://api.mystar-story.com/user/signout", {
-      withCredentials: true
-    })
-      .then(response => {
-        console.log("로그아웃 성공!", response.data)
+    axios
+      .get("https://api.mystar-story.com/user/signout", {
+        withCredentials: true,
       })
+      .then((response) => {
+        console.log("로그아웃 성공!", response.data);
+      });
     window.localStorage.clear();
-    window.location.href = "/"
-
+    window.location.href = "/";
   };
 
   scrollToTop = () => {
-    document.querySelector('.flex').scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(".flex").scrollIntoView({ behavior: "smooth" });
     // window.scrollIntoView({ behavior: 'smooth' });
     // let location1 = document.querySelector("#nav").offsetTop;
     // document.querySelector(".scrolledsection").scrollTo(0, 0)
@@ -118,13 +116,11 @@ class Main extends React.Component {
     // document.querySelector(".flex").scrollTo({ top: location1, behavior: "smooth" })
     // document.querySelector("#nav").scrollTo(location1, 0)
     // console.log("좌표", location1)
-
-  }
+  };
 
   //! 세션 스토리지에 저장 후, 중앙제어시스템격인 isLogin 스위치를 가지고 있는 main.js에서 만약 세션 스토리지에 email이 있다면 isLogin을 true로 혹은 false로 제어하여 하위 컴포넌트들이 이 영향을 받아 출력 혹은 비출력하게 할 것.
   componentDidMount() {
     if (window.localStorage.getItem("token")) {
-
       this.setState({
         isLogin: true,
       });
@@ -132,12 +128,10 @@ class Main extends React.Component {
     // 이미 로그아웃 기능이 작동했지만, didmount로 더블체크 하게 함.
     else {
       this.setState({
-        isLogin: false
+        isLogin: false,
       });
       window.localStorage.clear();
     }
-
-
   }
 
   // 12/1 사진추가버튼 모달창 수정
@@ -189,7 +183,6 @@ class Main extends React.Component {
               handleModal={this.handleAddPhotoModal}
             />
           </div>
-
         ) : null}
         <div className="scoll_to_top">
           <HiChevronUp
