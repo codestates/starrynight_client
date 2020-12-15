@@ -1,26 +1,16 @@
 import React, { Component } from "react";
 import "../css/Comments.scss";
 const axios = require("axios").default;
-import fake25 from "../image/fakeData/fake25.jpg";
-import fake6 from "../image/fakeData/fake6.jpg";
-import userFace from "../image/faceCircle.png";
-import faceCircle1 from "../image/faceCircle1.png";
-import faceCircle2 from "../image/faceCircle2.png";
-import faceCircle3 from "../image/faceCircle3.png";
-import faceCircle4 from "../image/faceCircle4.png";
-import faceCircle5 from "../image/faceCircle5.png";
-import mapImg from "../image/mapImg.png";
 import RemovePhoto from "./RemovePhoto";
 import RemoveComment from "./RemoveComment";
-import Map from "./Map";
-import LoadMap from "./LoadMap";
+import KakaoMap from "../KakaoMap";
 
 let fakeData = {
   id: 1,
   photoPath:
     "https://s3.ap-northeast-2.amazonaws.com/mystar-story.com/uploadPhotos/img1.jpg",
   photoTitle: "Test Photo1",
-  location: "한국의 어딘가 1",
+  location: "신촌역 3번출구",
   writer: "Dummy2",
   writerProfilePath: "logologo",
   hashtags: [
@@ -89,27 +79,9 @@ class Comments extends Component {
       this.setState({
         imgData: data.data,
       });
+      console.log(this.state.imgData);
     });
   }
-
-  // 모달 창 실행
-  // componentDidUpdate() {
-  //   if (this.props.isCommentsOpen) {
-  //     let myModal = document.querySelector(".myModal");
-  //     let modalContent = document.querySelector(".modalContent");
-  //     myModal.style.display = "block";
-  //     modalContent.style.display = "block";
-  //   }
-  //   if (modalContent.style.display === "block") {
-  //     // let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
-  //     // axios.get(url).then((data) => {
-  //     //   this.setState({
-  //     //     isLocation: data.data.location,
-  //     //   });
-  //     //   console.log("location: ", this.state.isLocation);
-  //     // });
-  //   }
-  // }
 
   stars = () => {
     console.log(this.props.imgData.location);
@@ -214,10 +186,9 @@ class Comments extends Component {
               &times;
             </span> */}
             {/* ------------------지도------------------ */}
-            {/* <img className="mapImg" src={this.state.fakeData[0].map} /> */}
-            <Map place={this.state.imgData.location} />
-            {/* <Map place={this.state.isLocation} /> */}
-            {/* <LoadMap isCommentId={this.props.isCommentId} /> */}
+            <div className="mapImg">
+              <KakaoMap place={this.state.imgData.location} />
+            </div>
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
