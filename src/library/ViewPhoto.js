@@ -12,24 +12,33 @@ class ViewPhoto extends Component {
     this.state = {
       isCommentsOpen: false,
       isCommentId: 0,
-      imgData: "",
+      // imgData: "",
     };
   }
 
+  // handleModalOpen = (e) => {
+  //   console.log(e.target.name);
+  //   this.setState({
+  //     isCommentId: e.target.name,
+  //     isCommentsOpen: !this.state.isCommentsOpen,
+  //   });
+  //   // console.log(`isOpen: ${this.state.isCommentsOpen}`);
+  //   let url = `https://api.mystar-story.com/${this.state.isCommentId}`;
+  //   axios.get(url).then((data) => {
+  //     this.setState({
+  //       imgData: data.data,
+  //     });
+  //     console.log(this.state.imgData);
+  //   });
+  // };
+
   handleModalOpen = (e) => {
-    console.log(e.target.name);
+    console.log("e.target.name: ", e.target.name);
     this.setState({
+      isCommentsOpen: true,
       isCommentId: e.target.name,
-      isCommentsOpen: !this.state.isCommentsOpen,
     });
-    // console.log(`isOpen: ${this.state.isCommentsOpen}`);
-    let url = `https://api.mystar-story.com/${this.state.isCommentId}`;
-    axios.get(url).then((data) => {
-      this.setState({
-        imgData: data.data,
-      });
-      console.log(this.state.imgData);
-    });
+    console.log("모달 열림? : ", this.state.isCommentsOpen);
   };
 
   handleModalClose = () => {
@@ -42,22 +51,19 @@ class ViewPhoto extends Component {
   render() {
     return (
       <div className="ViewPhoto">
-        <Comments
-          isCommentsOpen={this.state.isCommentsOpen}
-          isCommentId={this.state.isCommentId}
-          imgData={this.state.imgData}
-          handleModalOpen={this.handleModalOpen}
-          handleModalClose={this.handleModalClose}
-        />
-        {this.props.isAllOpen === true ? (
-          <All handleModalOpen={this.handleModalOpen} />
-        ) : null}
-        {this.props.isFavoriteOpen === true ? (
+        {this.state.isCommentsOpen && (
+          <Comments
+            isCommentId={this.state.isCommentId}
+            handleModalClose={this.handleModalClose}
+          />
+        )}
+        {this.props.isAllOpen && <All handleModalOpen={this.handleModalOpen} />}
+        {/* {this.props.isFavoriteOpen && (
           <Favorite handleModalOpen={this.handleModalOpen} />
-        ) : null}
-        {this.props.isGalleryOpen === true ? (
+        )}
+        {this.props.isGalleryOpen && (
           <Gallery handleModalOpen={this.handleModalOpen} />
-        ) : null}
+        )} */}
       </div>
     );
   }
