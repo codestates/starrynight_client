@@ -1,8 +1,9 @@
 import React from "react";
+import Button from "../Button";
 
 //css
 import "../../css/CompletedFindEmail.scss";
-
+import { AiOutlineUser } from "react-icons/ai";
 
 class CompletedFindEmail extends React.Component {
   constructor(props){
@@ -18,6 +19,14 @@ class CompletedFindEmail extends React.Component {
     this.props.handleFindPwModal()
     
   }
+
+  linkToSignIn = () => {
+    this.props.handleCompletedFindModal()
+    this.props.handleFindEmailModal()
+
+    this.props.handleSignInModal()
+  }
+  
   render(){
     return (
     <>
@@ -31,43 +40,60 @@ class CompletedFindEmail extends React.Component {
           ></div>
           <div className="modal_CompletedFindEmail_content">
             {/* -------------------------- 타이틀 -------------------------*/}
-            <h2>이메일 찾기</h2>
+
+            <h2>
+              <AiOutlineUser
+                className="completedFindEmail_title_icon"
+              />
+              이메일 찾기
+              
+              </h2>
+            <h4>고객님의 정보와 일치하는 이메일 목록입니다.</h4>
+            
+            <div className="division_line"></div>
+            
+
             {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
             <div className="email_result_container">
 
               <div className="email_result_div">
-                <div>
-                  고객님의 정보와 일치하는 이메일 목록입니다.
-                <div className="email_info">
-                    {this.props.resultOfFind}
-                  </div>
-                </div>
-
+                <span className="email_findEmail_1">
+                  {this.props.resultOfFind.email}
+                </span>              
+                <span className="email_findEmail_2">
+                  (생성일 : {this.props.resultOfFind.createdAt})
+                </span>
               </div>
-            </div>
+              
+              <div className="division_line"></div>
 
             {/* -------------------------- submit 버튼 칸 --------------------*/}
-            <div>
-              <div>
-                <button 
-                className="findPw_button_inCompletedFindEmail" 
-                onClick={this.linkToFindPw}
-                >
-                  
-                    비밀번호 찾기
-                  
-                </button>
-              </div>
-              <div>
-                <button
-                className="signIn_button_CompletedFindEmail"
-                onClick={this.linkToFindPw}
-                >
-                  
-                    로그인
+              <div className="btn_result_findEmail_container">
+                <span className="btn_result_findEmail">
+                  <Button 
+                    size="small"
+                    color="gray"
+                    middleWidth_completedFind
+                    onClick={this.linkToFindPw}
+                  >
                     
-                </button>
+                      비밀번호 찾기
+                    
+                  </Button>
+                </span>
+                <span>
+                  <Button
+                    size="small"
+                    
+                    middleWidth_completedFind
+                    onClick={this.linkToSignIn}
+                  >
+                    
+                      로그인
+                      
+                  </Button>
+                </span>
               </div>
             </div>
           </div>
