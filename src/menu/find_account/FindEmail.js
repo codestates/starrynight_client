@@ -30,25 +30,36 @@ class FindEmail extends React.Component {
 
   handleClickSubmit = () => {
     const { mobile } = this.state;
+    const userMobile = {
+      mobile: mobile
+    }
+
+    // console.log("asdfasdf", mobile)
     if (!mobile.length) {
       this.setState({
         errorMsg: "연락처를 입력해주세요."  // completedFindEmail에 props로 내리기
       })
     }
     else {
-      axios.post("https://api.mystar-story.com/user/find/email", mobile, {
+      axios.post("https://api.mystar-story.com/user/find/email", userMobile, {
         withCredentials: true
       })
         .then((respoense) => {
+          console.log("이메일찾기 결과 res", respoense)
           this.setState({
-            result: respoense.data,
+            result: {
+              email: respoense.data.email,
+              createdAt: respoense.data.createdAt
+            },
+            
             isCompletedFindEmailOpen: true
 
           })
         })
         .catch((error) => {
+          console.log("이메일찾기 결과 errrrr", error.response.data)
           this.setState({
-            errorMsg: error.respoense.data
+            errorMsg: error.response.data
           })
         })
     }
@@ -95,6 +106,7 @@ class FindEmail extends React.Component {
 
           <CompletedFindEmail
             resultOfFind={this.state.result}
+            handleSignInModal={this.props.handleSignInModal}
             isCompletedFindEmailOpen={this.state.isCompletedFindEmailOpen}
             handleCompletedFindModal={this.handleCompletedFindModal}
             handleFindEmailModal={this.props.handleFindEmailModal}

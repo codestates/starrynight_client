@@ -17,27 +17,97 @@
   }
 
   .modal_CompletedFindEmail_content {
+    font-family: 'Nanum Gothic', sans-serif;
+
     background: white;
     position: relative;
-    width: 30%;
+    width: 40%;
     text-align: center;
     border-radius: 10px;
     color: black;
-
+    padding: 2%;
     h2 {
-      margin-left: 3rem;
+      margin-top: unset;
+      margin-bottom: 3%;
       font-family: 'Noto Serif KR', serif;
       display: flex;
+      justify-content: center;
+
+      .completedFindEmail_title_icon {
+        margin-right: 1%;
+        margin-top: 1.3%;
+      }
     }
+    h4 {
+      display: flex;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: rgb(141, 134, 134);
+    }
+  }
+  
+  .division_line {
+    width: 80%;
+    height: 1px;
+    // margin-left: 5%;
+    background-color: rgba(0, 0, 0, 0.199);
+    margin-left: 10%;
+    // display: flex;
+    // justify-content: center;  
+    
   }
 
   .email_result_container {
-    background: skyblue;
-    margin-left: 7%;
-    margin-right: 7%;
-    margin-bottom: 7%;
+    // background: yellow;
+    
+    // margin: 2rem;
+    .email_result_div {
+      // background: skyblue;
+      // margin-left: 7%;
+      // margin-right: 7%;
+      // width: 30%;
+      // border: solid gray;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      
+      // border-width: unset;
+      // border: solid rgb(143, 143, 143);
+      border-width: 1px;
+      border-radius: 10px;
+      padding: 1rem;
+      // padding-left: 14%;
+      padding-top: 5%;
+      margin-top: 5%;
+      margin-bottom: 7%;
+      .email_findEmail_1 {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 1.2rem;
+      }
+      .email_findEmail_2 {
+        font-size: 0.65rem ;
+        padding-left: 5%;
+        padding-top: 11px;
+        // float: left;
+        // padding-left: unset !important;
+        // display: flex;
+        // justify-items: center;
+        // align-content: center;
+      }
+    }
+    .btn_result_findEmail_container {
+      // display: flex;
+      // justify-content: space-around;
+      margin-top: 5%;
+      .btn_result_findEmail{
+        // float: left;
+        // display: inline;
+        margin-right: 0.5rem;
+        
+      }
+    }
   }
-
+  
   
 }
 

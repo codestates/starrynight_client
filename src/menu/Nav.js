@@ -477,7 +477,7 @@ class Nav extends React.Component {
         />
         <FindEmail
           isFindEmailModalOpen={this.state.isFindEmailModalOpen}
-          // isFindPwModalOpen={this.state.isFindPwModalOpen}  // completedEmail에서 email을 찾은 후 곧바로 findPw모달로 가기 위해 여기에 props로 내림.
+          handleSignInModal={this.handleSignInModal}  //  completedEmail에서 email을 찾은 후 곧바로 signIn모달로 가기 위해 여기에 props로 내림.
           handleFindEmailModal={this.handleFindEmailModal}
           handleFindPwModal={this.handleFindPwModal}      // completedEmail에서 email을 찾은 후 곧바로 findPw모달로 가기 위해 여기에 props로 내림.
           linkToSignUpfromfindEmail={this.linkToSignUpfromfindEmail}   // findEmail모달에서 signUp 모달로 이동
