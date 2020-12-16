@@ -3,9 +3,20 @@ import { useSpring, animated } from "react-spring";
 import "../src/css/Landing.scss";
 
 import starsVideo from "./image/stars_landing_test1.mp4";
+import { FiChevronDown } from "react-icons/fi";
 
 const Landing = () => {
 
+  const scrollToTop = () => {
+    document.querySelector(".flex").scrollIntoView({ behavior: "smooth" });
+    // window.scrollIntoView({ behavior: 'smooth' });
+    // let location1 = document.querySelector("#nav").offsetTop;
+    // document.querySelector(".scrolledsection").scrollTo(0, 0)
+    // document.querySelector(".scrolledsection").scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    // document.querySelector(".flex").scrollTo({ top: location1, behavior: "smooth" })
+    // document.querySelector("#nav").scrollTo(location1, 0)
+    // console.log("좌표", location1)
+  };
 
   // // const props = useSpring({
   // //   from: {
@@ -54,9 +65,15 @@ const Landing = () => {
       <div className="landing_text">
         별이 빛나는 밤에
       </div>
-      <div id="test">
-        테스트 중
+      <div
+        className="scrollDown"
+        onClick={scrollToTop}
+      >
+        <FiChevronDown />
       </div>
+      {/* <div id="test">
+        테스트 중
+      </div> */}
     </div>
     //   <>
     //     <animated.div className="script-box" style={props} />

@@ -43,6 +43,7 @@ function CompletedFindPw(props) {
                   size="small"
                   color="gray"
                   middleWidth_completedFind
+                  onClick={props.completedFindPwOffAndMoveToSignIn}
                 >
                   
                 로그인

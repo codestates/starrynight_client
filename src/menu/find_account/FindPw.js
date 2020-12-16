@@ -87,9 +87,14 @@ class FindPw extends React.Component {
       isCompletedFindPwOpen: !this.state.isCompletedFindPwOpen
     })
   }
-  CompletedFindPwModalOFFWithFindPwModal = () => {
+  CompletedFindPwModalOFFWithFindPwModal = () => { // completedFindEmail에서 다 끄고 메인화면으로
     this.props.handleFindPwModal()
     this.handleCompletedFindPw()
+  }
+
+  completedFindPwOffAndMoveToSignIn = () => {  // completedFindEmail에서 다 끄고 로그인모달로 이동
+    this.CompletedFindPwModalOFFWithFindPwModal()
+    this.props.handleSignInModal()
   }
 
 
@@ -126,7 +131,8 @@ class FindPw extends React.Component {
             // :  
             <CompletedFindPw
               isCompletedFindPwOpen={this.state.isCompletedFindPwOpen}
-              CompletedFindPwModalOFFWithFindPwModal={this.CompletedFindPwModalOFFWithFindPwModal}
+              CompletedFindPwModalOFFWithFindPwModal={this.CompletedFindPwModalOFFWithFindPwModal} // 오버레이 누르면 모달 꺼짐
+              completedFindPwOffAndMoveToSignIn={this.completedFindPwOffAndMoveToSignIn}
             />
             :
 

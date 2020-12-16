@@ -4,6 +4,9 @@ import Button from "./Button";
 
 //css
 import "../css/SignUp.scss";
+import { BiCamera } from "react-icons/bi";
+
+
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -274,7 +277,6 @@ class SignUp extends React.Component {
 
               {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-              <div> 테스트중입니다. </div>
 
               <div className="signUp_box">
                 {/* -------------------------- 연락처 입력 칸 -------------------------*/}
@@ -282,6 +284,18 @@ class SignUp extends React.Component {
                 <div className="local_new_user">
                   <div className="userInfo_input_container">
                     <div className="user_title_signUp">NEW USER</div>
+                    <div className="box_img">
+                      <div className="add_profile_box_1">
+                        <div className="add_profile_box_2">
+                          <BiCamera
+                            className="add_profile"
+                          />
+                        </div>
+                      </div>
+                      <img
+                        className="profile_img"
+                        src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진" />
+                    </div>
 
                     <div className="email_div">
                       {/* <span>이메일</span> */}
