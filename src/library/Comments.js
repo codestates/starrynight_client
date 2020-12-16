@@ -58,25 +58,55 @@ class Comments extends Component {
       comment: "",
       commentId: "",
       writeComment: "",
+      hashTag: "",
     };
   }
 
-  // 타이틀 수정 페이지 열기
+  // 해시태그 수정 페이지 열기
   handleModifyInfo = () => {
     this.setState({
       infoOpen: !this.state.infoOpen,
     });
     // console.log(!this.state.infoOpen);
+    let btn = document.querySelector(".modifyBtn");
+    btn.style.display = "none";
   };
 
-  // 타이틀 수정 완료(axios 보내기, 수정 반영한 결과 출력)
+  // 변경하는 해시태그 내용을 state에 저장
+  handleModifyInfoChange = (e) => {
+    this.setState({
+      hashTag: e.target.value,
+    });
+    console.log("hashTag: ", this.state.hashTag);
+  };
+
+  // 해시태그 수정 완료(axios 보내기, 수정 반영한 결과 출력)
   completeModifyInfo = () => {
     // onClick시 axios 요청
+    // this.state.hashTag
+    let test = [
+      { subject: "#지금" },
+      { subject: "#바꾸고" },
+      { subject: "#있습니다." },
+    ];
+
+    let url = `https://api.mystar-story.com/${this.state.imgData.id}/modify`;
+    axios
+      .patch(url, { hashtag: test })
+      .then((res) => {
+        alert("해시태그를 수정했습니다.");
+        this.setState({
+          infoOpen: false,
+        });
+        console.log("타이틀 수정 완료");
+        let btn = document.querySelector(".modifyBtn");
+        btn.style.display = "inline-block";
+        this.afterRemoveComment();
+      })
+      .catch((err) => {
+        alert(err);
+      });
     // <input type="text" />을 다시 photoTitle로
-    this.setState({
-      infoOpen: false,
-    });
-    console.log("타이틀 수정 완료");
   };
 
   componentDidMount() {
@@ -193,25 +223,7 @@ class Comments extends Component {
         <div className="modalContent">
           <div className="modalContent_Left">
             {/* ------------------name------------------ */}
-            <div className="photoName">
-              {this.state.infoOpen === true ? (
-                <div>
-                  <input
-                    type="text"
-                    className="modifyPhotoName"
-                    value={this.state.imgData.photoTitle}
-                  />
-                  <button
-                    className="modifyPhotoNameBtn"
-                    onClick={this.completeModifyInfo}
-                  >
-                    수정
-                  </button>
-                </div>
-              ) : (
-                this.state.imgData.photoTitle
-              )}
-            </div>
+            <div className="photoName">{this.state.imgData.photoTitle}</div>
             {/* ------------------photo------------------ */}
             <img
               className="selectPhoto"
@@ -220,9 +232,26 @@ class Comments extends Component {
             />
             {/* ------------------hashTag------------------ */}
             <div className="hashTag">
-              {this.state.imgData.hashtags.map((res) => {
-                return <span>{res.subject}</span>;
-              })}
+              {this.state.infoOpen === true ? (
+                <div>
+                  <input
+                    type="text"
+                    className="modifyPhotoHashtag"
+                    placeholder="#태그 #태그 형식으로 입력"
+                    onChange={this.handleModifyInfoChange}
+                  />
+                  <button
+                    className="modifyPhotoHashtagBtn"
+                    onClick={this.completeModifyInfo}
+                  >
+                    수정완료
+                  </button>
+                </div>
+              ) : (
+                this.state.imgData.hashtags.map((res) => {
+                  return <span>{res.subject}</span>;
+                })
+              )}
             </div>
             {/* <div className="hashTag">
               <span>test</span>
