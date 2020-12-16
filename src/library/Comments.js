@@ -127,7 +127,6 @@ class Comments extends Component {
       comment: a,
       commentId: b,
     });
-    console.log(e);
   };
 
   // 댓글 삭제 모달 끄기
@@ -263,13 +262,16 @@ class Comments extends Component {
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
               {/* <button
-                className="favorite"
                 // onClick={() => console.log(this.props.imgData.location)}
               >
                 별
               </button> */}
               <span onClick={this.handleFavoriteClick}>
-                {this.state.isFavorite === true ? <MdStar /> : <MdStarBorder />}
+                {this.state.isFavorite === true ? (
+                  <MdStar className="favorite" />
+                ) : (
+                  <MdStarBorder className="favorite" />
+                )}
               </span>
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}

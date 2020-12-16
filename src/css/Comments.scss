@@ -159,18 +159,19 @@
 .favorite_div {
   position: absolute;
   display: block;
-  bottom: 45%;
+  bottom: 43%;
   left: 0%;
 }
 
 .favorite {
-  width: 40px;
-  height: 30px;
-  font-size: 15px;
+  color: rgb(252, 99, 11);
+  font-size: 40px;
   font-weight: bold;
-  color: white;
-  background-color: rgb(97, 69, 163);
-  border-radius: 10px;
+  // width: 40px;
+  // height: 30px;
+  // color: white;
+  // background-color: rgb(97, 69, 163);
+  // border-radius: 10px;
 }
 
 .commentDiv {
