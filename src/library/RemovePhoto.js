@@ -28,6 +28,7 @@ class RemovePhoto extends Component {
     axios
       .delete(url, {
         data: {
+          commentId: this.state.imgData.writer,
           id: this.props.photoId,
         },
         // withCredentials: true,
