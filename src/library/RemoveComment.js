@@ -25,6 +25,7 @@ class RemovePhoto extends Component {
     let url = `https://api.mystar-story.com/cancelcomment`;
     axios
       .post(url, {
+        commentId: this.state.imgData.writer,
         photoId: this.props.photoId,
         comment: this.props.comment,
       })
