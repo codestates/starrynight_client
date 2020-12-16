@@ -252,7 +252,11 @@ class Comments extends Component {
               <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
-                },${window.sessionStorage.getItem("current")}`}
+                },${window.sessionStorage.current
+                  .split("")
+                  .slice(-(window.sessionStorage.current.length - 1), -1)
+                  .map((el) => (el !== " " ? el : null))
+                  .join("")}`}
                 target="_blank"
               >
                 <button className="HowToGo">How to go</button>
