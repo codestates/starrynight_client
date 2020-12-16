@@ -55,6 +55,7 @@ class Comments extends Component {
       isRemoveCommentOpen: false,
       infoOpen: false,
       comment: "",
+      writeComment: "",
     };
   }
 
@@ -86,7 +87,7 @@ class Comments extends Component {
     });
   }
 
-  // 댓글 삭제 후 사진 정보를 새로 반영하기
+  // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기
   afterRemoveComment = () => {
     let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
     axios.get(url).then((data) => {
@@ -131,6 +132,28 @@ class Comments extends Component {
     this.setState({
       isRemoveCommentOpen: false,
     });
+  };
+
+  // 입력 댓글 state에 저장
+  handleCommentOnchange = (e) => {
+    this.setState({
+      writeComment: e.target.value,
+    });
+    console.log(this.state.writeComment);
+  };
+
+  // 댓글 전송
+  handleMakeComment = () => {
+    console.log(this.state.writeComment);
+    let url = "https://api.mystar-story.com/makecomment";
+    axios
+      .post(url, {
+        photoPath: this.state.imgData.photoPath,
+        comment: this.state.writeComment,
+      })
+      .then((res) => {
+        this.afterRemoveComment();
+      });
   };
 
   render() {
@@ -265,7 +288,19 @@ class Comments extends Component {
                   })
                 )}
               </div>
-              <button className="commentBtn">메시지를 입력하세요.</button>
+              {/* 댓글 입력 기능 */}
+              {/* <button className="commentBtn">메시지를 입력하세요.</button> */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="댓글을 입력하세요."
+                  className="commentWriter"
+                  onChange={this.handleCommentOnchange}
+                />
+                <button className="commentBtn" onClick={this.handleMakeComment}>
+                  등록
+                </button>
+              </div>
             </div>
           </div>
         </div>
