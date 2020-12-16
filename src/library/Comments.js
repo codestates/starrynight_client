@@ -248,7 +248,15 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              <button className="HowToGo">How to go</button>
+              {/* <button className="HowToGo">How to go</button> */}
+              <a
+                href={`https://map.kakao.com/link/to/${
+                  this.state.imgData.location
+                },${window.sessionStorage.getItem("current")}`}
+                target="_blank"
+              >
+                <button className="HowToGo">How to go</button>
+              </a>
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
