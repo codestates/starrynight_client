@@ -54,12 +54,12 @@
   font-weight: bold;
 }
 
-.modifyPhotoName {
+.modifyPhotoHashtag {
   width: 70%;
 }
 
-.modifyPhotoNameBtn {
-  width: 10%;
+.modifyPhotoHashtagBtn {
+  width: 13%;
   font-size: 15px;
   font-weight: bold;
   color: white;
@@ -113,6 +113,7 @@
 }
 
 .modifyBtn {
+  display: inline-block;
   width: 70px;
   height: 30px;
   font-size: 15px;
