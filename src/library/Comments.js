@@ -270,7 +270,7 @@ class Comments extends Component {
                 {this.state.isFavorite === true ? (
                   <MdStar className="favorite" />
                 ) : (
-                  <MdStarBorder className="favorite" />
+                  <MdStarBorder className="favoriteBorder" />
                 )}
               </span>
             </div>
