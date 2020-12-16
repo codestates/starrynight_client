@@ -54,6 +54,7 @@ class Comments extends Component {
       isRemovePhotoOpen: false,
       isRemoveCommentOpen: false,
       infoOpen: false,
+      isFavorite: false,
       comment: "",
       writeComment: "",
     };
@@ -151,7 +152,6 @@ class Comments extends Component {
     } else {
       axios
         .post(url, {
-          commentId: this.state.imgData.writer,
           photoPath: this.state.imgData.photoPath,
           comment: this.state.writeComment,
         })
@@ -259,6 +259,7 @@ class Comments extends Component {
                 별
               </button> */}
               <MdStarBorder />
+              <MdStar />
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
