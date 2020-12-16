@@ -52,7 +52,8 @@ function CompletedFindPw(props) {
             </div>
           </div>
         </div>
-        : null}
+        : null }
+         {/* : <div className="spinner"></div>} */}
     </>
   )
 }

@@ -24,7 +24,7 @@ class RemovePhoto extends Component {
   removePhoto = () => {
     //this.props.photoId
     console.log(this.props.photoId);
-    let url = `https://mystar-story.com/${this.props.photoId}/delete`;
+    let url = `https://api.mystar-story.com/${this.props.photoId}/delete`;
     axios
       .delete(url, {
         data: {
@@ -36,8 +36,9 @@ class RemovePhoto extends Component {
         window.location.replace("/");
       })
       .catch((err) => {
-        alert(err);
+        alert(err.response.data);
       });
+    // axios.delete(`https://api.mystar-story.com/${this.props.photoId}/delete`, )
 
     // axios
     //   .delete(
