@@ -56,6 +56,7 @@ class Comments extends Component {
       infoOpen: false,
       isFavorite: false,
       comment: "",
+      commentId: "",
       writeComment: "",
     };
   }
@@ -120,12 +121,12 @@ class Comments extends Component {
   };
 
   // 댓글 삭제 모달 실행
-  removeCommentOpen = (e) => {
+  removeCommentOpen = (a, b) => {
     this.setState({
       isRemoveCommentOpen: true,
-      comment: e,
+      comment: a,
+      commentId: b,
     });
-    console.log(e);
   };
 
   // 댓글 삭제 모달 끄기
@@ -162,6 +163,13 @@ class Comments extends Component {
     }
   };
 
+  // 좋아요 클릭
+  handleFavoriteClick = () => {
+    this.setState({
+      isFavorite: !this.state.isFavorite,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -170,6 +178,7 @@ class Comments extends Component {
           isRemoveCommentOpen={this.state.isRemoveCommentOpen}
           removeCommentClose={this.removeCommentClose}
           comment={this.state.comment}
+          commentId={this.state.commentId}
           photoId={this.state.imgData.id}
           afterRemoveComment={this.afterRemoveComment}
         />
@@ -265,13 +274,17 @@ class Comments extends Component {
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
               {/* <button
-                className="favorite"
                 // onClick={() => console.log(this.props.imgData.location)}
               >
                 별
               </button> */}
-              <MdStarBorder />
-              <MdStar />
+              <span onClick={this.handleFavoriteClick}>
+                {this.state.isFavorite === true ? (
+                  <MdStar className="favorite" />
+                ) : (
+                  <MdStarBorder className="favoriteBorder" />
+                )}
+              </span>
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
@@ -297,7 +310,9 @@ class Comments extends Component {
                           <button
                             className="testButton"
                             name={index}
-                            onClick={() => this.removeCommentOpen(data.comment)}
+                            onClick={() =>
+                              this.removeCommentOpen(data.comment, data.id)
+                            }
                           >
                             삭제
                           </button>
