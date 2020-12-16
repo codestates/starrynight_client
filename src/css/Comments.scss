@@ -181,20 +181,26 @@
   height: 30%;
 }
 
+.commentWriter {
+  width: 80%;
+}
+
 .commentBtn {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  height: 20%;
-  top: 10px;
   font-size: 15px;
   font-weight: bold;
   text-align: center;
   color: white;
   background-color: rgb(97, 69, 163);
   border-radius: 10px;
+  width: 20%;
+
+  // position: relative;
+  // display: block;
+  // margin-left: auto;
+  // margin-right: auto;
+  // width: 20%;
+  // height: 20%;
+  // top: 10px;
 }
 
 .comments {
