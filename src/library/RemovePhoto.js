@@ -24,36 +24,22 @@ class RemovePhoto extends Component {
   removePhoto = () => {
     //this.props.photoId
     console.log(this.props.photoId);
-    let url = `https://mystar-story.com/${this.props.photoId}/delete`;
+    let url = `https://api.mystar-story.com/${this.props.photoId}/delete`;
     axios
       .delete(url, {
         data: {
           id: this.props.photoId,
         },
+        // withCredentials: true,
       })
       .then((res) => {
-        alert(res);
+        alert("사진이 삭제되었습니다.");
         window.location.replace("/");
       })
       .catch((err) => {
-        alert(err);
+        alert(err.response.data);
+        window.location.replace("/");
       });
-
-    // axios
-    //   .delete(
-    //     url,
-    //     {
-    //       id: this.props.photoId,
-    //     }
-    //     // withCredentials: true,
-    //   )
-    //   .then((res) => {
-    //     alert(res);
-    //     window.location.replace("/");
-    //   })
-    //   .catch((err) => {
-    //     alert(err);
-    //   });
   };
 
   render() {

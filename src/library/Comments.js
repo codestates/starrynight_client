@@ -4,6 +4,8 @@ const axios = require("axios").default;
 import RemovePhoto from "./RemovePhoto";
 import RemoveComment from "./RemoveComment";
 import KakaoMap from "../KakaoMap";
+import { MdStarBorder } from "react-icons/fa";
+import { MdStar } from "react-icons/fa";
 
 let fakeData = {
   id: 1,
@@ -52,6 +54,7 @@ class Comments extends Component {
       isRemovePhotoOpen: false,
       isRemoveCommentOpen: false,
       infoOpen: false,
+      comment: "",
     };
   }
 
@@ -83,6 +86,17 @@ class Comments extends Component {
     });
   }
 
+  // 댓글 삭제 후 사진 정보를 새로 반영하기
+  afterRemoveComment = () => {
+    let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
+    axios.get(url).then((data) => {
+      this.setState({
+        imgData: data.data,
+      });
+      console.log(this.state.imgData);
+    });
+  };
+
   stars = () => {
     console.log(this.props.imgData.location);
   };
@@ -104,9 +118,18 @@ class Comments extends Component {
   };
 
   // 댓글 삭제 모달 실행
-  removeCommentControl = () => {
+  removeCommentOpen = (e) => {
     this.setState({
-      isRemoveCommentOpen: !this.state.isRemoveCommentOpen,
+      isRemoveCommentOpen: true,
+      comment: e,
+    });
+    console.log(e);
+  };
+
+  // 댓글 삭제 모달 끄기
+  removeCommentClose = () => {
+    this.setState({
+      isRemoveCommentOpen: false,
     });
   };
 
@@ -116,7 +139,10 @@ class Comments extends Component {
         {/* ------------------댓글 삭제 모달------------------ */}
         <RemoveComment
           isRemoveCommentOpen={this.state.isRemoveCommentOpen}
-          removeCommentControl={this.removeCommentControl}
+          removeCommentClose={this.removeCommentClose}
+          comment={this.state.comment}
+          photoId={this.state.imgData.id}
+          afterRemoveComment={this.afterRemoveComment}
         />
         {/* ------------------사진 삭제 모달------------------ */}
         <RemovePhoto
@@ -203,6 +229,7 @@ class Comments extends Component {
               >
                 별
               </button>
+              {/* <MdStarBorder /> */}
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
@@ -212,7 +239,7 @@ class Comments extends Component {
                     첫번째 댓글을 남겨주세요.
                   </span>
                 ) : (
-                  this.state.imgData.replies.map((data) => {
+                  this.state.imgData.replies.map((data, index) => {
                     return (
                       <div className="comment">
                         <img
@@ -225,7 +252,11 @@ class Comments extends Component {
                         <div className="commentComment">{data.comment}</div>
                         <span className="commentRemove">
                           <button>수정</button>
-                          <button onClick={this.removeCommentControl}>
+                          <button
+                            className="testButton"
+                            name={index}
+                            onClick={() => this.removeCommentOpen(data.comment)}
+                          >
                             삭제
                           </button>
                         </span>
