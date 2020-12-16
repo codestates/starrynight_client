@@ -53,8 +53,8 @@ class Comments extends Component {
       imgData: { ...fakeData },
       isRemovePhotoOpen: false,
       isRemoveCommentOpen: false,
-      infoOpen: false,
       isFavorite: false,
+      infoOpen: false,
       comment: "",
       commentId: "",
       writeComment: "",
@@ -258,7 +258,7 @@ class Comments extends Component {
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
               {/* <button className="HowToGo">How to go</button> */}
-              <a
+              {/* <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
                 },${window.sessionStorage.current
@@ -269,7 +269,7 @@ class Comments extends Component {
                 target="_blank"
               >
                 <button className="HowToGo">How to go</button>
-              </a>
+              </a> */}
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
@@ -306,7 +306,6 @@ class Comments extends Component {
                         <span className="commentDate">{data.date}</span>
                         <div className="commentComment">{data.comment}</div>
                         <span className="commentRemove">
-                          <button>수정</button>
                           <button
                             className="testButton"
                             name={index}
