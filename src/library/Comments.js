@@ -4,8 +4,8 @@ const axios = require("axios").default;
 import RemovePhoto from "./RemovePhoto";
 import RemoveComment from "./RemoveComment";
 import KakaoMap from "../KakaoMap";
-import { MdStarBorder } from "react-icons/fa";
-import { MdStar } from "react-icons/fa";
+import { MdStarBorder } from "react-icons/md";
+import { MdStar } from "react-icons/md";
 
 let fakeData = {
   id: 1,
@@ -146,14 +146,20 @@ class Comments extends Component {
   handleMakeComment = () => {
     console.log(this.state.writeComment);
     let url = "https://api.mystar-story.com/makecomment";
-    axios
-      .post(url, {
-        photoPath: this.state.imgData.photoPath,
-        comment: this.state.writeComment,
-      })
-      .then((res) => {
-        this.afterRemoveComment();
-      });
+    if (this.state.writeComment.length === 0) {
+      alert("댓글을 입력해주세요.");
+    } else {
+      axios
+        .post(url, {
+          commentId: this.state.imgData.writer,
+          photoPath: this.state.imgData.photoPath,
+          comment: this.state.writeComment,
+        })
+        .then((res) => {
+          alert("댓글이 등록되었습니다.");
+          this.afterRemoveComment();
+        });
+    }
   };
 
   render() {
@@ -246,13 +252,13 @@ class Comments extends Component {
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
-              <button
+              {/* <button
                 className="favorite"
                 // onClick={() => console.log(this.props.imgData.location)}
               >
                 별
-              </button>
-              {/* <MdStarBorder /> */}
+              </button> */}
+              <MdStarBorder />
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
