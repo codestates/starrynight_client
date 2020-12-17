@@ -83,16 +83,20 @@ class Comments extends Component {
   // 해시태그 수정 완료(axios 보내기, 수정 반영한 결과 출력)
   completeModifyInfo = () => {
     // onClick시 axios 요청
-    // this.state.hashTag
-    let test = [
-      { subject: "#지금" },
-      { subject: "#바꾸고" },
-      { subject: "#있습니다." },
-    ];
+    // let test = [
+    //   { subject: "#지금" },
+    //   { subject: "#바꾸고" },
+    //   { subject: "#있습니다." },
+    // ];
+
+    let hashtag = this.state.hashTag.split(" ");
 
     let url = `https://api.mystar-story.com/${this.state.imgData.id}/modify`;
     axios
-      .patch(url, { hashtag: test })
+      .patch(url, {
+        hashtags: hashtag,
+        id: this.state.imgData.id,
+      })
       .then((res) => {
         alert("해시태그를 수정했습니다.");
         this.setState({
