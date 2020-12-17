@@ -1,0 +1,83 @@
+// css
+
+.modal_Google {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal_Google_overlay {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .modal_Google_content {
+    background: white;
+    color: black;
+    position: relative;
+    width: 40%;
+    text-align: center;
+    border-radius: 10px;
+
+    .profile_img_box {
+      padding: 2%;
+      .profile_img {
+        max-width: 100px;
+        border-radius: 35px;
+        object-fit: cover;
+      }
+    }
+
+    .userInfo_input_container_inGoogle {
+      padding: 5%;
+      .email_div_inGoogle {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 30px;
+      }
+      .nickname_div_inGoogle {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 30px;
+      }
+      .mobile_div_inGoogle {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+    }
+
+    h2 {
+      padding-left: 5%;
+      display: flex;
+    }
+    .social_info {
+      padding-right: 5%;
+      padding-left: 5%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  // .userInfo_input_container_inGoogle {
+    // background: skyblue;
+    // .div{
+    //   display: flex;
+    // }
+    
+    
+    // align-items: center;
+    // margin-right: 7%;
+    // margin-left: 7%;
+    // margin-bottom: 7%;
+  // }
+
+}
+
