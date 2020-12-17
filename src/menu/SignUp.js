@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import Button from "./Button";
 
+
+const FormData = require('form-data');
 //css
 import "../css/SignUp.scss";
 import { BiCamera } from "react-icons/bi";
@@ -21,28 +23,65 @@ class SignUp extends React.Component {
       file: "",
       previewURL: ""
     };
-    this.myRef = React.createRef();
+    // this.myRef = React.createRef();
   }
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // handleprofileOnChange = (event) => {
+  //   event.preventDefault();
+  //   let reader = new FileReader();
+  //   let file = event.target.files[0]
+  //   reader.onloadend = () => {
+  //     this.setState({
+  //       file: file,
+  //       previewURL: reader.result
+  //     })
+  //   }
+  //   reader.readAsDataURL(file);
+  //   // const file = photoInput.current.files[0];
+  //   // if(file) {
+  //   //   const reader  = new FileReader();
+  //   //   reader.read
+  //   // }
 
-  handleprofileOnChange = (event) => {
-    event.preventDefault();
-    let reader = new FileReader();
-    let file = event.target.files[0];
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        previewURL: reader.result
+  // }
+
+  handleprofileOnChange = (e) => {
+    // e.preventDefault();
+    this.setState({
+      file: e.target.files[0]
+    })
+    // window.sessionStorage.setItem("profile", this.state.file)
+  }
+  handlePost = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("file", this.state.file);
+    formData.append("email", this.state.email);
+    formData.append("nickname", this.state.nickname);
+    formData.append("password", this.state.password);
+    formData.append("mobile", this.state.mobile);
+
+    console.log("formData", this.state.file.File)
+
+    // const photo = window.sessionStorage.getItem("profile")
+    const config = {
+      // headers: formData.getHeaders()
+      // headers: { "Content-type": "imageFile.type" }
+      headers: { 'Content-Type': 'multipart/form-data' }
+      // headers: { 'Content-Type': 'application/json' }
+    };
+
+    axios.post("https://api.mystar-story.com/user/signup", formData, config)
+      .then((respoense) => {
+        console.log("사진이 업로드 되었습니다.", respoense.data)
       })
-    }
-    reader.readAsDataURL(file);
-    // const file = photoInput.current.files[0];
-    // if(file) {
-    //   const reader  = new FileReader();
-    //   reader.read
-    // }
+      .catch((error) => {
+
+        console.log("사진 업로드 실패", error.response.data)
+      })
 
   }
-
 
 
   // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 기본 유저정보 State와 에러메세지가 계속 띄어져있는 것을 방지하기 위해
@@ -185,10 +224,15 @@ class SignUp extends React.Component {
       password: this.state.password,
       // doubleCheckPw: this.state.doubleCheckPw,
       mobile: this.state.mobile,
-      file: this.state.file
+      // file: this.state.file
     };
 
-    console.log("NewUserInfo.file", NewUserInfo.file)
+
+    const NewProfilePhoto = {
+      file: window.sessionStorage.getItem("profile")
+    }
+
+
     // 에러메세지의 state값을 업데이트하고 아래 렌더부분에서 렌더시킨다.
     // 에러메세지 - email
     if (!this.state.email.length) {
@@ -262,22 +306,50 @@ class SignUp extends React.Component {
       this.state.doubleCheckPw === this.state.password &&
       this.state.mobile.length
     ) {
-      const config = {
-        header: { "content-type": "multipart/form-data" },
-      };
-      axios
-        .post("https://api.mystar-story.com/user/signup", NewUserInfo, config)
-        .then((respoense) => {
-          alert(respoense.data);
-          this.props.redirectToSignIn(); // 회원가입 완료 후 로그인 모달창으로 돌아가!
-        })
-        .catch((error) => {
-          // alert("hello world!")
-          // console.log("회원가입 실패", error.response)
-          this.setState({
-            signUpFailedMsg: error.response.data,
-          });
-        });
+      console.log("NewProfilePhoto.file", NewProfilePhoto.file)
+
+      // const config = {
+
+
+      //   // headers: { "Content-type": "imageFile.type" }
+      //   headers: { 'Content-Type': 'multipart/form-data' }
+      //   // headers: { 'Content-Type': 'application/json' }
+      // };
+
+
+      // axios.post("https://api.mystar-story.com/user/signup", NewProfilePhoto, config)
+      //   .then((respoense) => {
+      //     console.log("사진이 업로드 되었습니다.", respoense.data)
+      //   })
+      //   .catch((error) => {
+      //     console.log("사진 업로드 실패", error.response.data)
+      //   })
+
+      // this.handlePost();
+
+      // const config = {
+
+
+      //   // headers: { "Content-type": "imageFile.type" }
+      //   headers: { 'Content-Type': 'multipart/form-data' }
+      //   // headers: { 'Content-Type': 'application/json' }
+      // };
+
+
+      // axios
+      //   .post("https://api.mystar-story.com/user/signup", NewUserInfo)
+      //   // .post("https://api.mystar-story.com/user/signup", this.state, config)
+      //   .then((respoense) => {
+      //     alert(respoense.data);
+      //     this.props.redirectToSignIn(); // 회원가입 완료 후 로그인 모달창으로 돌아가!
+      //   })
+      //   .catch((error) => {
+      //     // alert("hello world!")
+      //     // console.log("회원가입 실패", error.response)
+      //     this.setState({
+      //       signUpFailedMsg: error.response.data,
+      //     });
+      //   });
     }
   };
 
@@ -326,9 +398,9 @@ class SignUp extends React.Component {
                 {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
                 <div className="local_new_user">
-                  <div className="userInfo_input_container">
-                    <div className="user_title_signUp">NEW USER</div>
-                    <form id="myForm">
+                  <form id="myForm">
+                    <div className="userInfo_input_container">
+                      <div className="user_title_signUp">NEW USER</div>
                       <div className="box_img">
                         <label>
                           <div className="add_profile_box_1">
@@ -354,76 +426,76 @@ class SignUp extends React.Component {
 
                         {/* </input> */}
                       </div>
-                    </form>
+                      {/* </form> */}
 
-                    <div className="email_div">
-                      {/* <span>이메일</span> */}
-                      <input
-                        type="email"
-                        onChange={this.handleInputValue("email")}
-                        placeholder="이메일을 입력하세요."
-                      />
-                      <div className="text_style_SignUp">
-                        {this.state.errMsgOfEmailBlanks}
+                      <div className="email_div">
+                        {/* <span>이메일</span> */}
+                        <input
+                          type="email"
+                          onChange={this.handleInputValue("email")}
+                          placeholder="이메일을 입력하세요."
+                        />
+                        <div className="text_style_SignUp">
+                          {this.state.errMsgOfEmailBlanks}
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="nickname_div">
-                      {/* <span>별명</span> */}
-                      <input
-                        className="control_margin_top"
-                        type="text"
-                        placeholder="별명을 입력해주세요."
-                        onChange={this.handleInputValue("nickname")}
-                      />
-                      <div className="text_style_SignUp">
-                        {this.state.errMsgOfNickNameBlanks}
+                      <div className="nickname_div">
+                        {/* <span>별명</span> */}
+                        <input
+                          className="control_margin_top"
+                          type="text"
+                          placeholder="별명을 입력해주세요."
+                          onChange={this.handleInputValue("nickname")}
+                        />
+                        <div className="text_style_SignUp">
+                          {this.state.errMsgOfNickNameBlanks}
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="password_div">
-                      {/* <span>비밀번호</span> */}
-                      <input
-                        className="control_margin_top"
-                        type="password"
-                        placeholder="비밀번호를 입력하세요."
-                        onChange={this.handleInputValue("password")}
-                      />
-                      <div className="text_style_SignUp">
-                        {this.state.errMsgOfPasswordBlanks}
+                      <div className="password_div">
+                        {/* <span>비밀번호</span> */}
+                        <input
+                          className="control_margin_top"
+                          type="password"
+                          placeholder="비밀번호를 입력하세요."
+                          onChange={this.handleInputValue("password")}
+                        />
+                        <div className="text_style_SignUp">
+                          {this.state.errMsgOfPasswordBlanks}
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="password_div">
-                      <input
-                        className="control_margin_top"
-                        type="password"
-                        placeholder="비밀번호를 다시 입력해주세요."
-                        onChange={this.handleInputValue("doubleCheckPw")}
-                      />
-                      <div className="text_style_SignUp">
-                        {this.state.errMsgOfdoubleCheckPw}
-                        {this.state.errMsgOfdoubleCheckPwBlanks}
+                      <div className="password_div">
+                        <input
+                          className="control_margin_top"
+                          type="password"
+                          placeholder="비밀번호를 다시 입력해주세요."
+                          onChange={this.handleInputValue("doubleCheckPw")}
+                        />
+                        <div className="text_style_SignUp">
+                          {this.state.errMsgOfdoubleCheckPw}
+                          {this.state.errMsgOfdoubleCheckPwBlanks}
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="mobile_div">
-                      {/* <span>연락처</span> */}
-                      <input
-                        className="control_margin_top"
-                        type="text"
-                        placeholder="연락처를 입력하세요."
-                        onChange={this.handleInputValue("mobile")}
-                        onKeyPress={this.signUpPress}
-                      />
-                      <div className="text_style_SignUp">
-                        {this.state.errMsgOfMobileBlanks}
+                      <div className="mobile_div">
+                        {/* <span>연락처</span> */}
+                        <input
+                          className="control_margin_top"
+                          type="text"
+                          placeholder="연락처를 입력하세요."
+                          onChange={this.handleInputValue("mobile")}
+                          onKeyPress={this.signUpPress}
+                        />
+                        <div className="text_style_SignUp">
+                          {this.state.errMsgOfMobileBlanks}
+                        </div>
                       </div>
+
+                      <div>{this.state.signUpFailedMsg}</div>
                     </div>
-
-                    <div>{this.state.signUpFailedMsg}</div>
-                  </div>
-
+                  </form>
                   {/* -------------------------- submit 버튼 칸 --------------------*/}
 
                   <div className="button_container_InSignUp">
@@ -433,7 +505,9 @@ class SignUp extends React.Component {
                         size="small"
                         color="gray"
                         middleWidth_main_btn
-                        onClick={this.handleClickAddNewUserInfo}
+                        // onClick={this.handleClickAddNewUserInfo}
+                        onClick={this.handlePost}
+
                       >
                         회원 가입
                       </Button>

@@ -1,3 +1,47 @@
+// .modal_Mypage {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   .modal_Mypage_overlay {
+//     background: rgba(0, 0, 0, 0.6);
+//     position: fixed;
+//     width: 100vw;
+//     height: 100vh;
+//   }
+
+//   .modal_Mypage_content {
+//     background: white;
+//     color: black;
+//     position: relative;
+//     width: 60%;
+//     text-align: center;
+//     border-radius: 10px;
+//   }
+
+//   .userInfo_input_container_inMypage {
+//     background: skyblue;
+//     .div{
+//       display: flex;
+//     }
+    
+    
+//     align-items: center;
+//     margin-right: 7%;
+//     margin-left: 7%;
+//     margin-bottom: 7%;
+//   }
+
+// }
+
+// css
+
 .modal_Mypage {
   position: fixed;
   top: 0;
@@ -23,20 +67,84 @@
     width: 60%;
     text-align: center;
     border-radius: 10px;
-  }
 
-  .userInfo_input_container_inMypage {
-    background: skyblue;
-    .div{
+    .profile_img_box {
+      padding: 5%;
+      padding-bottom: 5px;
+      .profile_img {
+        max-width: 100px;
+        border: solid rgba(128, 128, 128, 0.582) 1px;
+        border-radius: 35px;
+        object-fit: cover;
+      }
+    }
+
+    .userInfo_input_container_inMypage {
+      padding: 5%;
+      .email_div_inMypage {
+        display: flex;
+        
+        // justify-content: space-between;
+        padding-bottom: 30px;
+        .float {
+          margin-right: 60px;
+        }
+          
+      }
+      .pw_div_inMypage {
+        // width: ;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 30px;
+          // .float_pw {
+            // display: flex;
+            // justify-content: space-around;
+            span {
+              margin-right: 48px;
+            }
+          // }
+      }
+      .nickname_div_inMypage {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 30px;
+          span {
+            margin-right: 75px;
+          }
+      }
+      .mobile_div_inMypage {
+        display: flex;
+        justify-content: space-between;
+          span {
+            margin-right: 60px;
+          }
+      }
+    }
+
+    h2 {
+      padding-left: 5%;
       display: flex;
     }
-    
-    
-    align-items: center;
-    margin-right: 7%;
-    margin-left: 7%;
-    margin-bottom: 7%;
+    .social_info {
+      padding-right: 5%;
+      padding-left: 5%;
+      display: flex;
+      justify-content: space-between;
+    }
   }
+
+  // .userInfo_input_container_inMypage {
+    // background: skyblue;
+    // .div{
+    //   display: flex;
+    // }
+    
+    
+    // align-items: center;
+    // margin-right: 7%;
+    // margin-left: 7%;
+    // margin-bottom: 7%;
+  // }
 
 }
 

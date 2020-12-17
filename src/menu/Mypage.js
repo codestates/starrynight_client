@@ -228,31 +228,38 @@ class Mypage extends React.Component {
 
                   {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-                  <div>
-
+                  <div className="profile_img_box">
+                    <img
+                      className="profile_img"
+                      src={this.props.currentUserInfo.profile} alt="프로필 사진" />
                   </div>
-
+                  <h1>{this.props.currentUserInfo.nickname}</h1>
                   {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
                   <div className="userInfo_input_container_inMypage">
-                    <div>사이즈 테스트 중</div>
+
 
                     <div className="email_div_inMypage">
-                      <span>이메일</span>
+                      <div className="float">
+                        <span>이메일</span>
+                      </div>
 
                       <div>{this.state.currentUserInfo.email}</div>
                       {/* <div>{this.props.sendStateForMypage.email}</div> */}
                     </div>
 
                     <div className="pw_div_inMypage">
-                      <span>비밀번호</span>
-                      <div>******</div>
-                      {/* <div>{this.props.sendStateForMypage.password}</div> */}
-                      {this.state.isModifyBtnOfPw === false ?
-                        <div />
-                        :
-                        <input type="password" onChange={this.handleChangeUserInfo("password")} />
-                      }
+                      <div>
+                        <span>비밀번호</span>
+                        <span>******</span>
+
+                        {/* <div>{this.props.sendStateForMypage.password}</div> */}
+                        {this.state.isModifyBtnOfPw === false ?
+                          <div />
+                          :
+                          <input type="password" onChange={this.handleChangeUserInfo("password")} />
+                        }
+                      </div>
                       {this.state.isModifyBtnOfPw ?
                         <button onClick={this.requestModifyPw}>aa</button>
                         :
@@ -261,14 +268,16 @@ class Mypage extends React.Component {
                     </div>
 
                     <div className="nickname_div_inMypage">
-                      <span>별명</span>
-                      <div>{this.state.currentUserInfo.nickname}</div>
-                      {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
-                      {this.state.isModifyBtnOfNickname === false ?
-                        <div />
-                        :
-                        <input onChange={this.handleChangeUserInfo("nickname")} />
-                      }
+                      <div>
+                        <span>별명</span>
+                        <span>{this.state.currentUserInfo.nickname}</span>
+                        {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
+                        {this.state.isModifyBtnOfNickname === false ?
+                          <div />
+                          :
+                          <input onChange={this.handleChangeUserInfo("nickname")} />
+                        }
+                      </div>
                       {this.state.isModifyBtnOfNickname ?
                         <button onClick={this.requestModifyNickname}>aa</button>
                         :
@@ -277,14 +286,16 @@ class Mypage extends React.Component {
                     </div>
 
                     <div className="mobile_div_inMypage">
-                      <span>연락처</span>
-                      <div>{this.state.currentUserInfo.mobile}</div>
-                      {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
-                      {this.state.isModifyBtnOfMobile === false ?
-                        <div />
-                        :
-                        <input onChange={this.handleChangeUserInfo("mobile")} />
-                      }
+                      <div>
+                        <span>연락처</span>
+                        <span>{this.state.currentUserInfo.mobile}</span>
+                        {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
+                        {this.state.isModifyBtnOfMobile === false ?
+                          <div />
+                          :
+                          <input onChange={this.handleChangeUserInfo("mobile")} />
+                        }
+                      </div>
                       {this.state.isModifyBtnOfMobile ?
                         <button onClick={this.requestModifyMobile}>aa</button>
                         :
