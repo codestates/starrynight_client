@@ -28,6 +28,7 @@ $black: rgba(24, 10, 10, 0.932);
       // color: white;
     }
   }
+
 }
 
 
@@ -59,6 +60,11 @@ $black: rgba(24, 10, 10, 0.932);
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 0.875rem;
+  }
+  // 커스터마이징 사이즈
+  &.small_mypage_profile {
+    margin: auto;
+    height: 20px;
   }
 
   // 색상 관리
@@ -118,6 +124,15 @@ $black: rgba(24, 10, 10, 0.932);
     }
   }
 
+  &.nanoWidth {
+    display: flex;
+    justify-content: center;
+    width: 12%;
+    height: 1.3rem;
+    align-items: center;
+    font-size: 0.5rem;
+  }
+
   &.smallWidth {
     display: flex;
     justify-content: space-between;
@@ -146,5 +161,14 @@ $black: rgba(24, 10, 10, 0.932);
     // margin-left: 1rem;
     justify-content: center;
     align-items: center;
+  }
+
+  &.nanoWidth_mypage_profile {
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    // height: 1.3rem;
+    align-items: center;
+    font-size: 0.5rem;
   }
 }
