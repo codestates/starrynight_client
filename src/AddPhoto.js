@@ -70,6 +70,7 @@ function AddPhoto(props) {
             hashtag: CompleteTag,
           };
           console.log("사진 업로드 최종정보 ***", photo);
+          console.log("헤더의 포맷입니다 *** ", config);
 
           Axios.post("https://api.mystar-story.com/savephoto", photo)
             .then((res) => {

@@ -6,8 +6,6 @@ import Button from "./Button";
 import "../css/SignUp.scss";
 import { BiCamera } from "react-icons/bi";
 
-
-
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +17,7 @@ class SignUp extends React.Component {
       mobile: "",
 
       file: "",
-      previewURL: ""
+      previewURL: "",
     };
     this.myRef = React.createRef();
   }
@@ -31,19 +29,16 @@ class SignUp extends React.Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        previewURL: reader.result
-      })
-    }
+        previewURL: reader.result,
+      });
+    };
     reader.readAsDataURL(file);
     // const file = photoInput.current.files[0];
     // if(file) {
     //   const reader  = new FileReader();
     //   reader.read
     // }
-
-  }
-
-
+  };
 
   // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 기본 유저정보 State와 에러메세지가 계속 띄어져있는 것을 방지하기 위해
   // state값을 빈 스트링으로 렌더링 시킨다.
@@ -66,9 +61,6 @@ class SignUp extends React.Component {
       });
     }
   };
-
-
-
 
   // 정보입력 이벤트
   // State 할당: 입력받은 정보를 위의 빈 스트링으로 셋팅이 된 state값을 채운다.
@@ -110,12 +102,11 @@ class SignUp extends React.Component {
     if (this.state.doubleCheckPw !== "") {
       this.setState({
         errMsgOfdoubleCheckPwBlanks: "",
-      })
-    }
-    else if (this.state.doubleCheckPw === this.state.password) {
+      });
+    } else if (this.state.doubleCheckPw === this.state.password) {
       this.setState({
-        errMsgOfdoubleCheckPw: ""
-      })
+        errMsgOfdoubleCheckPw: "",
+      });
     }
 
     if (this.state.mobile !== "") {
@@ -185,10 +176,10 @@ class SignUp extends React.Component {
       password: this.state.password,
       // doubleCheckPw: this.state.doubleCheckPw,
       mobile: this.state.mobile,
-      file: this.state.file
+      file: this.state.file,
     };
 
-    console.log("NewUserInfo.file", NewUserInfo.file)
+    console.log("NewUserInfo.file", NewUserInfo.file);
     // 에러메세지의 state값을 업데이트하고 아래 렌더부분에서 렌더시킨다.
     // 에러메세지 - email
     if (!this.state.email.length) {
@@ -227,18 +218,16 @@ class SignUp extends React.Component {
     if (!this.state.doubleCheckPw.length) {
       this.setState({
         errMsgOfdoubleCheckPwBlanks: "비밀번호 중복확인은 필수입니다.",
-      })
-    }
-    else if (this.state.doubleCheckPw !== this.state.password) {
+      });
+    } else if (this.state.doubleCheckPw !== this.state.password) {
       this.setState({
-        errMsgOfdoubleCheckPw: "비밀번호가 일치하지 않습니다."
-      })
-    }
-    else {
+        errMsgOfdoubleCheckPw: "비밀번호가 일치하지 않습니다.",
+      });
+    } else {
       this.setState({
         errMsgOfdoubleCheckPwBlanks: "",
-        errMsgOfdoubleCheckPw: ""
-      })
+        errMsgOfdoubleCheckPw: "",
+      });
     }
 
     // 에러메세지 - mobile
@@ -293,18 +282,24 @@ class SignUp extends React.Component {
   //   this.handleClickAddNewUserInfo
   // }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   render() {
     console.log("BeforeLogin에서 내려 온 회원가입 프롭스", this.props);
     console.log("회원가입: 새로 할당된 state", this.state);
-    console.log("file!!!!!!", this.state.file)
+    console.log("file!!!!!!", this.state.file);
     // let profile_preview = null;
-    let profile_preview = <img className="profile_img" src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진 허허 안나오네" />;
-    if (this.state.file !== '') {
-      profile_preview = <img className='profile_img' src={this.state.previewURL}></img>
+    let profile_preview = (
+      <img
+        className="profile_img"
+        src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927"
+        alt="프로필 사진 허허 안나오네"
+      />
+    );
+    if (this.state.file !== "") {
+      profile_preview = (
+        <img className="profile_img" src={this.state.previewURL}></img>
+      );
     }
 
     return (
@@ -321,7 +316,6 @@ class SignUp extends React.Component {
 
               {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-
               <div className="signUp_box">
                 {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
@@ -333,9 +327,7 @@ class SignUp extends React.Component {
                         <label>
                           <div className="add_profile_box_1">
                             <div className="add_profile_box_2">
-                              <BiCamera
-                                className="add_profile"
-                              />
+                              <BiCamera className="add_profile" />
                             </div>
                           </div>
                           {/* <img
@@ -343,14 +335,14 @@ class SignUp extends React.Component {
                             src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진"
                           /> */}
                           {profile_preview}
-                          <input type="file"
+                          <input
+                            type="file"
                             accept="image/jpg,image/png,image/jpeg,image/gif"
                             id="myprofile"
                             name="myprofile"
                             onChange={this.handleprofileOnChange}
                           />
                         </label>
-
 
                         {/* </input> */}
                       </div>
