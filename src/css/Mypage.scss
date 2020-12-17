@@ -64,12 +64,13 @@
     background: white;
     color: black;
     position: relative;
-    width: 60%;
+    width: 50%;
     text-align: center;
     border-radius: 10px;
+    padding: 2%;
 
     .profile_img_box {
-      padding: 5%;
+      padding: 1%;
       padding-bottom: 5px;
       .profile_img {
         max-width: 100px;
@@ -121,10 +122,18 @@
       }
     }
 
-    h2 {
-      padding-left: 5%;
-      display: flex;
+    h1 {
+      // padding-left: 5%;
+      // display: flex;
+      margin-top: 2%;
+      margin-bottom: unset;
     }
+    #sub {
+      margin-bottom: 10%;
+      font-size: 0.8rem;
+      color: rgba(34, 34, 34, 0.781);
+    }
+
     .social_info {
       padding-right: 5%;
       padding-left: 5%;

@@ -233,7 +233,8 @@ class Mypage extends React.Component {
                       className="profile_img"
                       src={this.props.currentUserInfo.profile} alt="프로필 사진" />
                   </div>
-                  <h1>{this.props.currentUserInfo.nickname}</h1>
+                  <h1>{this.state.currentUserInfo.nickname}</h1>
+                  <div id="sub">{this.props.currentUserInfo.email}</div>
                   {/* -------------------------- 연락처 입력 칸 -------------------------*/}
 
                   <div className="userInfo_input_container_inMypage">
@@ -251,17 +252,17 @@ class Mypage extends React.Component {
                     <div className="pw_div_inMypage">
                       <div>
                         <span>비밀번호</span>
-                        <span>******</span>
+
 
                         {/* <div>{this.props.sendStateForMypage.password}</div> */}
                         {this.state.isModifyBtnOfPw === false ?
-                          <div />
+                          <span>******</span>
                           :
                           <input type="password" onChange={this.handleChangeUserInfo("password")} />
                         }
                       </div>
                       {this.state.isModifyBtnOfPw ?
-                        <button onClick={this.requestModifyPw}>aa</button>
+                        <button onClick={this.requestModifyPw}>저장</button>
                         :
                         <button onClick={this.handleModifyBtnOfPwClick}>수정</button>
                       }
@@ -270,16 +271,16 @@ class Mypage extends React.Component {
                     <div className="nickname_div_inMypage">
                       <div>
                         <span>별명</span>
-                        <span>{this.state.currentUserInfo.nickname}</span>
+
                         {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
                         {this.state.isModifyBtnOfNickname === false ?
-                          <div />
+                          <span>{this.state.currentUserInfo.nickname}</span>
                           :
                           <input onChange={this.handleChangeUserInfo("nickname")} />
                         }
                       </div>
                       {this.state.isModifyBtnOfNickname ?
-                        <button onClick={this.requestModifyNickname}>aa</button>
+                        <button onClick={this.requestModifyNickname}>저장</button>
                         :
                         <button onClick={this.handleModifyBtnOfNicknameClick}>수정</button>
                       }
@@ -288,16 +289,16 @@ class Mypage extends React.Component {
                     <div className="mobile_div_inMypage">
                       <div>
                         <span>연락처</span>
-                        <span>{this.state.currentUserInfo.mobile}</span>
+
                         {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
                         {this.state.isModifyBtnOfMobile === false ?
-                          <div />
+                          <span>{this.state.currentUserInfo.mobile}</span>
                           :
                           <input onChange={this.handleChangeUserInfo("mobile")} />
                         }
                       </div>
                       {this.state.isModifyBtnOfMobile ?
-                        <button onClick={this.requestModifyMobile}>aa</button>
+                        <button onClick={this.requestModifyMobile}>저장</button>
                         :
                         <button onClick={this.handleModifyBtnOfMobileClick}>수정</button>
                       }
@@ -305,9 +306,6 @@ class Mypage extends React.Component {
 
                   </div>
 
-                  {/* -------------- 소셜로그인 연동해제 부분 ------------------------ */}
-
-                  <div>  작업!!!!!!!  </div>
 
                   {/* -------------------------- 회원 탈퇴 버튼 칸 --------------------*/}
                   <div>
