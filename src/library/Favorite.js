@@ -77,7 +77,7 @@ class Favorite extends Component {
 
   componentDidMount() {
     window.addEventListener("scroll", this.infiniteScroll, true);
-    let url = "https://api.mystar-story.com/main";
+    let url = "https://api.mystar-story.com/user/favorite";
     axios.get(url).then((res) => {
       this.setState({
         data: res.data,
