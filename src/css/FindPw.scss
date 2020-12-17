@@ -66,6 +66,27 @@
     }
 
 
+    .close_icon {
+      top: 10px;
+      right: 10px;
+      position: absolute;
+      div {
+        width: 15px;
+        height: 2px;
+        margin: 8px;
+        background: rgb(233, 229, 229);
+      }
+
+      .close_icon_1 {
+        transform: rotate(-45deg) translate(-4px, 3px);
+      }
+      .close_icon_2 {
+        transform: rotate(45deg) translate(-4px, -3px);
+      }
+
+    }
+
+
 
     .find_pw_box {
 
@@ -142,7 +163,11 @@
         margin-top: 5%;
         margin-right: 7%;
         margin-left: 7%;
-        padding-left: 0.3rem;
+        // padding-left: 0.3rem;
+      }
+      .rediect_To_Signin {
+        display: flex;
+        font-size: 0.6rem;
       }
     }
 
@@ -183,4 +208,42 @@
       }
     }
   }
+
+  
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      margin: 100px auto;
+
+      position: absolute;
+      // display: flex;
+      top: 10%;
+      left: 50%;
+      background-color: #333;
+    
+      border-radius: 100%;  
+      -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+      animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
+    
+    @-webkit-keyframes sk-scaleout {
+      0% { -webkit-transform: scale(0) }
+      100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes sk-scaleout {
+      0% { 
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      } 100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
 }

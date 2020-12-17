@@ -489,6 +489,7 @@ class Nav extends React.Component {
         <FindPw
           isFindPwModalOpen={this.state.isFindPwModalOpen}
           linkToSignUpfromfindPw={this.linkToSignUpfromfindPw} // 회원가입 버튼을 누르면 findPw모달이 꺼지고 signUp모달이 활성화 될 것임.
+          handleSignInModal={this.handleSignInModal}  // completedFindPw에서 다시 로그인으로 돌아가게 하기 위함
           handleFindPwModal={this.handleFindPwModal}
           getToken={this.getToken}  // 소셜로그인
           googleLogin={this.googleLogin}  // 소셜로그인

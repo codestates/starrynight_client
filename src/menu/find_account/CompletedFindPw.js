@@ -33,6 +33,7 @@ function CompletedFindPw(props) {
                   <span className="highlighted">반드시</span> 비밀번호를 변경해주시길 바랍니다.</div>
 
               </div>
+              
             
             <div className="division_line"></div>
             {/* -------------------------- submit 버튼 칸 --------------------*/}
@@ -42,6 +43,7 @@ function CompletedFindPw(props) {
                   size="small"
                   color="gray"
                   middleWidth_completedFind
+                  onClick={props.completedFindPwOffAndMoveToSignIn}
                 >
                   
                 로그인
@@ -51,7 +53,8 @@ function CompletedFindPw(props) {
             </div>
           </div>
         </div>
-        : null}
+        : null }
+         {/* : <div className="spinner"></div>} */}
     </>
   )
 }

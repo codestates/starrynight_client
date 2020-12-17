@@ -38,8 +38,29 @@ class RemovePhoto extends Component {
       })
       .catch((err) => {
         alert(err.response.data);
+<<<<<<< HEAD
+      });
+    // axios.delete(`https://api.mystar-story.com/${this.props.photoId}/delete`, )
+
+    // axios
+    //   .delete(
+    //     url,
+    //     {
+    //       id: this.props.photoId,
+    //     }
+    //     // withCredentials: true,
+    //   )
+    //   .then((res) => {
+    //     alert(res);
+    //     window.location.replace("/");
+    //   })
+    //   .catch((err) => {
+    //     alert(err);
+    //   });
+=======
         window.location.replace("/");
       });
+>>>>>>> 34b32aad618ef9097eb83548fe3e9c5ac1d0fe95
   };
 
   render() {

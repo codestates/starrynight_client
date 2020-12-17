@@ -4,6 +4,9 @@ import Button from "./Button";
 
 //css
 import "../css/SignUp.scss";
+import { BiCamera } from "react-icons/bi";
+
+
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -12,9 +15,35 @@ class SignUp extends React.Component {
       email: "",
       nickname: "",
       password: "",
+      doubleCheckPw: "",
       mobile: "",
+
+      file: "",
+      previewURL: ""
     };
+    this.myRef = React.createRef();
   }
+
+  handleprofileOnChange = (event) => {
+    event.preventDefault();
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        previewURL: reader.result
+      })
+    }
+    reader.readAsDataURL(file);
+    // const file = photoInput.current.files[0];
+    // if(file) {
+    //   const reader  = new FileReader();
+    //   reader.read
+    // }
+
+  }
+
+
 
   // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 기본 유저정보 State와 에러메세지가 계속 띄어져있는 것을 방지하기 위해
   // state값을 빈 스트링으로 렌더링 시킨다.
@@ -26,14 +55,20 @@ class SignUp extends React.Component {
         email: "",
         nickname: "",
         password: "",
+        doubleCheckPw: "",
         mobile: "",
         errMsgOfEmailBlanks: "",
         errMsgOfNickNameBlanks: "",
         errMsgOfPasswordBlanks: "",
+        errMsgOfdoubleCheckPwBlanks: "",
+        errMsgOfdoubleCheckPw: "",
         errMsgOfMobileBlanks: "",
       });
     }
   };
+
+
+
 
   // 정보입력 이벤트
   // State 할당: 입력받은 정보를 위의 빈 스트링으로 셋팅이 된 state값을 채운다.
@@ -70,6 +105,17 @@ class SignUp extends React.Component {
       this.setState({
         errMsgOfPasswordBlanks: "",
       });
+    }
+
+    if (this.state.doubleCheckPw !== "") {
+      this.setState({
+        errMsgOfdoubleCheckPwBlanks: "",
+      })
+    }
+    else if (this.state.doubleCheckPw === this.state.password) {
+      this.setState({
+        errMsgOfdoubleCheckPw: ""
+      })
     }
 
     if (this.state.mobile !== "") {
@@ -137,9 +183,12 @@ class SignUp extends React.Component {
       email: this.state.email,
       nickname: this.state.nickname,
       password: this.state.password,
+      // doubleCheckPw: this.state.doubleCheckPw,
       mobile: this.state.mobile,
+      file: this.state.file
     };
 
+    console.log("NewUserInfo.file", NewUserInfo.file)
     // 에러메세지의 state값을 업데이트하고 아래 렌더부분에서 렌더시킨다.
     // 에러메세지 - email
     if (!this.state.email.length) {
@@ -174,6 +223,24 @@ class SignUp extends React.Component {
       });
     }
 
+    // 에러메세지 - doubleCheckPw
+    if (!this.state.doubleCheckPw.length) {
+      this.setState({
+        errMsgOfdoubleCheckPwBlanks: "비밀번호 중복확인은 필수입니다.",
+      })
+    }
+    else if (this.state.doubleCheckPw !== this.state.password) {
+      this.setState({
+        errMsgOfdoubleCheckPw: "비밀번호가 일치하지 않습니다."
+      })
+    }
+    else {
+      this.setState({
+        errMsgOfdoubleCheckPwBlanks: "",
+        errMsgOfdoubleCheckPw: ""
+      })
+    }
+
     // 에러메세지 - mobile
     if (!this.state.mobile.length) {
       this.setState({
@@ -191,10 +258,15 @@ class SignUp extends React.Component {
       this.state.email.length &&
       this.state.nickname.length &&
       this.state.password.length &&
+      this.state.doubleCheckPw.length &&
+      this.state.doubleCheckPw === this.state.password &&
       this.state.mobile.length
     ) {
+      const config = {
+        header: { "content-type": "multipart/form-data" },
+      };
       axios
-        .post("https://api.mystar-story.com/user/signup", NewUserInfo)
+        .post("https://api.mystar-story.com/user/signup", NewUserInfo, config)
         .then((respoense) => {
           alert(respoense.data);
           this.props.redirectToSignIn(); // 회원가입 완료 후 로그인 모달창으로 돌아가!
@@ -221,9 +293,20 @@ class SignUp extends React.Component {
   //   this.handleClickAddNewUserInfo
   // }
 
+  componentDidMount() {
+
+  }
+
   render() {
     console.log("BeforeLogin에서 내려 온 회원가입 프롭스", this.props);
     console.log("회원가입: 새로 할당된 state", this.state);
+    console.log("file!!!!!!", this.state.file)
+    // let profile_preview = null;
+    let profile_preview = <img className="profile_img" src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진 허허 안나오네" />;
+    if (this.state.file !== '') {
+      profile_preview = <img className='profile_img' src={this.state.previewURL}></img>
+    }
+
     return (
       <div>
         {this.props.isOpen === true ? (
@@ -238,7 +321,6 @@ class SignUp extends React.Component {
 
               {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
-              <div> 테스트중입니다. </div>
 
               <div className="signUp_box">
                 {/* -------------------------- 연락처 입력 칸 -------------------------*/}
@@ -246,6 +328,33 @@ class SignUp extends React.Component {
                 <div className="local_new_user">
                   <div className="userInfo_input_container">
                     <div className="user_title_signUp">NEW USER</div>
+                    <form id="myForm">
+                      <div className="box_img">
+                        <label>
+                          <div className="add_profile_box_1">
+                            <div className="add_profile_box_2">
+                              <BiCamera
+                                className="add_profile"
+                              />
+                            </div>
+                          </div>
+                          {/* <img
+                            className="profile_img"
+                            src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진"
+                          /> */}
+                          {profile_preview}
+                          <input type="file"
+                            accept="image/jpg,image/png,image/jpeg,image/gif"
+                            id="myprofile"
+                            name="myprofile"
+                            onChange={this.handleprofileOnChange}
+                          />
+                        </label>
+
+
+                        {/* </input> */}
+                      </div>
+                    </form>
 
                     <div className="email_div">
                       {/* <span>이메일</span> */}
@@ -282,6 +391,19 @@ class SignUp extends React.Component {
                       />
                       <div className="text_style_SignUp">
                         {this.state.errMsgOfPasswordBlanks}
+                      </div>
+                    </div>
+
+                    <div className="password_div">
+                      <input
+                        className="control_margin_top"
+                        type="password"
+                        placeholder="비밀번호를 다시 입력해주세요."
+                        onChange={this.handleInputValue("doubleCheckPw")}
+                      />
+                      <div className="text_style_SignUp">
+                        {this.state.errMsgOfdoubleCheckPw}
+                        {this.state.errMsgOfdoubleCheckPwBlanks}
                       </div>
                     </div>
 
