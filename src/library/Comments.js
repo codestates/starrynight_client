@@ -130,9 +130,9 @@ class Comments extends Component {
     });
   };
 
-  stars = () => {
-    console.log(this.props.imgData.location);
-  };
+  // stars = () => {
+  //   console.log(this.props.imgData.location);
+  // };
 
   // 모달 창 닫기
   handleModalClose = () => {
@@ -194,10 +194,41 @@ class Comments extends Component {
   };
 
   // 좋아요 클릭
-  handleFavoriteClick = () => {
+  handleFavoriteClickOpen = () => {
     this.setState({
-      isFavorite: !this.state.isFavorite,
+      isFavorite: true,
     });
+    let url = `https://api.mystar-story.com/makelike`;
+    axios
+      .post(url, {
+        photoId: this.state.imgData.id,
+        photoPath: this.state.imgData.photoPath,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // 좋아요 취소
+  handleFavoriteClickClose = () => {
+    this.setState({
+      isFavorite: false,
+    });
+    let url = `https://api.mystar-story.com/cancellike`;
+    axios
+      .post(url, {
+        photoId: this.state.imgData.id,
+        photoPath: this.state.imgData.photoPath,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -307,11 +338,17 @@ class Comments extends Component {
               >
                 별
               </button> */}
-              <span onClick={this.handleFavoriteClick}>
+              <span>
                 {this.state.isFavorite === true ? (
-                  <MdStar className="favorite" />
+                  <MdStar
+                    className="favorite"
+                    onClick={this.handleFavoriteClickClose}
+                  />
                 ) : (
-                  <MdStarBorder className="favoriteBorder" />
+                  <MdStarBorder
+                    className="favoriteBorder"
+                    onClick={this.handleFavoriteClickOpen}
+                  />
                 )}
               </span>
             </div>
