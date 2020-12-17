@@ -30,13 +30,15 @@ class RemovePhoto extends Component {
         data: {
           id: this.props.photoId,
         },
+        // withCredentials: true,
       })
       .then((res) => {
-        alert(res);
+        alert("사진이 삭제되었습니다.");
         window.location.replace("/");
       })
       .catch((err) => {
         alert(err.response.data);
+<<<<<<< HEAD
       });
     // axios.delete(`https://api.mystar-story.com/${this.props.photoId}/delete`, )
 
@@ -55,6 +57,10 @@ class RemovePhoto extends Component {
     //   .catch((err) => {
     //     alert(err);
     //   });
+=======
+        window.location.replace("/");
+      });
+>>>>>>> 34b32aad618ef9097eb83548fe3e9c5ac1d0fe95
   };
 
   render() {

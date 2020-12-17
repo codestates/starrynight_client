@@ -54,12 +54,12 @@
   font-weight: bold;
 }
 
-.modifyPhotoName {
+.modifyPhotoHashtag {
   width: 70%;
 }
 
-.modifyPhotoNameBtn {
-  width: 10%;
+.modifyPhotoHashtagBtn {
+  width: 13%;
   font-size: 15px;
   font-weight: bold;
   color: white;
@@ -113,6 +113,7 @@
 }
 
 .modifyBtn {
+  display: inline-block;
   width: 70px;
   height: 30px;
   font-size: 15px;
@@ -159,18 +160,20 @@
 .favorite_div {
   position: absolute;
   display: block;
-  bottom: 45%;
+  bottom: 43%;
   left: 0%;
 }
 
-.favorite {
-  width: 40px;
-  height: 30px;
-  font-size: 15px;
+.favoriteBorder {
+  color: rgb(0, 0, 0);
+  font-size: 40px;
   font-weight: bold;
-  color: white;
-  background-color: rgb(97, 69, 163);
-  border-radius: 10px;
+}
+
+.favorite {
+  color: rgb(252, 99, 11);
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .commentDiv {
@@ -181,20 +184,18 @@
   height: 30%;
 }
 
+.commentWriter {
+  width: 80%;
+}
+
 .commentBtn {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  height: 20%;
-  top: 10px;
   font-size: 15px;
   font-weight: bold;
   text-align: center;
   color: white;
   background-color: rgb(97, 69, 163);
   border-radius: 10px;
+  width: 20%;
 }
 
 .comments {

@@ -4,6 +4,8 @@ const axios = require("axios").default;
 import RemovePhoto from "./RemovePhoto";
 import RemoveComment from "./RemoveComment";
 import KakaoMap from "../KakaoMap";
+import { MdStarBorder } from "react-icons/md";
+import { MdStar } from "react-icons/md";
 
 let fakeData = {
   id: 1,
@@ -51,26 +53,64 @@ class Comments extends Component {
       imgData: { ...fakeData },
       isRemovePhotoOpen: false,
       isRemoveCommentOpen: false,
+      isFavorite: false,
       infoOpen: false,
+      comment: "",
+      commentId: "",
+      writeComment: "",
+      hashTag: "",
     };
   }
 
-  // 타이틀 수정 페이지 열기
+  // 해시태그 수정 페이지 열기
   handleModifyInfo = () => {
     this.setState({
       infoOpen: !this.state.infoOpen,
     });
     // console.log(!this.state.infoOpen);
+    let btn = document.querySelector(".modifyBtn");
+    btn.style.display = "none";
   };
 
-  // 타이틀 수정 완료(axios 보내기, 수정 반영한 결과 출력)
+  // 변경하는 해시태그 내용을 state에 저장
+  handleModifyInfoChange = (e) => {
+    this.setState({
+      hashTag: e.target.value,
+    });
+    console.log("hashTag: ", this.state.hashTag);
+  };
+
+  // 해시태그 수정 완료(axios 보내기, 수정 반영한 결과 출력)
   completeModifyInfo = () => {
     // onClick시 axios 요청
+    // let test = [
+    //   { subject: "#지금" },
+    //   { subject: "#바꾸고" },
+    //   { subject: "#있습니다." },
+    // ];
+
+    let hashtag = this.state.hashTag.split(" ");
+
+    let url = `https://api.mystar-story.com/${this.state.imgData.id}/modify`;
+    axios
+      .patch(url, {
+        hashtags: hashtag,
+        id: this.state.imgData.id,
+      })
+      .then((res) => {
+        alert("해시태그를 수정했습니다.");
+        this.setState({
+          infoOpen: false,
+        });
+        console.log("타이틀 수정 완료");
+        let btn = document.querySelector(".modifyBtn");
+        btn.style.display = "inline-block";
+        this.afterRemoveComment();
+      })
+      .catch((err) => {
+        alert(err);
+      });
     // <input type="text" />을 다시 photoTitle로
-    this.setState({
-      infoOpen: false,
-    });
-    console.log("타이틀 수정 완료");
   };
 
   componentDidMount() {
@@ -83,9 +123,20 @@ class Comments extends Component {
     });
   }
 
-  stars = () => {
-    console.log(this.props.imgData.location);
+  // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기
+  afterRemoveComment = () => {
+    let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
+    axios.get(url).then((data) => {
+      this.setState({
+        imgData: data.data,
+      });
+      console.log(this.state.imgData);
+    });
   };
+
+  // stars = () => {
+  //   console.log(this.props.imgData.location);
+  // };
 
   // 모달 창 닫기
   handleModalClose = () => {
@@ -104,10 +155,84 @@ class Comments extends Component {
   };
 
   // 댓글 삭제 모달 실행
-  removeCommentControl = () => {
+  removeCommentOpen = (a, b) => {
     this.setState({
-      isRemoveCommentOpen: !this.state.isRemoveCommentOpen,
+      isRemoveCommentOpen: true,
+      comment: a,
+      commentId: b,
     });
+  };
+
+  // 댓글 삭제 모달 끄기
+  removeCommentClose = () => {
+    this.setState({
+      isRemoveCommentOpen: false,
+    });
+  };
+
+  // 입력 댓글 state에 저장
+  handleCommentOnchange = (e) => {
+    this.setState({
+      writeComment: e.target.value,
+    });
+    console.log(this.state.writeComment);
+  };
+
+  // 댓글 전송
+  handleMakeComment = () => {
+    console.log(this.state.writeComment);
+    let url = "https://api.mystar-story.com/makecomment";
+    if (this.state.writeComment.length === 0) {
+      alert("댓글을 입력해주세요.");
+    } else {
+      axios
+        .post(url, {
+          photoPath: this.state.imgData.photoPath,
+          comment: this.state.writeComment,
+        })
+        .then((res) => {
+          alert("댓글이 등록되었습니다.");
+          this.afterRemoveComment();
+        });
+    }
+  };
+
+  // 좋아요 클릭
+  handleFavoriteClickOpen = () => {
+    this.setState({
+      isFavorite: true,
+    });
+    let url = `https://api.mystar-story.com/makelike`;
+    axios
+      .post(url, {
+        photoId: this.state.imgData.id,
+        photoPath: this.state.imgData.photoPath,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // 좋아요 취소
+  handleFavoriteClickClose = () => {
+    this.setState({
+      isFavorite: false,
+    });
+    let url = `https://api.mystar-story.com/cancellike`;
+    axios
+      .post(url, {
+        photoId: this.state.imgData.id,
+        photoPath: this.state.imgData.photoPath,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -116,7 +241,11 @@ class Comments extends Component {
         {/* ------------------댓글 삭제 모달------------------ */}
         <RemoveComment
           isRemoveCommentOpen={this.state.isRemoveCommentOpen}
-          removeCommentControl={this.removeCommentControl}
+          removeCommentClose={this.removeCommentClose}
+          comment={this.state.comment}
+          commentId={this.state.commentId}
+          photoId={this.state.imgData.id}
+          afterRemoveComment={this.afterRemoveComment}
         />
         {/* ------------------사진 삭제 모달------------------ */}
         <RemovePhoto
@@ -129,25 +258,7 @@ class Comments extends Component {
         <div className="modalContent">
           <div className="modalContent_Left">
             {/* ------------------name------------------ */}
-            <div className="photoName">
-              {this.state.infoOpen === true ? (
-                <div>
-                  <input
-                    type="text"
-                    className="modifyPhotoName"
-                    value={this.state.imgData.photoTitle}
-                  />
-                  <button
-                    className="modifyPhotoNameBtn"
-                    onClick={this.completeModifyInfo}
-                  >
-                    수정
-                  </button>
-                </div>
-              ) : (
-                this.state.imgData.photoTitle
-              )}
-            </div>
+            <div className="photoName">{this.state.imgData.photoTitle}</div>
             {/* ------------------photo------------------ */}
             <img
               className="selectPhoto"
@@ -156,9 +267,26 @@ class Comments extends Component {
             />
             {/* ------------------hashTag------------------ */}
             <div className="hashTag">
-              {this.state.imgData.hashtags.map((res) => {
-                return <span>{res.subject}</span>;
-              })}
+              {this.state.infoOpen === true ? (
+                <div>
+                  <input
+                    type="text"
+                    className="modifyPhotoHashtag"
+                    placeholder="#태그 #태그 형식으로 입력"
+                    onChange={this.handleModifyInfoChange}
+                  />
+                  <button
+                    className="modifyPhotoHashtagBtn"
+                    onClick={this.completeModifyInfo}
+                  >
+                    수정완료
+                  </button>
+                </div>
+              ) : (
+                this.state.imgData.hashtags.map((res) => {
+                  return <span>{res.subject}</span>;
+                })
+              )}
             </div>
             {/* <div className="hashTag">
               <span>test</span>
@@ -193,16 +321,40 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              <button className="HowToGo">How to go</button>
+              {/* <button className="HowToGo">How to go</button> */}
+              {/* <a
+                href={`https://map.kakao.com/link/to/${
+                  this.state.imgData.location
+                },${window.sessionStorage.current
+                  .split("")
+                  .slice(-(window.sessionStorage.current.length - 1), -1)
+                  .map((el) => (el !== " " ? el : null))
+                  .join("")}`}
+                target="_blank"
+              >
+                <button className="HowToGo">How to go</button>
+              </a> */}
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
-              <button
-                className="favorite"
+              {/* <button
                 // onClick={() => console.log(this.props.imgData.location)}
               >
                 별
-              </button>
+              </button> */}
+              <span>
+                {this.state.isFavorite === true ? (
+                  <MdStar
+                    className="favorite"
+                    onClick={this.handleFavoriteClickClose}
+                  />
+                ) : (
+                  <MdStarBorder
+                    className="favoriteBorder"
+                    onClick={this.handleFavoriteClickOpen}
+                  />
+                )}
+              </span>
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
@@ -212,7 +364,7 @@ class Comments extends Component {
                     첫번째 댓글을 남겨주세요.
                   </span>
                 ) : (
-                  this.state.imgData.replies.map((data) => {
+                  this.state.imgData.replies.map((data, index) => {
                     return (
                       <div className="comment">
                         <img
@@ -224,8 +376,13 @@ class Comments extends Component {
                         <span className="commentDate">{data.date}</span>
                         <div className="commentComment">{data.comment}</div>
                         <span className="commentRemove">
-                          <button>수정</button>
-                          <button onClick={this.removeCommentControl}>
+                          <button
+                            className="testButton"
+                            name={index}
+                            onClick={() =>
+                              this.removeCommentOpen(data.comment, data.id)
+                            }
+                          >
                             삭제
                           </button>
                         </span>
@@ -234,7 +391,19 @@ class Comments extends Component {
                   })
                 )}
               </div>
-              <button className="commentBtn">메시지를 입력하세요.</button>
+              {/* 댓글 입력 기능 */}
+              {/* <button className="commentBtn">메시지를 입력하세요.</button> */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="댓글을 입력하세요."
+                  className="commentWriter"
+                  onChange={this.handleCommentOnchange}
+                />
+                <button className="commentBtn" onClick={this.handleMakeComment}>
+                  등록
+                </button>
+              </div>
             </div>
           </div>
         </div>
