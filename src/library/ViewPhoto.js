@@ -38,15 +38,16 @@ class ViewPhoto extends Component {
           <Comments
             isCommentId={this.state.isCommentId}
             handleModalClose={this.handleModalClose}
+            imgData={this.state.imgData}
           />
         )}
-        {this.props.isAllOpen && <All handleModalOpen={this.handleModalOpen} />}
         {this.props.isFavoriteOpen && (
           <Favorite handleModalOpen={this.handleModalOpen} />
         )}
         {this.props.isGalleryOpen && (
           <Gallery handleModalOpen={this.handleModalOpen} />
         )}
+        {this.props.isAllOpen && <All handleModalOpen={this.handleModalOpen} />}
       </div>
     );
   }
