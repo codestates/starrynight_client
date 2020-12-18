@@ -427,7 +427,9 @@
         animation-name: smoky;
         text-shadow: whitesmoke;
         animation-duration: 5s;
+        animation-delay: 1s;
         animation-fill-mode: both;
+        
         // animation: smoky 5s 3s both;
 
         // animation-delay: 0;
@@ -463,7 +465,7 @@
         text-shadow: whitesmoke;
         // animation: smoky3 5s 0 1s both;
         animation-duration: 5s;
-        animation-delay: 6s;
+        animation-delay: 5s;
         animation-fill-mode: both;
         // animation: name duration timing-function delay iteration-count direction fill-mode;
 
