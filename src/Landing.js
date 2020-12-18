@@ -7,7 +7,7 @@ import { FiChevronDown } from "react-icons/fi";
 
 const Landing = () => {
 
-  const scrollToTop = () => {
+  const scrollToMain = () => {
     document.querySelector(".flex").scrollIntoView({ behavior: "smooth" });
     // window.scrollIntoView({ behavior: 'smooth' });
     // let location1 = document.querySelector("#nav").offsetTop;
@@ -63,11 +63,15 @@ const Landing = () => {
       </video>
 
       <div className="landing_text">
-        별이 빛나는 밤에
+        <div className="text_box">
+          <div className="landing_text_intro_1"><span>반</span><span>짝</span><span>이</span><span>는</span><span>&nbsp;</span><span>밤</span><span>하</span><span>늘</span><span>의</span><span>&nbsp;</span><span>별</span><span>처</span><span>럼</span><span>,</span></div>
+          <div className="landing_text_intro_2"><span>셔</span><span>터</span><span>&nbsp;</span><span>속</span><span>에</span><span>&nbsp;</span><span>빛</span><span>나</span><span>는</span><span>&nbsp;</span><span>당</span><span>신</span><span>의</span><span>&nbsp;</span><span>모</span><span>든</span><span>&nbsp;</span><span>순</span><span>간</span><span>&nbsp;</span><span>-</span></div>
+          <div className="landing_text_intro_3"><span>나</span><span>랑</span><span>&nbsp;</span><span>별</span><span>보</span><span>러</span><span>&nbsp;</span><span>가</span><span>지</span><span>&nbsp;</span><span>않</span><span>을</span><span>래</span><span>?</span></div>
+        </div>
       </div>
       <div
         className="scrollDown"
-        onClick={scrollToTop}
+        onClick={scrollToMain}
       >
         <FiChevronDown />
       </div>
