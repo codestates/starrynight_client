@@ -326,9 +326,6 @@ class Comments extends Component {
                 })
               )}
             </div>
-            {/* <div className="hashTag">
-              <span>test</span>
-            </div> */}
             {/* ------------------userInfo(userFace, userName)------------------ */}
             <div className="userInfo">
               <img
@@ -338,14 +335,16 @@ class Comments extends Component {
               <span className="userName">{this.state.imgData.writer}</span>
             </div>
             {/* ------------------수정버튼, 삭제버튼------------------ */}
-            <div className="btns">
-              <button className="modifyBtn" onClick={this.handleModifyInfo}>
-                수정
-              </button>
-              <button className="deleteBtn" onClick={this.removePhotoControl}>
-                삭제
-              </button>
-            </div>
+            {this.props.isGalleryOpen && (
+              <div className="btns">
+                <button className="modifyBtn" onClick={this.handleModifyInfo}>
+                  수정
+                </button>
+                <button className="deleteBtn" onClick={this.removePhotoControl}>
+                  삭제
+                </button>
+              </div>
+            )}
           </div>
           <div className="modalContent_Right">
             {/* ------------------close버튼------------------ */}
@@ -359,8 +358,7 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              {/* <button className="HowToGo">How to go</button> */}
-              {/* <a
+              <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
                 },${window.sessionStorage.current
@@ -371,7 +369,7 @@ class Comments extends Component {
                 target="_blank"
               >
                 <button className="HowToGo">How to go</button>
-              </a> */}
+              </a>
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
