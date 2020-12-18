@@ -336,10 +336,10 @@
 
 
 //-------------ver2------------------
-@font-face {
-  font-family: yleeFont;
-  src: url("../font/ylee_Mortal_Heart.ttf")
-}
+// @font-face {
+//   font-family: yleeFont;
+//   src: url("../font/ylee_Mortal_Heart.ttf")
+// }
 
 
 .video_box {
@@ -362,14 +362,17 @@
   
   
   .landing_text {
-    font-family: yleeFont;
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;  // 기울기 설정
+
     // position: relative;
     top:0;
     width: 100%;
     height: 100%;
     // left: 50%;
 
-    color: whitesmoke;
+    // color: whitesmoke;
+    color: transparent;
     // padding: 20%;
     // padding-right: 25%;
     // padding-left: 25%;
@@ -381,54 +384,74 @@
       position: absolute;
       
       height: 70%;
-      top: 50%;
-      right: 50%;
-      transform: translate(+50%, -50%);
+      // top: 50%;
+      // right: 50%;
+      top: 45%;
+      
+      right: 450px;
+      // transform: translate(+50%, -50%);
+      transform: translateY(-50%);
       
       writing-mode: vertical-lr;
       text-orientation: upright;
       text-align: center;
 
       .brackets_top {
-        position: absolute;
+        color: whitesmoke;
+        // position: absolute;
         // top: 50%;
         // right: 50%;
         // transform: translate(-50%, +50%);
         font-size: 3rem;
-        font-weight: bold;
+        // font-weight: bold;
         // text-align: center;
         margin-bottom: 20px;
-        transform: rotate(90deg);
+        // transform: rotate(90deg);
 
         animation-name: brackets_top1;
         animation-duration: 2s;
-
+        animation-fill-mode: forwards;
       }
 
       .landing_text_intro_1 {
+        // color: whitesmoke;
         // display: flex;
         // margin-top: 7%;
         // position: absolute;
         font-size: 1.8rem;
-        font-weight: bold;
+        // font-weight: bold;
         // text-align: right;
         margin-bottom: 20px;
         margin-left: 20px;
         
-        
+        animation-name: smoky;
+        text-shadow: whitesmoke;
+        animation-duration: 5s;
+        animation-fill-mode: both;
+        // animation: smoky 5s 3s both;
+
+        // animation-delay: 0;
 
       }
       .landing_text_intro_2 {
+        // color: whitesmoke;
         font-size: 1.8rem;
-        font-weight: bold;
+        // font-weight: bold;
         // text-align: right;
         margin-bottom: 20px;
         margin-left: 20px;
-
+        
+        animation-name: smoky;
+        text-shadow: whitesmoke;
+        animation-duration: 5s;
+        // animation: smoky2 5s 3s both;
+        animation-delay: 3s;
+        animation-fill-mode: both;
       }
       .landing_text_intro_3 {
+        // color: whitesmoke;
         font-size: 1.8rem;
-        font-weight: bold;
+        // font-weight: bold;
         // text-align: center;
         // display: flex;
         margin-right: 10px;
@@ -436,33 +459,43 @@
         margin-bottom: 20px;
         margin-left: 20px;
 
+        animation-name: smoky;
+        text-shadow: whitesmoke;
+        // animation: smoky3 5s 0 1s both;
+        animation-duration: 5s;
+        animation-delay: 6s;
+        animation-fill-mode: both;
+        // animation: name duration timing-function delay iteration-count direction fill-mode;
 
       }
-      .landing_text_intro_4 {
-        font-size: 1.8rem;
-        font-weight: bold;
-        // text-align: center;
-        // margin-top: 125px;
-        margin-right: 10px;
-        margin-bottom: 20px;
-        margin-left: 20px;
+      // .landing_text_intro_4 {
+      //   color: whitesmoke;
+      //   font-size: 1.8rem;
+      //   // font-weight: bold;
+      //   // text-align: center;
+      //   // margin-top: 125px;
+      //   margin-right: 10px;
+      //   margin-bottom: 20px;
+      //   margin-left: 20px;
 
-      }
+      // }
       .brackets_bottom {
+        color: whitesmoke;
         font-size: 3rem;
-        font-weight: bold;
+        // font-weight: bold;
         text-align: center;
         margin-bottom: 20px;
         transform: rotate(90deg);
 
         animation-name: brackets_top2;
         animation-duration: 2s;
+        animation-fill-mode: both;
       }
 
       @keyframes brackets_top1 {
         from {
           // position: absolute;
-          transform: rotate(90deg);
+          // transform: rotate(90deg);
           top: 50%;
           right: 50%;
           transform: translate(+50%, -50%);
@@ -477,20 +510,79 @@
       }
       @keyframes brackets_top2 {
         from {
-          // position: absolute;
+          position: absolute;
           transform: rotate(90deg);
           top: 50%;
           right: 50%;
           transform: translate(+50%, -50%);
         }
         to {
-          // position: absolute;
+          position: absolute;
           transform: rotate(90deg);
-          top: 30%;
+          top: 80%;
           right: 50%;
           transform: translateX(+50%);
         }
       }
+
+
+      @keyframes smoky {
+        from {
+          // color: whitesmoke;
+          text-shadow: 0 0 40px whitesmoke;
+          opacity: 0;
+        }
+        to {
+          // transform: 
+          //   translate3d(15rem, -8rem, 0)
+          //   rotate(-40deg)
+          //   skewX(70deg)
+          //   scale(1.5);
+          color: whitesmoke;
+          text-shadow: 0 0 10px whitesmoke;
+          opacity: 1;
+        }
+      }
+      @keyframes smoky2 {
+        from {
+          color: whitesmoke;
+          text-shadow: 0 0 40px whitesmoke;
+          opacity: 0;
+        }
+        to {
+          // transform: 
+          //   translate3d(15rem, -8rem, 0)
+          //   rotate(-40deg)
+          //   skewX(70deg)
+          //   scale(1.5);
+          color: whitesmoke;
+          text-shadow: 0 0 10px whitesmoke;
+          opacity: 1;
+        }
+      }
+      @keyframes smoky3 {
+        from {
+          color: whitesmoke;
+          text-shadow: 0 0 40px whitesmoke;
+          opacity: 0;
+        }
+        to {
+          // transform: 
+          //   translate3d(15rem, -8rem, 0)
+          //   rotate(-40deg)
+          //   skewX(70deg)
+          //   scale(1.5);
+          color: whitesmoke;
+          text-shadow: 0 0 10px whitesmoke;
+          opacity: 1;
+        }
+      }
+              // @for $item from 1 through 21 {
+              //   span:nth-of-type(#{$item}){ 
+              //     animation-delay: #{(3 + ($item/10))}s; 
+              //   }
+              // } 
+              
     }
   }
 
