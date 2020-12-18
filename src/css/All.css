@@ -13,6 +13,18 @@
   padding: 0 40px;
 }
 
+.flex_Gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 40px;
+}
+
+.flex_Favorite {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 40px;
+}
+
 .photo {
   cursor: pointer;
 }

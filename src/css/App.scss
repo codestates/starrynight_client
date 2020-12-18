@@ -26,7 +26,7 @@ figure {
 .scrolledsection {
   position: relative;
   scroll-snap-align: start;
-  height: 110vh;
+  height: 104.5vh;
   background-color: $dark;
 
   &:nth-child(2) {
@@ -116,4 +116,3 @@ figure {
     }
   }
 }
-
