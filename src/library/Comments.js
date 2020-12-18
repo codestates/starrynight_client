@@ -139,7 +139,7 @@ class Comments extends Component {
     this.setState({
       isFavorite: this.state.imgData.favorite,
     });
-    console.log("isFavorite: ", this.state.isFavorite);
+    // console.log("isFavorite: ", this.state.isFavorite);
   };
 
   // 모달 창 닫기
