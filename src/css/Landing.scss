@@ -31,6 +31,311 @@
 //   position: relative;
 // }
 
+
+//-------------ver1------------------
+// @font-face {
+//   font-family: yleeFont;
+//   src: url("../font/ylee_Mortal_Heart.ttf")
+// }
+
+
+// .video_box {
+  
+//   // color: white;
+//   width: 100%;
+//   height: 100%;
+//   overflow: hidden;
+//   margin: 0px auto;
+//   position: relative;
+//   z-index: 1;
+
+//   // text-align: center;
+//   // 가로화면 꽉 차게
+//   // video {
+//   //   width: 100%;
+//   // }
+  
+//   .landing_text {
+//     font-family: yleeFont;
+//     position: absolute;
+//     top: 0%;
+//     width: 100%;
+//     height: 100%;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     padding: 2%;
+//     // margin: auto;
+//     z-index: 2;
+//     display: flex;
+//     // // align-content: center;
+//     // justify-content: center;
+//     // // right: 0;
+//     overflow: hidden;
+//     // color: transparent;
+//     color: white;
+//     backface-visibility: hidden;
+    
+//     .text_box {
+//       margin: auto;
+      
+//       .landing_text_intro_1 {
+//         font-size: 3rem;
+//         text-align: right;
+//         margin-bottom: 20px;
+        
+//         // span {
+//         //   display: inline-block;
+//         //   text-shadow: 0 0 0 whitesmoke;
+//         //   animation: smoky 5s 3s both;
+//         // }
+//       }
+//       .landing_text_intro_2 {
+//         font-size: 2rem;
+//         text-align: right;
+//         margin-bottom: 20px;
+        
+//         // span {
+//         //   display: inline-block;
+//         //   text-shadow: whitesmoke;
+//         //   animation: smoky 5s 3s both;
+//         // }
+//         // span:nth-child(even) {
+//         //   animation-name: smoky-mirror;
+//         // }
+//       }
+//       .landing_text_intro_3 {
+//         font-size: 1rem;
+//         text-align: right;
+//         margin-right: 10px;
+//         margin-bottom: 20px;
+
+//         // span {
+//         //   display: inline-block;
+//         //   text-shadow: whitesmoke;
+//         //   animation: 5s 3s both;
+//         // }
+//       }
+//       span {
+//         display: inline-block;
+//         text-shadow: whitesmoke;
+//         animation: smoky 5s 3s both;
+//       }
+//       span:nth-child(even) {
+//         animation-name: smoky-mirror;
+//       }
+
+//       @keyframes smoky {
+//         60% {
+//           text-shadow: 0 0 40px whitesmoke;
+//         }
+//         to {
+//           transform: 
+//             translate3d(15rem, -8rem, 0)
+//             rotate(-40deg)
+//             skewX(70deg)
+//             scale(1.5);
+//           text-shadow: 0 0 20px whitesmoke;
+//           opacity: 0;
+//         }
+//       }
+
+//       @keyframes smoky-mirror {
+//         60% {
+//           text-shadow: 0 0 40px whitesmoke;
+//         }
+//         to {
+//           transform: 
+//             translate3d(18rem, -8rem, 0)
+//             rotate(-40deg)
+//             skew(-70deg)
+//             scale(2);
+//           text-shadow: 0 0 20px whitesmoke;
+//           opacity: 0;
+//         }
+//       }
+//     }
+//   }
+  
+//   .scrollDown {
+//     position: absolute;
+//     font-size: 2.5rem;
+//     color: white;
+//     top: 85%;
+//     left: 48.95%;
+
+//     &:hover {
+//       cursor: pointer;
+//       width: 100%;
+//       height: 100%;
+//       left: unset;
+//       text-align: center;
+//       // background: rgba(0, 0, 5, 0.24);
+      
+//       background: linear-gradient(to top, black,90%, rgba(0, 0, 0, 0));
+//     }
+//   }
+
+//   #test {
+//     position: absolute;
+//     top: 98%;
+//     width: 100%;
+//     text-align: center;
+//     color: whitesmoke;
+    
+//   }
+
+// }
+
+//----------------ver 2
+
+// * {
+//   box-sizing: border-box;
+// }
+
+// html,
+// body,
+// #root {
+//   width: 100%;
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   background-color: white;
+//   -webkit-touch-callout: none;
+//   -webkit-user-select: none;
+//   -khtml-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+// }
+
+// #root {
+//   background: #f0f0f0;
+//   overflow: hidden;
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .script-box {
+//   will-change: width, height, left, top;
+//   position: relative;
+// }
+
+
+//! 기본
+// @font-face {
+//   font-family: yleeFont;
+//   src: url("../font/ylee_Mortal_Heart.ttf")
+// }
+
+
+// .video_box {
+  
+//   color: white;
+//   width: 100%;
+//   height: 100%;
+//   overflow: hidden;
+//   margin: 0px auto;
+//   position: relative;
+//   z-index: 1;
+
+//   // text-align: center;
+//   // 가로화면 꽉 차게
+//   // video {
+//   //   width: 100%;
+//   // }
+  
+//   .landing_text {
+//     font-family: yleeFont;
+//     position: absolute;
+//     top:0%;
+//     width: 100%;
+//     height: 100%;
+//     left: 50%;
+
+//     padding: 2%;
+//     // margin: auto;
+ 
+    
+//     .text_box {
+//       margin: auto;
+      
+//       .landing_text_intro_1 {
+//         font-size: 3rem;
+//         text-align: right;
+//         margin-bottom: 20px;
+        
+//         // span {
+//         //   display: inline-block;
+//         //   text-shadow: 0 0 0 whitesmoke;
+//         //   animation: smoky 5s 3s both;
+//         // }
+//       }
+//       .landing_text_intro_2 {
+//         font-size: 2rem;
+//         text-align: right;
+//         margin-bottom: 20px;
+        
+//         // span {
+//         //   display: inline-block;
+//         //   text-shadow: whitesmoke;
+//         //   animation: smoky 5s 3s both;
+//         // }
+//         // span:nth-child(even) {
+//         //   animation-name: smoky-mirror;
+//         // }
+//       }
+//       .landing_text_intro_3 {
+//         font-size: 1rem;
+//         text-align: right;
+//         margin-right: 10px;
+//         margin-bottom: 20px;
+
+//         // span {
+//         //   display: inline-block;
+//         //   text-shadow: whitesmoke;
+//         //   animation: 5s 3s both;
+//         // }
+//       }
+
+//     }
+//   }
+  
+//   .scrollDown {
+//     position: absolute;
+//     font-size: 2.5rem;
+//     color: white;
+//     top: 85%;
+//     left: 48.95%;
+
+//     &:hover {
+//       cursor: pointer;
+//       width: 100%;
+//       height: 100%;
+//       left: unset;
+//       text-align: center;
+//       // background: rgba(0, 0, 5, 0.24);
+      
+//       background: linear-gradient(to top, black,90%, rgba(0, 0, 0, 0));
+//     }
+//   }
+
+//   #test {
+//     position: absolute;
+//     top: 98%;
+//     width: 100%;
+//     text-align: center;
+//     color: whitesmoke;
+    
+//   }
+
+// }
+
+// // ----------------ver 2
+
+
+
+//-------------ver2------------------
 @font-face {
   font-family: yleeFont;
   src: url("../font/ylee_Mortal_Heart.ttf")
@@ -52,113 +357,118 @@
   // video {
   //   width: 100%;
   // }
+
+
+  
   
   .landing_text {
     font-family: yleeFont;
-    position: absolute;
-    top:0%;
+    // position: relative;
+    top:0;
     width: 100%;
     height: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 2%;
+    // left: 50%;
+
+    color: whitesmoke;
+    // padding: 20%;
+    // padding-right: 25%;
+    // padding-left: 25%;
     // margin: auto;
-    z-index: 2;
-    display: flex;
-    // // align-content: center;
-    // justify-content: center;
-    // // right: 0;
-    overflow: hidden;
-    // color: transparent;
-    color: white;
-    backface-visibility: hidden;
+ 
     
     .text_box {
-      margin: auto;
       
-      .landing_text_intro_1 {
+      position: absolute;
+      
+      height: 70%;
+      top: 50%;
+      right: 50%;
+      transform: translate(+50%, -50%);
+      
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      text-align: center;
+
+      .brackets_top {
+        position: absolute;
+        // top: 50%;
+        // right: 50%;
+        // transform: translate(-50%, +50%);
         font-size: 3rem;
-        text-align: right;
+        // text-align: center;
         margin-bottom: 20px;
+        transform: rotate(90deg);
+
+        animation-name: brackets_top1;
+        animation-duration: 2s;
+
+      }
+
+      .landing_text_intro_1 {
+        // display: flex;
+        // margin-top: 7%;
+        // position: absolute;
+        font-size: 1.8rem;
+        // text-align: right;
+        margin-bottom: 20px;
+        margin-left: 20px;
         
-        // span {
-        //   display: inline-block;
-        //   text-shadow: 0 0 0 whitesmoke;
-        //   animation: smoky 5s 3s both;
-        // }
+        
+
       }
       .landing_text_intro_2 {
-        font-size: 2rem;
-        text-align: right;
+        font-size: 1.8rem;
+        // text-align: right;
         margin-bottom: 20px;
-        
-        // span {
-        //   display: inline-block;
-        //   text-shadow: whitesmoke;
-        //   animation: smoky 5s 3s both;
-        // }
-        // span:nth-child(even) {
-        //   animation-name: smoky-mirror;
-        // }
+        margin-left: 20px;
+
       }
       .landing_text_intro_3 {
-        font-size: 1rem;
-        text-align: right;
+        font-size: 1.8rem;
+        // text-align: center;
+        // display: flex;
+        margin-right: 10px;
+        // margin-top: 100px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+
+
+      }
+      .landing_text_intro_4 {
+        font-size: 1.8rem;
+        // text-align: center;
+        // margin-top: 125px;
         margin-right: 10px;
         margin-bottom: 20px;
+        margin-left: 20px;
 
-        // span {
-        //   display: inline-block;
-        //   text-shadow: whitesmoke;
-        //   animation: 5s 3s both;
-        // }
       }
-      span {
-        display: inline-block;
-        text-shadow: whitesmoke;
-        animation: smoky 5s 3s both;
-      }
-      span:nth-child(even) {
-        animation-name: smoky-mirror;
+      .brackets_bottom {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 20px;
+        transform: rotate(90deg);
       }
 
-      @keyframes smoky {
-        60% {
-          text-shadow: 0 0 40px whitesmoke;
+      @keyframes brackets_top1 {
+        from {
+          // position: absolute;
+          transform: rotate(90deg);
+          top: 50%;
+          right: 50%;
+          transform: translate(+50%, -50%);
         }
         to {
-          transform: 
-            translate3d(15rem, -8rem, 0)
-            rotate(-40deg)
-            skewX(70deg)
-            scale(1.5);
-          text-shadow: 0 0 20px whitesmoke;
-          opacity: 0;
-        }
-      }
-
-      @keyframes smoky-mirror {
-        60% {
-          text-shadow: 0 0 40px whitesmoke;
-        }
-        to {
-          transform: 
-            translate3d(18rem, -8rem, 0)
-            rotate(-40deg)
-            skew(-70deg)
-            scale(2);
-          text-shadow: 0 0 20px whitesmoke;
-          opacity: 0;
-        }
-      }
-
-      @for $item from 1 through 21 {
-        span:nth-of-type(#{$item}) {
-          animation-delay: #{(3 + ($item/10))}s;
+          // position: absolute;
+          transform: rotate(90deg);
+          top: 30%;
+          right: 50%;
+          transform: translateX(+50%);
         }
       }
     }
   }
+
   
   .scrollDown {
     position: absolute;
@@ -188,4 +498,8 @@
     
   }
 
+
 }
+
+// ----------------ver 2
+

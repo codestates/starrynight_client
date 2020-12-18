@@ -57,16 +57,29 @@ const Landing = () => {
         Hello World!
       </div> */}
       {/* <video playsinline autoplay loop> */}
-      <video muted autoPlay loop className="landing_video">
-        <source src={starsVideo} type="video/mp4" />
-        <strong>귀하의 브라우저는 video tag를 지원하지 않습니다.</strong>
-      </video>
-
+      <div>
+        <video muted autoPlay loop className="landing_video">
+          <source src={starsVideo} type="video/mp4" />
+          <strong>귀하의 브라우저는 video tag를 지원하지 않습니다.</strong>
+        </video>
+      </div>
       <div className="landing_text">
         <div className="text_box">
-          <div className="landing_text_intro_1"><span>반</span><span>짝</span><span>이</span><span>는</span><span>&nbsp;</span><span>밤</span><span>하</span><span>늘</span><span>의</span><span>&nbsp;</span><span>별</span><span>처</span><span>럼</span><span>,</span></div>
+          {/* <div className="landing_text_intro_1"><span>반</span><span>짝</span><span>이</span><span>는</span><span>&nbsp;</span><span>밤</span><span>하</span><span>늘</span><span>의</span><span>&nbsp;</span><span>별</span><span>처</span><span>럼</span><span>,</span></div>
           <div className="landing_text_intro_2"><span>셔</span><span>터</span><span>&nbsp;</span><span>속</span><span>에</span><span>&nbsp;</span><span>빛</span><span>나</span><span>는</span><span>&nbsp;</span><span>당</span><span>신</span><span>의</span><span>&nbsp;</span><span>모</span><span>든</span><span>&nbsp;</span><span>순</span><span>간</span><span>&nbsp;</span><span>-</span></div>
-          <div className="landing_text_intro_3"><span>나</span><span>랑</span><span>&nbsp;</span><span>별</span><span>보</span><span>러</span><span>&nbsp;</span><span>가</span><span>지</span><span>&nbsp;</span><span>않</span><span>을</span><span>래</span><span>?</span></div>
+          <div className="landing_text_intro_3"><span>나</span><span>랑</span><span>&nbsp;</span><span>별</span><span>보</span><span>러</span><span>&nbsp;</span><span>가</span><span>지</span><span>&nbsp;</span><span>않</span><span>을</span><span>래</span><span>?</span></div> */}
+          <div className="brackets_top">[</div>
+          {/* <div className="landing_text_intro_1">반짝이는 밤하늘의 별처럼,</div>
+          <div className="landing_text_intro_2">셔터 속에 빛나는 당신의 모든 순간 -</div> */}
+          {/* <div className="landing_text_intro_3">나랑 별보러 가지 않을래?</div> */}
+
+
+          <div className="landing_text_intro_1">반짝이는 </div>
+          <div className="landing_text_intro_2">밤하늘의 별처럼,</div>
+          <div className="landing_text_intro_3">셔터 속에 빛나는</div>
+          <div className="landing_text_intro_4">당신의 모든 순간..</div>
+
+          <div className="brackets_bottom">]</div>
         </div>
       </div>
       <div
