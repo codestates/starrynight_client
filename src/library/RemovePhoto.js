@@ -35,10 +35,16 @@ class RemovePhoto extends Component {
       .then((res) => {
         alert("사진이 삭제되었습니다.");
         window.location.replace("/");
+        // this.handleRemovePhotoModalClose();
+        // this.props.handleModalClose();
+        // this.props.afterRemoveComment();
       })
       .catch((err) => {
         alert(err.response.data);
         window.location.replace("/");
+        // this.handleRemovePhotoModalClose();
+        // this.props.handleModalClose();
+        // this.props.afterRemoveComment();
       });
   };
 
