@@ -39,6 +39,7 @@ class ViewPhoto extends Component {
             isCommentId={this.state.isCommentId}
             handleModalClose={this.handleModalClose}
             imgData={this.state.imgData}
+            isGalleryOpen={this.props.isGalleryOpen}
           />
         )}
         {this.props.isFavoriteOpen && (
