@@ -31,7 +31,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       isLogin: false,
-      isMypage: true,
+      // isMypage: true,
       isAddPhotoModalOpen: false,
       isAllOpen: true,
       isGalleryOpen: false,
@@ -41,14 +41,14 @@ class Main extends React.Component {
 
   // Gallery & Favorite에서 Main으로 돌아오게 하기.
 
-  returnToMypageFromGallery = () => {
-    //Mypage 끄고
-    //Gellery 활성화
-    this.setState({
-      isMypage: !this.state.isMypage,
-      isGalleryOpen: !this.state.isGalleryOpen
-    })
-  }
+  // returnToMypageFromGallery = () => {
+  //   //Mypage 끄고
+  //   //Gellery 활성화
+  //   this.setState({
+  //     isMypage: !this.state.isMypage,
+  //     isGalleryOpen: !this.state.isGalleryOpen
+  //   })
+  // }
 
 
   // isGalleryOpen을 변환함

@@ -385,7 +385,7 @@
       right: 50%;
       transform: translate(+50%, -50%);
       
-      writing-mode: vertical-rl;
+      writing-mode: vertical-lr;
       text-orientation: upright;
       text-align: center;
 
@@ -395,6 +395,7 @@
         // right: 50%;
         // transform: translate(-50%, +50%);
         font-size: 3rem;
+        font-weight: bold;
         // text-align: center;
         margin-bottom: 20px;
         transform: rotate(90deg);
@@ -409,6 +410,7 @@
         // margin-top: 7%;
         // position: absolute;
         font-size: 1.8rem;
+        font-weight: bold;
         // text-align: right;
         margin-bottom: 20px;
         margin-left: 20px;
@@ -418,6 +420,7 @@
       }
       .landing_text_intro_2 {
         font-size: 1.8rem;
+        font-weight: bold;
         // text-align: right;
         margin-bottom: 20px;
         margin-left: 20px;
@@ -425,6 +428,7 @@
       }
       .landing_text_intro_3 {
         font-size: 1.8rem;
+        font-weight: bold;
         // text-align: center;
         // display: flex;
         margin-right: 10px;
@@ -436,6 +440,7 @@
       }
       .landing_text_intro_4 {
         font-size: 1.8rem;
+        font-weight: bold;
         // text-align: center;
         // margin-top: 125px;
         margin-right: 10px;
@@ -445,12 +450,31 @@
       }
       .brackets_bottom {
         font-size: 3rem;
+        font-weight: bold;
         text-align: center;
         margin-bottom: 20px;
         transform: rotate(90deg);
+
+        animation-name: brackets_top2;
       }
 
       @keyframes brackets_top1 {
+        from {
+          // position: absolute;
+          transform: rotate(90deg);
+          top: 50%;
+          right: 50%;
+          transform: translate(+50%, -50%);
+        }
+        to {
+          // position: absolute;
+          transform: rotate(90deg);
+          top: 30%;
+          right: 50%;
+          transform: translateX(+50%);
+        }
+      }
+      @keyframes brackets_top2 {
         from {
           // position: absolute;
           transform: rotate(90deg);
