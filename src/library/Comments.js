@@ -139,7 +139,7 @@ class Comments extends Component {
     this.setState({
       isFavorite: this.state.imgData.favorite,
     });
-    console.log("isFavorite: ", this.state.isFavorite);
+    // console.log("isFavorite: ", this.state.isFavorite);
   };
 
   // 모달 창 닫기
@@ -289,6 +289,8 @@ class Comments extends Component {
         <RemovePhoto
           isRemovePhotoOpen={this.state.isRemovePhotoOpen}
           removePhotoControl={this.removePhotoControl}
+          handleModalClose={this.handleModalClose}
+          afterRemoveComment={this.afterRemoveComment}
           photoId={this.state.imgData.id}
         />
         {/* ------------------포토뷰모달------------------ */}
@@ -358,7 +360,8 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              <a
+              {/* <button className="HowToGo">How to go</button> */}
+              {/* <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
                 },${window.sessionStorage.current
@@ -369,7 +372,7 @@ class Comments extends Component {
                 target="_blank"
               >
                 <button className="HowToGo">How to go</button>
-              </a>
+              </a> */}
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
