@@ -108,7 +108,7 @@ class Mypage extends React.Component {
           errMsg: error.response.data
         })
       })
-
+    this.handleModifyBtnOfProfileClick()
   }
 
 
@@ -280,13 +280,13 @@ class Mypage extends React.Component {
     //   profile_preview
     // }
 
-
-    console.log("변경될 비밀번호", this.state.password)
-    console.log("변경될 별명", this.state.nickname)
-    console.log("변경될 연락처", this.state.mobile)
-    console.log("마이페이지 프롭", this.props)
-    console.log("마이페이지 state", this.state)
-    console.log("플랫폼 아이디!!!", this.props.currentUserInfo.loginPlatformId)
+    console.log("isModifyBtnProfile", this.state.isModifyBtnProfile)
+    // console.log("변경될 비밀번호", this.state.password)
+    // console.log("변경될 별명", this.state.nickname)
+    // console.log("변경될 연락처", this.state.mobile)
+    // console.log("마이페이지 프롭", this.props)
+    // console.log("마이페이지 state", this.state)
+    // console.log("플랫폼 아이디!!!", this.props.currentUserInfo.loginPlatformId)
     return (
       <div>
         {this.props.isMypageModalOpen === true ?
@@ -316,10 +316,10 @@ class Mypage extends React.Component {
                   {/* -------------------------- 프로필 사진 업로드 칸 -------------------------*/}
 
                   <form>
-                    <div className="profile_img_box" onClick={this.handleModifyBtnOfProfileClick}>
+                    <div className="profile_img_box">
                       <label>
                         <div className="profile_img_box_1">
-                          <div className="profile_img_box_2">
+                          <div className="profile_img_box_2" onClick={this.handleModifyBtnOfProfileClick}>
                             <BiCamera
                               className="modify_profile"
                             />
@@ -333,11 +333,11 @@ class Mypage extends React.Component {
                         {
                           this.state.currentUserInfo.profile !== undefined ?
                             this.state.profile !== "" ?
-                              <img className="profile_img" src={this.state.previewURL} alt="프로필 사진" />
+                              <img className="profile_img" src={this.state.previewURL} alt="프로필 사진" onClick={this.handleModifyBtnOfProfileClick} />
                               :
-                              <img className="profile_img" src={this.state.currentUserInfo.profile} alt="프로필 사진" />
+                              <img className="profile_img" src={this.state.currentUserInfo.profile} alt="프로필 사진" onClick={this.handleModifyBtnOfProfileClick} />
                             :
-                            <img className="profile_img" src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진 허허 안나오네" />
+                            <img className="profile_img" src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진 허허 안나오네" onClick={this.handleModifyBtnOfProfileClick} />
                         }
 
                         {/* {profile_preview} */}
