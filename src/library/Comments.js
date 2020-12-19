@@ -6,13 +6,14 @@ import RemoveComment from "./RemoveComment";
 import KakaoMap from "../KakaoMap";
 import { MdStarBorder } from "react-icons/md";
 import { MdStar } from "react-icons/md";
+import Button from "../menu/Button";
 
 let fakeData = {
   id: 1,
   photoPath:
     "https://s3.ap-northeast-2.amazonaws.com/mystar-story.com/uploadPhotos/img1.jpg",
   photoTitle: "Test Photo1",
-  location: "신촌역 3번출구",
+  location: "동서대학교",
   writer: "Dummy2",
   writerProfilePath: "logologo",
   hashtags: [
@@ -60,7 +61,6 @@ class Comments extends Component {
       writeComment: "",
       hashTag: "",
     };
-    // console.log("comments컴포넌트 함수 : ", this.state);
   }
 
   // 해시태그 수정 페이지 열기
@@ -119,27 +119,18 @@ class Comments extends Component {
       this.setState({
         imgData: data.data,
       });
-      console.log(this.state.imgData.favorite);
     });
-    this.setState({
-      isFavorite: this.state.imgData.favorite,
-    });
-    console.log("isFavorite: ", this.state.isFavorite);
   }
 
-  // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기
+  // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기 = 픽포토를 통한 새로고침
   afterRemoveComment = () => {
     let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
-    axios.get(url).then((data) => {
+    axios.get(url).then((res) => {
       this.setState({
-        imgData: data.data,
+        imgData: res.data,
       });
-      console.log(this.state.imgData);
     });
-    this.setState({
-      isFavorite: this.state.imgData.favorite,
-    });
-    // console.log("isFavorite: ", this.state.isFavorite);
+    console.log("버튼클릭 : ", this.state.imgData);
   };
 
   // 모달 창 닫기
@@ -205,73 +196,30 @@ class Comments extends Component {
     }
   };
 
-  // 좋아요 클릭
-  // handleFavoriteClickOpen = () => {
-  //   this.setState({
-  //     isFavorite: true,
-  //   });
-  //   let url = `https://api.mystar-story.com/makelike`;
-  //   axios
-  //     .post(url, {
-  //       photoId: this.state.imgData.id,
-  //       photoPath: this.state.imgData.photoPath,
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert("좋아요를 눌렀습니다.");
-  //       // this.setState({
-  //       //   imgData: res,
-  //       // });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   this.afterRemoveComment();
-  // };
-
   // 좋아요 on/off
   handleFavoriteClickControl = () => {
+    console.log("beforeClick: ", this.state.imgData.favorite);
     let url = `https://api.mystar-story.com/makelike`;
     axios
       .post(url, {
         photoId: this.state.imgData.id,
-        photoPath: this.state.imgData.photoPath,
       })
       .then((data) => {
-        console.log("좋아요를 눌렀습니다.");
+        console.log(this.state.imgData.favorite);
+        this.afterRemoveComment();
       })
       .catch((err) => {
         alert(err);
       });
-    this.setState({
-      isFavorite: !this.state.isFavorite,
-    });
+    console.log("beforeClick: ", this.state.imgData.favorite);
   };
 
-  // // 좋아요 on/off
-  // handleFavoriteClickControl = () => {
-  //   let url = `https://api.mystar-story.com/makelike`;
-  //   axios
-  //     .post(url, {
-  //       photoId: this.state.imgData.id,
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert("좋아요를 눌렀습니다.");
-  //       // if (window.sessionStorage.favorite) {
-  //       //   window.sessionStorage.setItem(
-  //       //     "favorite",
-  //       //     !window.sessionStorage.favorite
-  //       //   );
-  //       // } else {
-  //       //   window.sessionStorage.setItem("favorite", true);
-  //       // }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   this.afterRemoveComment();
-  // };
+  test = () => {
+    this.setState({
+      location: this.state.imgData.location,
+    });
+    this.afterRemoveComment();
+  };
 
   render() {
     return (
@@ -349,17 +297,25 @@ class Comments extends Component {
             )}
           </div>
           <div className="modalContent_Right">
-            {/* ------------------close버튼------------------ */}
-            {/* <span className="close" onClick={this.handleModalClose}>
-              &times;
-            </span> */}
             {/* ------------------지도------------------ */}
             <div className="mapImg">
-              <KakaoMap place={this.state.imgData.location} />
+              {this.state.imgData.location !== "동서대학교" ? (
+                <KakaoMap place={this.state.imgData.location} />
+              ) : null}
             </div>
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
+              <Button
+                className="HowToGo"
+                // size="small"
+                fullWidth
+                color="black"
+                // outline
+                onClick={this.test}
+              >
+                출사지확인
+              </Button>
               {/* <button className="HowToGo">How to go</button> */}
               {/* <a
                 href={`https://map.kakao.com/link/to/${
@@ -376,7 +332,7 @@ class Comments extends Component {
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
-              {this.state.isFavorite ? (
+              {this.state.imgData.favorite ? (
                 <MdStar
                   className="favorite"
                   onClick={this.handleFavoriteClickControl}
@@ -387,6 +343,9 @@ class Comments extends Component {
                   onClick={this.handleFavoriteClickControl}
                 />
               )}
+              {/* <button onClick={this.handleFavoriteClickControl}>
+                좋아요요청
+              </button> */}
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
