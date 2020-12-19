@@ -6,6 +6,7 @@ import RemoveComment from "./RemoveComment";
 import KakaoMap from "../KakaoMap";
 import { MdStarBorder } from "react-icons/md";
 import { MdStar } from "react-icons/md";
+import Button from "../menu/Button";
 
 let fakeData = {
   id: 1,
@@ -305,11 +306,18 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              <button className="HowToGo" onClick={this.test}>
+              <Button
+                className="HowToGo"
+                // size="small"
+                fullWidth
+                color="black"
+                // outline
+                onClick={this.test}
+              >
                 출사지확인
-              </button>
+              </Button>
               {/* <button className="HowToGo">How to go</button> */}
-              <a
+              {/* <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
                 },${window.sessionStorage.current
@@ -320,7 +328,7 @@ class Comments extends Component {
                 target="_blank"
               >
                 <button className="HowToGo">How to go</button>
-              </a>
+              </a> */}
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">

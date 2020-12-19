@@ -11,22 +11,24 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(127, 127, 127, 0.5);
+  background-color: rgba(127, 127, 127, 0.2);
 }
 
 .modalContent {
   display: block;
   position: fixed;
-  background-color: rgb(220, 220, 220);
+  // background-color: #e0e3da;
+  // background-color: #fffff3;
+  // background-color: #383a3f;
+  background-color: rgb(245, 245, 245);
   z-index: 1;
   width: 60%;
   height: 90%;
   margin-left: 20%;
   top: 5%;
-  border: 2px solid rgb(160, 160, 160);
-  border-radius: 40px;
-  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.4),
-    4px 8px 20px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.2),
+    4px 8px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 .modalContent_Left {
