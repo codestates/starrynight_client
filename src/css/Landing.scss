@@ -571,7 +571,7 @@
     animation-duration: 2s;
     animation-timing-function: linear; // 애니메이션 속도조절
     animation-iteration-count: infinite;
-    // animation-fill-mode: both; ---> 활성화 시키면 애니매이션 반복 작동 안함.
+    // animation-fill-mode: both; ---> 활성화 시키면 애니매이션 infinite반복 작동 안하는 것 같음.
   
 
     &:hover {
@@ -596,13 +596,7 @@
       opacity: 0;
 
     }
-    // 20% {
-    //   color: whitesmoke;
-      
-    //   // transition: ease-in;
-    //   text-shadow: 0 0 40px whitesmoke;
-    //   opacity: 0.2;
-    // }
+
     25%{
       color: whitesmoke;
       
@@ -610,25 +604,12 @@
       text-shadow: 0 0 40px whitesmoke;
       opacity: 0.5;
     }
-    // 40% {
-    //   color: whitesmoke;
-      
-    //   // transition: ease-in;
-    //   text-shadow: 0 0 40px whitesmoke;
-    //   opacity: 0.4;
-    // }
 
     50%{
       color: whitesmoke;
       opacity: 1;
     }
-    // 60% {
-    //   color: whitesmoke;
-      
-    //   // transition: ease-in;
-    //   text-shadow: 0 0 40px whitesmoke;
-    //   opacity: 0.6;
-    // }
+
     75% {
       color: whitesmoke;
       
@@ -636,20 +617,7 @@
       text-shadow: 0 0 40px whitesmoke;
       opacity: 0.5;
     }
-    // 80% {
-    //   color: whitesmoke;
-      
-    //   // transition: ease-in;
-    //   text-shadow: 0 0 40px whitesmoke;
-    //   opacity: 0.8;
-    // }
-    // 90% {
-    //   color: whitesmoke;
-      
-    //   // transition: ease-in;
-    //   text-shadow: 0 0 40px whitesmoke;
-    //   opacity: 0.9;
-    // }
+
     to {
       color: whitesmoke;
       
@@ -658,17 +626,6 @@
       opacity: 0.2;
     }
   }
-
-  #test {
-    position: absolute;
-    top: 98%;
-    width: 100%;
-    text-align: center;
-    color: whitesmoke;
-    
-  }
-
-
 }
 
 // ----------------ver 2
