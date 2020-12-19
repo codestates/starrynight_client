@@ -116,7 +116,8 @@
     }
 
     .nav_link {
-      background-color: white;
+      // background-color: white;
+      background: #e6e9e0;
       color: black;
       display: flex;
       margin-right: 51px;
@@ -129,12 +130,13 @@
 
       top: 12vh;
 
-      width: 17%;
+      width: 20%;
 
       .list {
         display: flex;
-        padding: 5% 9%;
-        font-size: 0.8rem;
+        padding: 8% 35%;
+        
+        font-size: 0.9rem;
         cursor: pointer;
       }
     }
@@ -159,7 +161,8 @@
 
     .nav_link {
       // background: rgba(135, 206, 235, 1);
-      background: white;
+      // background: white;
+      background: #e6e9e0;
       color: black;
       display: flex;
       margin-right: 50px;
@@ -177,8 +180,8 @@
 
       .list {
         display: flex;
-        padding: 5% 9%;
-
+        padding: 11% 9%;
+        
         font-size: 0.8rem;
         cursor: pointer;
       }
