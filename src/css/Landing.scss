@@ -388,7 +388,8 @@
       // right: 50%;
       top: 45%;
       
-      right: 450px;
+      // right: 450px;
+      right: 1050px;
       // transform: translate(+50%, -50%);
       transform: translateY(-50%);
       
@@ -560,19 +561,25 @@
   .scrollDown {
     position: absolute;
     font-size: 2.5rem;
-    color: whitesmoke;
+    // color: whitesmoke;
+    color: transparent;
     top: 85%;
-    right: 510px;
+    // right: 510px;
+    right: 1120px;
     // left: 48.95%;
+    transform: translateY(-150%);
 
 
     animation-name: scoll;
-    animation-delay: 10s;  // 비디오 재생 끝나고 스크롤 아이콘 등장에서 부자연스러움 방지
+    animation-delay: 8s;  // 스크롤 아이콘 등장에서 부자연스러움 방지
+    
     animation-duration: 2s;
     animation-timing-function: linear; // 애니메이션 속도조절
     animation-iteration-count: infinite;
     // animation-fill-mode: both; ---> 활성화 시키면 애니매이션 infinite반복 작동 안하는 것 같음.
   
+
+    // animation-name: pop_up;
 
     &:hover {
       cursor: pointer;
