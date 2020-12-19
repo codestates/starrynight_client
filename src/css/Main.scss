@@ -9,7 +9,8 @@
     cursor: pointer;
     svg {
       font-size: 6rem;
-      color: skyblue;
+      // color: skyblue;
+      color: #383a3f;
     }
   }
 
@@ -45,8 +46,7 @@
 /* ------------Nav ------------------- */
 #nav {
   .nav_div {
-    // background: rgba(0, 0, 0, 0.3);
-    background: #192f6d;
+    background: rgba(4, 4, 4, 0.5);
 
     padding: 0px 20px;
     position: absolute;
@@ -159,7 +159,7 @@
 
     .nav_link {
       // background: rgba(135, 206, 235, 1);
-      background: white;
+      background: rgba(255, 255, 255, 0.808);
       color: black;
       display: flex;
       margin-right: 50px;
