@@ -35,7 +35,7 @@ class RemovePhoto extends Component {
         this.props.afterRemoveComment();
       })
       .catch((err) => {
-        alert(err);
+        alert("해당 사용자가 아닙니다.");
       });
   };
 

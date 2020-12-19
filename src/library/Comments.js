@@ -12,7 +12,7 @@ let fakeData = {
   photoPath:
     "https://s3.ap-northeast-2.amazonaws.com/mystar-story.com/uploadPhotos/img1.jpg",
   photoTitle: "Test Photo1",
-  location: "신촌역 3번출구",
+  location: "동서대학교",
   writer: "Dummy2",
   writerProfilePath: "logologo",
   hashtags: [
@@ -60,7 +60,6 @@ class Comments extends Component {
       writeComment: "",
       hashTag: "",
     };
-    // console.log("comments컴포넌트 함수 : ", this.state);
   }
 
   // 해시태그 수정 페이지 열기
@@ -119,12 +118,10 @@ class Comments extends Component {
       this.setState({
         imgData: data.data,
       });
-      console.log("DidMount_imgData: ", this.state.imgData.favorite);
-      console.log(this.state.imgData);
     });
   }
 
-  // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기
+  // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기 = 픽포토를 통한 새로고침
   afterRemoveComment = () => {
     let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
     axios.get(url).then((res) => {
@@ -132,6 +129,7 @@ class Comments extends Component {
         imgData: res.data,
       });
     });
+    console.log("버튼클릭 : ", this.state.imgData);
   };
 
   // 모달 창 닫기
@@ -199,7 +197,7 @@ class Comments extends Component {
 
   // 좋아요 on/off
   handleFavoriteClickControl = () => {
-    console.log("beforeClick: ", this.state.isFavorite);
+    console.log("beforeClick: ", this.state.imgData.favorite);
     let url = `https://api.mystar-story.com/makelike`;
     axios
       .post(url, {
@@ -212,6 +210,14 @@ class Comments extends Component {
       .catch((err) => {
         alert(err);
       });
+    console.log("beforeClick: ", this.state.imgData.favorite);
+  };
+
+  test = () => {
+    this.setState({
+      location: this.state.imgData.location,
+    });
+    this.afterRemoveComment();
   };
 
   render() {
@@ -290,19 +296,20 @@ class Comments extends Component {
             )}
           </div>
           <div className="modalContent_Right">
-            {/* ------------------close버튼------------------ */}
-            {/* <span className="close" onClick={this.handleModalClose}>
-              &times;
-            </span> */}
             {/* ------------------지도------------------ */}
             <div className="mapImg">
-              <KakaoMap place={this.state.imgData.location} />
+              {this.state.imgData.location !== "동서대학교" ? (
+                <KakaoMap place={this.state.imgData.location} />
+              ) : null}
             </div>
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
+              <button className="HowToGo" onClick={this.test}>
+                출사지확인
+              </button>
               {/* <button className="HowToGo">How to go</button> */}
-              {/* <a
+              <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
                 },${window.sessionStorage.current
@@ -313,7 +320,7 @@ class Comments extends Component {
                 target="_blank"
               >
                 <button className="HowToGo">How to go</button>
-              </a> */}
+              </a>
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
