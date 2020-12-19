@@ -119,27 +119,19 @@ class Comments extends Component {
       this.setState({
         imgData: data.data,
       });
-      console.log(this.state.imgData.favorite);
+      console.log("DidMount_imgData: ", this.state.imgData.favorite);
+      console.log(this.state.imgData);
     });
-    this.setState({
-      isFavorite: this.state.imgData.favorite,
-    });
-    console.log("isFavorite: ", this.state.isFavorite);
   }
 
   // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기
   afterRemoveComment = () => {
     let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
-    axios.get(url).then((data) => {
+    axios.get(url).then((res) => {
       this.setState({
-        imgData: data.data,
+        imgData: res.data,
       });
-      console.log(this.state.imgData);
     });
-    this.setState({
-      isFavorite: this.state.imgData.favorite,
-    });
-    // console.log("isFavorite: ", this.state.isFavorite);
   };
 
   // 모달 창 닫기
@@ -205,73 +197,22 @@ class Comments extends Component {
     }
   };
 
-  // 좋아요 클릭
-  // handleFavoriteClickOpen = () => {
-  //   this.setState({
-  //     isFavorite: true,
-  //   });
-  //   let url = `https://api.mystar-story.com/makelike`;
-  //   axios
-  //     .post(url, {
-  //       photoId: this.state.imgData.id,
-  //       photoPath: this.state.imgData.photoPath,
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert("좋아요를 눌렀습니다.");
-  //       // this.setState({
-  //       //   imgData: res,
-  //       // });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   this.afterRemoveComment();
-  // };
-
   // 좋아요 on/off
   handleFavoriteClickControl = () => {
+    console.log("beforeClick: ", this.state.isFavorite);
     let url = `https://api.mystar-story.com/makelike`;
     axios
       .post(url, {
         photoId: this.state.imgData.id,
-        photoPath: this.state.imgData.photoPath,
       })
       .then((data) => {
-        console.log("좋아요를 눌렀습니다.");
+        console.log(this.state.imgData.favorite);
+        this.afterRemoveComment();
       })
       .catch((err) => {
         alert(err);
       });
-    this.setState({
-      isFavorite: !this.state.isFavorite,
-    });
   };
-
-  // // 좋아요 on/off
-  // handleFavoriteClickControl = () => {
-  //   let url = `https://api.mystar-story.com/makelike`;
-  //   axios
-  //     .post(url, {
-  //       photoId: this.state.imgData.id,
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert("좋아요를 눌렀습니다.");
-  //       // if (window.sessionStorage.favorite) {
-  //       //   window.sessionStorage.setItem(
-  //       //     "favorite",
-  //       //     !window.sessionStorage.favorite
-  //       //   );
-  //       // } else {
-  //       //   window.sessionStorage.setItem("favorite", true);
-  //       // }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   this.afterRemoveComment();
-  // };
 
   render() {
     return (
@@ -376,7 +317,7 @@ class Comments extends Component {
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
-              {this.state.isFavorite ? (
+              {this.state.imgData.favorite ? (
                 <MdStar
                   className="favorite"
                   onClick={this.handleFavoriteClickControl}
@@ -387,6 +328,9 @@ class Comments extends Component {
                   onClick={this.handleFavoriteClickControl}
                 />
               )}
+              {/* <button onClick={this.handleFavoriteClickControl}>
+                좋아요요청
+              </button> */}
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
