@@ -117,7 +117,9 @@
 
     .nav_link {
       // background-color: white;
-      background: #e6e9e0;
+      // background: #e6e9e0;
+      font-family: 'Noto Serif KR', serif;
+      background: rgba(255, 255, 255, 0.808);
       color: black;
       display: flex;
       margin-right: 51px;
@@ -130,11 +132,11 @@
 
       top: 12vh;
 
-      width: 20%;
+      width: 255px;
 
       .list {
         display: flex;
-        padding: 8% 35%;
+        padding: 5% 28%;
         
         font-size: 0.9rem;
         cursor: pointer;
@@ -160,6 +162,7 @@
     }
 
     .nav_link {
+      font-family: 'Noto Serif KR', serif;
       // background: rgba(135, 206, 235, 1);
       background: rgba(255, 255, 255, 0.808);
       color: black;
@@ -175,11 +178,11 @@
 
       top: 12vh;
 
-      width: 15%;
+      width: 255px;
 
       .list {
         display: flex;
-        padding: 11% 9%;
+        padding: 6% 28%;
         
         font-size: 0.8rem;
         cursor: pointer;
