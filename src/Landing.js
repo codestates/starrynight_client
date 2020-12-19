@@ -33,7 +33,7 @@ class Landing extends React.Component {
     // document.querySelector("#nav").scrollTo(location1, 0)
     // console.log("좌표", location1)
   };
-
+  //
   componentDidMount() {
     this.videoControllerRef.current.playbackRate = 0.7
     // this.videoControllerRef.current.defaultPlaybackRate = 0.3
