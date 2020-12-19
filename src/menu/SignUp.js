@@ -45,12 +45,21 @@ class SignUp extends React.Component {
 
   // }
 
+
   handleprofileOnChange = (e) => {
     // e.preventDefault();
     this.setState({
       file: e.target.files[0]
     })
-    // window.sessionStorage.setItem("profile", this.state.file)
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        previewURL: reader.result
+      });
+    };
+    reader.readAsDataURL(file);
   }
   handlePost = (e) => {
     e.preventDefault();
@@ -379,6 +388,7 @@ class SignUp extends React.Component {
       profile_preview = <img className='profile_img' src={this.state.previewURL}></img>
     }
 
+
     return (
       <div>
         {this.props.isOpen === true ? (
@@ -410,6 +420,34 @@ class SignUp extends React.Component {
                               />
                             </div>
                           </div>
+                          {/* 
+                          {this.state.currentUserInfo.profile !== undefined ? (
+                            this.state.profile !== "" ? (
+                              <img
+                                className="profile_img"
+                                src={this.state.previewURL}
+                                alt="프로필 사진"
+                                onClick={this.handleModifyBtnOfProfileClick}
+                              />
+                            ) : (
+                                <img
+                                  className="profile_img"
+                                  src={this.state.currentUserInfo.profile}
+                                  alt="프로필 사진"
+                                  onClick={this.handleModifyBtnOfProfileClick}
+                                />
+                              )
+                          ) : (
+                              <img
+                                className="profile_img"
+                                src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927"
+                                alt="프로필 사진 허허 안나오네"
+                                onClick={this.handleModifyBtnOfProfileClick}
+                              />
+                            )} */}
+
+
+
                           {/* <img
                             className="profile_img"
                             src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진"
