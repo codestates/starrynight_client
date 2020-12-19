@@ -46,7 +46,8 @@
 /* ------------Nav ------------------- */
 #nav {
   .nav_div {
-    background: rgba(4, 4, 4, 0.5);
+    // background: rgba(4, 4, 4, 0.5);
+    background: linear-gradient(to bottom, black,50%, rgba(0, 0, 0, 0));
 
     padding: 0px 20px;
     position: absolute;
