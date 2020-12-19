@@ -46,7 +46,7 @@ class Mypage extends React.Component {
       isGoogleModalOpen: false,
       isKakaoModalOpen: false,
 
-      errMsg: "",
+      errMsg: "",  // 프사 업로드 에러메세지
     };
     // this.getUserInfo()
     console.log("Mypage STATE PROPS", this.state.currentUserInfo);
@@ -195,6 +195,8 @@ class Mypage extends React.Component {
     }
   };
 
+
+
   handleModifyBtnOfNicknameClick = () => {
     this.setState({
       isModifyBtnOfNickname: !this.state.isModifyBtnOfNickname,
@@ -231,6 +233,12 @@ class Mypage extends React.Component {
         alert(error.response.data);
       });
   };
+  modifyNicknameOnkeyPress = (e) => {
+    if (e.key === "Enter") {
+      this.requestModifyNickname();
+    }
+  };
+
 
   handleModifyBtnOfMobileClick = () => {
     this.setState({
@@ -264,8 +272,13 @@ class Mypage extends React.Component {
         this.handleModifyBtnOfMobileClick();
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data);
       });
+  };
+  modifyMobileOnkeyPress = (e) => {
+    if (e.key === "Enter") {
+      this.requestModifyMobile();
+    }
   };
 
   /* -------------- 소셜 로그인 모달 핸들링 ----------------- */
@@ -437,7 +450,7 @@ class Mypage extends React.Component {
                           <span>이메일</span>
                         </div>
 
-                        <div>{this.state.currentUserInfo.email}</div>
+                        <div className="bold"><b>{this.state.currentUserInfo.email}</b></div>
                         {/* <div>{this.props.sendStateForMypage.email}</div> */}
                       </div>
 
@@ -447,7 +460,7 @@ class Mypage extends React.Component {
 
                           {/* <div>{this.props.sendStateForMypage.password}</div> */}
                           {this.state.isModifyBtnOfPw === false ? (
-                            <span>******</span>
+                            <span className="bold"><b>******</b></span>
                           ) : (
                               <span>
                                 <input
@@ -475,16 +488,20 @@ class Mypage extends React.Component {
                       </div>
 
                       <div className="nickname_div_inMypage">
-                        <div>
+                        <div className="nickname_input_container">
                           <span>별명</span>
 
                           {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
                           {this.state.isModifyBtnOfNickname === false ? (
-                            <span>{this.state.currentUserInfo.nickname}</span>
+                            <span className="bold"><b>{this.state.currentUserInfo.nickname}</b></span>
                           ) : (
-                              <input
-                                onChange={this.handleChangeUserInfo("nickname")}
-                              />
+                              <span>
+                                <input
+                                  type="text"
+                                  onChange={this.handleChangeUserInfo("nickname")}
+                                  onKeyPress={this.modifyNicknameOnkeyPress}
+                                />
+                              </span>
                             )}
                         </div>
                         {this.state.isModifyBtnOfNickname ? (
@@ -508,14 +525,19 @@ class Mypage extends React.Component {
                       </div>
 
                       <div className="mobile_div_inMypage">
-                        <div>
+                        <div className="mobile_input_container">
                           <span>연락처</span>
 
                           {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
                           {this.state.isModifyBtnOfMobile === false ? (
-                            <span>{this.state.currentUserInfo.mobile}</span>
+                            <span className="bold"><b>{this.state.currentUserInfo.mobile}</b></span>
                           ) : (
-                              <input onChange={this.handleChangeUserInfo("mobile")} />
+                              <span>
+                                <input
+                                  onChange={this.handleChangeUserInfo("mobile")}
+                                  onKeyPress={this.modifyMobileOnkeyPress}
+                                />
+                              </span>
                             )}
                         </div>
                         {this.state.isModifyBtnOfMobile ? (
@@ -550,7 +572,8 @@ class Mypage extends React.Component {
                           <Button
                             onClick={this.props.DoubleCheckRemoveUsersClick}
                             outline
-                            nanoWidth
+                            size="small"
+                            nanoWidth_removeuser_inmapage
                           >
                             회원 탈퇴
                       </Button>

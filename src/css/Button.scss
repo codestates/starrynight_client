@@ -133,6 +133,7 @@ $lightGray: rgb(190, 188, 188);
     display: flex;
     justify-content: center;
     width: 12%;
+    
     height: 1.3rem;
     align-items: center;
     font-size: 0.5rem;
@@ -187,5 +188,13 @@ $lightGray: rgb(190, 188, 188);
     height: 1.5rem;
     align-items: center;
     
+  }
+  &.nanoWidth_removeuser_inmapage {
+    display: flex;
+    justify-content: center;
+    // width: 12%;
+    height: 1.3rem;
+    align-items: center;
+    font-size: 0.5rem;
   }
 }
