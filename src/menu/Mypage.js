@@ -298,7 +298,7 @@ class Mypage extends React.Component {
 
 
   render() {
-    let profile_preview = <img className="profile_img" src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진 허허 안나오네" />;
+    let profile_preview = <img className="profile_img" src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" alt="프로필 사진 허허 안나오네" onClick={this.handleModifyBtnOfProfileClick} />;
     if (this.state.currentUserInfo.profile !== undefined || this.state.currentUserInfo.profile !== "" || !this.state.currentUserInfo.profile.length) {
       if (this.state.profile !== "") {
         profile_preview = <img className="profile_img" src={this.state.previewURL} alt="프로필 사진" onClick={this.handleModifyBtnOfProfileClick} />
@@ -459,15 +459,15 @@ class Mypage extends React.Component {
                             )}
                         </div>
                         {this.state.isModifyBtnOfPw ? (
-                          <Button onClick={this.requestModifyPw} outline nanoWidth>
+                          <Button onClick={this.requestModifyPw} nanoWidth_mypage>
                             저장
                           </Button>
                         ) : (
                             <Button
                               onClick={this.handleModifyBtnOfPwClick}
-                              outline
-                              nanoWidth
-                              color="gray"
+                              color="lightGray"
+                              nanoWidth_mypage
+
                             >
                               수정
                             </Button>
@@ -490,17 +490,17 @@ class Mypage extends React.Component {
                         {this.state.isModifyBtnOfNickname ? (
                           <Button
                             onClick={this.requestModifyNickname}
-                            outline
-                            nanoWidth
+
+                            nanoWidth_mypage
                           >
                             저장
                           </Button>
                         ) : (
                             <Button
                               onClick={this.handleModifyBtnOfNicknameClick}
-                              outline
-                              nanoWidth
-                              color="gray"
+                              color="lightGray"
+                              nanoWidth_mypage
+
                             >
                               수정
                             </Button>
@@ -521,18 +521,20 @@ class Mypage extends React.Component {
                         {this.state.isModifyBtnOfMobile ? (
                           <Button
                             onClick={this.requestModifyMobile}
-                            outline
-                            nanoWidth
-                            color="red"
+
+                            nanoWidth_mypage
+
                           >
                             저장
                           </Button>
                         ) : (
                             <Button
                               onClick={this.handleModifyBtnOfMobileClick}
-                              outline
-                              nanoWidth
-                              color="gray"
+                              // outline
+                              nanoWidth_mypage
+                              // size="small"
+                              color="lightGray"
+                            // color="lightBlue"
                             >
                               수정
                             </Button>

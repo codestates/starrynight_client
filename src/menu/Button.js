@@ -2,10 +2,10 @@ import React from "react";
 import classNames from "classnames";
 import "../css/Button.scss";
 
-function Button({ children, size, color, outline, fullWidth, middleWidth, smallWidth, nanoWidth, nanoWidth_mypage_profile, middleWidth_main_btn, middleWidth_completedFind, onClick }) {
+function Button({ children, size, color, outline, fullWidth, middleWidth, smallWidth, nanoWidth, nanoWidth_mypage_profile, middleWidth_main_btn, nanoWidth_mypage, middleWidth_completedFind, onClick }) {
   return (
     <button
-      className={classNames("Button", size, color, { outline, fullWidth, middleWidth, smallWidth, nanoWidth, nanoWidth_mypage_profile, middleWidth_main_btn, middleWidth_completedFind })}
+      className={classNames("Button", size, color, { outline, fullWidth, middleWidth, smallWidth, nanoWidth, nanoWidth_mypage_profile, middleWidth_main_btn, nanoWidth_mypage, middleWidth_completedFind })}
       onClick={onClick}
     >
       {children}

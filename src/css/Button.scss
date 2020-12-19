@@ -4,6 +4,7 @@ $gray: #495057;
 $red: rgb(226, 12, 12);
 $yellow: yellow;
 $black: rgba(24, 10, 10, 0.932);
+$lightGray: rgb(190, 188, 188);
 
 
 @mixin button-color($color) {
@@ -92,6 +93,10 @@ $black: rgba(24, 10, 10, 0.932);
     @include button-color($black)
   }
 
+  &.lightGray {
+    @include button-color($lightGray)
+  }
+
   // & + & 는 .Button + .Button을 의미.
   // 만약 함께 있다면 각 버튼 사이 여백설정 가능
   & + & {
@@ -170,5 +175,17 @@ $black: rgba(24, 10, 10, 0.932);
     // height: 1.3rem;
     align-items: center;
     font-size: 0.5rem;
+  }
+
+  &.nanoWidth_mypage {
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    width: 65px;
+    
+    font-size: 0.9rem;
+    height: 1.5rem;
+    align-items: center;
+    
   }
 }
