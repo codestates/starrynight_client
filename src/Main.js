@@ -31,12 +31,25 @@ class Main extends React.Component {
     super(props);
     this.state = {
       isLogin: false,
+      // isMypage: true,
       isAddPhotoModalOpen: false,
       isAllOpen: true,
       isGalleryOpen: false,
       isFavoriteOpen: false,
     };
   }
+
+  // Gallery & Favorite에서 Main으로 돌아오게 하기.
+
+  // returnToMypageFromGallery = () => {
+  //   //Mypage 끄고
+  //   //Gellery 활성화
+  //   this.setState({
+  //     isMypage: !this.state.isMypage,
+  //     isGalleryOpen: !this.state.isGalleryOpen
+  //   })
+  // }
+
 
   // isGalleryOpen을 변환함
   handleIsGalleryOpen = () => {
@@ -157,10 +170,20 @@ class Main extends React.Component {
             />
           }
         </div>
+
+
+
+
+
+
         <br />
         {/* br 이거 왜 지우면 에러코드 뜨고 무한로딩 돌지?? */}
         <br />
         <div className="top"></div>
+
+
+
+
 
         {/* <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
           이곳은 ViewPhoto.js의 All.js, 사진 라이브러리 그리드가 위치할 곳
