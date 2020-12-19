@@ -153,8 +153,14 @@
           border-radius: 5px;
           border-width: 1.6px;
           border-color: rgb(143, 143, 143);
-          padding: 0.3rem 0.9rem;
+          padding: 0.4rem 0.9rem;
           margin: unset;
+          align-content: center;
+        }
+        input::placeholder {
+          color: rgb(166, 163, 168);
+          display: flex;
+          align-content: center;
         }
 
         .bold {

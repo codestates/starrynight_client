@@ -224,7 +224,7 @@ class Mypage extends React.Component {
             password: this.props.currentUserInfo.password,
             nickname: response.data.nickname,
             mobile: this.props.currentUserInfo.mobile,
-            profile: window.sessionStorage.getItem("preview_profile")  // 사진 미리보기 기능이 사진업로드 제출 전 다른 정보를 수정했을 시 기본프사로 바뀌는 것을 방지하기 위함. 하단 render과 같이 로직을 참고할 것.
+
           },
         });
         this.handleModifyBtnOfNicknameClick();
@@ -266,7 +266,7 @@ class Mypage extends React.Component {
             password: this.state.currentUserInfo.password,
             nickname: this.state.currentUserInfo.nickname,
             mobile: response.data.mobile,
-            profile: window.sessionStorage.getItem("preview_profile")  // 사진 미리보기 기능이 사진업로드 제출 전 다른 정보를 수정했을 시 기본프사로 바뀌는 것을 방지하기 위함. 하단 render과 같이 로직을 참고할 것.
+
           },
         });
         this.handleModifyBtnOfMobileClick();
@@ -498,6 +498,7 @@ class Mypage extends React.Component {
                               <span>
                                 <input
                                   type="text"
+                                  placeholder={this.state.currentUserInfo.nickname}
                                   onChange={this.handleChangeUserInfo("nickname")}
                                   onKeyPress={this.modifyNicknameOnkeyPress}
                                 />
@@ -534,6 +535,7 @@ class Mypage extends React.Component {
                           ) : (
                               <span>
                                 <input
+                                  placeholder={this.state.currentUserInfo.mobile}
                                   onChange={this.handleChangeUserInfo("mobile")}
                                   onKeyPress={this.modifyMobileOnkeyPress}
                                 />
