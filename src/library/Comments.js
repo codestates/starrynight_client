@@ -344,6 +344,7 @@ class Comments extends Component {
                 How to go
               </Button> */}
               <a
+                className="test"
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
                 },${window.localStorage.current
