@@ -197,4 +197,11 @@ $lightGray: rgb(190, 188, 188);
     align-items: center;
     font-size: 0.5rem;
   }
+
+  &.smallWidth_singin {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    align-items: center;
+  }
 }

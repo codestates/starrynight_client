@@ -226,7 +226,7 @@ class FindPw extends React.Component {
                         <Button
                           color="red"
                           outline
-                          smallWidth
+                          smallWidth_singin
                           onClick={this.props.googleLogin}
                         >
                           Google
@@ -236,7 +236,7 @@ class FindPw extends React.Component {
                         <Button
                           color="gray"
                           outline
-                          smallWidth
+                          smallWidth_singin
                           onClick={this.props.kakaoLogin}
                         >
                           Kakao

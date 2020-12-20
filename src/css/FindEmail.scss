@@ -10,7 +10,7 @@
   align-items: center;
 
   .modal_findEmail_overlay {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -18,8 +18,10 @@
 
   .modal_findEmail_content {
 
-    background-color: white;
-    width: 40%;
+    // background-color: white;
+    background:rgb(253, 253, 253);
+    width: 700px;
+    padding: 1%;
     position: relative;
     text-align: center;
     border-radius: 10px;
@@ -27,6 +29,7 @@
 
     h2 {
       margin-left: 3rem;
+      margin-bottom: 40px;
       font-family: 'Noto Serif KR', serif;
       display: flex;
     }
@@ -58,7 +61,7 @@
         justify-content: flex-start;
         align-content: center;
         padding-left: 0.3rem;
-        padding-bottom: 12px;
+        padding-bottom: 19px;
       }
 
       input {
@@ -94,7 +97,7 @@
       }
 
       .button_container_findEmail{
-        margin-top: 5%;
+        margin-top: 12%;
         margin-right: 7%;
         margin-left: 7%;
         padding-left: 0.3rem;
@@ -125,6 +128,7 @@
           font-size: 1.1rem;
           display: flex;
           justify-content: flex-start;
+          
           
         }
 

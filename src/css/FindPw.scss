@@ -44,7 +44,7 @@
   align-items: center;
 
   .modal_findPw_overlay {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -52,15 +52,18 @@
 
   .modal_findPw_content {
 
-    background-color: white;
-    width: 40%;
+    // background-color: white;
+    background:rgb(253, 253, 253);
+    width: 700px;
     position: relative;
     text-align: center;
     border-radius: 10px;
     color: black;
+    padding: 1%;
 
     h2 {
       margin-left: 3rem;
+      margin-bottom: 42px;
       font-family: 'Noto Serif KR', serif;
       display: flex;
     }
