@@ -120,6 +120,7 @@ class Comments extends Component {
         imgData: data.data,
       });
     });
+    // window.localStorage.setItem("current", "(33.476947, 126.822903)");
   }
 
   // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기 = 픽포토를 통한 새로고침
