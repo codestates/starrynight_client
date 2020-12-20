@@ -4,8 +4,8 @@ const axios = require("axios").default;
 import RemovePhoto from "./RemovePhoto";
 import RemoveComment from "./RemoveComment";
 import KakaoMap from "../KakaoMap";
-import { MdStarBorder } from "react-icons/md";
-import { MdStar } from "react-icons/md";
+import { IoHeart } from "react-icons/io5";
+import { IoHeartOutline } from "react-icons/io5";
 import Button from "../menu/Button";
 
 let fakeData = {
@@ -246,14 +246,28 @@ class Comments extends Component {
         <div className="myModal" onClick={this.handleModalClose}></div>
         <div className="modalContent">
           <div className="modalContent_Left">
-            {/* ------------------name------------------ */}
-            <div className="photoName">{this.state.imgData.photoTitle}</div>
             {/* ------------------photo------------------ */}
             <img
               className="selectPhoto"
               src={this.state.imgData.photoPath}
               alt="img"
             />
+            {/* ------------------name------------------ */}
+            <div className="photoName">{this.state.imgData.photoTitle}</div>
+            {/* ------------------favorite 버튼------------------ */}
+            <div className="favorite_div">
+              {this.state.imgData.favorite ? (
+                <IoHeart
+                  className="favorite"
+                  onClick={this.handleFavoriteClickControl}
+                />
+              ) : (
+                <IoHeartOutline
+                  className="favoriteBorder"
+                  onClick={this.handleFavoriteClickControl}
+                />
+              )}
+            </div>
             {/* ------------------hashTag------------------ */}
             <div className="hashTag">
               {this.state.infoOpen === true ? (
@@ -294,13 +308,16 @@ class Comments extends Component {
                     수정
                   </Button>
                 </span>
-                <Button
-                  className="deleteBtn"
-                  onClick={this.removePhotoControl}
-                  size="photo_delete"
-                >
-                  삭제
-                </Button>
+                <span className="deleteBtn">
+                  <Button
+                    // className="deleteBtn"
+                    onClick={this.removePhotoControl}
+                    size="photo_delete"
+                    color="red"
+                  >
+                    삭제
+                  </Button>
+                </span>
               </div>
             )}
           </div>
@@ -314,15 +331,15 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              {/* <Button className="HowToGo" fullWidth>
+              <Button className="HowToGo" fullWidth>
                 How to go
-              </Button> */}
-              <a
+              </Button>
+              {/* <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
-                },${window.sessionStorage.current
+                },${window.localStorage.current
                   .split("")
-                  .slice(-(window.sessionStorage.current.length - 1), -1)
+                  .slice(-(window.localStorage.current.length - 1), -1)
                   .map((el) => (el !== " " ? el : null))
                   .join("")}`}
                 target="_blank"
@@ -330,24 +347,7 @@ class Comments extends Component {
                 <Button className="HowToGo" fullWidth>
                   How to go
                 </Button>
-              </a>
-            </div>
-            {/* ------------------favorite 버튼------------------ */}
-            <div className="favorite_div">
-              {this.state.imgData.favorite ? (
-                <MdStar
-                  className="favorite"
-                  onClick={this.handleFavoriteClickControl}
-                />
-              ) : (
-                <MdStarBorder
-                  className="favoriteBorder"
-                  onClick={this.handleFavoriteClickControl}
-                />
-              )}
-              {/* <button onClick={this.handleFavoriteClickControl}>
-                좋아요요청
-              </button> */}
+              </a> */}
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
@@ -376,6 +376,7 @@ class Comments extends Component {
                               this.removeCommentOpen(data.comment, data.id)
                             }
                             size="comment_delete"
+                            color="red"
                           >
                             삭제
                           </Button>

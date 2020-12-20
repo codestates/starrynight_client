@@ -108,12 +108,14 @@ $black: rgba(24, 10, 10, 0.932);
   }
   // 댓글 등록 버튼
   &.small_Comment {
+    position: absolute;
+    right: 0;
     width: 17%;
-    height: 1.5rem;
+    height: 1.6rem;
     text-align: center;
     padding-left: 1.2rem;
     // padding-right: 1rem;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
   }
   // 커스터마이징 사이즈
   &.small_mypage_profile {

@@ -22,8 +22,8 @@
   height: 40%;
   top: 25%;
   vertical-align: middle;
-  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.4),
-    4px 8px 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.2),
+    4px 8px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 .removeComment_text {
