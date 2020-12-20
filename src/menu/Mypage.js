@@ -272,7 +272,7 @@ class Mypage extends React.Component {
       )
       .then((response) => {
         console.log("mobile 뭐받아와?", response);
-        alert(response.data.mobile);
+        alert(`연락처가 ${response.data.mobile}로 변경되었습니다.`);
         this.setState({
           currentUserInfo: {
             email: this.state.currentUserInfo.email,
