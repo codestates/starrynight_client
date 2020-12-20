@@ -31,7 +31,6 @@ import fake27 from "../image/fakeData/fake27.jpg";
 import fake28 from "../image/fakeData/fake28.png";
 import fake29 from "../image/fakeData/fake29.jpg";
 import fake30 from "../image/fakeData/fake30.jpg";
-
 let fakeData = [
   fake1,
   fake2,
@@ -64,7 +63,6 @@ let fakeData = [
   fake29,
   fake30,
 ];
-
 class All extends Component {
   constructor(props) {
     super(props);
@@ -74,9 +72,7 @@ class All extends Component {
       data: [...fakeData],
     };
   }
-
   componentDidMount() {
-    window.addEventListener("scroll", this.infiniteScroll, true);
     let url = "https://api.mystar-story.com/main";
     axios.get(url).then((res) => {
       this.setState({
@@ -84,6 +80,11 @@ class All extends Component {
       });
       console.log(res.data);
     });
+    document.addEventListener("scroll", this.infiniteScroll, true);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("scroll", this.infiniteScroll, true);
   }
 
   infiniteScroll = () => {
@@ -95,7 +96,6 @@ class All extends Component {
     const col1 = document.querySelector(".column1");
     const col2 = document.querySelector(".column2");
     const col3 = document.querySelector(".column3");
-
     if (flex.clientWidth >= 0 && flex.clientWidth <= 640) {
       if (clientHeight + scrollTop + 10 > scrollHeight) {
         let makeImg1 = () => {
@@ -109,7 +109,6 @@ class All extends Component {
             col1.appendChild(img);
           }
         };
-
         makeImg1();
         if (items <= data.length) {
           this.setState({
@@ -132,7 +131,6 @@ class All extends Component {
             col1.appendChild(img);
           }
         };
-
         let makeImg2 = () => {
           if (items + 1 < data.length) {
             let img = document.createElement("img");
@@ -144,7 +142,6 @@ class All extends Component {
             col2.appendChild(img);
           }
         };
-
         makeImg1();
         makeImg2();
         if (items <= data.length) {
@@ -168,7 +165,6 @@ class All extends Component {
             col1.appendChild(img);
           }
         };
-
         let makeImg2 = () => {
           if (items + 1 < data.length) {
             let img = document.createElement("img");
@@ -180,7 +176,6 @@ class All extends Component {
             col2.appendChild(img);
           }
         };
-
         let makeImg3 = () => {
           if (items + 2 < data.length) {
             let img = document.createElement("img");
@@ -192,7 +187,6 @@ class All extends Component {
             col3.appendChild(img);
           }
         };
-
         makeImg1();
         makeImg2();
         makeImg3();
@@ -206,10 +200,10 @@ class All extends Component {
       }
     }
   };
-
   render() {
     return (
       <div>
+        <br />
         <br />
         <br />
         <div className="flex">
@@ -221,5 +215,4 @@ class All extends Component {
     );
   }
 }
-
 export default All;

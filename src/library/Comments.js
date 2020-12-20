@@ -60,6 +60,7 @@ class Comments extends Component {
       writeComment: "",
       hashTag: "",
     };
+    // console.log("comments컴포넌트 함수 : ", this.state);
   }
 
   // 해시태그 수정 페이지 열기
@@ -110,7 +111,6 @@ class Comments extends Component {
       .catch((err) => {
         alert(err);
       });
-    // <input type="text" />을 다시 photoTitle로
   };
 
   componentDidMount() {
@@ -119,8 +119,12 @@ class Comments extends Component {
       this.setState({
         imgData: data.data,
       });
-      console.log(this.state.imgData);
+      console.log(this.state.imgData.favorite);
     });
+    this.setState({
+      isFavorite: this.state.imgData.favorite,
+    });
+    console.log("isFavorite: ", this.state.isFavorite);
   }
 
   // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기
@@ -132,19 +136,23 @@ class Comments extends Component {
       });
       console.log(this.state.imgData);
     });
+    this.setState({
+      isFavorite: this.state.imgData.favorite,
+    });
+    // console.log("isFavorite: ", this.state.isFavorite);
   };
-
-  // stars = () => {
-  //   console.log(this.props.imgData.location);
-  // };
 
   // 모달 창 닫기
   handleModalClose = () => {
     this.props.handleModalClose();
-    let myModal = document.querySelector(".myModal");
-    let modalContent = document.querySelector(".modalContent");
-    myModal.style.display = "none";
-    modalContent.style.display = "none";
+    // let myModal = document.querySelector(".myModal");
+    // let modalContent = document.querySelector(".modalContent");
+    // myModal.style.display = "none";
+    // modalContent.style.display = "none";
+    this.setState({
+      isFavorite: !this.state.isFavorite,
+    });
+    this.afterRemoveComment();
   };
 
   // 이미지 삭제 모달 실행
@@ -198,42 +206,72 @@ class Comments extends Component {
   };
 
   // 좋아요 클릭
-  handleFavoriteClickOpen = () => {
-    this.setState({
-      isFavorite: true,
-    });
+  // handleFavoriteClickOpen = () => {
+  //   this.setState({
+  //     isFavorite: true,
+  //   });
+  //   let url = `https://api.mystar-story.com/makelike`;
+  //   axios
+  //     .post(url, {
+  //       photoId: this.state.imgData.id,
+  //       photoPath: this.state.imgData.photoPath,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       alert("좋아요를 눌렀습니다.");
+  //       // this.setState({
+  //       //   imgData: res,
+  //       // });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   this.afterRemoveComment();
+  // };
+
+  // 좋아요 on/off
+  handleFavoriteClickControl = () => {
     let url = `https://api.mystar-story.com/makelike`;
     axios
       .post(url, {
         photoId: this.state.imgData.id,
         photoPath: this.state.imgData.photoPath,
       })
-      .then((res) => {
-        console.log(res.data);
+      .then((data) => {
+        console.log("좋아요를 눌렀습니다.");
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
+    this.setState({
+      isFavorite: !this.state.isFavorite,
+    });
   };
 
-  // 좋아요 취소
-  handleFavoriteClickClose = () => {
-    this.setState({
-      isFavorite: false,
-    });
-    let url = `https://api.mystar-story.com/cancellike`;
-    axios
-      .post(url, {
-        photoId: this.state.imgData.id,
-        photoPath: this.state.imgData.photoPath,
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // // 좋아요 on/off
+  // handleFavoriteClickControl = () => {
+  //   let url = `https://api.mystar-story.com/makelike`;
+  //   axios
+  //     .post(url, {
+  //       photoId: this.state.imgData.id,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       alert("좋아요를 눌렀습니다.");
+  //       // if (window.sessionStorage.favorite) {
+  //       //   window.sessionStorage.setItem(
+  //       //     "favorite",
+  //       //     !window.sessionStorage.favorite
+  //       //   );
+  //       // } else {
+  //       //   window.sessionStorage.setItem("favorite", true);
+  //       // }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   this.afterRemoveComment();
+  // };
 
   render() {
     return (
@@ -251,6 +289,8 @@ class Comments extends Component {
         <RemovePhoto
           isRemovePhotoOpen={this.state.isRemovePhotoOpen}
           removePhotoControl={this.removePhotoControl}
+          handleModalClose={this.handleModalClose}
+          afterRemoveComment={this.afterRemoveComment}
           photoId={this.state.imgData.id}
         />
         {/* ------------------포토뷰모달------------------ */}
@@ -288,9 +328,6 @@ class Comments extends Component {
                 })
               )}
             </div>
-            {/* <div className="hashTag">
-              <span>test</span>
-            </div> */}
             {/* ------------------userInfo(userFace, userName)------------------ */}
             <div className="userInfo">
               <img
@@ -300,14 +337,16 @@ class Comments extends Component {
               <span className="userName">{this.state.imgData.writer}</span>
             </div>
             {/* ------------------수정버튼, 삭제버튼------------------ */}
-            <div className="btns">
-              <button className="modifyBtn" onClick={this.handleModifyInfo}>
-                수정
-              </button>
-              <button className="deleteBtn" onClick={this.removePhotoControl}>
-                삭제
-              </button>
-            </div>
+            {this.props.isGalleryOpen && (
+              <div className="btns">
+                <button className="modifyBtn" onClick={this.handleModifyInfo}>
+                  수정
+                </button>
+                <button className="deleteBtn" onClick={this.removePhotoControl}>
+                  삭제
+                </button>
+              </div>
+            )}
           </div>
           <div className="modalContent_Right">
             {/* ------------------close버튼------------------ */}
@@ -337,24 +376,17 @@ class Comments extends Component {
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
-              {/* <button
-                // onClick={() => console.log(this.props.imgData.location)}
-              >
-                별
-              </button> */}
-              <span>
-                {this.state.isFavorite === true ? (
-                  <MdStar
-                    className="favorite"
-                    onClick={this.handleFavoriteClickClose}
-                  />
-                ) : (
-                  <MdStarBorder
-                    className="favoriteBorder"
-                    onClick={this.handleFavoriteClickOpen}
-                  />
-                )}
-              </span>
+              {this.state.isFavorite ? (
+                <MdStar
+                  className="favorite"
+                  onClick={this.handleFavoriteClickControl}
+                />
+              ) : (
+                <MdStarBorder
+                  className="favoriteBorder"
+                  onClick={this.handleFavoriteClickControl}
+                />
+              )}
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
