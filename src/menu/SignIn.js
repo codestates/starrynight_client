@@ -269,9 +269,9 @@ class SignIn extends React.Component {
                         // color="black"
                         color="gray"
                         middleWidth_main_btn
-                        // smallWidth
-                        // className="Button_in_signIn"
-                        // type="submit"
+                      // smallWidth
+                      // className="Button_in_signIn"
+                      // type="submit"
                       >
                         로그인
                         <HiArrowNarrowRight className="signIn_icon" />
@@ -313,7 +313,7 @@ class SignIn extends React.Component {
                       <Button
                         color="red"
                         outline
-                        smallWidth
+                        smallWidth_singin
                         onClick={this.props.googleLogin}
                       >
                         Google
@@ -323,7 +323,7 @@ class SignIn extends React.Component {
                       <Button
                         color="gray"
                         outline
-                        smallWidth
+                        smallWidth_singin
                         onClick={this.props.kakaoLogin}
                       >
                         Kakao

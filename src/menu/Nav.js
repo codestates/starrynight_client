@@ -17,6 +17,7 @@ import Mypage from "./Mypage";
 import SignOut from "./SignOut";
 import DoubleCheckRemoveUsers from "./remove_account/DoubleCheckRemoveUsers";
 import CompletedRemoveUser from "./remove_account/CompletedRemoveUser";
+import CompletedRemoveSocial from "./remove_account/CompletedRemoveSocial";
 import SocialLogInDisconnected from "./remove_account/SocialLogInDisconnected";
 
 // beforeLogin
@@ -51,7 +52,7 @@ class Nav extends React.Component {
       isSignOutModalOpen: false,
       isDoubleCheckRemoveUsersModalOpen: false,
       isCompletedRemoveUserModalOpen: false,
-      isSocialLogInDisconnectedOpen: false,
+      isCompletedRemoveSocialOpen: false,
 
       // beforeLogin
       isSignInModalOpen: false,
@@ -190,10 +191,10 @@ class Nav extends React.Component {
   // 일반 회원 탈퇴 완료(더블체크컴포넌트와 형제관계 Yes! 부모관계 No!!!)
   handleCompletedRemoveUser = () => {
     this.setState({
-      isCompletedRemoveUserModalOpen: !this.state
-        .isCompletedRemoveUserModalOpen,
+      isCompletedRemoveUserModalOpen: !this.state.isCompletedRemoveUserModalOpen,
     });
   };
+
   CompletedRemoveUserClick = () => {
     // 더블체크 모달에서 회원탈퇴를 누르는 순간 탈퇴 GET요청을 보내고 회원탈퇴완료모달 띄우기
     axios
@@ -212,10 +213,26 @@ class Nav extends React.Component {
   };
 
   // 소셜로그인 성공시 구현 마무리 하기
-  handleSocialLogInDisconnected = () => {
+  handleCompletedRemoveSocial = () => {
     this.setState({
-      isSocialLogInDisconnectedOpen: !this.state.isSocialLogInDisconnectedOpen,
+      isCompletedRemoveSocialOpen: !this.state.isCompletedRemoveSocialOpen
+    })
+  }
+  CompletedRemoveSocialClick = () => {
+    // 더블체크 모달에서 회원탈퇴를 누르는 순간 탈퇴 GET요청을 보내고 회원탈퇴완료모달 띄우기
+    axios
+      .get("https://api.mystar-story.com/user/delete", {
+        // 회원탈퇴 요청보내고
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log("회원탈퇴 요청 성공 메세지 =>", response.data);
+      });
+
+    this.setState({
+      isDoubleCheckRemoveUsersModalOpen: false, // 더블체크 모달 끄고
     });
+    this.handleCompletedRemoveSocial(); // 회원탈퇴완료 모달을 띄워라.
   };
 
   //! ----------------------- BeforeLogin 모달 관련 메소드들: before과 signIn, signUp 형제관계 형성. ------------------------------- */
@@ -383,15 +400,15 @@ class Nav extends React.Component {
               hamburgerModalOFFWithSignOut={this.hamburgerModalOFFWithSignOut}
             />
           ) : (
-            <BeforeLogin
-              isHamburgerOn={this.state.isHamburgerOn}
-              signInClick={this.signInClick}
-              signUpClick={this.signUpClick}
-              handleHamburgerclick={this.handleHamburgerclick}
-              isSignInModalOpen={this.state.isSignInModalOpen}
-              isSignUpModalOpen={this.state.isSignUpModalOpen}
-            />
-          )
+              <BeforeLogin
+                isHamburgerOn={this.state.isHamburgerOn}
+                signInClick={this.signInClick}
+                signUpClick={this.signUpClick}
+                handleHamburgerclick={this.handleHamburgerclick}
+                isSignInModalOpen={this.state.isSignInModalOpen}
+                isSignUpModalOpen={this.state.isSignUpModalOpen}
+              />
+            )
         ) : null}
 
         {/* 햄버거 토글 */}
@@ -405,15 +422,15 @@ class Nav extends React.Component {
             <div className="line-3"></div>
           </div>
         ) : (
-          <div
-            className="hamburgerToggle_OFF"
-            onClick={this.handleHamburgerclick}
-          >
-            <div className="line-1"></div>
-            <div className="line-2"></div>
-            <div className="line-3"></div>
-          </div>
-        )}
+            <div
+              className="hamburgerToggle_OFF"
+              onClick={this.handleHamburgerclick}
+            >
+              <div className="line-1"></div>
+              <div className="line-2"></div>
+              <div className="line-3"></div>
+            </div>
+          )}
 
         {/* ------afterLogin 관련 모달들 (형제관계로 변경함.) ----------------------- */}
         {this.props.isLogin ? (
@@ -444,12 +461,17 @@ class Nav extends React.Component {
             />
             <DoubleCheckRemoveUsers
               isOpen={this.state.isDoubleCheckRemoveUsersModalOpen}
+              loginPlatformId={this.state.currentUserInfo.loginPlatformId}
               // handleModal={this.handleDoubleCheckRemoveUsersModal}  // 오버레이 누르면 모달 꺼지기
               redirectFromDoubleCheckToMypage={this.DoubleCheckRemoveUsersClick} // 마이페이지로 "돌아가기"
               CompletedRemoveUserClick={this.CompletedRemoveUserClick} // 회원탈퇴완료모달로 이동
+              CompletedRemoveSocialClick={this.CompletedRemoveSocialClick} // 소셜 회원탈퇴모달로 이동
             />
             <CompletedRemoveUser
               isOpen={this.state.isCompletedRemoveUserModalOpen}
+            />
+            <CompletedRemoveSocial
+              isCompletedRemoveSocialOpen={this.state.isCompletedRemoveSocialOpen}
             />
           </>
         ) : null}

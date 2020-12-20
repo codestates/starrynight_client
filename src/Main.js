@@ -120,6 +120,7 @@ class Main extends React.Component {
         console.log("로그아웃 성공!", response.data);
       });
     window.localStorage.clear();
+    window.sessionStorage.clear();
     window.location.href = "/";
   };
 
