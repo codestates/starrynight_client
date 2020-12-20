@@ -67,7 +67,7 @@ class RemovePhoto extends Component {
                   className="removePhoto_DeleteBtn"
                   onClick={this.removePhoto}
                   size="deletePhoto"
-                  color="blue"
+                  color="red"
                 >
                   삭제
                 </Button>
