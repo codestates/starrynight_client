@@ -13,7 +13,7 @@
 .modalContent_RemoveComment {
   border-radius: 10px;
   position: relative;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -22,8 +22,8 @@
   height: 40%;
   top: 25%;
   vertical-align: middle;
-  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.4),
-    4px 8px 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.2),
+    4px 8px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 .removeComment_text {
@@ -46,6 +46,7 @@
   color: black;
   font-size: 25px;
   font-weight: bold;
+  text-align: center;
   color: black;
 }
 
