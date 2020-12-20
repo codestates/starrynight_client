@@ -178,9 +178,6 @@ class Comments extends Component {
         0,
         commentWriter.value.length
       );
-      this.setState({
-        writeComment: "",
-      });
       alert("40자 이하로 입력해주세요.");
     }
   };
@@ -372,27 +369,33 @@ class Comments extends Component {
                   this.state.imgData.replies.map((data, index) => {
                     return (
                       <div className="comment">
-                        <img
-                          src={data.commenterProfilePath}
-                          className="commentFace"
-                          alt="img"
-                        />
-                        <span className="commentUserName">{data.nickname}</span>
-                        <span className="commentDate">{data.date}</span>
-                        <div className="commentComment">{data.comment}</div>
-                        <span className="commentRemove">
-                          <Button
-                            className="commentRemoveBtn"
-                            name={index}
-                            onClick={() =>
-                              this.removeCommentOpen(data.comment, data.id)
-                            }
-                            size="comment_delete"
-                            color="red"
-                          >
-                            삭제
-                          </Button>
-                        </span>
+                        <div className="comment_left">
+                          <img
+                            src={data.commenterProfilePath}
+                            className="commentFace"
+                            alt="img"
+                          />
+                        </div>
+                        <div className="comment_right">
+                          <span className="commentUserName">
+                            {data.nickname}
+                          </span>
+                          <span className="commentDate">{data.date}</span>
+                          <div className="commentComment">{data.comment}</div>
+                          <span className="commentRemove">
+                            <Button
+                              className="commentRemoveBtn"
+                              name={index}
+                              onClick={() =>
+                                this.removeCommentOpen(data.comment, data.id)
+                              }
+                              size="comment_delete"
+                              color="red"
+                            >
+                              삭제
+                            </Button>
+                          </span>
+                        </div>
                       </div>
                     );
                   })
