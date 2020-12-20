@@ -13,7 +13,7 @@
 .modalContent_RemovePhoto {
   border-radius: 10px;
   position: relative;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -32,7 +32,8 @@
   color: black;
   font-size: 50px;
   text-align: center;
-  font-weight: bold;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
 }
 
 .removePhoto_DeleteBtn {
@@ -46,7 +47,6 @@
   color: black;
   font-size: 25px;
   font-weight: bold;
-  color: black;
 }
 
 .removePhoto_ReturnBtn {
@@ -60,5 +60,4 @@
   color: black;
   font-size: 25px;
   font-weight: bold;
-  color: black;
 }

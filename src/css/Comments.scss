@@ -17,9 +17,6 @@
 .modalContent {
   display: block;
   position: fixed;
-  // background-color: #e0e3da;
-  // background-color: #fffff3;
-  // background-color: #383a3f;
   background-color: rgb(245, 245, 245);
   z-index: 1;
   width: 60%;
@@ -48,25 +45,29 @@
 
 .photoName {
   position: absolute;
-  bottom: 87%;
+  top: 7%;
   left: 5%;
   width: 90%;
-  color: white;
-  font-size: 27px;
-  font-weight: bold;
+  color: black;
+  font-size: 32px;
+  // font-family: "Josefin Slab", serif;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
 }
 
 .modifyPhotoHashtag {
   width: 70%;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 .modifyPhotoHashtagBtn {
   width: 13%;
   font-size: 15px;
   font-weight: bold;
-  color: white;
+  color: black;
   background-color: rgb(97, 69, 163);
   border-radius: 10px;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 .selectPhoto {
@@ -84,34 +85,37 @@
   left: 5%;
   bottom: 22%;
   width: 100%;
-  color: white;
+  color: black;
   font-size: 18px;
-  font-weight: bold;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
 }
 
 .userInfo {
   position: absolute;
   left: 5%;
-  bottom: 8%;
+  bottom: 5%;
 }
 
 .userFace {
-  width: 10%;
+  width: 7%;
   vertical-align: middle;
 }
 
 .userName {
   position: relative;
   left: 2%;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
+  color: black;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 .btns {
   position: absolute;
-  bottom: 11%;
-  right: 12%;
+  width: 100%;
+  bottom: 6%;
+  right: 7%;
 }
 
 .modifyBtn {
@@ -119,9 +123,9 @@
   width: 70px;
   height: 30px;
   font-size: 15px;
-  font-weight: bold;
-  color: white;
-  background-color: rgb(97, 69, 163);
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  color: black;
   border-radius: 10px;
 }
 
@@ -129,8 +133,9 @@
   width: 70px;
   height: 30px;
   font-size: 15px;
-  font-weight: bold;
-  color: white;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  color: black;
   background-color: rgb(97, 69, 163);
   border-radius: 10px;
 }
@@ -138,7 +143,7 @@
 .mapImg {
   display: block;
   position: absolute;
-  top: 5%;
+  top: 10%;
   right: 5%;
 }
 
@@ -146,15 +151,16 @@
   position: absolute;
   display: block;
   top: 48%;
-  right: 10%;
+  right: 5%;
 }
 
 .HowToGo {
   width: 90px;
   height: 30px;
   font-size: 15px;
-  font-weight: bold;
-  color: white;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  color: black;
   background-color: rgb(97, 69, 163);
   border-radius: 10px;
 }
@@ -162,49 +168,53 @@
 .favorite_div {
   position: absolute;
   display: block;
-  bottom: 43%;
+  bottom: 39%;
   left: 0%;
 }
 
 .favoriteBorder {
   color: rgb(0, 0, 0);
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
 }
 
 .favorite {
   color: rgb(252, 99, 11);
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
 }
 
 .commentDiv {
   position: absolute;
-  top: 58%;
-  right: 10%;
-  width: 90%;
+  bottom: 8%;
+  right: 6%;
+  width: 97%;
   height: 30%;
 }
 
 .commentWriter {
-  width: 80%;
+  width: 83%;
+  height: 25px;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 .commentBtn {
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-  color: white;
-  background-color: rgb(97, 69, 163);
-  border-radius: 10px;
-  width: 20%;
+  // position: relative;
+  // font-size: 15px;
+  // font-family: "Nanum Gothic", sans-serif;
+  // font-weight: 800;
+  // text-align: center;
+  // color: black;
+  // background-color: rgb(97, 69, 163);
+  // border-radius: 2px;
+  // width: 20%;
 }
 
 .comments {
   display: flex;
   flex-direction: column;
   height: 85%;
-  background-color: rgb(202, 202, 202);
+  background-color: rgb(216, 216, 216);
   overflow: scroll;
 }
 
@@ -212,40 +222,59 @@
   font-size: 15px;
   font-weight: bold;
   text-align: center;
-  color: white;
+  color: black;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
 }
 
 .comment {
-  border-bottom: 2px solid rgb(160, 160, 160);
+  position: relative;
+  width: 99%;
+  border-bottom: 2px solid rgb(187, 187, 187);
+  overflow: visible;
 }
 
 .commentFace {
   position: relative;
   float: left;
-  max-width: 18%;
+  max-width: 12%;
 }
 
 .commentUserName {
+  position: relative;
+  left: 5%;
   color: rgb(47, 43, 59);
-  font-weight: bold;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
 }
 
 .commentDate {
   position: relative;
   float: right;
   top: 4%;
-  right: 4%;
+  right: 1%;
   color: rgb(47, 43, 59);
+  // font-family: "Nanum Gothic", sans-serif;
+  // font-weight: 800;
 }
 
 .commentComment {
   position: relative;
-  margin-left: 20%;
+  left: 5%;
+  width: 95%;
+  // margin-left: 20%;
   color: rgb(47, 43, 59);
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
 }
 
 .commentRemove {
   position: relative;
   float: right;
   // bottom: 5%;
+}
+
+.commentRemoveBtn {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
 }
