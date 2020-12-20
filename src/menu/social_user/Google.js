@@ -1,7 +1,8 @@
 import React from "react";
 
 // css
-import "../../css/Google.scss"
+import "../../css/Google.scss";
+import Button from "../Button";
 
 function Google(props) {
 
@@ -56,23 +57,28 @@ function Google(props) {
         {/* -------------- 소셜로그인 연동해제 부분 ------------------------ */}
 
 
-        <div>
+        <div className="button_container_InSignUp">
           <h2>계정연동</h2>
           <div className="social_info">
             <div>구글</div>
             <div>연동중</div>
           </div>
-          <div className="button_container_InSignUp">
-            <div>
-              {/* axios post 요청 보내기 */}
-              {/* 연동해제 메소드 만들기 */}
-              {/* <button onClick={props.DoubleCheckRemoveUsersClick} > */}
-              <button>
-                연동 해제
-            </button>
-            </div>
 
+          <div className="button_container_InSignUp_div">
+            {/* axios post 요청 보내기 */}
+            {/* 연동해제 메소드 만들기 */}
+            {/* <button onClick={props.DoubleCheckRemoveUsersClick} > */}
+            <Button
+              outline
+              size="small"
+              nanoWidth_removeuser_inmapage
+              onClick={props.DoubleCheckRemoveUsersClick}
+            >
+              회원 탈퇴
+            </Button>
           </div>
+
+
         </div>
 
       </div>

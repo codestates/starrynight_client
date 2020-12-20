@@ -4,6 +4,7 @@ $gray: #495057;
 $red: rgb(226, 12, 12);
 $yellow: yellow;
 $black: rgba(24, 10, 10, 0.932);
+$lightGray: rgb(190, 188, 188);
 
 @mixin button-color($color) {
   background: $color;
@@ -148,6 +149,10 @@ $black: rgba(24, 10, 10, 0.932);
     @include button-color($black);
   }
 
+  &.lightGray {
+    @include button-color($lightGray)
+  }
+
   // & + & 는 .Button + .Button을 의미.
   // 만약 함께 있다면 각 버튼 사이 여백설정 가능
   & + & {
@@ -183,6 +188,7 @@ $black: rgba(24, 10, 10, 0.932);
     display: flex;
     justify-content: center;
     width: 12%;
+    
     height: 1.3rem;
     align-items: center;
     font-size: 0.5rem;
@@ -226,4 +232,95 @@ $black: rgba(24, 10, 10, 0.932);
     align-items: center;
     font-size: 0.5rem;
   }
+
+  &.nanoWidth_mypage {
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    width: 65px;
+    
+    font-size: 0.9rem;
+    height: 1.5rem;
+    align-items: center;
+    
+  }
+  &.nanoWidth_removeuser_inmapage {
+    display: flex;
+    justify-content: center;
+    // width: 12%;
+    height: 1.3rem;
+    align-items: center;
+    font-size: 0.5rem;
+  }
+
+  &.smallWidth_singin {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    align-items: center;
+  }
+
+
+  // 해시태그 수정완료 버튼
+  &.completeModify_hashtag {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+  // 사진 삭제 버튼
+  &.deletePhoto {
+    position: relative;
+    display: block;
+    top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 14rem;
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
+  // 해시태그 수정 버튼
+  &.modify_hashtag {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    position: absolute;
+    right: 8%;
+  }
+  // 사진 삭제 버튼
+  &.photo_delete {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    position: absolute;
+    right: 0;
+  }
+  // 댓글 삭제 버튼
+  &.comment_delete {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+  // 댓글 등록 버튼
+  &.small_Comment {
+    position: absolute;
+    right: 0;
+    width: 17%;
+    height: 1.6rem;
+    text-align: center;
+    padding-left: 1.2rem;
+    // padding-right: 1rem;
+    font-size: 0.9rem;
+  }
+
+
 }

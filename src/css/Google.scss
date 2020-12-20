@@ -12,17 +12,20 @@
   align-items: center;
 
   .modal_Google_overlay {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
     position: fixed;
     width: 100vw;
     height: 100vh;
   }
 
   .modal_Google_content {
+
+    font-family: 'Noto Serif KR', serif;
     background: white;
     color: black;
     position: relative;
-    width: 40%;
+    width: 550px;
+    padding:38px;
     text-align: center;
     border-radius: 10px;
 
@@ -55,14 +58,28 @@
     }
 
     h2 {
-      padding-left: 5%;
+      padding-top: 6%;
+      padding-left: 10px;
       display: flex;
     }
-    .social_info {
-      padding-right: 5%;
-      padding-left: 5%;
-      display: flex;
-      justify-content: space-between;
+
+    .button_container_InSignUp{
+      // padding: 2%;
+      .social_info {
+        padding-right: 5%;
+        padding-left: 5%;
+        display: flex;
+        justify-content: space-between;
+
+      }
+      .button_container_InSignUp_div {
+        display: flex;
+        padding-top: 10%;
+        padding-right: 20px;
+        
+        padding-bottom: unset;
+        justify-content: flex-end;
+      }
     }
   }
 
@@ -78,6 +95,7 @@
     // margin-left: 7%;
     // margin-bottom: 7%;
   // }
+
 
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import "../src/css/Landing.scss";
 
-import starsVideo from "./image/stars_landing_test1.mp4";
+import starsVideo from "./image/Starry_Night.mov";
 import { FiChevronDown } from "react-icons/fi";
 
 class Landing extends React.Component {
@@ -35,7 +35,7 @@ class Landing extends React.Component {
   };
   //
   componentDidMount() {
-    this.videoControllerRef.current.playbackRate = 0.7
+    this.videoControllerRef.current.playbackRate = 0.75  // 영상 배속 설정
     // this.videoControllerRef.current.defaultPlaybackRate = 0.3
   }
   // // const props = useSpring({
@@ -82,7 +82,7 @@ class Landing extends React.Component {
       </div> */}
         {/* <video playsinline autoplay loop> */}
         <div>
-          <video muted autoPlay className="landing_video" ref={this.videoControllerRef} onEnded={this.videoPlaystate} >
+          <video muted autoPlay loop className="landing_video" ref={this.videoControllerRef} onEnded={this.videoPlaystate} >
             {/* <video muted autoPlay loop className="landing_video"> */}
             <source src={starsVideo} type="video/mp4" />
             <strong>귀하의 브라우저는 video tag를 지원하지 않습니다.</strong>
@@ -112,12 +112,12 @@ class Landing extends React.Component {
           onClick={this.scrollToMain}
         >
 
-          {this.state.isplay ?
+          <FiChevronDown />
+          {/* {this.state.isplay ?
             null
             :
-            <FiChevronDown />
 
-          }
+          } */}
         </div>
         {/* <div id="test">
         테스트 중

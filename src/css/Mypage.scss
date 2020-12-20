@@ -64,11 +64,13 @@
     background: white;
     color: black;
     position: relative;
-    width: 60%;
+    width: 750px;
+    // height: 560px;
     text-align: center;
     border-radius: 10px;
     padding: 2%;
 
+    font-family: 'Noto Serif KR', serif;
 
 
 
@@ -144,21 +146,33 @@
         input {
           // display: inline-block;
           // float: right;
-          display: flex;
-          justify-content: space-between;
-          width: 70%;
+          // display: flex;
+          // justify-content: space-between;
+          width: 130%;
           font-size: 0.7rem;
           border-radius: 5px;
           border-width: 1.6px;
           border-color: rgb(143, 143, 143);
-          padding: 0.3rem 0.9rem;
+          padding: 0.4rem 0.9rem;
           margin: unset;
+          align-content: center;
         }
+        input::placeholder {
+          color: rgb(166, 163, 168);
+          display: flex;
+          align-content: center;
+        }
+
+        .bold {
+          font-weight: bold;
+          // color:;
+        }
+
         .email_div_inMypage {
           display: flex;
           
           // justify-content: space-between;
-          padding-bottom: 30px;
+          padding-bottom: 50px;
           .float {
             margin-right: 60px;
           }
@@ -168,32 +182,55 @@
           // width: ;
           display: flex;
           justify-content: space-between;
-          padding-bottom: 30px;
+          padding-bottom: 50px;
             // .float_pw {
               // display: flex;
               // justify-content: space-around;
               span {
+                // display: flex;
+                // justify-content: space-between;
                 margin-right: 48px;
               }
             // }
+            .pw_input_container {
+              display: flex;
+              width: 80%;
+            }
         }
         .nickname_div_inMypage {
           display: flex;
           justify-content: space-between;
-          padding-bottom: 30px;
+          padding-bottom: 50px;
             span {
               margin-right: 75px;
+            }
+            .nickname_input_container {
+              display: flex;
+              width: 80%;
             }
         }
         .mobile_div_inMypage {
           display: flex;
           justify-content: space-between;
+          
             span {
               margin-right: 60px;
+            }
+            .mobile_input_container {
+              display: flex;
+              width: 80%;
             }
         }
       }
 
+      .Button_container_InSignUp {
+        display: flex;
+        padding: 5%;
+        padding-bottom: unset;
+        justify-content: flex-end;
+      }
+
+// 프사 바로 아래 간단 유저 정보
     h1 {
       // padding-left: 5%;
       // display: flex;
@@ -206,12 +243,12 @@
       color: rgba(34, 34, 34, 0.781);
     }
 
-    .social_info {
-      padding-right: 5%;
-      padding-left: 5%;
-      display: flex;
-      justify-content: space-between;
-    }
+    // .social_info {
+    //   padding-right: 5%;
+    //   padding-left: 5%;
+    //   display: flex;
+    //   justify-content: space-between;
+    // }
   
 
 
