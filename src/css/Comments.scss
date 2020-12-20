@@ -158,8 +158,12 @@
 .HowToGo_div {
   position: absolute;
   display: block;
-  top: 48%;
+  top: 52%;
   right: 5%;
+}
+
+.test {
+  text-decoration: none;
 }
 
 .HowToGo {
@@ -171,6 +175,7 @@
   color: black;
   background-color: rgb(97, 69, 163);
   border-radius: 10px;
+  text-decoration: none;
 }
 
 .favorite_div {

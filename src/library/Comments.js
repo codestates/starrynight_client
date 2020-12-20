@@ -340,10 +340,11 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              <Button className="HowToGo" fullWidth>
+              {/* <Button className="HowToGo" fullWidth>
                 How to go
-              </Button>
-              {/* <a
+              </Button> */}
+              <a
+                className="test"
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
                 },${window.localStorage.current
@@ -356,7 +357,7 @@ class Comments extends Component {
                 <Button className="HowToGo" fullWidth>
                   How to go
                 </Button>
-              </a> */}
+              </a>
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
