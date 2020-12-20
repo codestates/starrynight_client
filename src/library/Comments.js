@@ -167,10 +167,22 @@ class Comments extends Component {
 
   // 입력 댓글 state에 저장
   handleCommentOnchange = (e) => {
-    this.setState({
-      writeComment: e.target.value,
-    });
-    console.log(this.state.writeComment);
+    if (this.state.writeComment.length <= 40) {
+      this.setState({
+        writeComment: e.target.value,
+      });
+      console.log(this.state.writeComment);
+    } else {
+      let commentWriter = document.querySelector(".commentWriter");
+      commentWriter.value = commentWriter.value.substring(
+        0,
+        commentWriter.value.length
+      );
+      this.setState({
+        writeComment: "",
+      });
+      alert("40자 이하로 입력해주세요.");
+    }
   };
 
   // 댓글 전송
