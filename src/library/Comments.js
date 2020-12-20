@@ -136,10 +136,6 @@ class Comments extends Component {
   // 모달 창 닫기
   handleModalClose = () => {
     this.props.handleModalClose();
-    // let myModal = document.querySelector(".myModal");
-    // let modalContent = document.querySelector(".modalContent");
-    // myModal.style.display = "none";
-    // modalContent.style.display = "none";
     this.setState({
       isFavorite: !this.state.isFavorite,
     });
@@ -191,7 +187,12 @@ class Comments extends Component {
         })
         .then((res) => {
           alert("댓글이 등록되었습니다.");
+          let inputComment = document.querySelector(".commentWriter");
+          inputComment.value = "";
           this.afterRemoveComment();
+        })
+        .catch((err) => {
+          alert("로그인 후 이용해주세요.");
         });
     }
   };
@@ -209,7 +210,7 @@ class Comments extends Component {
         this.afterRemoveComment();
       })
       .catch((err) => {
-        alert(err);
+        alert("로그인 후 이용해주세요.");
       });
     console.log("beforeClick: ", this.state.imgData.favorite);
   };
@@ -263,12 +264,13 @@ class Comments extends Component {
                     placeholder="#태그 #태그 형식으로 입력"
                     onChange={this.handleModifyInfoChange}
                   />
-                  <button
+                  <Button
                     className="modifyPhotoHashtagBtn"
                     onClick={this.completeModifyInfo}
+                    size="completeModify_hashtag"
                   >
                     수정완료
-                  </button>
+                  </Button>
                 </div>
               ) : (
                 this.state.imgData.hashtags.map((res) => {
@@ -287,12 +289,18 @@ class Comments extends Component {
             {/* ------------------수정버튼, 삭제버튼------------------ */}
             {this.props.isGalleryOpen && (
               <div className="btns">
-                <button className="modifyBtn" onClick={this.handleModifyInfo}>
-                  수정
-                </button>
-                <button className="deleteBtn" onClick={this.removePhotoControl}>
+                <span className="modifyBtn">
+                  <Button onClick={this.handleModifyInfo} size="modify_hashtag">
+                    수정
+                  </Button>
+                </span>
+                <Button
+                  className="deleteBtn"
+                  onClick={this.removePhotoControl}
+                  size="photo_delete"
+                >
                   삭제
-                </button>
+                </Button>
               </div>
             )}
           </div>
@@ -306,17 +314,9 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              <Button
-                className="HowToGo"
-                // size="small"
-                fullWidth
-                color="black"
-                // outline
-                onClick={this.test}
-              >
-                출사지확인
+              <Button className="HowToGo" fullWidth>
+                How to go
               </Button>
-              {/* <button className="HowToGo">How to go</button> */}
               {/* <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
@@ -367,23 +367,22 @@ class Comments extends Component {
                         <span className="commentDate">{data.date}</span>
                         <div className="commentComment">{data.comment}</div>
                         <span className="commentRemove">
-                          <button
-                            className="testButton"
+                          <Button
+                            className="commentRemoveBtn"
                             name={index}
                             onClick={() =>
                               this.removeCommentOpen(data.comment, data.id)
                             }
+                            size="comment_delete"
                           >
                             삭제
-                          </button>
+                          </Button>
                         </span>
                       </div>
                     );
                   })
                 )}
               </div>
-              {/* 댓글 입력 기능 */}
-              {/* <button className="commentBtn">메시지를 입력하세요.</button> */}
               <div>
                 <input
                   type="text"
@@ -391,9 +390,15 @@ class Comments extends Component {
                   className="commentWriter"
                   onChange={this.handleCommentOnchange}
                 />
-                <button className="commentBtn" onClick={this.handleMakeComment}>
+                <Button
+                  className="commentBtn"
+                  onClick={this.handleMakeComment}
+                  // size="small_mypage_profile"
+                  size="small_Comment"
+                  // middleWidth
+                >
                   등록
-                </button>
+                </Button>
               </div>
             </div>
           </div>

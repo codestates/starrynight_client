@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../css/RemoveComment.css";
 const axios = require("axios").default;
+import Button from "../menu/Button";
 
 class RemovePhoto extends Component {
   constructor(props) {
@@ -49,19 +50,28 @@ class RemovePhoto extends Component {
                 댓글 삭제
                 <hr />
               </div>
-              <button
-                className="removeComment_DeleteBtn"
-                onClick={this.handleRemoveComment}
-              >
-                삭제
-              </button>
-              <br />
-              <button
-                className="removeComment_ReturnBtn"
-                onClick={this.handleRemoveCommentModalClose}
-              >
-                돌아가기
-              </button>
+              <div>
+                <br />
+                <br />
+                <br />
+                <Button
+                  className="removeComment_DeleteBtn"
+                  onClick={this.handleRemoveComment}
+                  size="deletePhoto"
+                  color="blue"
+                >
+                  삭제
+                </Button>
+                <br />
+                <Button
+                  className="removeComment_ReturnBtn"
+                  onClick={this.handleRemoveCommentModalClose}
+                  size="deletePhoto"
+                  color="blue"
+                >
+                  돌아가기
+                </Button>
+              </div>
             </div>
           </div>
         </div>

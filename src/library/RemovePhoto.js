@@ -2,6 +2,7 @@
 const axios = require("axios").default;
 import React, { Component } from "react";
 import "../css/RemovePhoto.css";
+import Button from "../menu/Button";
 
 class RemovePhoto extends Component {
   constructor(props) {
@@ -58,19 +59,28 @@ class RemovePhoto extends Component {
                 사진 삭제
                 <hr />
               </div>
-              <button
-                className="removePhoto_DeleteBtn"
-                onClick={this.removePhoto}
-              >
-                삭제
-              </button>
-              <br />
-              <button
-                className="removePhoto_ReturnBtn"
-                onClick={this.handleRemovePhotoModalClose}
-              >
-                돌아가기
-              </button>
+              <div>
+                <br />
+                <br />
+                <br />
+                <Button
+                  className="removePhoto_DeleteBtn"
+                  onClick={this.removePhoto}
+                  size="deletePhoto"
+                  color="blue"
+                >
+                  삭제
+                </Button>
+                <br />
+                <Button
+                  className="removePhoto_ReturnBtn"
+                  onClick={this.handleRemovePhotoModalClose}
+                  size="deletePhoto"
+                  color="blue"
+                >
+                  돌아가기
+                </Button>
+              </div>
             </div>
           </div>
         </div>
