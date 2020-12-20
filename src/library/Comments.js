@@ -314,10 +314,10 @@ class Comments extends Component {
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              <Button className="HowToGo" fullWidth>
+              {/* <Button className="HowToGo" fullWidth>
                 How to go
-              </Button>
-              {/* <a
+              </Button> */}
+              <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
                 },${window.sessionStorage.current
@@ -327,8 +327,10 @@ class Comments extends Component {
                   .join("")}`}
                 target="_blank"
               >
-                <button className="HowToGo">How to go</button>
-              </a> */}
+                <Button className="HowToGo" fullWidth>
+                  How to go
+                </Button>
+              </a>
             </div>
             {/* ------------------favorite 버튼------------------ */}
             <div className="favorite_div">
