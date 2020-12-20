@@ -23,7 +23,7 @@ function KakaoMap(props) {
           level: 5,
         };
         let map = new kakao.maps.Map(mapContainer, mapOptions);
-
+        // window.localStorage.setItem("current", mapOptions.center);
         // 장소검색 객체를 생성한 후, 키워드를 받아 검색을 실행합니다
         let ps = new kakao.maps.services.Places();
         ps.keywordSearch(place, placesSearchCB);

@@ -13,9 +13,15 @@ class ViewPhoto extends Component {
       isCommentsOpen: false,
       isCommentId: 0,
     };
+
   }
 
+
+
+
+
   handleModalOpen = (e) => {
+    window.localStorage.setItem("current", "(33.476947, 126.822903)");
     console.log("e.target.name: ", e.target.name);
     this.setState({
       isCommentsOpen: true,
