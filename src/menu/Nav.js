@@ -25,6 +25,10 @@ import SignUp from "./SignUp";
 import FindEmail from "./find_account/FindEmail";
 import FindPw from "./find_account/FindPw";
 
+import { IoIosAddCircle } from "react-icons/io";
+import { MdAddAPhoto } from "react-icons/md";
+import AddPhoto from "../AddPhoto";
+
 //css
 import "../css/Nav.scss";
 
@@ -33,6 +37,7 @@ class Nav extends React.Component {
     super(props);
     this.state = {
       isHamburgerOn: false,
+      isAddPhotoModalOpen: false,
 
       // 순전히 화면에 변경 전의 정보를 렌더하는 역할
       currentUserInfo: {
@@ -63,9 +68,9 @@ class Nav extends React.Component {
   // !수정하기!
   //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 main 페이지로 리다이렉트 하기.
   handleLogoClickToRedirectToMain = () => {
-    console.log("잘클릭????롷고???")
+    console.log("잘클릭????롷고???");
     // this.props.history.push("/main");
-    window.history.go(0)
+    window.history.go(0);
     // window.location.href = "/";
   };
 
@@ -354,6 +359,11 @@ class Nav extends React.Component {
     }
   }
 
+  // 12/1 사진추가버튼 모달창 수정
+  handleAddPhotoModal = () => {
+    this.setState({ isAddPhotoModalOpen: !this.state.isAddPhotoModalOpen });
+  };
+
   render() {
     console.log("nav 프롭", this.props);
     console.log("마이페이지 불린값", this.state.isMypageModalOpen);
@@ -368,6 +378,24 @@ class Nav extends React.Component {
             onClick={this.handleLogoClickToRedirectToMain}
           />
         </div>
+
+        {/* 12/20 사진공유 모달창 위치수정 */}
+        {this.props.isLogin ? (
+          <div className="AddPhoto">
+            <MdAddAPhoto
+              className="AddPhoto-icon"
+              onClick={this.handleAddPhotoModal}
+              style={{ fontSize: `35px` }}
+            />
+            <AddPhoto
+              // 12/8 로그인 유저의 토큰을 활용하기 위해 props로 상속추가
+              localStorage={window.localStorage}
+              isLogin={this.props.isLogin}
+              isOpen={this.state.isAddPhotoModalOpen}
+              handleModal={this.handleAddPhotoModal}
+            />
+          </div>
+        ) : null}
 
         {/* 로그인 경우 vs 비로그인 경우로 나누기 */}
 
@@ -489,7 +517,7 @@ class Nav extends React.Component {
         <FindPw
           isFindPwModalOpen={this.state.isFindPwModalOpen}
           linkToSignUpfromfindPw={this.linkToSignUpfromfindPw} // 회원가입 버튼을 누르면 findPw모달이 꺼지고 signUp모달이 활성화 될 것임.
-          handleSignInModal={this.handleSignInModal}  // completedFindPw에서 다시 로그인으로 돌아가게 하기 위함
+          handleSignInModal={this.handleSignInModal} // completedFindPw에서 다시 로그인으로 돌아가게 하기 위함
           handleFindPwModal={this.handleFindPwModal}
           getToken={this.getToken} // 소셜로그인
           googleLogin={this.googleLogin} // 소셜로그인
