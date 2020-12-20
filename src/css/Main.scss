@@ -3,20 +3,20 @@
 
   .AddPhoto {
     position: absolute;
-    left: 90%;
-    top: 75%;
+    right: 100px;
+    top: 30px;
     z-index: 1;
     cursor: pointer;
     svg {
       font-size: 6rem;
       // color: skyblue;
-      color: #383a3f;
+      color: #e9efff;
     }
   }
 
   .AddPhoto-icon {
     &:hover {
-      color: #dce6ff;
+      color: #9bb8ff;
     }
   }
 

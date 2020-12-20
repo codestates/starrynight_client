@@ -17,8 +17,8 @@ import CompletedFindEmail from "./menu/find_account/CompletedFindEmail";
 import CompletedFindPw from "./menu/find_account/CompletedFindPw";
 import ViewPhoto from "./library/ViewPhoto";
 
-import { IoIosAddCircle } from "react-icons/io";
-import AddPhoto from "./AddPhoto";
+// import { IoIosAddCircle } from "react-icons/io";
+// import AddPhoto from "./AddPhoto";
 
 // css
 import "../src/css/Main.scss";
@@ -32,7 +32,7 @@ class Main extends React.Component {
     this.state = {
       isLogin: false,
       // isMypage: true,
-      isAddPhotoModalOpen: false,
+      // isAddPhotoModalOpen: false,
       isAllOpen: true,
       isGalleryOpen: false,
       isFavoriteOpen: false,
@@ -49,7 +49,6 @@ class Main extends React.Component {
   //     isGalleryOpen: !this.state.isGalleryOpen
   //   })
   // }
-
 
   // isGalleryOpen을 변환함
   handleIsGalleryOpen = () => {
@@ -151,10 +150,10 @@ class Main extends React.Component {
     }
   }
 
-  // 12/1 사진추가버튼 모달창 수정
-  handleAddPhotoModal = () => {
-    this.setState({ isAddPhotoModalOpen: !this.state.isAddPhotoModalOpen });
-  };
+  // // 12/1 사진추가버튼 모달창 수정
+  // handleAddPhotoModal = () => {
+  //   this.setState({ isAddPhotoModalOpen: !this.state.isAddPhotoModalOpen });
+  // };
 
   render() {
     console.log("main.js isLogin 상태", this.state.isLogin);
@@ -172,19 +171,10 @@ class Main extends React.Component {
           }
         </div>
 
-
-
-
-
-
         <br />
         {/* br 이거 왜 지우면 에러코드 뜨고 무한로딩 돌지?? */}
         <br />
         <div className="top"></div>
-
-
-
-
 
         {/* <div style={{ fontSize: `1rem`, color: `white`, textAlign: `center` }}>
           이곳은 ViewPhoto.js의 All.js, 사진 라이브러리 그리드가 위치할 곳
@@ -195,7 +185,7 @@ class Main extends React.Component {
           isFavoriteOpen={this.state.isFavoriteOpen}
         />
 
-        {/* 12/1 사진추가버튼 모달창 수정 */}
+        {/* 12/1 사진추가버튼 모달창 수정
         {this.state.isLogin ? (
           <div className="AddPhoto">
             <IoIosAddCircle
@@ -210,7 +200,7 @@ class Main extends React.Component {
               handleModal={this.handleAddPhotoModal}
             />
           </div>
-        ) : null}
+        ) : null} */}
         <div className="scoll_to_top">
           <HiChevronUp
             className="icons_to_top"
