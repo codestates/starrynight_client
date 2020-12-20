@@ -40,7 +40,7 @@ function KakaoMap(props) {
               bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
             }
             map.setBounds(bounds);
-            window.sessionStorage.setItem("current", mapOptions.center);
+            window.localStorage.setItem("current", mapOptions.center);
           }
         }
 
@@ -77,7 +77,7 @@ function KakaoMap(props) {
             content: content,
           });
           customOverlay.setMap(map);
-          window.sessionStorage.setItem("current", "");
+          window.localStorage.setItem("current", "");
         }
       });
     };

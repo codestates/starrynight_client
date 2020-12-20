@@ -5,7 +5,6 @@ $red: rgb(226, 12, 12);
 $yellow: yellow;
 $black: rgba(24, 10, 10, 0.932);
 
-
 @mixin button-color($color) {
   background: $color;
   &:hover {
@@ -28,12 +27,9 @@ $black: rgba(24, 10, 10, 0.932);
       // color: white;
     }
   }
-
 }
 
-
 .Button {
-  
   display: inline-flex;
   color: white;
   // font-weight: bold;
@@ -61,6 +57,66 @@ $black: rgba(24, 10, 10, 0.932);
     padding-right: 1rem;
     font-size: 0.875rem;
   }
+  // 해시태그 수정완료 버튼
+  &.completeModify_hashtag {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+  // 사진 삭제 버튼
+  &.deletePhoto {
+    position: relative;
+    display: block;
+    top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 14rem;
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
+  // 해시태그 수정 버튼
+  &.modify_hashtag {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    position: absolute;
+    right: 8%;
+  }
+  // 사진 삭제 버튼
+  &.photo_delete {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    position: absolute;
+    right: 0;
+  }
+  // 댓글 삭제 버튼
+  &.comment_delete {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+  // 댓글 등록 버튼
+  &.small_Comment {
+    position: absolute;
+    right: 0;
+    width: 17%;
+    height: 1.6rem;
+    text-align: center;
+    padding-left: 1.2rem;
+    // padding-right: 1rem;
+    font-size: 0.9rem;
+  }
   // 커스터마이징 사이즈
   &.small_mypage_profile {
     margin: auto;
@@ -77,19 +133,19 @@ $black: rgba(24, 10, 10, 0.932);
   }
 
   &.lightBlue {
-    @include button-color($lightBlue)
+    @include button-color($lightBlue);
   }
 
   &.red {
-    @include button-color($red)
+    @include button-color($red);
   }
 
   &.yellow {
-    @include button-color($yellow)
+    @include button-color($yellow);
   }
 
   &.black {
-    @include button-color($black)
+    @include button-color($black);
   }
 
   // & + & 는 .Button + .Button을 의미.
@@ -98,13 +154,12 @@ $black: rgba(24, 10, 10, 0.932);
     margin-left: 1rem;
   }
 
-
   // 버튼의 전체 너비를 차지하도록 하는 기능
   &.fullWidth {
     width: 100%;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    
+
     & + & {
       margin-left: 0;
       margin-top: 1rem;
@@ -143,7 +198,7 @@ $black: rgba(24, 10, 10, 0.932);
   // 커스터마이징 버튼
   &.middleWidth_main_btn {
     width: 65%;
-    display:flex;
+    display: flex;
     // display: flex-end;
     // float: right;
     // padding-right: 1rem;

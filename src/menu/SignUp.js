@@ -2,8 +2,7 @@ import React from "react";
 import axios from "axios";
 import Button from "./Button";
 
-
-const FormData = require('form-data');
+const FormData = require("form-data");
 //css
 import "../css/SignUp.scss";
 import { BiCamera } from "react-icons/bi";
@@ -41,34 +40,15 @@ class SignUp extends React.Component {
   //   //   reader.read
   //   // }
 
-<<<<<<< HEAD
-  handleprofileOnChange = (event) => {
-    event.preventDefault();
-    let reader = new FileReader();
-    let file = event.target.files[0];
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        previewURL: reader.result,
-      });
-    };
-    reader.readAsDataURL(file);
-    // const file = photoInput.current.files[0];
-    // if(file) {
-    //   const reader  = new FileReader();
-    //   reader.read
-    // }
-  };
-=======
   // }
 
   handleprofileOnChange = (e) => {
     // e.preventDefault();
     this.setState({
-      file: e.target.files[0]
-    })
+      file: e.target.files[0],
+    });
     // window.sessionStorage.setItem("profile", this.state.file)
-  }
+  };
   handlePost = (e) => {
     e.preventDefault();
 
@@ -79,28 +59,25 @@ class SignUp extends React.Component {
     formData.append("password", this.state.password);
     formData.append("mobile", this.state.mobile);
 
-    console.log("formData", this.state.file.File)
+    console.log("formData", this.state.file.File);
 
     // const photo = window.sessionStorage.getItem("profile")
     const config = {
       // headers: formData.getHeaders()
       // headers: { "Content-type": "imageFile.type" }
-      headers: { 'Content-Type': 'multipart/form-data' }
+      headers: { "Content-Type": "multipart/form-data" },
       // headers: { 'Content-Type': 'application/json' }
     };
 
-    axios.post("https://api.mystar-story.com/user/signup", formData, config)
+    axios
+      .post("https://api.mystar-story.com/user/signup", formData, config)
       .then((respoense) => {
-        console.log("사진이 업로드 되었습니다.", respoense.data)
+        console.log("사진이 업로드 되었습니다.", respoense.data);
       })
       .catch((error) => {
-
-        console.log("사진 업로드 실패", error.response.data)
-      })
-
-  }
-
->>>>>>> d633e2338fd8ccdb948a7494ea4ecbcbf93cf41a
+        console.log("사진 업로드 실패", error.response.data);
+      });
+  };
 
   // 모달창이 꺼지고 다시 회원가입 모달 활성화했을 때, 기본 유저정보 State와 에러메세지가 계속 띄어져있는 것을 방지하기 위해
   // state값을 빈 스트링으로 렌더링 시킨다.
@@ -238,22 +215,13 @@ class SignUp extends React.Component {
       password: this.state.password,
       // doubleCheckPw: this.state.doubleCheckPw,
       mobile: this.state.mobile,
-<<<<<<< HEAD
-      file: this.state.file,
-    };
-
-    console.log("NewUserInfo.file", NewUserInfo.file);
-=======
       // file: this.state.file
     };
 
-
     const NewProfilePhoto = {
-      file: window.sessionStorage.getItem("profile")
-    }
+      file: window.sessionStorage.getItem("profile"),
+    };
 
-
->>>>>>> d633e2338fd8ccdb948a7494ea4ecbcbf93cf41a
     // 에러메세지의 state값을 업데이트하고 아래 렌더부분에서 렌더시킨다.
     // 에러메세지 - email
     if (!this.state.email.length) {
@@ -325,16 +293,14 @@ class SignUp extends React.Component {
       this.state.doubleCheckPw === this.state.password &&
       this.state.mobile.length
     ) {
-      console.log("NewProfilePhoto.file", NewProfilePhoto.file)
+      console.log("NewProfilePhoto.file", NewProfilePhoto.file);
 
       // const config = {
-
 
       //   // headers: { "Content-type": "imageFile.type" }
       //   headers: { 'Content-Type': 'multipart/form-data' }
       //   // headers: { 'Content-Type': 'application/json' }
       // };
-
 
       // axios.post("https://api.mystar-story.com/user/signup", NewProfilePhoto, config)
       //   .then((respoense) => {
@@ -348,12 +314,10 @@ class SignUp extends React.Component {
 
       // const config = {
 
-
       //   // headers: { "Content-type": "imageFile.type" }
       //   headers: { 'Content-Type': 'multipart/form-data' }
       //   // headers: { 'Content-Type': 'application/json' }
       // };
-
 
       // axios
       //   .post("https://api.mystar-story.com/user/signup", NewUserInfo)
@@ -529,7 +493,6 @@ class SignUp extends React.Component {
                         middleWidth_main_btn
                         // onClick={this.handleClickAddNewUserInfo}
                         onClick={this.handlePost}
-
                       >
                         회원 가입
                       </Button>

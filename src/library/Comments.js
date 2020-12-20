@@ -4,15 +4,16 @@ const axios = require("axios").default;
 import RemovePhoto from "./RemovePhoto";
 import RemoveComment from "./RemoveComment";
 import KakaoMap from "../KakaoMap";
-import { MdStarBorder } from "react-icons/md";
-import { MdStar } from "react-icons/md";
+import { IoHeart } from "react-icons/io5";
+import { IoHeartOutline } from "react-icons/io5";
+import Button from "../menu/Button";
 
 let fakeData = {
   id: 1,
   photoPath:
     "https://s3.ap-northeast-2.amazonaws.com/mystar-story.com/uploadPhotos/img1.jpg",
   photoTitle: "Test Photo1",
-  location: "신촌역 3번출구",
+  location: "동서대학교",
   writer: "Dummy2",
   writerProfilePath: "logologo",
   hashtags: [
@@ -60,7 +61,6 @@ class Comments extends Component {
       writeComment: "",
       hashTag: "",
     };
-    // console.log("comments컴포넌트 함수 : ", this.state);
   }
 
   // 해시태그 수정 페이지 열기
@@ -119,36 +119,23 @@ class Comments extends Component {
       this.setState({
         imgData: data.data,
       });
-      console.log(this.state.imgData.favorite);
     });
-    this.setState({
-      isFavorite: this.state.imgData.favorite,
-    });
-    console.log("isFavorite: ", this.state.isFavorite);
   }
 
-  // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기
+  // 댓글 삭제, 등록 후 사진 정보를 새로 반영하기 = 픽포토를 통한 새로고침
   afterRemoveComment = () => {
     let url = `https://api.mystar-story.com/${this.props.isCommentId}`;
-    axios.get(url).then((data) => {
+    axios.get(url).then((res) => {
       this.setState({
-        imgData: data.data,
+        imgData: res.data,
       });
-      console.log(this.state.imgData);
     });
-    this.setState({
-      isFavorite: this.state.imgData.favorite,
-    });
-    // console.log("isFavorite: ", this.state.isFavorite);
+    console.log("버튼클릭 : ", this.state.imgData);
   };
 
   // 모달 창 닫기
   handleModalClose = () => {
     this.props.handleModalClose();
-    // let myModal = document.querySelector(".myModal");
-    // let modalContent = document.querySelector(".modalContent");
-    // myModal.style.display = "none";
-    // modalContent.style.display = "none";
     this.setState({
       isFavorite: !this.state.isFavorite,
     });
@@ -200,78 +187,40 @@ class Comments extends Component {
         })
         .then((res) => {
           alert("댓글이 등록되었습니다.");
+          let inputComment = document.querySelector(".commentWriter");
+          inputComment.value = "";
           this.afterRemoveComment();
+        })
+        .catch((err) => {
+          alert("로그인 후 이용해주세요.");
         });
     }
   };
 
-  // 좋아요 클릭
-  // handleFavoriteClickOpen = () => {
-  //   this.setState({
-  //     isFavorite: true,
-  //   });
-  //   let url = `https://api.mystar-story.com/makelike`;
-  //   axios
-  //     .post(url, {
-  //       photoId: this.state.imgData.id,
-  //       photoPath: this.state.imgData.photoPath,
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert("좋아요를 눌렀습니다.");
-  //       // this.setState({
-  //       //   imgData: res,
-  //       // });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   this.afterRemoveComment();
-  // };
-
   // 좋아요 on/off
   handleFavoriteClickControl = () => {
+    console.log("beforeClick: ", this.state.imgData.favorite);
     let url = `https://api.mystar-story.com/makelike`;
     axios
       .post(url, {
         photoId: this.state.imgData.id,
-        photoPath: this.state.imgData.photoPath,
       })
       .then((data) => {
-        console.log("좋아요를 눌렀습니다.");
+        console.log(this.state.imgData.favorite);
+        this.afterRemoveComment();
       })
       .catch((err) => {
-        alert(err);
+        alert("로그인 후 이용해주세요.");
       });
-    this.setState({
-      isFavorite: !this.state.isFavorite,
-    });
+    console.log("beforeClick: ", this.state.imgData.favorite);
   };
 
-  // // 좋아요 on/off
-  // handleFavoriteClickControl = () => {
-  //   let url = `https://api.mystar-story.com/makelike`;
-  //   axios
-  //     .post(url, {
-  //       photoId: this.state.imgData.id,
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert("좋아요를 눌렀습니다.");
-  //       // if (window.sessionStorage.favorite) {
-  //       //   window.sessionStorage.setItem(
-  //       //     "favorite",
-  //       //     !window.sessionStorage.favorite
-  //       //   );
-  //       // } else {
-  //       //   window.sessionStorage.setItem("favorite", true);
-  //       // }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   this.afterRemoveComment();
-  // };
+  test = () => {
+    this.setState({
+      location: this.state.imgData.location,
+    });
+    this.afterRemoveComment();
+  };
 
   render() {
     return (
@@ -297,14 +246,28 @@ class Comments extends Component {
         <div className="myModal" onClick={this.handleModalClose}></div>
         <div className="modalContent">
           <div className="modalContent_Left">
-            {/* ------------------name------------------ */}
-            <div className="photoName">{this.state.imgData.photoTitle}</div>
             {/* ------------------photo------------------ */}
             <img
               className="selectPhoto"
               src={this.state.imgData.photoPath}
               alt="img"
             />
+            {/* ------------------name------------------ */}
+            <div className="photoName">{this.state.imgData.photoTitle}</div>
+            {/* ------------------favorite 버튼------------------ */}
+            <div className="favorite_div">
+              {this.state.imgData.favorite ? (
+                <IoHeart
+                  className="favorite"
+                  onClick={this.handleFavoriteClickControl}
+                />
+              ) : (
+                <IoHeartOutline
+                  className="favoriteBorder"
+                  onClick={this.handleFavoriteClickControl}
+                />
+              )}
+            </div>
             {/* ------------------hashTag------------------ */}
             <div className="hashTag">
               {this.state.infoOpen === true ? (
@@ -315,12 +278,13 @@ class Comments extends Component {
                     placeholder="#태그 #태그 형식으로 입력"
                     onChange={this.handleModifyInfoChange}
                   />
-                  <button
+                  <Button
                     className="modifyPhotoHashtagBtn"
                     onClick={this.completeModifyInfo}
+                    size="completeModify_hashtag"
                   >
                     수정완료
-                  </button>
+                  </Button>
                 </div>
               ) : (
                 this.state.imgData.hashtags.map((res) => {
@@ -339,54 +303,51 @@ class Comments extends Component {
             {/* ------------------수정버튼, 삭제버튼------------------ */}
             {this.props.isGalleryOpen && (
               <div className="btns">
-                <button className="modifyBtn" onClick={this.handleModifyInfo}>
-                  수정
-                </button>
-                <button className="deleteBtn" onClick={this.removePhotoControl}>
-                  삭제
-                </button>
+                <span className="modifyBtn">
+                  <Button onClick={this.handleModifyInfo} size="modify_hashtag">
+                    수정
+                  </Button>
+                </span>
+                <span className="deleteBtn">
+                  <Button
+                    // className="deleteBtn"
+                    onClick={this.removePhotoControl}
+                    size="photo_delete"
+                    color="red"
+                  >
+                    삭제
+                  </Button>
+                </span>
               </div>
             )}
           </div>
           <div className="modalContent_Right">
-            {/* ------------------close버튼------------------ */}
-            {/* <span className="close" onClick={this.handleModalClose}>
-              &times;
-            </span> */}
             {/* ------------------지도------------------ */}
             <div className="mapImg">
-              <KakaoMap place={this.state.imgData.location} />
+              {this.state.imgData.location !== "동서대학교" ? (
+                <KakaoMap place={this.state.imgData.location} />
+              ) : null}
             </div>
 
             {/* ------------------How to go 버튼------------------ */}
             <div className="HowToGo_div">
-              {/* <button className="HowToGo">How to go</button> */}
+              <Button className="HowToGo" fullWidth>
+                How to go
+              </Button>
               {/* <a
                 href={`https://map.kakao.com/link/to/${
                   this.state.imgData.location
-                },${window.sessionStorage.current
+                },${window.localStorage.current
                   .split("")
-                  .slice(-(window.sessionStorage.current.length - 1), -1)
+                  .slice(-(window.localStorage.current.length - 1), -1)
                   .map((el) => (el !== " " ? el : null))
                   .join("")}`}
                 target="_blank"
               >
-                <button className="HowToGo">How to go</button>
+                <Button className="HowToGo" fullWidth>
+                  How to go
+                </Button>
               </a> */}
-            </div>
-            {/* ------------------favorite 버튼------------------ */}
-            <div className="favorite_div">
-              {this.state.isFavorite ? (
-                <MdStar
-                  className="favorite"
-                  onClick={this.handleFavoriteClickControl}
-                />
-              ) : (
-                <MdStarBorder
-                  className="favoriteBorder"
-                  onClick={this.handleFavoriteClickControl}
-                />
-              )}
             </div>
             {/* ------------------댓글, 메시지입력btn------------------ */}
             <div className="commentDiv">
@@ -408,23 +369,23 @@ class Comments extends Component {
                         <span className="commentDate">{data.date}</span>
                         <div className="commentComment">{data.comment}</div>
                         <span className="commentRemove">
-                          <button
-                            className="testButton"
+                          <Button
+                            className="commentRemoveBtn"
                             name={index}
                             onClick={() =>
                               this.removeCommentOpen(data.comment, data.id)
                             }
+                            size="comment_delete"
+                            color="red"
                           >
                             삭제
-                          </button>
+                          </Button>
                         </span>
                       </div>
                     );
                   })
                 )}
               </div>
-              {/* 댓글 입력 기능 */}
-              {/* <button className="commentBtn">메시지를 입력하세요.</button> */}
               <div>
                 <input
                   type="text"
@@ -432,9 +393,15 @@ class Comments extends Component {
                   className="commentWriter"
                   onChange={this.handleCommentOnchange}
                 />
-                <button className="commentBtn" onClick={this.handleMakeComment}>
+                <Button
+                  className="commentBtn"
+                  onClick={this.handleMakeComment}
+                  // size="small_mypage_profile"
+                  size="small_Comment"
+                  // middleWidth
+                >
                   등록
-                </button>
+                </Button>
               </div>
             </div>
           </div>
