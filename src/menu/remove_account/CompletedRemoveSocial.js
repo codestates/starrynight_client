@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import "../../css/CompletedRemoveUser.scss"
 import Button from "../Button";
 
-class CompletedRemoveUser extends React.Component {
+class CompletedRemoveSocial extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -21,7 +21,7 @@ class CompletedRemoveUser extends React.Component {
     console.log("일반 회원탈퇴 완료 프롭", this.props)
     return (
       <div>
-        {this.props.isOpen === true ?
+        {this.props.isCompletedRemoveSocialOpen === true ?
 
           <div className="modal_CompletedRemoveUser">
             <div className="modal_CompletedRemoveUser_overlay" onClick={this.signOutAndMoveToHome}></div>
@@ -35,15 +35,19 @@ class CompletedRemoveUser extends React.Component {
               <div className="message_container_CompletedRemoveUser">
                 <div className="message_container_CompletedRemoveUser_div">
                   <div>
-                    그동안 <span><b>Starry Night</b></span>를 이용해주셔서<br />
+                    완전한 회원 탈퇴를 위해서는 <span><b>가입하신 SNS</b></span>에서<br />
                     <br />
-                  진심으로 감사드립니다 😊<br />
+                    <span><b>별도의 계정연동 해제</b></span>를 해주셔야 합니다.<br />
                     <br />
                     <br />
-                  다시 저희와 밤 하늘을 올려다 볼 그날까지<br />
+                    다시 저희와 함께 밤 하늘을 올려다 볼 그날까지<br />
                     <br />
-                  고객님을 기다리겠습니다.
-                  <br />
+                    고객님을 기다리겠습니다.
+                    <br />
+                    <br />
+                    <br />
+                    이용해주셔서 감사드립니다. 😊
+                    <br />
                   </div>
 
                 </div>
@@ -64,12 +68,13 @@ class CompletedRemoveUser extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-          : null}
+          </div >
+          : null
+        }
       </div>
 
     )
   }
 }
 
-export default CompletedRemoveUser;
+export default CompletedRemoveSocial;

@@ -52,7 +52,23 @@ function DoubleCheckRemoveUsers(props) {
               
             </Button>
           </div>
+
+        {props.loginPlatformId !== 1 ?  // 소셜 계정이라면 소셜 컴플리트로
           <div>
+            <Button
+              className="remove_user_button_DoubleCheckRemoveUsers"
+              onClick={props.CompletedRemoveSocialClick}
+              size="small"
+              color="red"
+              middleWidth_completedFind  
+            > 
+                탈퇴하기 
+            </Button>
+          </div>
+
+          :
+      
+          <div>       
             <Button
               className="remove_user_button_DoubleCheckRemoveUsers"
               onClick={props.CompletedRemoveUserClick}
@@ -65,6 +81,8 @@ function DoubleCheckRemoveUsers(props) {
               
             </Button>
           </div>
+      }
+
         </div>
         </div>
       </div>

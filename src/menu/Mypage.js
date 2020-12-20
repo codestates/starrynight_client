@@ -52,6 +52,19 @@ class Mypage extends React.Component {
     console.log("Mypage STATE PROPS", this.state.currentUserInfo);
   }
 
+  handleGoogleModalOpen = () => {
+    this.setState({
+      isGoogleModalOpen: !this.state.isGoogleModalOpen
+    })
+  }
+  handleKakaoModalOpen = () => {
+    this.setState({
+      isKakaoModalOpen: !this.state.isKakaoModalOpen
+    })
+  }
+
+
+
   // 프로필 사진 변경
 
   handleModifyBtnOfProfileClick = () => {
@@ -356,12 +369,22 @@ class Mypage extends React.Component {
               isMypageModalOpen={this.props.isMypageModalOpen}
               handleMypageModal={this.props.handleMypageModal}
               currentUserInfo={this.props.currentUserInfo}
+              DoubleCheckRemoveUsersClick={this.props.DoubleCheckRemoveUsersClick}
+              handleCompletedRemoveUser={this.props.handleCompletedRemoveUser}
+              loginPlatformId={this.props.currentUserInfo.loginPlatformId}
+            // DoubleCheckRemoveUser={this.props.isDoubleCheckRemoveUsersModalOpen}
+            // completedRemoveUser={this.props.isCompletedRemoveUserModalOpen}
             />
           ) : this.props.currentUserInfo.loginPlatformId === 3 ? (
             <Kakao
               isMypageModalOpen={this.props.isMypageModalOpen}
               handleMypageModal={this.props.handleMypageModal}
               currentUserInfo={this.props.currentUserInfo}
+              DoubleCheckRemoveUsersClick={this.props.DoubleCheckRemoveUsersClick}
+              handleCompletedRemoveUser={this.props.handleCompletedRemoveUser}
+              loginPlatformId={this.props.currentUserInfo.loginPlatformId}
+            // DoubleCheckRemoveUser={this.props.isDoubleCheckRemoveUsersModalOpen}
+            // completedRemoveUser={this.props.isCompletedRemoveUserModalOpen}
             />
           ) : (
                 <div className="modal_Mypage">
