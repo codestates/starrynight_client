@@ -227,7 +227,6 @@
   display: flex;
   flex-direction: column;
   height: 85%;
-  // background-color: rgb(216, 216, 216);
   background-color: rgba(245, 245, 245, 0.3);
   overflow: scroll;
 }
@@ -247,9 +246,14 @@
 
 .comment {
   position: relative;
-  width: 99%;
+  width: 95%;
   // border-bottom: 2px solid rgb(187, 187, 187);
   overflow: visible;
+}
+
+.comment_left {
+  position: absolute;
+  height: 100%;
 }
 
 .commentFace {
@@ -260,7 +264,7 @@
 
 .commentUserName {
   position: relative;
-  left: 5%;
+  left: 15%;
   color: rgb(47, 43, 59);
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 800;
@@ -269,7 +273,7 @@
 .commentDate {
   position: relative;
   float: right;
-  top: 4%;
+  top: 2px;
   right: 1%;
   color: rgb(47, 43, 59);
   // font-family: "Nanum Gothic", sans-serif;
@@ -278,8 +282,8 @@
 
 .commentComment {
   position: relative;
-  left: 5%;
-  width: 95%;
+  left: 15%;
+  width: 88%;
   // margin-left: 20%;
   color: rgb(47, 43, 59);
   font-family: "Nanum Gothic", sans-serif;
