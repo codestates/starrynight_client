@@ -159,43 +159,9 @@ function AddPhoto(props) {
   return (
     <>
       {props.isOpen && (
-        <div
-          className="modal"
-          style={{
-            position: `fixed`,
-            top: 0,
-            left: 0,
-            width: `100vw`,
-            height: `100vh`,
-            display: `flex`,
-            justifyContent: `center`,
-            alignItems: `center`,
-          }}
-        >
-          <div
-            className="modal_overlay"
-            onClick={props.handleModal}
-            style={{
-              backgroundColor: `#00000099`,
-              position: `fixed`,
-              width: `100vw`,
-              height: `100vh`,
-              cursor: `auto`,
-            }}
-          />
-          <div
-            className="modal_content_a"
-            style={{
-              backgroundColor: `white`,
-              width: `30rem`,
-              position: `relative`,
-              textAlign: `center`,
-              borderRadius: `10px`,
-              color: `black`,
-              border: `0.1rem solid #565f7e`,
-              cursor: `auto`,
-            }}
-          >
+        <div className="modal">
+          <div className="modal_overlay" onClick={props.handleModal} />
+          <div className="modal_content_a">
             <div style={{ maxWidth: `700px`, margin: `2rem auto` }}>
               {/* close button */}
               <span class="close" onClick={props.handleModal}>
@@ -206,8 +172,7 @@ function AddPhoto(props) {
               <div
                 style={{
                   textAlign: `center`,
-                  marginBottom: `3rem`,
-                  marginLeft: `4rem`,
+                  marginBottom: `2rem`,
                 }}
               >
                 <Title className="addphoto-title" level={2}>
@@ -231,29 +196,9 @@ function AddPhoto(props) {
                       maxSize={100000000}
                     >
                       {({ getRootProps, getInputProps }) => (
-                        <div
-                          className="dropzone"
-                          style={{
-                            marginLeft: `4rem`,
-                            height: `30px`,
-                            width: `40px`,
-                            border: `0.5px solid lightgray`,
-                            display: `flex`,
-                            alignItems: `center`,
-                            justifyContent: `center`,
-                          }}
-                          {...getRootProps()}
-                        >
+                        <div className="dropzone" {...getRootProps()}>
                           <input {...getInputProps()} />
-                          <div
-                            style={{
-                              fontWeight: `light`,
-                              fontSize: `10pt`,
-                              cursor: `pointer`,
-                            }}
-                          >
-                            +
-                          </div>
+                          <div style={{ cursor: `pointer` }}>+</div>
                         </div>
                       )}
                     </Dropzone>
@@ -280,28 +225,12 @@ function AddPhoto(props) {
 
                 {/* description and input zone */}
                 {/* 카카오맵 출력 zone */}
-                <div
-                  className="add-kakaomap"
-                  style={{
-                    marginLeft: `4rem`,
-                    marginRight: `4rem`,
-                    marginTop: `1rem`,
-                    display: `flex`,
-                    alignItems: `center`,
-                    justifyContent: `center`,
-                  }}
-                >
+                <div className="add-kakaomap">
                   {PhotoLocation && <KakaoMap place={PhotoLocation} />}
                 </div>
 
                 {/* 사진위치 찾기 zone */}
-                <div
-                  style={{
-                    textAlign: `left`,
-                    marginLeft: `4rem`,
-                    marginRight: `4rem`,
-                  }}
-                >
+                <div className="addphoto-label-div">
                   <label className="addphoto-label">사진위치</label>
                   <input
                     className="input-search"
@@ -315,7 +244,7 @@ function AddPhoto(props) {
                     검색
                   </button>
                 </div>
-                {sessionStorage === "no place" ? (
+                {localStorage === "no place" ? (
                   <div
                     style={{
                       textAlign: `left`,
@@ -331,39 +260,19 @@ function AddPhoto(props) {
                 <br />
 
                 {/* 사진제목 입력 zone */}
-                <div
-                  style={{
-                    textAlign: `left`,
-                    marginLeft: `4rem`,
-                    marginRight: `4rem`,
-                  }}
-                >
+                <div className="addphoto-label-div">
                   <label className="addphoto-label">사진제목</label>
                   <input
                     className="input-title-field"
                     type="text"
                     onChange={onPhotoTitleChange}
                     value={PhotoTitle}
-                    style={{
-                      boxSizing: `border-box`,
-                      border: `2px solid #ccc`,
-                      borderRadius: `4px`,
-                      backgroundColor: `white`,
-                      padding: `5px 7px 5px 7px`,
-                      width: `12rem`,
-                    }}
                   />
                 </div>
                 <br />
 
                 {/* 해시태그 입력 zone */}
-                <div
-                  style={{
-                    textAlign: `left`,
-                    marginLeft: `4rem`,
-                    marginRight: `4rem`,
-                  }}
-                >
+                <div className="addphoto-label-div">
                   <label className="addphoto-label">해시태그</label>
                   <input
                     className="input-hashtag-field"
@@ -371,14 +280,6 @@ function AddPhoto(props) {
                     onChange={onPhotoHashtagChange}
                     value={PhotoHashtag}
                     placeholder="#태그 #태그 형식으로 입력"
-                    style={{
-                      boxSizing: `border-box`,
-                      border: `2px solid #ccc`,
-                      borderRadius: `4px`,
-                      backgroundColor: `white`,
-                      padding: `5px 7px 5px 7px`,
-                      width: `12rem`,
-                    }}
                   />
                 </div>
 
