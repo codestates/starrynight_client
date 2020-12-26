@@ -207,10 +207,12 @@ function AddPhoto(props) {
                 style={{
                   textAlign: `center`,
                   marginBottom: `3rem`,
-                  marginLeft: `2rem`,
+                  marginLeft: `4rem`,
                 }}
               >
-                <Title level={2}>사진공유</Title>
+                <Title className="addphoto-title" level={2}>
+                  사진공유
+                </Title>
               </div>
 
               <Form onSubmit={onSubmit}>
@@ -230,10 +232,11 @@ function AddPhoto(props) {
                     >
                       {({ getRootProps, getInputProps }) => (
                         <div
+                          className="dropzone"
                           style={{
                             marginLeft: `4rem`,
-                            height: `2rem`,
-                            width: `5rem`,
+                            height: `30px`,
+                            width: `40px`,
                             border: `0.5px solid lightgray`,
                             display: `flex`,
                             alignItems: `center`,
@@ -245,7 +248,7 @@ function AddPhoto(props) {
                           <div
                             style={{
                               fontWeight: `light`,
-                              fontSize: `1.5rem`,
+                              fontSize: `10pt`,
                               cursor: `pointer`,
                             }}
                           >
@@ -278,6 +281,7 @@ function AddPhoto(props) {
                 {/* description and input zone */}
                 {/* 카카오맵 출력 zone */}
                 <div
+                  className="add-kakaomap"
                   style={{
                     marginLeft: `4rem`,
                     marginRight: `4rem`,
@@ -298,7 +302,7 @@ function AddPhoto(props) {
                     marginRight: `4rem`,
                   }}
                 >
-                  <label style={{ marginRight: `1rem` }}>사진위치</label>
+                  <label className="addphoto-label">사진위치</label>
                   <input
                     className="input-search"
                     type="text"
@@ -334,8 +338,9 @@ function AddPhoto(props) {
                     marginRight: `4rem`,
                   }}
                 >
-                  <label style={{ marginRight: `1rem` }}>사진제목</label>
+                  <label className="addphoto-label">사진제목</label>
                   <input
+                    className="input-title-field"
                     type="text"
                     onChange={onPhotoTitleChange}
                     value={PhotoTitle}
@@ -359,8 +364,9 @@ function AddPhoto(props) {
                     marginRight: `4rem`,
                   }}
                 >
-                  <label style={{ marginRight: `1rem` }}>해시태그</label>
+                  <label className="addphoto-label">해시태그</label>
                   <input
+                    className="input-hashtag-field"
                     type="text"
                     onChange={onPhotoHashtagChange}
                     value={PhotoHashtag}
@@ -371,7 +377,7 @@ function AddPhoto(props) {
                       borderRadius: `4px`,
                       backgroundColor: `white`,
                       padding: `5px 7px 5px 7px`,
-                      width: `15rem`,
+                      width: `12rem`,
                     }}
                   />
                 </div>
