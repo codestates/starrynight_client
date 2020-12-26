@@ -1,0 +1,294 @@
+.modal_SignUp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal_SignUp_overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .modal_SignUp_content {
+    h2 {
+      font-family: 'Noto Serif KR', serif;
+      // font-family: 'Gamja Flower', cursive;
+      // font-family: 'Hi Melody', cursive;
+      margin-bottom: 60px;
+
+    }
+    // background: white;
+    background:rgb(253, 253, 253);
+    color: black;
+    position: relative;
+    width: 850px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1%;
+
+    .text_style_SignUp {
+      color: red;
+      font-size: 10%;
+      text-align: right;
+      padding-right: 10%;
+    }
+
+
+
+    .box_img {
+      width: 100px;
+      height: 100px;
+      // border-radius: 100%;
+      // margin: auto;
+      padding: 10px;
+      margin-bottom: 10px;
+      z-index: 1;
+      
+      #myprofile {
+        position: fixed;
+        // display: flex;
+        top: -10000000vh;
+        color: rgba(255, 255, 255, 0);
+        font-size: 0px;
+      }
+    
+
+      .profile_img{
+        
+        // display: block;
+        // width: inherit;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: solid rgba(0, 0, 0, 0.322);
+        border-width: 1px;
+        border-radius: 30px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .add_profile_box_1{
+        // width: 30px;
+        // height: 30px;
+        position: relative;  // 아래 카메라 아이콘을 프사에 고정시키기 위해 상위 div에 relative로 설정 후 하위에선 absolute로 고정
+        .add_profile_box_2 {
+          
+          background: rgb(223, 223, 223);
+          padding: 3px;
+          position: absolute;
+          top: 58px;  // 이건 왜 퍼센테이지가 안먹는지 모르겠음.
+          left: 71%;
+          &:hover {
+            cursor: pointer;
+          }
+          
+          // align-items: center;
+          border-radius: 100%;
+          .add_profile {
+            
+            font-size: 20px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+
+  .signUp_box {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    margin-bottom: 0.2rem;
+    margin-left: 0.5rem;
+
+    .local_new_user {
+      float: left;
+      width: 50%;
+      // margin-right: 2%;
+      // margin-left: 3%;
+      margin-bottom: 2%;
+    
+      .user_title_signUp {
+        // font-family: 'Amatic SC', cursive;
+        font-family: 'Advent Pro', sans-serif;
+        // font-size: 1.5rem;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        
+        padding-left: 0.3rem;
+        padding-bottom: 12px;
+      }
+      
+      input {
+        display: flex;
+        width: 95%;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        border-width: 1.6px;
+        border-color: rgb(143, 143, 143);
+        padding: 0.48rem 0.9rem;
+        // margin: 0.4rem;
+        
+      }
+
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder,
+      input[type="text"]::placeholder {
+        font-size: 0.9rem;
+        color: rgb(166, 163, 168);
+        display: flex;
+        align-content: center;
+      }
+      .control_margin_top {
+        margin-top: 1rem;
+      }
+      
+      // .Email_PW_container {
+        // background: skyblue; // 사이즈 테스트 중
+        
+
+      .userInfo_input_container {
+
+        margin-right: 7%;
+        margin-left: 7%;
+        margin-bottom: 3px;
+        
+        .email_div {
+          div {      //에러메세지
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.9rem;
+          }
+        }
+        .nickname_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.9rem;
+          }
+        }
+        .password_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.9rem;
+          }
+        }
+        .mobile_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.9rem;
+          }
+        }
+      }
+
+      .button_container_InSignUp {
+        margin-top: 12%;
+        margin-right: 7%;
+        margin-left: 7%;
+        // padding-left: 0.3rem;
+      
+        .signIn_icon {
+          padding-left: 0.1rem;
+          color: rgb(202, 200, 200);
+          
+        }
+        .rediect_To_Signin {
+          display: flex;
+          
+          span {
+            font-size: 0.73rem;
+            margin-left: 0.23rem;
+            margin-right: 0.8rem;
+            color: rgb(82, 80, 80);
+
+            &.redirect_btn:hover {
+              cursor: pointer;
+              color: skyblue;
+            }
+          }
+        }
+      }
+    }
+
+    .division_line {
+      background: rgba(204, 204, 214, 0.336);
+      width: 1px;
+      height: 20rem;
+      // margin-top: 4%;
+      margin-top: 93px;
+      margin-bottom: auto;
+      margin-left: 1.5rem;
+      
+      direction: column;
+      
+    }
+
+    .container2_siginIn {
+      float: left;
+      width: 30%;
+      // margin-left: 10px;
+      // margin-right: 3%;
+      margin-top: 95px;
+      // margin-bottom: 33%;
+      #social_login_title {
+        // font-family: 'Amatic SC', cursive;
+        font-family: 'Advent Pro', sans-serif;
+        // font-size: 1.5rem;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: flex-start;
+        
+      }
+                
+      .socialLogin{
+        // margin:0 10%;
+        // margin-right: 20px;
+        padding-left: 13%;
+        // position: relative;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // flex-direction: row;
+
+        .social_login_title {
+          margin-bottom: 1000px;
+        }
+        .socialLogin_btn{
+          
+          margin-top: 1rem;
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: flex-start;
+          // max-width: 50%;
+          // // min-width: 10px;
+          
+          // width: 15%;
+          // margin-left: 10%;
+          // margin-right: 10%;
+          // // justify-content: center;
+          // // align-items: center
+        }
+      }
+    }
+  }
+
+}
+

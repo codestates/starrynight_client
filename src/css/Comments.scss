@@ -1,0 +1,307 @@
+* {
+  box-sizing: border-box;
+}
+
+.myModal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(127, 127, 127, 0.2);
+}
+
+.modalContent {
+  display: block;
+  position: fixed;
+  background-color: rgb(253, 253, 253);
+  z-index: 1;
+  width: 60%;
+  height: 90%;
+  margin-left: 20%;
+  top: 5%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.2),
+    4px 8px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.modalContent_Left {
+  position: absolute;
+  width: 55%;
+  height: 100%;
+  /* background-color: brown; */
+}
+
+.modalContent_Right {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  right: 0;
+  /* background-color: rgb(224, 224, 224); */
+}
+
+.photoName {
+  position: absolute;
+  display: inline-block;
+  bottom: 27%;
+  left: 5%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  color: black;
+  font-size: 32px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+}
+
+.modifyPhotoHashtag {
+  width: 70%;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.modifyPhotoHashtagBtn {
+  width: 13%;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  background-color: rgb(97, 69, 163);
+  border-radius: 10px;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.selectPhoto {
+  position: relative;
+  display: block;
+  max-width: 90%;
+  max-height: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  top: 10%;
+}
+
+.hashTag {
+  position: absolute;
+  left: 5%;
+  bottom: 16%;
+  width: 100%;
+  color: black;
+  font-size: 20px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+}
+
+.userInfo {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+}
+
+.userFace {
+  width: 7%;
+  vertical-align: middle;
+}
+
+.userName {
+  position: relative;
+  left: 2%;
+  color: black;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.btns {
+  // position: absolute;
+  // width: 100%;
+  // bottom: 6%;
+  // right: 7%;
+}
+
+.modifyBtn {
+  position: absolute;
+  // display: inline-block;
+  bottom: 6%;
+  right: 14%;
+  width: 70px;
+  height: 30px;
+  font-size: 15px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  color: black;
+  border-radius: 10px;
+}
+
+.deleteBtn {
+  position: absolute;
+  bottom: 6%;
+  right: 5%;
+  width: 70px;
+  height: 30px;
+  font-size: 15px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  color: black;
+  border-radius: 10px;
+}
+
+.mapImg {
+  display: block;
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}
+
+.HowToGo_div {
+  position: absolute;
+  display: block;
+  top: 52%;
+  right: 5%;
+}
+
+.test {
+  text-decoration: none;
+}
+
+.HowToGo {
+  width: 90px;
+  height: 30px;
+  font-size: 15px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  color: black;
+  background-color: rgb(97, 69, 163);
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.favorite_div {
+  position: absolute;
+  display: block;
+  left: 5%;
+  bottom: 19%;
+}
+
+.favoriteBorder {
+  color: rgb(0, 0, 0);
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.favorite {
+  color: rgb(252, 99, 11);
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.commentDiv {
+  position: absolute;
+  bottom: 8%;
+  right: 6%;
+  width: 395px;
+  height: 30%;
+}
+
+.commentWriter {
+  position: relative;
+  left: 0;
+  width: 81%;
+  height: 25px;
+  padding: 12px;
+  border: 1px solid rgb(173, 173, 173);
+  border-radius: 3px;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.commentBtn {
+  // position: relative;
+  // font-size: 15px;
+  // font-family: "Nanum Gothic", sans-serif;
+  // font-weight: 800;
+  // text-align: center;
+  // color: black;
+  // background-color: rgb(97, 69, 163);
+  // border-radius: 2px;
+  // width: 20%;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+  background-color: rgba(245, 245, 245, 0.3);
+  overflow: scroll;
+}
+
+.emptyComments {
+  font-size: 15px;
+  text-align: center;
+  color: rgb(4, 4, 4);
+  // font-family: "Nanum Gothic", sans-serif;
+  // font-family: "Noto Serif KR", serif;
+  font-face {
+    font-family: yleeFont;
+    src: url("../font/ylee_Mortal_Heart.ttf");
+  }
+  font-weight: 700;
+}
+
+.comment {
+  position: relative;
+  width: 95%;
+  // border-bottom: 2px solid rgb(187, 187, 187);
+  overflow: visible;
+}
+
+.comment_left {
+  position: absolute;
+  height: 100%;
+}
+
+.commentFace {
+  position: relative;
+  float: left;
+  max-width: 12%;
+}
+
+.commentUserName {
+  position: relative;
+  left: 15%;
+  color: rgb(47, 43, 59);
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+}
+
+.commentDate {
+  position: relative;
+  float: right;
+  top: 2px;
+  right: 1%;
+  color: rgb(47, 43, 59);
+  // font-family: "Nanum Gothic", sans-serif;
+  // font-weight: 800;
+}
+
+.commentComment {
+  position: relative;
+  left: 15%;
+  width: 88%;
+  // margin-left: 20%;
+  color: rgb(47, 43, 59);
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+}
+
+.commentRemove {
+  position: relative;
+  float: right;
+  // bottom: 5%;
+}
+
+.commentRemoveBtn {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+}

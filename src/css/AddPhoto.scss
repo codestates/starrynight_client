@@ -1,0 +1,98 @@
+.close {
+  color: #c5c5c5;
+  float: right;
+  font-size: 20px;
+  font-weight: lighter;
+  padding-right: 1rem;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.addphoto-button {
+  border: 0.1rem solid #d9eeff;
+  border-radius: 4px;
+  font-weight: bolder;
+  font-size: large;
+  text-decoration: none;
+  width: 10vw;
+  height: 2rem;
+  margin-top: 2rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  background: #0086da;
+  &:hover {
+    background: #a4bfff;
+  }
+}
+
+.addphoto-notyet {
+  border: 0.1rem solid #ffffff;
+  border-radius: 4px;
+  font-weight: bolder;
+  font-size: large;
+  text-decoration: none;
+  width: 10vw;
+  height: 2rem;
+  margin-top: 2rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  outline: none;
+  cursor: auto;
+  background: #cecece;
+}
+
+.search-button {
+  display: inline-block;
+  height: 1.8rem;
+  border: 0.5px solid #0086da;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  background: #0086da;
+  &:hover {
+    background: #c4d6ff;
+    border: 0.5px solid #a4bfff;
+  }
+}
+
+.uploaded-file {
+  margin-right: 1rem;
+  font-size: 8pt;
+  font-weight: lighter;
+  color: lightgray;
+  cursor: auto;
+  &:hover {
+    color: #c47b7b;
+    text-decoration: line-through;
+    cursor: pointer;
+  }
+}
+
+.input-search {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 7rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: width 0.4s ease-in-out;
+  // searchicon 스타일
+  background-color: white;
+  background-image: url("../searchicon.png");
+  background-position: 2px 2px;
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+  // placeholder 위치
+  padding: 5px 7px 5px 25px;
+  // 자동 늘이기
+  &:focus {
+    width: 10rem;
+  }
+}

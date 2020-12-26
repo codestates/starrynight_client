@@ -1,0 +1,269 @@
+$blue: #228be6;
+$lightBlue: #228be680;
+$gray: #495057;
+$red: rgb(226, 12, 12);
+$yellow: yellow;
+$black: rgba(24, 10, 10, 0.932);
+$lightGray: rgb(190, 188, 188);
+
+@mixin button-color($color) {
+  background: $color;
+  &:hover {
+    background: lighten($color, 10%);
+  }
+  &:active {
+    background: darken($color, 10%);
+  }
+
+  &.outline {
+    color: lighten($color, 20%);
+    &:hover {
+      color: $color;
+    }
+    background: none;
+    border: 1px solid lighten($color, 40%);
+    &:hover {
+      border-color: lighten($color, 30%);
+      // border-color: $color;
+      // color: white;
+    }
+  }
+}
+
+.Button {
+  display: inline-flex;
+  color: white;
+  // font-weight: bold;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+
+  // 각 size가 className에 props로 CSS 클래스와 같이 적용되어 있으면 원하는 스타일을 적용할 수 있음
+  &.large {
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
+  &.medium {
+    height: 2.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+  }
+  &.small {
+    height: 1.9rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+  }
+
+  // 해시태그 수정완료 버튼
+  &.completeModify_hashtag {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    align-items: center;
+  }
+
+  // 사진 삭제 버튼
+  &.deletePhoto {
+    position: relative;
+    display: block;
+    top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 14rem;
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+    align-items: center;
+  }
+  // 해시태그 수정 버튼
+  &.modify_hashtag {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    position: absolute;
+    right: 8%;
+    align-items: center;
+  }
+  // 사진 삭제 버튼
+  &.photo_delete {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    position: absolute;
+    right: 0;
+    align-items: center;
+  }
+  // 댓글 삭제 버튼
+  &.comment_delete {
+    height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    align-items: center;
+  }
+  // 댓글 등록 버튼
+  &.small_Comment {
+    position: absolute;
+    right: 0;
+    width: 17%;
+    height: 1.6rem;
+    text-align: center;
+    padding-left: 1.2rem;
+    // padding-right: 1rem;
+    font-size: 0.9rem;
+    align-items: center;
+  }
+  // 커스터마이징 사이즈
+  &.small_mypage_profile {
+    margin: auto;
+    height: 20px;
+  }
+
+  // 색상 관리
+  &.blue {
+    @include button-color($blue);
+  }
+
+  &.gray {
+    @include button-color($gray);
+  }
+
+  &.lightBlue {
+    @include button-color($lightBlue);
+  }
+
+  &.red {
+    @include button-color($red);
+  }
+
+  &.yellow {
+    @include button-color($yellow);
+  }
+
+  &.black {
+    @include button-color($black);
+  }
+
+  &.lightGray {
+    @include button-color($lightGray);
+  }
+
+  // & + & 는 .Button + .Button을 의미.
+  // 만약 함께 있다면 각 버튼 사이 여백설정 가능
+  & + & {
+    margin-left: 1rem;
+  }
+
+  // 버튼의 전체 너비를 차지하도록 하는 기능
+  &.fullWidth {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    & + & {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+
+  &.middleWidth {
+    width: 40%;
+    display: flex;
+    padding-right: 1rem;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    & + & {
+      margin-left: 3px;
+      margin-top: 1rem;
+    }
+  }
+
+  &.nanoWidth {
+    display: flex;
+    justify-content: center;
+    width: 12%;
+
+    height: 1.3rem;
+    align-items: center;
+    font-size: 0.5rem;
+  }
+
+  &.smallWidth {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    align-items: center;
+  }
+
+  // 커스터마이징 버튼
+  &.middleWidth_main_btn {
+    width: 65%;
+    display: flex;
+    // display: flex-end;
+    // float: right;
+    // padding-right: 1rem;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.middleWidth_completedFind {
+    // font-family: 'Nanum Gothic', sans-serif;
+    width: 40%;
+    // display: flex;
+    // padding-right: 1rem;
+    margin-bottom: 0.5rem;
+    // margin-left: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.nanoWidth_mypage_profile {
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    // height: 1.3rem;
+    align-items: center;
+    font-size: 0.5rem;
+  }
+
+  &.nanoWidth_mypage {
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    width: 65px;
+
+    font-size: 0.9rem;
+    height: 1.5rem;
+    align-items: center;
+  }
+  &.nanoWidth_removeuser_inmapage {
+    display: flex;
+    justify-content: center;
+    // width: 12%;
+    height: 1.3rem;
+    align-items: center;
+    font-size: 0.5rem;
+  }
+
+  &.smallWidth_singin {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    align-items: center;
+  }
+}

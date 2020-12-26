@@ -1,0 +1,155 @@
+// .modal_CompletedRemoveUser {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   .modal_CompletedRemoveUser_overlay {
+//     background: rgba(0, 0, 0, 0.6);
+//     position: fixed;
+//     width: 100vw;
+//     height: 100vh;
+//   }
+
+//   .modal_CompletedRemoveUser_content {
+//     position: relative;
+//     background: white;
+//     color: black;
+//     width: 30%;
+//     text-align: center;
+//     border-radius: 10px;
+//   }
+
+//   .message_container_CompletedRemoveUser {
+//     background: skyblue;
+//     margin-left: 7%;;
+//     margin-right: 7%;;
+//     margin-bottom: 7%;
+//     padding-top: 7%;
+//     padding-bottom: 7%;
+//   }
+// }
+
+
+.modal_CompletedRemoveUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal_CompletedRemoveUser_overlay {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .modal_CompletedRemoveUser_content {
+    font-family: 'Nanum Gothic', sans-serif;
+
+    background: white;
+    position: relative;
+    width: 700px;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    padding: 2%;
+    h2 {
+      margin-top: unset;
+      margin-bottom: 6%;
+      font-family: 'Noto Serif KR', serif;
+      display: flex;
+      justify-content: center;
+
+      .doubleCheck_title_icon {
+        position: absolute;
+        top: 10px;
+        left: 410px;
+        transform: rotate(15deg);
+        font-size: 30px;
+        margin-right: 2.5%;
+        // margin-left: 2.5%;
+        margin-top: 1.5%;
+      }
+
+    }
+    h4 {
+      display: flex;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: rgb(141, 134, 134);
+    }
+  }
+  
+  .division_line {
+    width: 80%;
+    height: 1px;
+    // margin-left: 5%;
+    background-color: rgba(0, 0, 0, 0.199);
+    margin-left: 10%;
+    // display: flex;
+    // justify-content: center;  
+    
+  }
+
+  .message_container_CompletedRemoveUser {
+    // background: yellow;
+    
+    // margin: 2rem;
+    .message_container_CompletedRemoveUser_div {
+      color: gray;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      
+      padding: 1rem;
+      // padding-left: 14%;
+      // padding-top: 5%;
+      margin-top: 3%;
+      margin-bottom: 3%;
+      // .pw_findpw_1 {
+      //   font-family: 'Noto Serif KR', serif;
+      //   font-size: 1.2rem;
+      // }
+      // .pw_findEmail_2 {
+      //   font-size: 0.65rem ;
+      //   padding-left: 5%;
+      //   padding-top: 11px;
+      //   // float: left;
+      //   // padding-left: unset !important;
+      //   // display: flex;
+      //   // justify-items: center;
+      //   // align-content: center;
+
+      // }
+      span {
+        font-size: 1.1rem;
+        color: black;
+      }
+    }
+    .btn_container {
+      
+      // display: flex;
+      // justify-content: space-around;
+      margin-top: 6%;
+      // .btn_result_findPw{
+      //   // float: left;
+      //   // display: inline;
+      //   margin-right: 0.5rem;
+        
+      // }
+    }
+  }
+  
+
+}

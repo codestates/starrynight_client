@@ -1,0 +1,221 @@
+// 반응형 Break Point
+$tablet:768px;
+$laptop: 1020px;
+$desktop: 1400px;
+
+.modal_signIn {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;  // 화면(스크린) 크기에 맟춘 % 넓이  cf) vw가 아닌 %는 부모 container에 비율을 맞추는 차이가 있음.
+  height: 100vh;  // 화면(스크린) 크기에 맞춘 % 높이
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // z-index: 1;
+
+
+
+  
+  .modal_signIn_overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .modal_signIn_content {
+    h1 {
+      // font-family: 'Gamja Flower', cursisve;
+      // font-family: 'Amatic SC', cursive;
+      font-family: 'Josefin Slab', serif;
+      font-size: 2.5rem;
+      color: rgb(170, 117, 46);
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    // background-color: white;
+    background-color: rgb(253, 253, 253);
+    width: 780px;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    padding-right: 3%;
+  }
+
+  // #signIn_logo {
+  //   // display: block;
+  //   // width: inherit;
+  //   padding-top: 5%;
+  //   padding-bottom: 5%;
+  //   max-width: 50%;
+  //   // height: auto;
+  // }
+  .box {
+    display: flex;
+    margin-bottom: 0.2rem;
+    margin-left: 0.5rem;
+
+    justify-content: space-around;
+    align-content: center;
+
+    .container_signIn {
+      float: left;
+      width: 50%;
+      // margin-left: 3%;
+      // margin-right: 4%;
+      margin-bottom: 3%;
+      
+
+      .user_title {
+        // font-family: 'Amatic SC', cursive;
+        font-family: 'Advent Pro', sans-serif;
+        // font-size: 1.5rem;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        padding-left: 0.3rem;
+        padding-bottom: 12px;
+        margin-bottom: 5px;
+      }
+      input[type="email"],
+      input[type="password"]{
+        display: flex;
+        width: 95%;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        border-width: 1.6px;
+        border-color: rgb(143, 143, 143);
+        padding: 0.48rem 0.9rem;
+        // margin-top: 0.4rem;
+
+        
+      }
+      .input_pw_singin {
+        margin-top: 1rem;
+      }
+
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder {
+        font-size: 0.9rem;
+        color: rgb(166, 163, 168);
+        display: flex;
+        align-content: center;
+      }
+      
+      .Email_PW_container {
+        // background: skyblue; // 사이즈 테스트 중
+        
+        // margin-right: 7%;
+        margin-left: 7%;
+        margin-bottom: 3px;
+
+        .email_div {   // 에러메세지
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.9rem;
+          }
+        }
+        .pw_div {
+          div {
+            float: right;
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.9rem;
+          }
+        }
+      }
+      
+      .find_container {
+        // margin-right: 7%;
+        margin-left: 7%;
+        padding-left: 0.3rem;
+        
+        .findAccount_span {
+          display: flex;
+          justify-content: flex-start;
+          margin-bottom: 10%;
+          
+          span {
+            font-size: 0.7rem;
+          }
+          .findEmailPw{
+            cursor: pointer;
+          }
+        }
+      }
+
+      .button_container_signin {
+        margin-top: 15%;
+        margin-right: 7%;
+        margin-left: 7%;
+        // padding-left: 0.3rem;
+      
+        .signIn_icon {
+          padding-left: 0.1rem;
+          color: rgb(202, 200, 200);
+          
+        }
+      }
+    }
+
+    .division_line {
+      background: rgba(204, 204, 214, 0.336);
+      width: 1px;
+      height: 10rem;
+      margin-top: 3%;
+      // margin-left: 1.5rem;
+      
+      direction: column;
+      
+    }
+
+    .container2_siginIn {
+      float: left;
+      width: 20%;
+      // margin-right: 3%;
+      // margin-bottom: 3%;
+      .socialLogin{
+        // margin:0 10%;
+        padding-left: 10%;
+        // position: relative;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // flex-direction: row;
+        
+        #social_login_title {
+          // font-family: 'Amatic SC', cursive;
+          font-family: 'Advent Pro', sans-serif;
+          // font-size: 1.5rem;
+          font-size: 1.1rem;
+          display: flex;
+          justify-content: flex-start;
+          
+        }
+                
+        .socialLogin_btn{
+          
+          margin-top: 1rem;
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: flex-start;
+          // max-width: 50%;
+          // // min-width: 10px;
+          
+          // width: 15%;
+          // margin-left: 10%;
+          // margin-right: 10%;
+          // // justify-content: center;
+          // // align-items: center
+        }
+      }
+    }
+  }
+}
+

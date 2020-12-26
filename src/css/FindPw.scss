@@ -1,0 +1,252 @@
+// .modal_findPw {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   .modal_findPw_overlay {
+//     position: fixed;
+//     background: rgba(0, 0, 0, 0.6);
+//     width: 100vw;
+//     height: 100vh;
+//   }
+
+//   .modal_findPw_content {
+//     background: white;
+//     position: relative;
+//     width: 30%;
+//     text-align: center;
+//     border-radius: 10px;
+//   }
+
+//   .email_mobile_input_container {
+//     background: skyblue;
+//     margin-left: 7%;
+//     margin-right: 7%;
+//     margin-bottom: 7%;
+//   }
+// }
+
+.modal_findPw {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal_findPw_overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .modal_findPw_content {
+
+    // background-color: white;
+    background:rgb(253, 253, 253);
+    width: 700px;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    padding: 1%;
+
+    h2 {
+      margin-left: 3rem;
+      margin-bottom: 42px;
+      font-family: 'Noto Serif KR', serif;
+      display: flex;
+    }
+
+
+    .close_icon {
+      top: 10px;
+      right: 10px;
+      position: absolute;
+      div {
+        width: 15px;
+        height: 2px;
+        margin: 8px;
+        background: rgb(233, 229, 229);
+      }
+
+      .close_icon_1 {
+        transform: rotate(-45deg) translate(-4px, 3px);
+      }
+      .close_icon_2 {
+        transform: rotate(45deg) translate(-4px, -3px);
+      }
+
+    }
+
+
+
+    .find_pw_box {
+
+      display: flex;
+      margin-bottom: 0.2rem;
+      margin-left: 0.5rem;
+  
+      justify-content: space-around;
+      align-content: center;
+  
+
+    }
+
+    .userInfo_find_pw_container {
+      float: left;
+      width: 50%;
+      margin-left: 3%;
+      margin-bottom: 3%;
+
+      .find_pw_title {
+        font-family: 'Advent Pro', sans-serif;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        padding-left: 0.3rem;
+        padding-bottom: 12px;
+      }
+      
+      input {
+        display: flex;
+        width: 95%;
+        font-size: 0.9rem;
+        padding: 0.48rem 0.9rem;
+        border-radius: 5px;
+        border-width: 1.6px;
+        border-color: rgb(143, 143, 143);
+
+      }
+      input::placeholder {
+        font-size: 0.9rem;
+        color: rgb(166, 163, 168);
+        display: flex;
+        align-content: center;
+      }
+      .control_margin_top {
+        margin-top: 1rem;
+      }
+
+      .userInfo_input_container_in_findPw {
+        margin-right: 7%;
+        margin-left: 7%;
+        margin-bottom: 7%;
+
+        .email_input_div {  // 에러메세지
+          div {
+            float: right;  
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.9rem;
+          }
+        }
+        .mobile_input_div {  // 에러메세지
+          div {
+            float: right;  
+            font-size: 0.5rem;
+            color: red;
+            padding-right: 0.9rem;
+          }
+        }
+      }
+
+      .button_container_find_pw{
+        margin-top: 5%;
+        margin-right: 7%;
+        margin-left: 7%;
+        // padding-left: 0.3rem;
+      }
+      .rediect_To_Signin {
+        display: flex;
+        font-size: 0.6rem;
+      }
+    }
+
+    .division_line_find_pw {
+      background: rgba(204, 204, 214, 0.336);
+      width: 1px;
+      height: 6rem;
+      margin-top: 3%;
+      margin-left: 1.5rem;
+      
+      // direction: column; 
+    }
+
+    .social_login_container_findPW {
+      // float: left;
+      width: 40%;
+
+      .socialLogin_find_pw {
+        padding-left: 20%;
+        
+        #social_login_title_find_pw {
+          // font-family: 'Amatic SC', cursive;
+          font-family: 'Advent Pro', sans-serif;
+          // font-size: 1.5rem;
+          font-size: 1.1rem;
+          display: flex;
+          justify-content: flex-start;
+          
+        }
+
+        .socialLogin_btn_find_pw {
+          margin-top: 1rem;
+          // display: flex;
+          // justify-content: flex-start;
+        }
+
+
+      }
+    }
+  }
+
+  
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      margin: 100px auto;
+
+      position: absolute;
+      // display: flex;
+      top: 10%;
+      left: 50%;
+      background-color: #333;
+    
+      border-radius: 100%;  
+      -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+      animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
+    
+    @-webkit-keyframes sk-scaleout {
+      0% { -webkit-transform: scale(0) }
+      100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes sk-scaleout {
+      0% { 
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      } 100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
+}
