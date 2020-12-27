@@ -168,6 +168,36 @@
   width: 18rem;
 }
 
+// for the is-not-login user
+.modal_content_b {
+  background-color: white;
+  width: 20rem;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  color: black;
+  border: 0.1rem solid #565f7e;
+  cursor: auto;
+}
+
+.addphoto-sign {
+  border: 0.1rem solid white;
+  border-radius: 3px;
+  font-size: 12pt;
+  text-decoration: none;
+  width: 6rem;
+  height: 2rem;
+  margin-top: 2rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  background: #e09bd7;
+  &:hover {
+    background: #ffdfee;
+  }
+}
+
 // 반응형 대응
 @media (max-height: 600px), screen and (orientation: portrait) {
   .close {

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // 기능 관련
 import KakaoMap from "./KakaoMap";
 import Axios from "axios";
+import SignIn from "./menu/SignIn";
 
 // 스타일 관련
 import { Typography, Button, Form } from "antd";
@@ -23,6 +24,8 @@ function AddPhoto(props) {
   const [PhotoHashtag, setPhotoHashtag] = useState(""); // 해시태그 입력창의 input을 받기 위한 state
   const [CompleteTag, setCompleteTag] = useState([]); // 해시태그 완성을 위한 state
 
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+
   // 사진업로드 Drag & Drop을 정의한다
   const onDrop = (files) => {
     // 업로드 파일을 drop하면 FormData 태그 인스턴스 생성 후, "file" 속성을 만들어서 files[0] 엘리먼트를 주입
@@ -30,8 +33,14 @@ function AddPhoto(props) {
     let formData = new FormData();
     formData.append("file", files[0]);
     console.log("업로드 대기열 ***", files[0]);
-    setFileName(files[0].name);
-    setPhotoFormData(formData);
+    // 파일명 길이는 최대 20자까지만 허용
+    if (files[0].name.length > 20) {
+      setFileName(files[0].name.split("").slice(0, 20).join("") + "__.jpg");
+      setPhotoFormData(formData);
+    } else {
+      setFileName(files[0].name);
+      setPhotoFormData(formData);
+    }
   };
 
   // 파일을 클릭하여 drop을 취소한다
@@ -161,151 +170,180 @@ function AddPhoto(props) {
       {props.isOpen && (
         <div className="modal">
           <div className="modal_overlay" onClick={props.handleModal} />
-          <div className="modal_content_a">
-            <div style={{ maxWidth: `700px`, margin: `2rem auto` }}>
-              {/* close button */}
-              <span class="close" onClick={props.handleModal}>
-                &times;
-              </span>
+          {props.isLogin ? (
+            <div className="modal_content_a">
+              <div style={{ maxWidth: `700px`, margin: `2rem auto` }}>
+                {/* close button */}
+                <span class="close" onClick={props.handleModal}>
+                  &times;
+                </span>
 
-              {/* modal PhotoTitle zone */}
-              <div
-                style={{
-                  textAlign: `center`,
-                  marginBottom: `2rem`,
-                }}
-              >
-                <Title className="addphoto-title" level={2}>
-                  사진공유
-                </Title>
-              </div>
+                {/* modal PhotoTitle zone */}
+                <div
+                  style={{
+                    textAlign: `center`,
+                    marginBottom: `2rem`,
+                  }}
+                >
+                  <Title className="addphoto-title" level={2}>
+                    사진공유
+                  </Title>
+                </div>
 
-              <Form onSubmit={onSubmit}>
-                {/* 사진 Drag & drop zone */}
-                <div>
-                  <div
-                    style={{
-                      float: `left`,
-                      width: `25%`,
-                      justifyContent: `center`,
-                    }}
-                  >
-                    <Dropzone
-                      onDrop={onDrop}
-                      multiple={false}
-                      maxSize={100000000}
+                <Form onSubmit={onSubmit}>
+                  {/* 사진 Drag & drop zone */}
+                  <div>
+                    <div
+                      style={{
+                        float: `left`,
+                        width: `25%`,
+                        justifyContent: `center`,
+                      }}
                     >
-                      {({ getRootProps, getInputProps }) => (
-                        <div className="dropzone" {...getRootProps()}>
-                          <input {...getInputProps()} />
-                          <div style={{ cursor: `pointer` }}>+</div>
+                      <Dropzone
+                        onDrop={onDrop}
+                        multiple={false}
+                        maxSize={100000000}
+                      >
+                        {({ getRootProps, getInputProps }) => (
+                          <div className="dropzone" {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            <div style={{ cursor: `pointer` }}>+</div>
+                          </div>
+                        )}
+                      </Dropzone>
+                    </div>
+
+                    {/* drop된 업로드파일 확인 및 업로드취소 */}
+                    <div
+                      style={{
+                        float: `left`,
+                        marginTop: `0.2rem`,
+                      }}
+                    >
+                      {PhotoFormData && (
+                        <div style={{ textAlign: `left`, fontSize: `10pt` }}>
+                          <span
+                            className={"uploaded-file"}
+                            onClick={cancelDrop}
+                          >
+                            {FileName}
+                          </span>
                         </div>
                       )}
-                    </Dropzone>
+                    </div>
+                  </div>
+                  <br />
+                  <br />
+
+                  {/* description and input zone */}
+                  {/* 카카오맵 출력 zone */}
+                  <div></div>
+                  <div className="add-kakaomap">
+                    {PhotoLocation && <KakaoMap place={PhotoLocation} />}
                   </div>
 
-                  {/* drop된 업로드파일 확인 및 업로드취소 */}
-                  <div
-                    style={{
-                      float: `left`,
-                      marginTop: `0.2rem`,
-                    }}
-                  >
-                    {PhotoFormData && (
-                      <div style={{ marginLeft: `2rem`, textAlign: `left` }}>
-                        <span className={"uploaded-file"} onClick={cancelDrop}>
-                          {FileName}
-                        </span>
-                      </div>
-                    )}
+                  {/* 사진위치 찾기 zone */}
+                  <div className="addphoto-label-div">
+                    <label className="addphoto-label">사진위치</label>
+                    <input
+                      className="input-search"
+                      type="text"
+                      name="search"
+                      onChange={onInputSearchKeyword}
+                      value={SearchKeyword}
+                      placeholder="위치"
+                    />
+                    <button className="search-button" onClick={searchPlace}>
+                      검색
+                    </button>
                   </div>
-                </div>
-                <br />
-                <br />
+                  {localStorage === "no place" ? (
+                    <div
+                      style={{
+                        textAlign: `left`,
+                        marginLeft: `4rem`,
+                        marginTop: `0.3rem`,
+                        fontSize: `0.7rem`,
+                        color: `red`,
+                      }}
+                    >
+                      다른 위치를 검색해주세요
+                    </div>
+                  ) : null}
+                  <br />
 
-                {/* description and input zone */}
-                {/* 카카오맵 출력 zone */}
-                <div className="add-kakaomap">
-                  {PhotoLocation && <KakaoMap place={PhotoLocation} />}
-                </div>
-
-                {/* 사진위치 찾기 zone */}
-                <div className="addphoto-label-div">
-                  <label className="addphoto-label">사진위치</label>
-                  <input
-                    className="input-search"
-                    type="text"
-                    name="search"
-                    onChange={onInputSearchKeyword}
-                    value={SearchKeyword}
-                    placeholder="위치"
-                  />
-                  <button className="search-button" onClick={searchPlace}>
-                    검색
-                  </button>
-                </div>
-                {localStorage === "no place" ? (
-                  <div
-                    style={{
-                      textAlign: `left`,
-                      marginLeft: `4rem`,
-                      marginTop: `0.3rem`,
-                      fontSize: `0.7rem`,
-                      color: `red`,
-                    }}
-                  >
-                    다른 위치를 검색해주세요
+                  {/* 사진제목 입력 zone */}
+                  <div className="addphoto-label-div">
+                    <label className="addphoto-label">사진제목</label>
+                    <input
+                      className="input-title-field"
+                      type="text"
+                      onChange={onPhotoTitleChange}
+                      value={PhotoTitle}
+                    />
                   </div>
-                ) : null}
-                <br />
+                  <br />
 
-                {/* 사진제목 입력 zone */}
-                <div className="addphoto-label-div">
-                  <label className="addphoto-label">사진제목</label>
-                  <input
-                    className="input-title-field"
-                    type="text"
-                    onChange={onPhotoTitleChange}
-                    value={PhotoTitle}
-                  />
-                </div>
-                <br />
+                  {/* 해시태그 입력 zone */}
+                  <div className="addphoto-label-div">
+                    <label className="addphoto-label">해시태그</label>
+                    <input
+                      className="input-hashtag-field"
+                      type="text"
+                      onChange={onPhotoHashtagChange}
+                      value={PhotoHashtag}
+                      placeholder="#태그 #태그 형식으로 입력"
+                    />
+                  </div>
 
-                {/* 해시태그 입력 zone */}
-                <div className="addphoto-label-div">
-                  <label className="addphoto-label">해시태그</label>
-                  <input
-                    className="input-hashtag-field"
-                    type="text"
-                    onChange={onPhotoHashtagChange}
-                    value={PhotoHashtag}
-                    placeholder="#태그 #태그 형식으로 입력"
-                  />
-                </div>
+                  <br />
+                  <br />
 
-                <br />
-                <br />
-
-                {/* submit button */}
-                {PhotoTitle !== "" &&
-                PhotoLocation !== "" &&
-                PhotoFormData !== [] ? (
-                  <Button
-                    className="addphoto-button"
-                    type="primary"
-                    size="large"
-                    onClick={onSubmit}
-                  >
-                    Post!
-                  </Button>
-                ) : (
-                  <Button className="addphoto-notyet" size="large">
-                    Post!
-                  </Button>
-                )}
-              </Form>
+                  {/* submit button */}
+                  {PhotoTitle !== "" &&
+                  PhotoLocation !== "" &&
+                  PhotoFormData !== [] ? (
+                    <Button
+                      className="addphoto-button"
+                      type="primary"
+                      size="large"
+                      onClick={onSubmit}
+                    >
+                      Post!
+                    </Button>
+                  ) : (
+                    <Button className="addphoto-notyet" size="large">
+                      Post!
+                    </Button>
+                  )}
+                </Form>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="modal_content_b">
+              <div style={{ maxWidth: `700px`, margin: `2rem auto` }}>
+                {/* close button */}
+                <span class="close" onClick={props.handleModal}>
+                  &times;
+                </span>
+
+                {/* modal PhotoTitle zone */}
+                <div
+                  style={{
+                    textAlign: `center`,
+                    marginBottom: `1rem`,
+                    marginLeft: `2rem`,
+                  }}
+                >
+                  로그인 후 이용이 가능합니다
+                </div>
+                <Button className="addphoto-sign" onClick={props.signInClick}>
+                  Sign In
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </>
