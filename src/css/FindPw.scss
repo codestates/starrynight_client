@@ -250,3 +250,63 @@
     }
 
 }
+
+
+
+// phone 해상도 맞춤 반응형
+@media (max-width: 767px) {
+  .modal_findPw {
+    .modal_findPw_content {
+      width: 270px;
+      padding-right: unset;
+      // width: 100vw;
+      // height: 100vh;
+      // border-radius: 0;
+      h2 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+        margin-left: unset;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+      .find_pw_box {
+        flex-direction: column;
+        .userInfo_find_pw_container {
+          float: unset;
+          
+          width: 93%;
+          .find_pw_title {
+            padding-left: unset;
+          }
+          .userInfo_input_container_in_findPw {
+            margin: unset;
+            margin-bottom: 20px;
+            padding-left: 5px;
+          }
+        }
+        //button.scss 반응형도 같이 핸들링해야함.
+        .button_container_find_pw {
+          margin-top: unset;
+          margin-left: 5px;
+          margin-right: 6%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .division_line_find_pw {
+          display: none;
+        }
+        .social_login_container_findPW {
+          width: 95%;
+          padding-top: 15px;
+          padding-bottom: 10px;
+          .socialLogin_find_pw {
+            padding-left: 5%;
+            padding-right: 5%;
+            // width: 100%;
+          }
+        }
+      } 
+    }
+  }
+}

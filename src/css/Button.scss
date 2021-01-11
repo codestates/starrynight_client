@@ -133,6 +133,10 @@ $lightGray: rgb(190, 188, 188);
     margin: auto;
     height: 20px;
   }
+  &.small_find_pw {
+    height: 1.9rem;
+    font-size: 0.875rem;
+  }
 
   // 색상 관리
   &.blue {
@@ -274,6 +278,10 @@ $lightGray: rgb(190, 188, 188);
 @media (max-width: 767px) {
   .Button {
     &.small {
+      font-size: 0.9rem;
+      justify-content: center;
+    }
+    &.small_find_pw {
       font-size: 0.9rem;
       justify-content: center;
     }
