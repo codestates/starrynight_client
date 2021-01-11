@@ -140,3 +140,30 @@
 }
 
 
+
+// phone 해상도 맞춤 반응형
+@media (max-width: 767px) {
+  .modal_CompletedFindPw {
+    .modal_CompletedFindPw_content {
+      width: 270px;
+      padding-right: unset;
+      // width: 100vw;
+      // height: 100vh;
+      // border-radius: 0;
+      h2 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+        margin-left: unset;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+    }
+    .pw_result_container {
+      .pw_result_div {
+        font-size: 0.97rem;
+      }
+    }
+  }
+}
+
+
