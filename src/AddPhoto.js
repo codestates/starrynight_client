@@ -302,48 +302,48 @@ function AddPhoto(props) {
 
                   {/* submit button */}
                   {PhotoTitle !== "" &&
-                  PhotoLocation !== "" &&
-                  PhotoFormData !== [] ? (
-                    <Button
-                      className="addphoto-button"
-                      type="primary"
-                      size="large"
-                      onClick={onSubmit}
-                    >
-                      Post!
-                    </Button>
-                  ) : (
-                    <Button className="addphoto-notyet" size="large">
-                      Post!
-                    </Button>
-                  )}
+                    PhotoLocation !== "" &&
+                    PhotoFormData !== [] ? (
+                      <Button
+                        className="addphoto-button"
+                        type="primary"
+                        size="large"
+                        onClick={onSubmit}
+                      >
+                        Post!
+                      </Button>
+                    ) : (
+                      <Button className="addphoto-notyet" size="large">
+                        Post!
+                      </Button>
+                    )}
                 </Form>
               </div>
             </div>
           ) : (
-            <div className="modal_content_b">
-              <div style={{ maxWidth: `700px`, margin: `2rem auto` }}>
-                {/* close button */}
-                <span class="close" onClick={props.handleModal}>
-                  &times;
+              <div className="modal_content_b">
+                <div style={{ maxWidth: `700px`, margin: `2rem auto` }}>
+                  {/* close button */}
+                  <span class="close" onClick={props.handleModal}>
+                    &times;
                 </span>
 
-                {/* modal PhotoTitle zone */}
-                <div
-                  style={{
-                    textAlign: `center`,
-                    marginBottom: `1rem`,
-                    marginLeft: `2rem`,
-                  }}
-                >
-                  로그인 후 이용이 가능합니다
+                  {/* modal PhotoTitle zone */}
+                  <div
+                    style={{
+                      textAlign: `center`,
+                      marginBottom: `1rem`,
+                      marginLeft: `2rem`,
+                    }}
+                  >
+                    로그인 후 이용이 가능합니다
                 </div>
-                <Button className="addphoto-sign" onClick={props.signInClick}>
-                  Sign In
+                  <Button className="addphoto-sign" onClick={props.signInClick}>
+                    Sign In
                 </Button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       )}
     </>

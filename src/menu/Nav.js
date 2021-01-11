@@ -67,7 +67,7 @@ class Nav extends React.Component {
     };
   }
   // !수정하기!
-  //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 main 페이지로 리다이렉트 하기.
+  ////로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 main 페이지로 리다이렉트 하기.
   handleLogoClickToRedirectToMain = () => {
     console.log("잘클릭????롷고???");
     // this.props.history.push("/main");
@@ -447,15 +447,15 @@ class Nav extends React.Component {
               hamburgerModalOFFWithSignOut={this.hamburgerModalOFFWithSignOut}
             />
           ) : (
-            <BeforeLogin
-              isHamburgerOn={this.state.isHamburgerOn}
-              signInClick={this.signInClick}
-              signUpClick={this.signUpClick}
-              handleHamburgerclick={this.handleHamburgerclick}
-              isSignInModalOpen={this.state.isSignInModalOpen}
-              isSignUpModalOpen={this.state.isSignUpModalOpen}
-            />
-          )
+              <BeforeLogin
+                isHamburgerOn={this.state.isHamburgerOn}
+                signInClick={this.signInClick}
+                signUpClick={this.signUpClick}
+                handleHamburgerclick={this.handleHamburgerclick}
+                isSignInModalOpen={this.state.isSignInModalOpen}
+                isSignUpModalOpen={this.state.isSignUpModalOpen}
+              />
+            )
         ) : null}
 
         {/* 햄버거 토글 */}
@@ -469,15 +469,15 @@ class Nav extends React.Component {
             <div className="line-3"></div>
           </div>
         ) : (
-          <div
-            className="hamburgerToggle_OFF"
-            onClick={this.handleHamburgerclick}
-          >
-            <div className="line-1"></div>
-            <div className="line-2"></div>
-            <div className="line-3"></div>
-          </div>
-        )}
+            <div
+              className="hamburgerToggle_OFF"
+              onClick={this.handleHamburgerclick}
+            >
+              <div className="line-1"></div>
+              <div className="line-2"></div>
+              <div className="line-3"></div>
+            </div>
+          )}
 
         {/* ------afterLogin 관련 모달들 (형제관계로 변경함.) ----------------------- */}
         {this.props.isLogin ? (

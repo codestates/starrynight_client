@@ -101,23 +101,26 @@ class Landing extends React.Component {
 
             <div className="landing_text_intro_1">반짝이는 밤하늘의 별처럼,</div>
             {/* <div className="landing_text_intro_2">밤하늘의 별처럼,</div> */}
-            <div className="landing_text_intro_2">셔터 속에 빛나는</div>
-            <div className="landing_text_intro_3">당신의 모든 순간..</div>
+            <div className="landing_text_intro_2">
+              셔터 속에 빛나는
+              
+            <span
+              className="scrollDown"
+              onClick={this.scrollToMain}
+            >
 
-            {/* <div className="brackets_bottom">]</div> */}
-          </div>
-        </div>
-        <div
-          className="scrollDown"
-          onClick={this.scrollToMain}
-        >
-
-          <FiChevronDown />
-          {/* {this.state.isplay ?
+              <FiChevronDown />
+              {/* {this.state.isplay ?
             null
             :
 
           } */}
+            </span>
+            </div>
+            <div className="landing_text_intro_3">당신의 모든 순간..</div>
+
+            {/* <div className="brackets_bottom">]</div> */}
+          </div>
         </div>
         {/* <div id="test">
         테스트 중

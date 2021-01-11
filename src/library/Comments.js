@@ -272,11 +272,11 @@ class Comments extends Component {
                   onClick={this.handleFavoriteClickControl}
                 />
               ) : (
-                <IoHeartOutline
-                  className="favoriteBorder"
-                  onClick={this.handleFavoriteClickControl}
-                />
-              )}
+                  <IoHeartOutline
+                    className="favoriteBorder"
+                    onClick={this.handleFavoriteClickControl}
+                  />
+                )}
             </div>
             {/* ------------------hashTag------------------ */}
             <div className="hashTag">
@@ -297,10 +297,10 @@ class Comments extends Component {
                   </Button>
                 </div>
               ) : (
-                this.state.imgData.hashtags.map((res) => {
-                  return <span>{res.subject}</span>;
-                })
-              )}
+                  this.state.imgData.hashtags.map((res) => {
+                    return <span>{res.subject}</span>;
+                  })
+                )}
             </div>
             {/* ------------------userInfo(userFace, userName)------------------ */}
             <div className="userInfo">
@@ -346,13 +346,12 @@ class Comments extends Component {
               </Button> */}
               <a
                 className="test"
-                href={`https://map.kakao.com/link/to/${
-                  this.state.imgData.location
-                },${window.localStorage.current
-                  .split("")
-                  .slice(-(window.localStorage.current.length - 1), -1)
-                  .map((el) => (el !== " " ? el : null))
-                  .join("")}`}
+                href={`https://map.kakao.com/link/to/${this.state.imgData.location
+                  },${window.localStorage.current
+                    .split("")
+                    .slice(-(window.localStorage.current.length - 1), -1)
+                    .map((el) => (el !== " " ? el : null))
+                    .join("")}`}
                 target="_blank"
               >
                 <Button className="HowToGo" fullWidth>
@@ -368,40 +367,40 @@ class Comments extends Component {
                     첫번째 댓글을 남겨주세요.
                   </span>
                 ) : (
-                  this.state.imgData.replies.map((data, index) => {
-                    return (
-                      <div className="comment">
-                        <div className="comment_left">
-                          <img
-                            src={data.commenterProfilePath}
-                            className="commentFace"
-                            alt="img"
-                          />
-                        </div>
-                        <div className="comment_right">
-                          <span className="commentUserName">
-                            {data.nickname}
-                          </span>
-                          <span className="commentDate">{data.date}</span>
-                          <div className="commentComment">{data.comment}</div>
-                          <span className="commentRemove">
-                            <Button
-                              className="commentRemoveBtn"
-                              name={index}
-                              onClick={() =>
-                                this.removeCommentOpen(data.comment, data.id)
-                              }
-                              size="comment_delete"
-                              color="red"
-                            >
-                              삭제
+                    this.state.imgData.replies.map((data, index) => {
+                      return (
+                        <div className="comment">
+                          <div className="comment_left">
+                            <img
+                              src={data.commenterProfilePath}
+                              className="commentFace"
+                              alt="img"
+                            />
+                          </div>
+                          <div className="comment_right">
+                            <span className="commentUserName">
+                              {data.nickname}
+                            </span>
+                            <span className="commentDate">{data.date}</span>
+                            <div className="commentComment">{data.comment}</div>
+                            <span className="commentRemove">
+                              <Button
+                                className="commentRemoveBtn"
+                                name={index}
+                                onClick={() =>
+                                  this.removeCommentOpen(data.comment, data.id)
+                                }
+                                size="comment_delete"
+                                color="red"
+                              >
+                                삭제
                             </Button>
-                          </span>
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })
-                )}
+                      );
+                    })
+                  )}
               </div>
               <div>
                 <input
@@ -415,7 +414,7 @@ class Comments extends Component {
                   onClick={this.handleMakeComment}
                   // size="small_mypage_profile"
                   size="small_Comment"
-                  // middleWidth
+                // middleWidth
                 >
                   등록
                 </Button>
