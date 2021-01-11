@@ -21,11 +21,13 @@
 
     background: white;
     position: relative;
-    width: 40%;
+    // width: 40%;
+    width: 475px;
     text-align: center;
     border-radius: 10px;
     color: black;
-    padding: 2%;
+    // padding: 2%;
+    padding: 37px;
     h2 {
       margin-top: unset;
       margin-bottom: 3%;
@@ -109,6 +111,43 @@
   }
   
   
+}
+
+
+// phone 해상도 맞춤 반응형
+@media (max-width: 767px) {
+  .modal_CompletedFindEmail {
+    .modal_CompletedFindEmail_content {
+      width: 270px;
+      padding: 1%;
+      // width: 100vw;
+      // height: 100vh;
+      // border-radius: 0;
+      h2 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+        margin-left: unset;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+      h4 {
+        font-size: 0.68rem;
+      }
+      .email_result_container {
+        
+        .email_result_div {
+          flex-direction: column;
+          .email_findEmail_2 {
+            padding-left: unset;
+          }
+        }
+        //button.scss 반응형도 같이 핸들링해야함.
+        // .btn_result_findEmail_container {
+        //   // margin-top: 7%;
+        // }
+      } 
+    }
+  }
 }
 
 

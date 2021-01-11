@@ -188,7 +188,7 @@ class FindPw extends React.Component {
                     <div className="button_container_find_pw">
                       <div>
                         <Button
-                          size="small"
+                          size="small_find_pw"
                           color="gray"
                           middleWidth_main_btn
                           onClick={this.handleClickSubmit}

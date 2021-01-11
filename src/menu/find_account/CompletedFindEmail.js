@@ -72,7 +72,7 @@ class CompletedFindEmail extends React.Component {
               <div className="btn_result_findEmail_container">
                 <span className="btn_result_findEmail">
                   <Button 
-                    size="small"
+                    size="small_find_pw"
                     color="gray"
                     middleWidth_completedFind
                     onClick={this.linkToFindPw}

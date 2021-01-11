@@ -114,3 +114,35 @@
   
 
 }
+
+
+// phone 해상도 맞춤 반응형
+@media (max-width: 767px) {
+  .modal_DoubleCheckRemoveUsers {
+    .modal_DoubleCheckRemoveUsers_content {
+      width: 270px;
+      padding: 1%;
+      // width: 100vw;
+      // height: 100vh;
+      // border-radius: 0;
+      h2 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+        margin-left: unset;
+        justify-content: center;
+        font-size: 1.4rem;
+      }
+      .message_container_DoubleCheckRemoveUsers {
+        .message_container_DoubleCheckRemoveUsers_div {
+          font-size: 0.9rem;
+        }
+        //button.scss 반응형도 같이 핸들링해야함.
+        // .btn_result_findEmail_container {
+        //   // margin-top: 7%;
+        // }
+      } 
+    }
+  }
+}
+
+

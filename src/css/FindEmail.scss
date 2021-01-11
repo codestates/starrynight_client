@@ -143,3 +143,62 @@
     }
   }
 }
+
+
+// phone 해상도 맞춤 반응형
+@media (max-width: 767px) {
+  .modal_findEmail {
+    .modal_findEmail_content {
+      width: 270px;
+      padding-right: unset;
+      // width: 100vw;
+      // height: 100vh;
+      // border-radius: 0;
+      h2 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+        margin-left: unset;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+      .find_email_box {
+        flex-direction: column;
+        .userInfo_find_email_container {
+          float: unset;
+          
+          width: 93%;
+          .find_email_title {
+            padding-left: unset;
+          }
+          .mobile_input_container_in_findEmail {
+            margin: unset;
+            margin-bottom: 20px;
+            padding-left: 5px;
+          }
+        }
+        //button.scss 반응형도 같이 핸들링해야함.
+        .button_container_findEmail {
+          margin-top: unset;
+          margin-left: unset;
+          margin-right: 6%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .division_line_findemail {
+          display: none;
+        }
+        .social_login_container {
+          width: 95%;
+          padding-top: 15px;
+          padding-bottom: 10px;
+          .socialLogin_findEmail {
+            padding-left: 5%;
+            padding-right: 5%;
+            // width: 100%;
+          }
+        }
+      } 
+    }
+  }
+}

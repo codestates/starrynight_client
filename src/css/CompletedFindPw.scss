@@ -21,11 +21,13 @@
 
     background: white;
     position: relative;
-    width: 40%;
+    // width: 40%;
+    width: 475px;
     text-align: center;
     border-radius: 10px;
     color: black;
-    padding: 2%;
+    // padding: 2%;
+    padding: 37px;
     h2 {
       margin-top: unset;
       margin-bottom: 6%;
@@ -107,36 +109,63 @@
   
     //--------------------- 로딩 중 로고-------------------------\\
 
-    .spinner {
-      width: 40px;
-      height: 40px;
-      margin: 100px auto;
-      background-color: #333;
+    // .spinner {
+    //   // width: 40px;
+    //   // height: 40px;
+    //   // margin: 100px auto;
+    //   background-color: #333;
     
-      border-radius: 100%;  
-      -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-      animation: sk-scaleout 1.0s infinite ease-in-out;
-    }
+    //   border-radius: 100%;  
+    //   -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+    //   animation: sk-scaleout 1.0s infinite ease-in-out;
+    // }
     
-    @-webkit-keyframes sk-scaleout {
-      0% { -webkit-transform: scale(0) }
-      100% {
-        -webkit-transform: scale(1.0);
-        opacity: 0;
-      }
-    }
+    // @-webkit-keyframes sk-scaleout {
+    //   0% { -webkit-transform: scale(0) }
+    //   100% {
+    //     -webkit-transform: scale(1.0);
+    //     opacity: 0;
+    //   }
+    // }
     
-    @keyframes sk-scaleout {
-      0% { 
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      } 100% {
-        -webkit-transform: scale(1.0);
-        transform: scale(1.0);
-        opacity: 0;
-      }
-    }
+    // @keyframes sk-scaleout {
+    //   0% { 
+    //     -webkit-transform: scale(0);
+    //     transform: scale(0);
+    //   } 100% {
+    //     -webkit-transform: scale(1.0);
+    //     transform: scale(1.0);
+    //     opacity: 0;
+    //   }
+    // }
   
+}
+
+
+
+// phone 해상도 맞춤 반응형
+@media (max-width: 767px) {
+  .modal_CompletedFindPw {
+    .modal_CompletedFindPw_content {
+      width: 270px;
+      padding: 1%;
+      // width: 100vw;
+      // height: 100vh;
+      // border-radius: 0;
+      h2 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+        margin-left: unset;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+    }
+    .pw_result_container {
+      .pw_result_div {
+        font-size: 0.97rem;
+      }
+    }
+  }
 }
 
 

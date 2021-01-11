@@ -6,6 +6,8 @@ $yellow: yellow;
 $black: rgba(24, 10, 10, 0.932);
 $lightGray: rgb(190, 188, 188);
 
+
+
 @mixin button-color($color) {
   background: $color;
   &:hover {
@@ -50,7 +52,7 @@ $lightGray: rgb(190, 188, 188);
     height: 2.25rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    font-size: 1rem;
+    font-size: 0.1rem;
   }
   &.small {
     height: 1.9rem;
@@ -130,6 +132,10 @@ $lightGray: rgb(190, 188, 188);
   &.small_mypage_profile {
     margin: auto;
     height: 20px;
+  }
+  &.small_find_pw {
+    height: 1.9rem;
+    font-size: 0.875rem;
   }
 
   // 색상 관리
@@ -265,5 +271,38 @@ $lightGray: rgb(190, 188, 188);
     justify-content: space-between;
     width: 150px;
     align-items: center;
+    font-size: 0.9rem;
+  }
+}
+
+// phone 해상도에 맞춘 반응형
+@media (max-width: 767px) {
+  .Button {
+    &.small {
+      font-size: 0.9rem;
+      justify-content: center;
+    }
+    &.small_find_pw {
+      font-size: 0.9rem;
+      justify-content: center;
+    }
+    &.middleWidth_main_btn {
+      width: 100px;
+    }
+    // 소셜로그인 버튼 조절, 참고 폰트크기: medium이 defualt로 설정되어 있음.
+    &.medium {
+      justify-content: center;
+    }
+    &.smallWidth_singin {
+      width: 100%;
+    }
+    &.nanoWidth_mypage {
+      width: 42px;
+      font-size: 0.6rem;
+      // padding: unset;
+    }
+    // &.nanoWidth_removeuser_inmapage {
+    //   // font-size: 0.1rem;
+    // }
   }
 }
