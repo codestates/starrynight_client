@@ -150,6 +150,44 @@
       // }
     }
   }
-  
-
 }
+
+
+// phone 해상도 맞춤 반응형
+@media (max-width: 767px) {
+  .modal_CompletedRemoveUser {
+    .modal_CompletedRemoveUser_content {
+      width: 280px;
+      
+      padding: 10px;
+      padding-bottom: 6px;
+      // width: 100vw;
+      // height: 100vh;
+      // border-radius: 0;
+
+      h2 {
+        margin-top: 3px;
+        margin-bottom: 25px;
+        margin-left: unset;
+        justify-content: center;
+        font-size: 1.4rem;
+      }
+      .division_line {
+        width: 88%;
+        margin-left: 6%;
+      }
+      .message_container_CompletedRemoveUser {
+        .message_container_CompletedRemoveUser_div {
+          padding: 16px;
+          font-size: 0.8rem;
+        }
+        //button.scss 반응형도 같이 핸들링해야함.
+        // .btn_result_findEmail_container {
+        //   // margin-top: 7%;
+        // }
+      } 
+    }
+  }
+}
+
+
