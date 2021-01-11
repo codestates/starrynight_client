@@ -450,7 +450,7 @@ class SignUp extends React.Component {
   //   this.handleClickAddNewUserInfo
   // }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     console.log("BeforeLogin에서 내려 온 회원가입 프롭스", this.props);
@@ -607,7 +607,7 @@ class SignUp extends React.Component {
                         </div>
                       </div>
 
-                      <div>{this.state.signUpFailedMsg}</div>
+                      <div className="errmsg">{this.state.signUpFailedMsg}</div>
                     </div>
                   </form>
                   {/* -------------------------- submit 버튼 칸 --------------------*/}

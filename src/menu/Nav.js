@@ -67,7 +67,7 @@ class Nav extends React.Component {
     };
   }
   // !수정하기!
-  //로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 main 페이지로 리다이렉트 하기.
+  ////로고 클릭시 메인?페이지로 리다이렉트  --> 메인페이지 라우팅 연구 후 메인으로 리다이렉트 하는 걸로 하고 일단 main 페이지로 리다이렉트 하기.
   handleLogoClickToRedirectToMain = () => {
     console.log("잘클릭????롷고???");
     // this.props.history.push("/main");
