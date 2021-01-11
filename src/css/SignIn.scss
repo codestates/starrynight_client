@@ -1,24 +1,32 @@
 // 반응형 Break Point
+$phone: 0px;
 $tablet:768px;
 $laptop: 1020px;
 $desktop: 1400px;
 
 // Mixins
-@mixin desktop {
-  @media (max-width: #{$desktop}) {
-    @content;
-  }
-}
-@mixin laptap {
-  @media (max-width: #{$laptop}) {
+
+@mixin phone {
+  @media (min-width: #{$phone}) {
     @content;
   }
 }
 @mixin tablet {
-  @media (max-width: #{$tablet}) {
+  @media (min-width: #{$tablet}) {
     @content;
   }
 }
+@mixin laptap {
+  @media (min-width: #{$laptop}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
 
 .modal_signIn {
   position: fixed;
@@ -77,6 +85,20 @@ $desktop: 1400px;
 
     justify-content: space-around;
     align-content: center;
+
+    // @include phone {
+    //     flex-direction: column;
+        
+    //     .division_line {
+    //       display: none;
+    //     }
+    // }
+    // @include tablet {
+    //   flex-direction: row;
+    //   .division_line {
+    //     display: inline;
+    //   }
+    // }
 
     .container_signIn {
       float: left;
@@ -236,3 +258,31 @@ $desktop: 1400px;
   }
 }
 
+// phone 해상도 맞춤 반응형
+@media (max-width: 767px) {
+  .modal_signIn {
+    .modal_signIn_content {
+      width: 270px;
+      padding-right: unset;
+      // width: 100vw;
+      // height: 100vh;
+      // border-radius: 0;
+      h1 {
+        font-size: 2.2rem;
+      }
+      .box {
+        flex-direction: column;
+        .container_signIn {
+          float: unset;
+          width: 95%;
+        }
+        .division_line {
+          display: none;
+        }
+        .container2_siginIn {
+          width: 95%;
+        }
+      } 
+    }
+  }
+}

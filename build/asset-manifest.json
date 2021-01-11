@@ -1,28 +1,16 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/static/css/main.92f72c37.chunk.css",
-    "main.js": "/static/js/main.4d49dc02.chunk.js",
-    "main.js.map": "/static/js/main.4d49dc02.chunk.js.map",
-=======
-    "main.css": "/static/css/main.7841796c.chunk.css",
-    "main.js": "/static/js/main.79abf1fc.chunk.js",
-    "main.js.map": "/static/js/main.79abf1fc.chunk.js.map",
->>>>>>> 15a34183b42c657092d1b45db552429e4ae40d01
+    "main.css": "/static/css/main.2f728ea2.chunk.css",
+    "main.js": "/static/js/main.2a539951.chunk.js",
+    "main.js.map": "/static/js/main.2a539951.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.120840cb.js",
     "runtime-main.js.map": "/static/js/runtime-main.120840cb.js.map",
-    "static/js/2.8d5e64f5.chunk.js": "/static/js/2.8d5e64f5.chunk.js",
-    "static/js/2.8d5e64f5.chunk.js.map": "/static/js/2.8d5e64f5.chunk.js.map",
+    "static/js/2.4b9669d4.chunk.js": "/static/js/2.4b9669d4.chunk.js",
+    "static/js/2.4b9669d4.chunk.js.map": "/static/js/2.4b9669d4.chunk.js.map",
     "index.html": "/index.html",
-<<<<<<< HEAD
-    "static/css/main.92f72c37.chunk.css.map": "/static/css/main.92f72c37.chunk.css.map",
-    "static/js/2.8d5e64f5.chunk.js.LICENSE.txt": "/static/js/2.8d5e64f5.chunk.js.LICENSE.txt",
-    "static/js/main.4d49dc02.chunk.js.LICENSE.txt": "/static/js/main.4d49dc02.chunk.js.LICENSE.txt",
-=======
-    "static/css/main.7841796c.chunk.css.map": "/static/css/main.7841796c.chunk.css.map",
-    "static/js/2.8d5e64f5.chunk.js.LICENSE.txt": "/static/js/2.8d5e64f5.chunk.js.LICENSE.txt",
-    "static/js/main.79abf1fc.chunk.js.LICENSE.txt": "/static/js/main.79abf1fc.chunk.js.LICENSE.txt",
->>>>>>> 15a34183b42c657092d1b45db552429e4ae40d01
+    "static/css/main.2f728ea2.chunk.css.map": "/static/css/main.2f728ea2.chunk.css.map",
+    "static/js/2.4b9669d4.chunk.js.LICENSE.txt": "/static/js/2.4b9669d4.chunk.js.LICENSE.txt",
+    "static/js/main.2a539951.chunk.js.LICENSE.txt": "/static/js/main.2a539951.chunk.js.LICENSE.txt",
     "static/media/Starry_Night.b3e7a5ad.mov": "/static/media/Starry_Night.b3e7a5ad.mov",
     "static/media/fake1.44b84dd3.jpg": "/static/media/fake1.44b84dd3.jpg",
     "static/media/fake10.31bbc2e5.png": "/static/media/fake10.31bbc2e5.png",
@@ -61,13 +49,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.120840cb.js",
-    "static/js/2.8d5e64f5.chunk.js",
-<<<<<<< HEAD
-    "static/css/main.92f72c37.chunk.css",
-    "static/js/main.4d49dc02.chunk.js"
-=======
-    "static/css/main.7841796c.chunk.css",
-    "static/js/main.79abf1fc.chunk.js"
->>>>>>> 15a34183b42c657092d1b45db552429e4ae40d01
+    "static/js/2.4b9669d4.chunk.js",
+    "static/css/main.2f728ea2.chunk.css",
+    "static/js/main.2a539951.chunk.js"
   ]
 }
