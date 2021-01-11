@@ -419,7 +419,7 @@ $desktop: 1400px;
       // right: 50%;
       top: 45%;
       
-      left: 400px;
+      // left: 400px;
       // right: 450px;
       // right: 1050px;
       // transform: translate(+50%, -50%);
@@ -448,22 +448,7 @@ $desktop: 1400px;
       
       
 
-      .brackets_top {
-        color: whitesmoke;
-        // position: absolute;
-        // top: 50%;
-        // right: 50%;
-        // transform: translate(-50%, +50%);
-        font-size: 3rem;
-        // font-weight: bold;
-        // text-align: center;
-        margin-bottom: 20px;
-        // transform: rotate(90deg);
 
-        animation-name: brackets_top1;
-        animation-duration: 2s;
-        animation-fill-mode: forwards;
-      }
 
       .landing_text_intro_1 {
         // color: whitesmoke;
@@ -542,18 +527,7 @@ $desktop: 1400px;
       //   margin-left: 20px;
 
       // }
-      .brackets_bottom {
-        color: whitesmoke;
-        font-size: 3rem;
-        // font-weight: bold;
-        text-align: center;
-        margin-bottom: 20px;
-        transform: rotate(90deg);
 
-        animation-name: brackets_top2;
-        animation-duration: 2s;
-        animation-fill-mode: both;
-      }
 
       // @keyframes brackets_top1 {
       //   from {
@@ -614,85 +588,105 @@ $desktop: 1400px;
               //   }
               // } 
               
+              .scrollDown {
+                position: relative;
+                font-size: 5vh;
+                // color: whitesmoke;
+                color: transparent;
+                top: 30%;
+                // right: 510px;
+                // right: 1120px;
+                // left: 48.95%;
+                transform: translateY(-150%);
+            
+            
+                animation-name: scoll;
+                animation-delay: 8s;  // 스크롤 아이콘 등장에서 부자연스러움 방지
+                
+                animation-duration: 2s;
+                animation-timing-function: linear; // 애니메이션 속도조절
+                animation-iteration-count: infinite;
+                // animation-fill-mode: both; ---> 활성화 시키면 애니매이션 infinite반복 작동 안하는 것 같음.
+              
+            
+                // animation-name: pop_up;
+            
+                &:hover {
+                  cursor: pointer;
+                  // width: 100%;
+                  // height: 100%;
+                  // right: unset;
+                  // left: unset;
+                  
+                  // background: rgba(0, 0, 5, 0.24);
+                  
+                  // background: linear-gradient(to top, black,90%, rgba(0, 0, 0, 0));
+                }
+            
+                @include phone {
+                  // left: 142px;
+                  left: 3px;
+                }
+                @include tablet {
+                  // left: 273px;
+                  left: 3px;
+                }
+                @include laptap {
+                  // left: 388px;
+                  left: 3px;
+                  // right: 1050px;
+                }
+                @include desktop() {
+                  // left: 489px;
+                  left: 3px;
+                  // right: 1050px;
+                }
+                
+            
+              }
+              @keyframes scoll {
+                from {
+                  color: whitesmoke;
+                  
+                  // transition: ease-in;
+                  text-shadow: 0 0 40px whitesmoke;
+                  opacity: 0;
+            
+                }
+            
+                25%{
+                  color: whitesmoke;
+                  
+                  // transition: ease-in;
+                  text-shadow: 0 0 40px whitesmoke;
+                  opacity: 0.5;
+                }
+            
+                50%{
+                  color: whitesmoke;
+                  opacity: 1;
+                }
+            
+                75% {
+                  color: whitesmoke;
+                  
+                  // transition: ease-in;
+                  text-shadow: 0 0 40px whitesmoke;
+                  opacity: 0.5;
+                }
+            
+                to {
+                  color: whitesmoke;
+                  
+                  // transition: ease-in;
+                  text-shadow: 0 0 10px whitesmoke;
+                  opacity: 0.2;
+                }
+              }
     }
   }
 
   
-  .scrollDown {
-    position: absolute;
-    font-size: 2.5rem;
-    // color: whitesmoke;
-    color: transparent;
-    top: 85%;
-    // right: 510px;
-    right: 1120px;
-    // left: 48.95%;
-    transform: translateY(-150%);
-
-
-    animation-name: scoll;
-    animation-delay: 8s;  // 스크롤 아이콘 등장에서 부자연스러움 방지
-    
-    animation-duration: 2s;
-    animation-timing-function: linear; // 애니메이션 속도조절
-    animation-iteration-count: infinite;
-    // animation-fill-mode: both; ---> 활성화 시키면 애니매이션 infinite반복 작동 안하는 것 같음.
-  
-
-    // animation-name: pop_up;
-
-    &:hover {
-      cursor: pointer;
-      // width: 100%;
-      // height: 100%;
-      // right: unset;
-      // left: unset;
-      
-      // background: rgba(0, 0, 5, 0.24);
-      
-      // background: linear-gradient(to top, black,90%, rgba(0, 0, 0, 0));
-    }
-
-  }
-  @keyframes scoll {
-    from {
-      color: whitesmoke;
-      
-      // transition: ease-in;
-      text-shadow: 0 0 40px whitesmoke;
-      opacity: 0;
-
-    }
-
-    25%{
-      color: whitesmoke;
-      
-      // transition: ease-in;
-      text-shadow: 0 0 40px whitesmoke;
-      opacity: 0.5;
-    }
-
-    50%{
-      color: whitesmoke;
-      opacity: 1;
-    }
-
-    75% {
-      color: whitesmoke;
-      
-      // transition: ease-in;
-      text-shadow: 0 0 40px whitesmoke;
-      opacity: 0.5;
-    }
-
-    to {
-      color: whitesmoke;
-      
-      // transition: ease-in;
-      text-shadow: 0 0 10px whitesmoke;
-      opacity: 0.2;
-    }
-  }
 }
 
 // ----------------ver 2
