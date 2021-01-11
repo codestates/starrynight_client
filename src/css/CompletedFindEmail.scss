@@ -21,11 +21,13 @@
 
     background: white;
     position: relative;
-    width: 40%;
+    // width: 40%;
+    width: 475px;
     text-align: center;
     border-radius: 10px;
     color: black;
-    padding: 2%;
+    // padding: 2%;
+    padding: 37px;
     h2 {
       margin-top: unset;
       margin-bottom: 3%;
@@ -117,7 +119,7 @@
   .modal_CompletedFindEmail {
     .modal_CompletedFindEmail_content {
       width: 270px;
-      padding-right: unset;
+      padding: 1%;
       // width: 100vw;
       // height: 100vh;
       // border-radius: 0;
