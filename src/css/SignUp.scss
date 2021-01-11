@@ -310,7 +310,9 @@
   .modal_SignUp {
     .modal_SignUp_content {
       width: 280px;
-      padding-right: unset;
+      padding: unset;
+      padding-top: 15px;
+      padding-bottom: 15px;
       // width: 100vw;
       // height: 100vh;
       // border-radius: 0;
@@ -325,6 +327,10 @@
         .local_new_user {
           float: unset;
           width: 95%;
+          .userInfo_input_container {
+            margin-left: 7%;
+            margin-right: 5%;
+          }
           input {
             display: flex;
             width: 100%;
@@ -366,6 +372,9 @@
             padding-left: 7%;
             #social_login_title {
               display: none;
+            }
+            .socialLogin_btn {
+              margin-bottom: unset;
             }
           }
         }
