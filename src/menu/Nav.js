@@ -196,7 +196,8 @@ class Nav extends React.Component {
   // 일반 회원 탈퇴 완료(더블체크컴포넌트와 형제관계 Yes! 부모관계 No!!!)
   handleCompletedRemoveUser = () => {
     this.setState({
-      isCompletedRemoveUserModalOpen: !this.state.isCompletedRemoveUserModalOpen,
+      isCompletedRemoveUserModalOpen: !this.state
+        .isCompletedRemoveUserModalOpen,
     });
   };
 
@@ -220,9 +221,9 @@ class Nav extends React.Component {
   // 소셜로그인 성공시 구현 마무리 하기
   handleCompletedRemoveSocial = () => {
     this.setState({
-      isCompletedRemoveSocialOpen: !this.state.isCompletedRemoveSocialOpen
-    })
-  }
+      isCompletedRemoveSocialOpen: !this.state.isCompletedRemoveSocialOpen,
+    });
+  };
   CompletedRemoveSocialClick = () => {
     // 더블체크 모달에서 회원탈퇴를 누르는 순간 탈퇴 GET요청을 보내고 회원탈퇴완료모달 띄우기
     axios
@@ -257,6 +258,7 @@ class Nav extends React.Component {
 
     this.setState({
       isHamburgerOn: false, // Nav는 햄버거 모달을 끄고
+      isAddPhotoModalOpen: false, // 마 사진공유 모달도 꺼주십쇼
     });
     this.handleSignInModal(); // SignIn 모달을 켜라.
     // this.myRef.current.classList.toggle("nav_link")
@@ -397,7 +399,7 @@ class Nav extends React.Component {
         </div>
 
         {/* 12/20 사진공유 모달창 위치수정 */}
-        {this.props.isLogin ? (
+        {/* {this.props.isLogin ? (
           <div className="AddPhoto">
             <MdAddAPhoto
               className="AddPhoto-icon"
@@ -412,7 +414,24 @@ class Nav extends React.Component {
               handleModal={this.handleAddPhotoModal}
             />
           </div>
-        ) : null}
+        ) : null} */}
+        <div className="AddPhoto">
+          <MdAddAPhoto
+            className="AddPhoto-icon"
+            onClick={this.handleAddPhotoModal}
+            style={{ fontSize: `35px` }}
+          />
+          <AddPhoto
+            // 12/8 로그인 유저의 토큰을 활용하기 위해 props로 상속추가
+            localStorage={window.localStorage}
+            isLogin={this.props.isLogin}
+            isOpen={this.state.isAddPhotoModalOpen}
+            handleModal={this.handleAddPhotoModal}
+            handleResponseSuccess={this.props.handleResponseSuccess}
+            isHamburgerOn={true}
+            signInClick={this.signInClick}
+          />
+        </div>
 
         {/* 로그인 경우 vs 비로그인 경우로 나누기 */}
 
@@ -499,7 +518,9 @@ class Nav extends React.Component {
               isOpen={this.state.isCompletedRemoveUserModalOpen}
             />
             <CompletedRemoveSocial
-              isCompletedRemoveSocialOpen={this.state.isCompletedRemoveSocialOpen}
+              isCompletedRemoveSocialOpen={
+                this.state.isCompletedRemoveSocialOpen
+              }
             />
           </>
         ) : null}

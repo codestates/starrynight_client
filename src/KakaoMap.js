@@ -85,10 +85,11 @@ function KakaoMap(props) {
 
   return (
     <div
+      className="kakaomap"
       id="map"
       style={{
-        width: `25rem`,
-        height: `20rem`,
+        width: `420px`,
+        height: `335px`,
         marginBottom: `1rem`,
       }}
     ></div>

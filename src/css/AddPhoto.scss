@@ -1,9 +1,41 @@
+// modal background
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_overlay {
+  background-color: #00000099;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  cursor: auto;
+}
+
+// AddPhoto contents
+.modal_content_a {
+  background-color: white;
+  width: 30rem;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  color: black;
+  border: 0.1rem solid #565f7e;
+  cursor: auto;
+}
+
 .close {
   color: #c5c5c5;
   float: right;
   font-size: 20px;
   font-weight: lighter;
-  padding-right: 1rem;
+  margin-right: 2rem;
 }
 
 .close:hover,
@@ -11,6 +43,37 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.addphoto-title {
+  margin-left: 4.5rem;
+}
+
+// drag & drop
+.dropzone {
+  height: 30px;
+  width: 40px;
+  border: 0.5px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+}
+
+// kakao map zone
+.add-kakaomap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // margin-top: 10px;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.addphoto-label-div {
+  text-align: left;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .addphoto-button {
@@ -79,20 +142,118 @@
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
-  width: 7rem;
+  width: 8rem;
   display: inline-block;
   margin-right: 0.5rem;
   transition: width 0.4s ease-in-out;
-  // searchicon 스타일
-  background-color: white;
-  background-image: url("../searchicon.png");
-  background-position: 2px 2px;
-  background-size: 1.2rem;
-  background-repeat: no-repeat;
-  // placeholder 위치
-  padding: 5px 7px 5px 25px;
+  padding: 5px;
   // 자동 늘이기
   &:focus {
-    width: 10rem;
+    width: 12rem;
+  }
+}
+
+.addphoto-label {
+  font-size: 11pt;
+  margin-right: 1rem;
+}
+
+.input-title-field,
+.input-hashtag-field {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  padding: 5px 7px 5px 7px;
+  width: 18rem;
+}
+
+// for the is-not-login user
+.modal_content_b {
+  background-color: white;
+  width: 20rem;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  color: black;
+  border: 0.1rem solid #565f7e;
+  cursor: auto;
+}
+
+.addphoto-sign {
+  border: 0.1rem solid white;
+  border-radius: 3px;
+  font-size: 12pt;
+  text-decoration: none;
+  width: 6rem;
+  height: 2rem;
+  margin-top: 2rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  background: #e09bd7;
+  &:hover {
+    background: #ffdfee;
+  }
+}
+
+// 반응형 대응
+@media (max-height: 600px), screen and (orientation: portrait) {
+  .close {
+    color: black;
+    font-size: 13pt;
+    margin-right: 25px;
+  }
+
+  .addphoto-title {
+    font-size: 12pt;
+    margin-left: 3rem;
+  }
+
+  .dropzone {
+    height: 25px;
+    width: 30px;
+  }
+
+  .kakaomap {
+    max-height: 150px;
+    max-width: 260px;
+  }
+
+  .addphoto-label {
+    font-size: 8pt;
+    margin-right: 0.5rem;
+  }
+
+  .input-search {
+    width: 6rem;
+    font-size: 8pt;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    &:focus {
+      width: 8rem;
+    }
+  }
+
+  .input-title-field,
+  .input-hashtag-field {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background-color: white;
+    padding: 5px 7px 5px 7px;
+    width: 200px;
+    font-size: 8pt;
+  }
+
+  .addphoto-button,
+  .addphoto-notyet {
+    width: 80px;
+    height: 30px;
+    font-size: 10pt;
   }
 }
