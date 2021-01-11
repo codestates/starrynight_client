@@ -1,47 +1,3 @@
-// .modal_Mypage {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   .modal_Mypage_overlay {
-//     background: rgba(0, 0, 0, 0.6);
-//     position: fixed;
-//     width: 100vw;
-//     height: 100vh;
-//   }
-
-//   .modal_Mypage_content {
-//     background: white;
-//     color: black;
-//     position: relative;
-//     width: 60%;
-//     text-align: center;
-//     border-radius: 10px;
-//   }
-
-//   .userInfo_input_container_inMypage {
-//     background: skyblue;
-//     .div{
-//       display: flex;
-//     }
-    
-    
-//     align-items: center;
-//     margin-right: 7%;
-//     margin-left: 7%;
-//     margin-bottom: 7%;
-//   }
-
-// }
-
-// css
-
 .modal_Mypage {
   position: fixed;
   top: 0;
@@ -265,5 +221,72 @@
   //   margin-bottom: 7%;
   // }
 
+  }
+}
+
+@media (max-width: 767px) {
+  .modal_Mypage {
+    .modal_Mypage_content {
+      width: 300px;
+      padding: 10px;
+      h1 {
+        font-size: 1.2rem;
+      }
+      .userInfo_input_container_inMypage {
+        padding: 10px;
+        .email_div_inMypage {
+          padding-bottom: 15px;
+          font-size: 0.8rem;
+          .float {
+            margin-right: 25px;
+          }
+        }
+        .pw_div_inMypage {
+          padding-bottom: 15px;
+          
+          font-size: 0.8rem;
+          .pw_input_container {
+            display: flex;
+            .title_span {
+              margin-right: 14px;
+            }
+            span {
+              margin-right: unset;
+            }
+          }
+        }
+        .nickname_div_inMypage {
+          padding-bottom: 15px;
+          font-size: 0.8rem;
+          .nickname_input_container {
+            .title_span {
+              margin-right: 38px;
+            }
+            span {
+              margin-right: unset;
+            }
+          }
+        }
+        .mobile_div_inMypage {
+          font-size: 0.8rem;
+          .title_span {
+            margin-right: 27px;
+          }
+          span {
+            margin-right: unset;
+          }
+        }
+        input {
+          width: 98%;
+          font-size: 0.5rem;
+          border-radius: 5px;
+          border-width: 1.6px;
+          border-color: rgb(143, 143, 143);
+          padding: 0.4rem 0.9rem;
+          margin: unset;
+          align-content: center;
+        }
+      }
+    }
   }
 }

@@ -479,7 +479,7 @@ class Mypage extends React.Component {
 
                       <div className="pw_div_inMypage">
                         <div className="pw_input_container">
-                          <span>비밀번호</span>
+                          <span className="title_span">비밀번호</span>
 
                           {/* <div>{this.props.sendStateForMypage.password}</div> */}
                           {this.state.isModifyBtnOfPw === false ? (
@@ -512,7 +512,7 @@ class Mypage extends React.Component {
 
                       <div className="nickname_div_inMypage">
                         <div className="nickname_input_container">
-                          <span>별명</span>
+                          <span className="title_span">별명</span>
 
                           {/* <div>{this.props.sendStateForMypage.nickname}</div> */}
                           {this.state.isModifyBtnOfNickname === false ? (
@@ -550,7 +550,7 @@ class Mypage extends React.Component {
 
                       <div className="mobile_div_inMypage">
                         <div className="mobile_input_container">
-                          <span>연락처</span>
+                          <span className="title_span">연락처</span>
 
                           {/* <div>{this.props.sendStateForMypage.mobile}</div> */}
                           {this.state.isModifyBtnOfMobile === false ? (
@@ -597,7 +597,7 @@ class Mypage extends React.Component {
                           <Button
                             onClick={this.props.DoubleCheckRemoveUsersClick}
                             outline
-                            size="small"
+                            // size="small"
                             nanoWidth_removeuser_inmapage
                           >
                             회원 탈퇴

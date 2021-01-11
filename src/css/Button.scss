@@ -52,7 +52,7 @@ $lightGray: rgb(190, 188, 188);
     height: 2.25rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    font-size: 1rem;
+    font-size: 0.1rem;
   }
   &.small {
     height: 1.9rem;
@@ -295,5 +295,13 @@ $lightGray: rgb(190, 188, 188);
     &.smallWidth_singin {
       width: 100%;
     }
+    &.nanoWidth_mypage {
+      width: 42px;
+      font-size: 0.6rem;
+      // padding: unset;
+    }
+    // &.nanoWidth_removeuser_inmapage {
+    //   // font-size: 0.1rem;
+    // }
   }
 }
