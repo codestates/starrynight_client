@@ -37,16 +37,25 @@ $desktop: 1400px;
   overflow: hidden;
   margin: 0px auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   // text-align: center;
   // 가로화면 꽉 차게
-  // video {
-  //   width: 100%;
-  // }
-
-
+  video {
+    width: 100%;
+  }
+  #black-box {
   
+    position: absolute;
+    top: 93.5%;
+    left: 96.3%;
+    width: 3%;
+    height: 4.5%;
+    background-color: #000000;
+    // background-color: whitesmoke;
+    // z-index: 1;
+    
+  }
   
   .landing_text {
     font-family: 'Noto Serif KR', serif;
@@ -111,7 +120,7 @@ $desktop: 1400px;
         // display: flex;
         // margin-top: 7%;
         // position: absolute;
-        font-size: 1.8rem;
+        // font-size: 1.8vh !important;
         // font-weight: bold;
         // text-align: right;
         margin-bottom: 20px;
@@ -129,7 +138,7 @@ $desktop: 1400px;
         // animation-delay: 0;
       
         
-          font-size: 3.7vh;
+          font-size: 2vw !important;
         
       
 
@@ -138,7 +147,7 @@ $desktop: 1400px;
       .landing_text_intro_2 {
         // color: whitesmoke;
         // font-size: 1.8rem;
-        font-size: 3.7vh;
+        font-size: 2vw !important;
         // font-weight: bold;
         // text-align: right;
         margin-bottom: 20px;
@@ -154,7 +163,7 @@ $desktop: 1400px;
       .landing_text_intro_3 {
         // color: whitesmoke;
         // font-size: 1.8rem;
-        font-size: 3.7vh;
+        font-size: 2vw !important;
         // font-weight: bold;
         // text-align: center;
         // display: flex;
@@ -246,7 +255,8 @@ $desktop: 1400px;
               
               .scrollDown {
                 position: relative;
-                font-size: 5vh;
+                // font-size: 5vh;
+                font-size: 2.7vw !important;
                 // color: whitesmoke;
                 color: transparent;
                 top: 30%;
