@@ -77,17 +77,16 @@ class Landing extends React.Component {
     return (
 
       <div className="video_box">
-        {/* <div>
-        Hello World!
-      </div> */}
+        
         {/* <video playsinline autoplay loop> */}
         <div>
+          <div id="black-box"></div>
           <video muted autoPlay loop className="landing_video" ref={this.videoControllerRef} onEnded={this.videoPlaystate} >
             {/* <video muted autoPlay loop className="landing_video"> */}
             <source src={starsVideo} type="video/mp4" />
             <strong>귀하의 브라우저는 video tag를 지원하지 않습니다.</strong>
           </video>
-        </div>
+        {/* </div> */}
         <div className="landing_text">
           <div className="text_box">
             {/* <div className="landing_text_intro_1"><span>반</span><span>짝</span><span>이</span><span>는</span><span>&nbsp;</span><span>밤</span><span>하</span><span>늘</span><span>의</span><span>&nbsp;</span><span>별</span><span>처</span><span>럼</span><span>,</span></div>
@@ -125,6 +124,7 @@ class Landing extends React.Component {
         {/* <div id="test">
         테스트 중
       </div> */}
+      </div>
       </div>
       //   <>
       //     <animated.div className="script-box" style={props} />

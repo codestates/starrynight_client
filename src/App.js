@@ -56,27 +56,25 @@ const App = () => {
     <>
       {/* <withRouter> */}
       <main className="App">
-
-        <section className="scrolledsection is-visible">
-          <figure className="scrolledsection__bg-image" data-img>
-            {/* <img
+        <div className="scrolledsection is-visible">
+          {/* <figure className="scrolledsection__bg-image" data-img> */}
+          {/* <img
               src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
               alt="mountain"
             /> */}
 
-            <Landing />
-          </figure>
+          <Landing />
+          {/* </figure> */}
           {/* <h2>Scroll item 1</h2> */}
-          <div className="scrolledsection__content">
+          {/* <div className="scrolledsection__content">
             <br />
             <br />
             <br />
             <div className="scrolledsection__inner" data-observer>
               <FaArrowDown />
             </div>
-          </div>
-
-        </section>
+          </div> */}
+        </div>
 
         <section className="scrolledsection">
           {/* <h2>Scroll item 2</h2> */}
